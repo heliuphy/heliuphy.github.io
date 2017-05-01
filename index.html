@@ -155,7 +155,7 @@
                 <span>文章</span>
             </div>
             <div class="article-info-block">
-                21
+                22
                 <span>标签</span>
             </div>
         </div>
@@ -196,17 +196,48 @@
     <div class="article-inner">
         
         
+            <header class="article-header">
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2017/05/01/VTK提示MetaImage cannot read data from file/">VTK提示MetaImage cannot read data from file</a>
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2017/05/01/VTK提示MetaImage cannot read data from file/">
+            <time datetime="2017-05-01T04:43:25.125Z" itemprop="datePublished">2017-05-01</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/VTK/">VTK</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/VTK/">VTK</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
         
         <div class="article-entry" itemprop="articleBody">
         
-            
-            <p>在运行《VTK图形图像进阶》第五章<code>5.3_ImageResliceExample.cpp</code>时，会提示<code>MetaImage cannot read data from file</code>或者显示窗口是空白，后来搜索了VTKExample中的例子，发现可以这样解决：<br>将原来程序中的语句<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">imgActor-&gt;SetInputData(colorMap-&gt;GetOutput());</div></pre></td></tr></table></figure></p>
-<p>更改为：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">imgActor-&gt;GetMapper()-&gt;SetInputConnection(colorMap-&gt;GetOutputPort());</div></pre></td></tr></table></figure></p>
-<p>记得在程序开头载入头文件：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">#include &lt;vtkImageMapper3D.h&gt;</div></pre></td></tr></table></figure></p>
-<blockquote>
-<p>VTKExample:<a href="http://www.vtk.org/Wiki/VTK/Examples/Cxx/IO/MetaImageReader" target="_blank" rel="external">http://www.vtk.org/Wiki/VTK/Examples/Cxx/IO/MetaImageReader</a></p>
-</blockquote>
-
+            <p><p>在运行《VTK图形图像进阶》第五章<code>5.3_ImageResliceExample.cpp</code>时，会提示<code>MetaImage cannot read data from file</code>或者显示窗口是空白，后来搜索了VTKExample中的例子，发现可以这样解决：<br></p>
+            <p class="article-more-link">
+                <a href="/2017/05/01/VTK提示MetaImage cannot read data from file/#more">查看更多</a>
+            </p>
         
         </div>
         <footer class="article-footer">
@@ -216,7 +247,7 @@
 
 </div>
 
-    <a data-url="http://yoursite.com/2017/05/01/VTK提示MetaImage cannot read data from file/" data-id="cj25nin1e0009qouobecmuqwh" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://yoursite.com/2017/05/01/VTK提示MetaImage cannot read data from file/" data-id="cj25nmg7q000cscuo4wg6af3l" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -352,7 +383,7 @@
 
 </div>
 
-    <a data-url="http://yoursite.com/2017/04/26/搭建hexo博客小记/" data-id="cj25nin1u000pqouoh03t2l4m" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://yoursite.com/2017/04/26/搭建hexo博客小记/" data-id="cj25nmg7q000escuobbkm059s" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -488,7 +519,7 @@
 
 </div>
 
-    <a data-url="http://yoursite.com/2017/04/26/利用Keepass2.x进行ftp或webdev同步/" data-id="cj25nin1u000oqouoflw8pv16" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://yoursite.com/2017/04/26/利用Keepass2.x进行ftp或webdev同步/" data-id="cj25nmg85000oscuo0h6wg5dl" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -566,142 +597,6 @@
 
 
 
-    <article id="post-VPS服务器搭建ghost blog" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-            <header class="article-header">
-                
-    
-        <h1 itemprop="name">
-            <a class="article-title" href="/2017/04/26/VPS服务器搭建ghost blog/">VPS服务器搭建ghost blog</a>
-        </h1>
-    
-
-                
-                    <div class="article-meta">
-                        
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2017/04/26/VPS服务器搭建ghost blog/">
-            <time datetime="2017-04-26T12:26:32.215Z" itemprop="datePublished">2017-04-26</time>
-        </a>
-    </div>
-
-
-                        
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/web/">web</a>
-    </div>
-
-                        
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/ghost-blog/">ghost blog</a>
-    </div>
-
-                    </div>
-                
-            </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-            <p><p>####前传</p>
-<hr>
-<p>&#160;&#160;无意中看到markdown语法，立马就喜欢上它，所以就想博客能不能也用这种语法写，因为我的博客原来一直用wordpress来搞，第一个想到的当然是用插件，当然也下到了，不过估计是主题css的问题，代码框老显示不出来，对于想要代码框的我来说实在是不能忍，就上网搜有没有其他的博客工具，哈哈终于找到了它，ghostblog！</p>
-<p>&#160;&#160;但是安装下来着实费了不少功夫。总结起来比较简便的方法还是AMH+Node.js<br></p>
-            <p class="article-more-link">
-                <a href="/2017/04/26/VPS服务器搭建ghost blog/#more">查看更多</a>
-            </p>
-        
-        </div>
-        <footer class="article-footer">
-            <div class="share-container">
-
-
-
-</div>
-
-    <a data-url="http://yoursite.com/2017/04/26/VPS服务器搭建ghost blog/" data-id="cj25nin1e000cqouoe9r9nbmf" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
-<script>
-    (function ($) {
-        // Prevent duplicate binding
-        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
-            __SHARE_BUTTON_BINDED__ = true;
-        } else {
-            return;
-        }
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-</script>
-
-            
-    
-        <a href="http://yoursite.com/2017/04/26/VPS服务器搭建ghost blog/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="http://yoursite.com/2017/04/26/VPS服务器搭建ghost blog/">评论</a>
-    
-
-        </footer>
-    </div>
-    
-</article>
-
-
-
     <article id="post-VPS+Hexo+Dropbox创建个人博客" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
@@ -762,7 +657,7 @@
 
 </div>
 
-    <a data-url="http://yoursite.com/2017/04/26/VPS+Hexo+Dropbox创建个人博客/" data-id="cj25nin0z0006qouoaqyx50e6" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://yoursite.com/2017/04/26/VPS+Hexo+Dropbox创建个人博客/" data-id="cj25nmg7q0008scuo9v4htef7" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -840,146 +735,6 @@
 
 
 
-    <article id="post-beamer的theme" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-            <header class="article-header">
-                
-    
-        <h1 itemprop="name">
-            <a class="article-title" href="/2017/04/26/beamer的theme/">beamer的theme</a>
-        </h1>
-    
-
-                
-                    <div class="article-meta">
-                        
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2017/04/26/beamer的theme/">
-            <time datetime="2017-04-26T12:26:32.215Z" itemprop="datePublished">2017-04-26</time>
-        </a>
-    </div>
-
-
-                        
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/软件零件/">软件零件</a>
-    </div>
-
-                        
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/latex/">latex</a>
-    </div>
-
-                    </div>
-                
-            </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-            
-            <p>发现两个不错的网站</p>
-<ul>
-<li><p>所有自带的主题列表</p>
-<pre><code>https://www.hartwork.org/beamer-theme-matrix/
-</code></pre></li>
-<li><p>这个网站也有不少好主题</p>
-<p><a href="https://latex.simon04.net/" target="_blank" rel="external">https://latex.simon04.net/</a></p>
-</li>
-</ul>
-
-        
-        </div>
-        <footer class="article-footer">
-            <div class="share-container">
-
-
-
-</div>
-
-    <a data-url="http://yoursite.com/2017/04/26/beamer的theme/" data-id="cj25nin1e000hqouotx3lget1" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
-<script>
-    (function ($) {
-        // Prevent duplicate binding
-        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
-            __SHARE_BUTTON_BINDED__ = true;
-        } else {
-            return;
-        }
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-</script>
-
-            
-    
-        <a href="http://yoursite.com/2017/04/26/beamer的theme/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="http://yoursite.com/2017/04/26/beamer的theme/">评论</a>
-    
-
-        </footer>
-    </div>
-    
-</article>
-
-
-
     <article id="post-coding和github同时使用" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
@@ -1038,7 +793,7 @@
 
 </div>
 
-    <a data-url="http://yoursite.com/2017/04/26/coding和github同时使用/" data-id="cj25nin1e000eqouo7582yho7" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://yoursite.com/2017/04/26/coding和github同时使用/" data-id="cj25nmg85000pscuowwj277c5" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1116,6 +871,282 @@
 
 
 
+    <article id="post-beamer的theme" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2017/04/26/beamer的theme/">beamer的theme</a>
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2017/04/26/beamer的theme/">
+            <time datetime="2017-04-26T12:26:32.215Z" itemprop="datePublished">2017-04-26</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/软件零件/">软件零件</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/latex/">latex</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <p>发现两个不错的网站</p>
+<ul>
+<li><p>所有自带的主题列表</p>
+<pre><code>https://www.hartwork.org/beamer-theme-matrix/
+</code></pre></li>
+<li><p>这个网站也有不少好主题</p>
+<p><a href="https://latex.simon04.net/" target="_blank" rel="external">https://latex.simon04.net/</a></p>
+</li>
+</ul>
+
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://yoursite.com/2017/04/26/beamer的theme/" data-id="cj25nmg7q000hscuo42xcvobw" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+        <a href="http://yoursite.com/2017/04/26/beamer的theme/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="http://yoursite.com/2017/04/26/beamer的theme/">评论</a>
+    
+
+        </footer>
+    </div>
+    
+</article>
+
+
+
+    <article id="post-VPS服务器搭建ghost blog" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2017/04/26/VPS服务器搭建ghost blog/">VPS服务器搭建ghost blog</a>
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2017/04/26/VPS服务器搭建ghost blog/">
+            <time datetime="2017-04-26T12:26:32.215Z" itemprop="datePublished">2017-04-26</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/web/">web</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/ghost-blog/">ghost blog</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            <p><p>####前传</p>
+<hr>
+<p>&#160;&#160;无意中看到markdown语法，立马就喜欢上它，所以就想博客能不能也用这种语法写，因为我的博客原来一直用wordpress来搞，第一个想到的当然是用插件，当然也下到了，不过估计是主题css的问题，代码框老显示不出来，对于想要代码框的我来说实在是不能忍，就上网搜有没有其他的博客工具，哈哈终于找到了它，ghostblog！</p>
+<p>&#160;&#160;但是安装下来着实费了不少功夫。总结起来比较简便的方法还是AMH+Node.js<br></p>
+            <p class="article-more-link">
+                <a href="/2017/04/26/VPS服务器搭建ghost blog/#more">查看更多</a>
+            </p>
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://yoursite.com/2017/04/26/VPS服务器搭建ghost blog/" data-id="cj25nmg7m0006scuo1d06jn8z" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+        <a href="http://yoursite.com/2017/04/26/VPS服务器搭建ghost blog/#comments" class="article-comment-link disqus-comment-count" data-disqus-url="http://yoursite.com/2017/04/26/VPS服务器搭建ghost blog/">评论</a>
+    
+
+        </footer>
+    </div>
+    
+</article>
+
+
+
     <article id="post-KeePass" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
@@ -1171,7 +1202,7 @@
 
 </div>
 
-    <a data-url="http://yoursite.com/2017/04/26/KeePass/" data-id="cj25nin0z0002qouo8vz4bglx" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://yoursite.com/2017/04/26/KeePass/" data-id="cj25nmg7q0009scuovo7mirjx" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1313,7 +1344,7 @@
 
 </div>
 
-    <a data-url="http://yoursite.com/2017/04/26/Endnote的style/" data-id="cj25nin0d0000qouoagol6z3j" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://yoursite.com/2017/04/26/Endnote的style/" data-id="cj25nmg730000scuoi0imtjnl" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1453,7 +1484,7 @@
 
 </div>
 
-    <a data-url="http://yoursite.com/2016/05/14/Hexo利用Swiftype建立站内搜索/" data-id="cj25nin0z0008qouok50bbdwc" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://yoursite.com/2016/05/14/Hexo利用Swiftype建立站内搜索/" data-id="cj25nmg730002scuou2yfgt14" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1557,8 +1588,8 @@
                         </div>
                         
                         <div class="item-inner">
-                            <p class="item-category"></p>
-                            <p class="item-title"><a href="/2017/05/01/VTK提示MetaImage cannot read data from file/" class="title"></a></p>
+                            <p class="item-category"><a class="article-category-link" href="/categories/VTK/">VTK</a></p>
+                            <p class="item-title"><a href="/2017/05/01/VTK提示MetaImage cannot read data from file/" class="title">VTK提示MetaImage cannot read data from file</a></p>
                             <p class="item-date"><time datetime="2017-05-01T04:43:25.125Z" itemprop="datePublished">2017-05-01</time></p>
                         </div>
                     </li>
@@ -1604,25 +1635,6 @@
                     <li>
                         
                         <div class="item-thumbnail">
-                            <a href="/2017/04/26/VPS服务器搭建ghost blog/" class="thumbnail">
-    
-    
-        <span class="thumbnail-image thumbnail-none"></span>
-    
-</a>
-
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/web/">web</a></p>
-                            <p class="item-title"><a href="/2017/04/26/VPS服务器搭建ghost blog/" class="title">VPS服务器搭建ghost blog</a></p>
-                            <p class="item-date"><time datetime="2017-04-26T12:26:32.215Z" itemprop="datePublished">2017-04-26</time></p>
-                        </div>
-                    </li>
-                
-                    <li>
-                        
-                        <div class="item-thumbnail">
                             <a href="/2017/04/26/VPS+Hexo+Dropbox创建个人博客/" class="thumbnail">
     
     
@@ -1639,6 +1651,25 @@
                         </div>
                     </li>
                 
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2017/04/26/coding和github同时使用/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Git/">Git</a></p>
+                            <p class="item-title"><a href="/2017/04/26/coding和github同时使用/" class="title">coding和github同时使用</a></p>
+                            <p class="item-date"><time datetime="2017-04-26T12:26:32.215Z" itemprop="datePublished">2017-04-26</time></p>
+                        </div>
+                    </li>
+                
             </ul>
         </div>
     </div>
@@ -1648,7 +1679,7 @@
     <div class="widget-wrap">
         <h3 class="widget-title">分类</h3>
         <div class="widget">
-            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Git/">Git</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hexo/">Hexo</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/web/">web</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/博客/">博客</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/软件/">软件</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/软件部件/">软件部件</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/软件零件/">软件零件</a><span class="category-list-count">1</span></li></ul>
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Git/">Git</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hexo/">Hexo</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/VTK/">VTK</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/web/">web</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/博客/">博客</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/软件/">软件</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/软件部件/">软件部件</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/软件零件/">软件零件</a><span class="category-list-count">1</span></li></ul>
         </div>
     </div>
 
@@ -1666,7 +1697,7 @@
     <div class="widget-wrap">
         <h3 class="widget-title">标签云</h3>
         <div class="widget tagcloud">
-            <a href="/tags/Chrome/" style="font-size: 15px;">Chrome</a> <a href="/tags/Dropbox/" style="font-size: 10px;">Dropbox</a> <a href="/tags/Endnote/" style="font-size: 10px;">Endnote</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Github/" style="font-size: 10px;">Github</a> <a href="/tags/Hexo/" style="font-size: 20px;">Hexo</a> <a href="/tags/KeePass/" style="font-size: 15px;">KeePass</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/Swiftype/" style="font-size: 10px;">Swiftype</a> <a href="/tags/Ubuntu/" style="font-size: 10px;">Ubuntu</a> <a href="/tags/VPS/" style="font-size: 10px;">VPS</a> <a href="/tags/blog/" style="font-size: 10px;">blog</a> <a href="/tags/coding/" style="font-size: 10px;">coding</a> <a href="/tags/ghost-blog/" style="font-size: 10px;">ghost blog</a> <a href="/tags/latex/" style="font-size: 10px;">latex</a> <a href="/tags/style/" style="font-size: 10px;">style</a> <a href="/tags/web/" style="font-size: 10px;">web</a> <a href="/tags/博客/" style="font-size: 10px;">博客</a> <a href="/tags/站内搜索/" style="font-size: 10px;">站内搜索</a> <a href="/tags/系统安装/" style="font-size: 10px;">系统安装</a> <a href="/tags/网站/" style="font-size: 10px;">网站</a>
+            <a href="/tags/Chrome/" style="font-size: 15px;">Chrome</a> <a href="/tags/Dropbox/" style="font-size: 10px;">Dropbox</a> <a href="/tags/Endnote/" style="font-size: 10px;">Endnote</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Github/" style="font-size: 10px;">Github</a> <a href="/tags/Hexo/" style="font-size: 20px;">Hexo</a> <a href="/tags/KeePass/" style="font-size: 15px;">KeePass</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/Swiftype/" style="font-size: 10px;">Swiftype</a> <a href="/tags/Ubuntu/" style="font-size: 10px;">Ubuntu</a> <a href="/tags/VPS/" style="font-size: 10px;">VPS</a> <a href="/tags/VTK/" style="font-size: 10px;">VTK</a> <a href="/tags/blog/" style="font-size: 10px;">blog</a> <a href="/tags/coding/" style="font-size: 10px;">coding</a> <a href="/tags/ghost-blog/" style="font-size: 10px;">ghost blog</a> <a href="/tags/latex/" style="font-size: 10px;">latex</a> <a href="/tags/style/" style="font-size: 10px;">style</a> <a href="/tags/web/" style="font-size: 10px;">web</a> <a href="/tags/博客/" style="font-size: 10px;">博客</a> <a href="/tags/站内搜索/" style="font-size: 10px;">站内搜索</a> <a href="/tags/系统安装/" style="font-size: 10px;">系统安装</a> <a href="/tags/网站/" style="font-size: 10px;">网站</a>
         </div>
     </div>
 
