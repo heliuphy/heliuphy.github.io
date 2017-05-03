@@ -1,0 +1,615 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Liu&#39;s Blog</title>
+  
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="https://heliublog.com/"/>
+  <updated>2017-05-03T10:51:48.755Z</updated>
+  <id>https://heliublog.com/</id>
+  
+  <author>
+    <name>Liu He</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>VTK提示MetaImage cannot read data from file</title>
+    <link href="https://heliublog.com/2017/05/01/VTK%E6%8F%90%E7%A4%BAMetaImage%20cannot%20read%20data%20from%20file/"/>
+    <id>https://heliublog.com/2017/05/01/VTK提示MetaImage cannot read data from file/</id>
+    <published>2017-05-01T04:43:25.125Z</published>
+    <updated>2017-05-03T10:51:48.755Z</updated>
+    
+    <content type="html"><![CDATA[<p>在运行《VTK图形图像进阶》第五章<code>5.3_ImageResliceExample.cpp</code>时，会提示<code>MetaImage cannot read data from file</code>或者显示窗口是空白，后来搜索了VTKExample中的例子，发现可以这样解决：<br><a id="more"></a><br>将原来程序中的语句<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">imgActor-&gt;SetInputData(colorMap-&gt;GetOutput());</div></pre></td></tr></table></figure></p>
+<p>更改为：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">imgActor-&gt;GetMapper()-&gt;SetInputConnection(colorMap-&gt;GetOutputPort());</div></pre></td></tr></table></figure></p>
+<p>记得在程序开头载入头文件：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">#include &lt;vtkImageMapper3D.h&gt;</div></pre></td></tr></table></figure></p>
+<blockquote>
+<p>VTKExample:<a href="http://www.vtk.org/Wiki/VTK/Examples/Cxx/IO/MetaImageReader" target="_blank" rel="external">http://www.vtk.org/Wiki/VTK/Examples/Cxx/IO/MetaImageReader</a></p>
+</blockquote>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;在运行《VTK图形图像进阶》第五章&lt;code&gt;5.3_ImageResliceExample.cpp&lt;/code&gt;时，会提示&lt;code&gt;MetaImage cannot read data from file&lt;/code&gt;或者显示窗口是空白，后来搜索了VTKExample中的例子，发现可以这样解决：&lt;br&gt;
+    
+    </summary>
+    
+      <category term="VTK" scheme="https://heliublog.com/categories/VTK/"/>
+    
+    
+      <category term="VTK" scheme="https://heliublog.com/tags/VTK/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>搭建hexo博客小记——hexo系列文章（一）</title>
+    <link href="https://heliublog.com/2017/04/26/%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2%E5%B0%8F%E8%AE%B0/"/>
+    <id>https://heliublog.com/2017/04/26/搭建hexo博客小记/</id>
+    <published>2017-04-26T12:26:32.251Z</published>
+    <updated>2017-04-26T12:25:30.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><p>本文主要介绍在Github下搭建Hexo博客。总体说来，搭建Hexo总共需要两步：</p>
+<ul>
+<li>第一部分，部署本地博客，也就是在你的电脑上搭建起来Web环境；</li>
+<li>第二部分，生成静态页面，并上传到Github上去。<a id="more"></a></li>
+</ul>
+<h2 id="搭建本地博客系统"><a href="#搭建本地博客系统" class="headerlink" title="搭建本地博客系统"></a>搭建本地博客系统</h2><p>搭建本地博客系统首先要部署环境，即Node.js和Git。</p>
+<h3 id="Node-js的安装"><a href="#Node-js的安装" class="headerlink" title="Node.js的安装"></a>Node.js的安装</h3><p>可以<a href="https://nodejs.org/" target="_blank" rel="external">点此</a>下载nodejs，并按照步骤一步步安装；一切默认即可；</p>
+<h3 id="Git的安装"><a href="#Git的安装" class="headerlink" title="Git的安装"></a>Git的安装</h3><p>git bash，<a href="https://git-scm.com/downloads" target="_blank" rel="external">点此</a>下载即可。<br>部署好本地环境，便可以开始安装博客系统Hexo了</p>
+<h3 id="Hexo的安装"><a href="#Hexo的安装" class="headerlink" title="Hexo的安装"></a>Hexo的安装</h3><p>Hexo可直接用<code>npm</code>安装，可在电脑任意文件夹下右键Git Bash Here，进去后，在命令行中输入</p>
+<pre><code>npm install -g hexo
+</code></pre><h3 id="安装依赖包"><a href="#安装依赖包" class="headerlink" title="安装依赖包"></a>安装依赖包</h3><pre><code>npm install
+</code></pre><h3 id="发布本地博客"><a href="#发布本地博客" class="headerlink" title="发布本地博客"></a>发布本地博客</h3><p>到上一步为止，本地博客已搭建完成，下面我们可以发布本地博客看看效果：（即生成静态页面）</p>
+<pre><code>hexo generate
+hexo server
+</code></pre><p>当然，也可以用简写：</p>
+<pre><code>hexo g
+hexo s
+</code></pre><p>本地服务器开启后，我们就可以进入<a href="http://localhost:4000" target="_blank" rel="external">http://localhost:4000</a>浏览本地博客了。</p>
+<h2 id="上传本地文件到Github"><a href="#上传本地文件到Github" class="headerlink" title="上传本地文件到Github"></a>上传本地文件到Github</h2><h3 id="申请账号并建立仓库。"><a href="#申请账号并建立仓库。" class="headerlink" title="申请账号并建立仓库。"></a>申请账号并建立仓库。</h3><p>账号自行申请，建立仓库即在页面右上角的+除新建一个<code>repository</code>。但是命名有要求，必须用你的用户名加上github.io来命名仓库名。比如你的用户名为user123，那么就命名为user123.github.io。</p>
+<h3 id="获取SSH公钥，并与Github账号绑定。"><a href="#获取SSH公钥，并与Github账号绑定。" class="headerlink" title="获取SSH公钥，并与Github账号绑定。"></a>获取SSH公钥，并与Github账号绑定。</h3><h4 id="设置邮箱和用户名"><a href="#设置邮箱和用户名" class="headerlink" title="设置邮箱和用户名"></a>设置邮箱和用户名</h4><pre><code>git config --global user.email &quot;user123@gmail.com&quot; 
+</code></pre><p>git config –global user.name “user123”</p>
+<h4 id="生成密钥"><a href="#生成密钥" class="headerlink" title="生成密钥"></a>生成密钥</h4><pre><code>ssh-keygen -t rsa -C &quot;user@gmail.com&quot;
+</code></pre><p>命令运行后，会在<code>C:\Users\你的计算机名\.ssh</code>中找到<code>id_rsa.pub</code>这个文件，貌似是pubication的文件，但是我用office打不开，所以不管它了，如果有老兄知道这个究竟是用什么打开比较好，可以在评论区告诉我。不过它也是可以用txt打开的，将其中的内容复制到以下位置：</p>
+<p>先登录github，点击右上角你的账户头像，进入settings，进入SSH key选项卡，将<code>id_rsa.pub</code>中的所有内容添加进去即可。</p>
+<h4 id="更改博客配置，为上传做准备。"><a href="#更改博客配置，为上传做准备。" class="headerlink" title="更改博客配置，为上传做准备。"></a>更改博客配置，为上传做准备。</h4><p>打开<code>D:\hexo</code>目录下的配置文件<code>_config.yml</code>（推荐用软件Sublime Text打开，不要用txt打开，因为这要UTF-8编码，而txt不会编码），翻到最下面，并改成以下内容，把<code>user123g</code>替换成你的用户名即可</p>
+<pre><code>deploy:
+type: git
+repository: https://github.com/user123/user123.github.io.git
+branch: master
+</code></pre><p>注意：<code>type</code>后面一定要是<code>git</code>，不要填<code>Github</code>。这是最新版hexo的要求。还有就是上面配置文件的语法较为严格<code>type:</code>后面一定要留一个空格，<code>repository</code>，<code>branch</code>也一样。</p>
+<h2 id="上传博客内容"><a href="#上传博客内容" class="headerlink" title="上传博客内容"></a>上传博客内容</h2><h3 id="先生成静态文件"><a href="#先生成静态文件" class="headerlink" title="先生成静态文件"></a>先生成静态文件</h3><pre><code>hexo g
+</code></pre><h3 id="部署前先输入以下命令，不然会出现error-deployer-not-found-github的报错。"><a href="#部署前先输入以下命令，不然会出现error-deployer-not-found-github的报错。" class="headerlink" title="部署前先输入以下命令，不然会出现error deployer not found:github的报错。"></a>部署前先输入以下命令，不然会出现<code>error deployer not found:github</code>的报错。</h3><pre><code>npm install hexo-deployer-git --save
+</code></pre><h3 id="上传文档（部署）"><a href="#上传文档（部署）" class="headerlink" title="上传文档（部署）"></a>上传文档（部署）</h3><pre><code>hexo d
+</code></pre><p>待出现<code>INFO Deploy done: git</code>即成功。成功后，进入网址<code>http://user123..github.io</code>浏览查看。</p>
+<p>至此，所有工作都已完成，如果想更改主题什么的，可以看我后续的博客。有问题欢迎大家留言。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;引言&quot;&gt;&lt;a href=&quot;#引言&quot; class=&quot;headerlink&quot; title=&quot;引言&quot;&gt;&lt;/a&gt;引言&lt;/h2&gt;&lt;p&gt;本文主要介绍在Github下搭建Hexo博客。总体说来，搭建Hexo总共需要两步：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;第一部分，部署本地博客，也就是在你的电脑上搭建起来Web环境；&lt;/li&gt;
+&lt;li&gt;第二部分，生成静态页面，并上传到Github上去。
+    
+    </summary>
+    
+      <category term="博客" scheme="https://heliublog.com/categories/%E5%8D%9A%E5%AE%A2/"/>
+    
+    
+      <category term="Hexo" scheme="https://heliublog.com/tags/Hexo/"/>
+    
+      <category term="博客" scheme="https://heliublog.com/tags/%E5%8D%9A%E5%AE%A2/"/>
+    
+      <category term="网站" scheme="https://heliublog.com/tags/%E7%BD%91%E7%AB%99/"/>
+    
+      <category term="web" scheme="https://heliublog.com/tags/web/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>利用KeePass2.x进行ftp或webdev同步</title>
+    <link href="https://heliublog.com/2017/04/26/%E5%88%A9%E7%94%A8Keepass2.x%E8%BF%9B%E8%A1%8Cftp%E6%88%96webdev%E5%90%8C%E6%AD%A5/"/>
+    <id>https://heliublog.com/2017/04/26/利用Keepass2.x进行ftp或webdev同步/</id>
+    <published>2017-04-26T12:26:32.246Z</published>
+    <updated>2017-04-26T12:25:30.000Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote>
+<p>方法参考<a href="http://www.cnblogs.com/gumuyueying/p/keepass2-sync-trigger.html" target="_blank" rel="external">http://www.cnblogs.com/gumuyueying/p/keepass2-sync-trigger.html</a></p>
+</blockquote>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>上篇博文介绍了利用软件Keepass保存密码。其实借助Dropbox或者其他同步软件将数据库.kpbx文件进行备份也很简单。但是由于某些原因，Dropbox很难上去。所以突然想到能否将文件保存在我的vps服务器上。在网上搜索教程就找到了这个方法。</p>
+<a id="more"></a>
+<h2 id="同步"><a href="#同步" class="headerlink" title="同步"></a>同步</h2><p>其实同步很简单，只要借助KeePass自带的URL同步功能即可。如下图：</p>
+<p><img src="http://i.imgur.com/XkgdsxV.png" alt=""></p>
+<p>也就是选择“与URL同步”，<strong>但是要注意，必须现在指定位置建立一个.kpdb数据库文件</strong>，同步地址就填写该文件地址。</p>
+<h2 id="自动同步"><a href="#自动同步" class="headerlink" title="自动同步"></a>自动同步</h2><p>手动同步很麻烦，那么怎么设置自动同步呢？这里可以借助KeePass自带的触发器功能，有点像Windows的“计划任务”，以下方法可以实现本地保存后，立马服务器同步的功能。</p>
+<ol>
+<li><p>“属性”选项卡，命名该触发器，如 SavedSync.（注意，后面动作选择“更改触发器 开/关 状态”时触发器名称只能手动输入，无法选择，所以这里命名还是从简，具体描述可以写到下面的注释栏。）同时勾选“启用”和“启动时打开”复选框。 </p>
+</li>
+<li><p>“事件”选项卡，添加事件，选择“已保存数据库文件”，下面的文件/URL - 比较和过滤器可以无视。不过如果有多个数据库文件需要同步，则可以根据待保存的数据库文件名设定后续同步动作。这里我的设置如下：<br><img src="http://i.imgur.com/4zcHdI0.png" alt=""></p>
+</li>
+<li><p>“条件”选项卡不加入任何条件。你也可以选择同步到 URL 文件时选择条件“远程主机可以连接(ping)”，这样只有当 URL 文件可以访问时才同步。不过我倾向于不加入这个条件，这样即使后面无法完成同步操作，也会有弹窗提示，让我们能更清楚当前的同步状态。</p>
+</li>
+</ol>
+<p>我这里只做了简写，如果遇到某些问题，或者想更加详细地了解“触发器”功能，请访问原博客地址：<a href="http://www.cnblogs.com/gumuyueying/p/keepass2-sync-trigger.html" target="_blank" rel="external">http://www.cnblogs.com/gumuyueying/p/keepass2-sync-trigger.html</a></p>
+<p>在此，对原作者表示感谢！</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;方法参考&lt;a href=&quot;http://www.cnblogs.com/gumuyueying/p/keepass2-sync-trigger.html&quot;&gt;http://www.cnblogs.com/gumuyueying/p/keepass2-sync-trigger.html&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;上篇博文介绍了利用软件Keepass保存密码。其实借助Dropbox或者其他同步软件将数据库.kpbx文件进行备份也很简单。但是由于某些原因，Dropbox很难上去。所以突然想到能否将文件保存在我的vps服务器上。在网上搜索教程就找到了这个方法。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="软件" scheme="https://heliublog.com/categories/%E8%BD%AF%E4%BB%B6/"/>
+    
+    
+      <category term="KeePass" scheme="https://heliublog.com/tags/KeePass/"/>
+    
+      <category term="Chrome" scheme="https://heliublog.com/tags/Chrome/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>VPS服务器搭建ghost blog</title>
+    <link href="https://heliublog.com/2017/04/26/VPS%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%90%AD%E5%BB%BAghost%20blog/"/>
+    <id>https://heliublog.com/2017/04/26/VPS服务器搭建ghost blog/</id>
+    <published>2017-04-26T12:26:32.215Z</published>
+    <updated>2017-04-26T12:25:30.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>####前传</p>
+<hr>
+<p>&#160;&#160;无意中看到markdown语法，立马就喜欢上它，所以就想博客能不能也用这种语法写，因为我的博客原来一直用wordpress来搞，第一个想到的当然是用插件，当然也下到了，不过估计是主题css的问题，代码框老显示不出来，对于想要代码框的我来说实在是不能忍，就上网搜有没有其他的博客工具，哈哈终于找到了它，ghostblog！</p>
+<p>&#160;&#160;但是安装下来着实费了不少功夫。总结起来比较简便的方法还是AMH+Node.js<br><a id="more"></a><br>注：以下步骤引用自：<br><a href="http://www.tuicool.com/articles/jQnIJf3" target="_blank" rel="external">http://www.tuicool.com/articles/jQnIJf3</a></p>
+<ol>
+<li><p>安装AMH，网上有详细教程</p>
+</li>
+<li><p>安装Node.js</p>
+<p>也是网上的教程，不过有些gcc版本可能支持不了太新的Node.js</p>
+</li>
+<li><p>安装ghost</p>
+<ol>
+<li><p>新建数据库</p>
+<p>登陆AMH面板，进入数据库，快速建库，很简单。</p>
+</li>
+<li><p>新建站点</p>
+<p>登陆AMH面板，点击虚拟主机，新建虚拟主机，这也很简单。</p>
+</li>
+<li><p>安装Ghost程序</p>
+<p>这里我们使用的是 <a href="http://ghostchina.com/" target="_blank" rel="external">http://ghostchina.com/</a> 发布的中文版Ghost。</p>
+<p>登陆ssh，运行命令，</p>
+<pre><code>wget http://dl.ghostchina.com/Ghost-0.5.9-zh-full.zip //下载Ghost到VPS  
+unzip Ghost-0.5.9-zh-full.zip -d ghost //解压Ghost-0.5.9-zh-full.zip并xiu修改文件夹名为ghost  
+</code></pre><p>如没有安装unzip，请执行 sudo yum install unzip 来安装，</p>
+<p>&#160;&#160;到这里需要注意，ghost文件夹里的所有文件全部移动到之前你新建虚拟主机的web根目录下，不然会出错，文件移动号后，进入虚拟主机的web根目录下</p>
+<pre><code>cd /虚拟主机web根目录路径   //进入虚拟主机web根目录，此步骤不能少  
+cp config.example.js config.js //复制config.example.js成config.js  
+vim config.js //用vim编辑config.js文件  
+</code></pre><p>将相关位置修改成以下这样：</p>
+<pre><code>production: {  
+url: &apos;http://your_blog_url&apos;,
+mail: {},
+database: {
+client: &apos;mysql&apos;,
+connection: {
+host     : &apos;127.0.0.1&apos;, 
+user     : &apos;root&apos;, //暂且直接用root账户
+password : &apos;password&apos;, //你的root账户密码
+database : &apos;ghost&apos;, //你之前建立的数据库名
+charset  : &apos;utf8&apos;
+},
+debug: false
+},
+server: {
+// Host to be passed to node&apos;s                 `net.Server#listen()`
+host: &apos;127.0.0.1&apos;,//改为0.0.0.0，否则他人无法访问
+// Port to be passed to node&apos;s `net.Server#listen()`, for iisnode set this to `process.env.PORT`
+port: &apos;2368&apos;
+}
+},
+</code></pre><p>这里说一下vim编辑器的一般用法：</p>
+<p>i: 进入插入编辑模式</p>
+<p>ESC: 退出编辑模式</p>
+<p>:x : 退出并保存文件（退出编辑模式下使用）</p>
+</li>
+<li><p>配置Nginx</p>
+<p>由于之前你新建的虚拟主机的Nginx配置是为php服务的，所以，我们要将其进行修改成为node.js服务，</p>
+<pre><code>vim /usr/local/nginx/conf/***.conf //进入Nginx配置文件目录,并编辑与你新建的虚拟主机相应的Nginx配置文件  
+</code></pre><p>清空里面的内容，替换成以下：</p>
+<pre><code>server {  
+listen 80;
+server_name  xxx.com www.xxxx.com; //替换为你自己的域名！
+location / {
+proxy_set_header   X-Real-IP $remote_addr;
+proxy_set_header   Host      $http_host;
+proxy_pass         http://127.0.0.1:2368;
+ }
+}
+</code></pre><p>然后进AMH控制面板重启一下Nginx，</p>
+<pre><code>npm start --production //启动Ghost，如果不出差错，在浏览器输入你的域名就可以看见Ghost的界面了，--production不能少  
+</code></pre><p>别以为到这就结束了，目前Ghost在我们SSH断开后就会结束进程，所以我们继续：</p>
+</li>
+<li><p>安装forever守护Ghost进程</p>
+<p>为了让Ghost程序能够后台运行不中断，我们还得再安装个工具，就是forever，使用-g参数就是在全局模式中安装，这样我们就可以再任何地方都能使用forever命令了。</p>
+<p>以下命令都请在网站根目录下运行</p>
+<pre><code>npm install forever -g //forever的安装命令  
+NODE_ENV=production forever start index.js  //安装forever后的Ghost启动命令  
+</code></pre><p>   好了，Ghost就此安装完成</p>
+</li>
+</ol>
+</li>
+</ol>
+<p>Ghost相关命令：</p>
+<p>//以下命令都请在网站根目录下运行</p>
+<pre><code>NODE_ENV=production forever start index.js //启动Ghost  
+NODE_ENV=production forever stop index.js //停止Ghost  
+NODE_ENV=production forever restart index.js //重启Ghost  
+</code></pre><p>现在，你就可以通过AMH控制面板进行数据管理、在线的文件编辑和上传 同样，你也可以按正常步骤新建一个php网站。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;####前传&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;&amp;#160;&amp;#160;无意中看到markdown语法，立马就喜欢上它，所以就想博客能不能也用这种语法写，因为我的博客原来一直用wordpress来搞，第一个想到的当然是用插件，当然也下到了，不过估计是主题css的问题，代码框老显示不出来，对于想要代码框的我来说实在是不能忍，就上网搜有没有其他的博客工具，哈哈终于找到了它，ghostblog！&lt;/p&gt;
+&lt;p&gt;&amp;#160;&amp;#160;但是安装下来着实费了不少功夫。总结起来比较简便的方法还是AMH+Node.js&lt;br&gt;
+    
+    </summary>
+    
+      <category term="web" scheme="https://heliublog.com/categories/web/"/>
+    
+    
+      <category term="ghost blog" scheme="https://heliublog.com/tags/ghost-blog/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>coding和github同时使用</title>
+    <link href="https://heliublog.com/2017/04/26/coding%E5%92%8Cgithub%E5%90%8C%E6%97%B6%E4%BD%BF%E7%94%A8/"/>
+    <id>https://heliublog.com/2017/04/26/coding和github同时使用/</id>
+    <published>2017-04-26T12:26:32.215Z</published>
+    <updated>2017-04-26T12:25:30.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="coding和github同时使用"><a href="#coding和github同时使用" class="headerlink" title="coding和github同时使用"></a>coding和github同时使用</h1><p>##引言  </p>
+<p>先贴几个我的参考网站：</p>
+<blockquote>
+<p><a href="http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000" target="_blank" rel="external">非常好的git学习站（入门）</a><br><a href="http://www.tuicool.com/articles/NZNJVvB" target="_blank" rel="external">Git管理多个远程仓库(以Github和Coding为例)</a><br><a href="http://my.oschina.net/450192529/blog/636106" target="_blank" rel="external">如何在同一台电脑上使用两个github,一个往coding推，一个往github推，亲测有效哦</a><br><a href="http://blog.csdn.net/chaoyue0071/article/details/41824339" target="_blank" rel="external">如何在同一台电脑上使用两个github账户</a><br><a href="http://www.cnblogs.com/sheldonxu/archive/2012/09/17/2688281.html" target="_blank" rel="external">执行ssh-add时出现Could not open a connection to your authentication agent</a><br><a href="http://blog.163.com/023_dns/blog/static/1187273662013111301046930/" target="_blank" rel="external">github常见操作和常见错误！错误提示：fatal: remote origin already exists. </a></p>
+</blockquote>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;coding和github同时使用&quot;&gt;&lt;a href=&quot;#coding和github同时使用&quot; class=&quot;headerlink&quot; title=&quot;coding和github同时使用&quot;&gt;&lt;/a&gt;coding和github同时使用&lt;/h1&gt;&lt;p&gt;##引言  &lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Git" scheme="https://heliublog.com/categories/Git/"/>
+    
+    
+      <category term="coding" scheme="https://heliublog.com/tags/coding/"/>
+    
+      <category term="Github" scheme="https://heliublog.com/tags/Github/"/>
+    
+      <category term="Git" scheme="https://heliublog.com/tags/Git/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>beamer的theme</title>
+    <link href="https://heliublog.com/2017/04/26/beamer%E7%9A%84theme/"/>
+    <id>https://heliublog.com/2017/04/26/beamer的theme/</id>
+    <published>2017-04-26T12:26:32.215Z</published>
+    <updated>2017-04-26T12:25:30.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>发现两个不错的网站</p>
+<ul>
+<li><p>所有自带的主题列表</p>
+<pre><code>https://www.hartwork.org/beamer-theme-matrix/
+</code></pre></li>
+<li><p>这个网站也有不少好主题</p>
+<p><a href="https://latex.simon04.net/" target="_blank" rel="external">https://latex.simon04.net/</a></p>
+</li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;发现两个不错的网站&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;所有自带的主题列表&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;https://www.hartwork.org/beamer-theme-matrix/
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;这个网站也有不少好主题&lt;/p
+    
+    </summary>
+    
+      <category term="软件零件" scheme="https://heliublog.com/categories/%E8%BD%AF%E4%BB%B6%E9%9B%B6%E4%BB%B6/"/>
+    
+    
+      <category term="latex" scheme="https://heliublog.com/tags/latex/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>VPS+Hexo+Dropbox创建个人博客</title>
+    <link href="https://heliublog.com/2017/04/26/VPS+Hexo+Dropbox%E5%88%9B%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/"/>
+    <id>https://heliublog.com/2017/04/26/VPS+Hexo+Dropbox创建个人博客/</id>
+    <published>2017-04-26T12:26:32.215Z</published>
+    <updated>2017-04-26T12:25:30.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="VPS-Hexo-Dropbox创建个人博客"><a href="#VPS-Hexo-Dropbox创建个人博客" class="headerlink" title="VPS+Hexo+Dropbox创建个人博客"></a>VPS+Hexo+Dropbox创建个人博客</h1><blockquote>
+<p>本文参考以下文章完成：<br>1.<a href="http://www.fanicy.com/2014/06/01/0001.hexowithvpsdropbox/" target="_blank" rel="external">用Hexo+Vps搭建博客并用Dropbox同步自动发布</a><br>2.<a href="http://www.jianshu.com/p/0839b09dc381#" target="_blank" rel="external">VPS+Dropbox+markeditor打造Hexo完美体验 (长期更新)</a><br>3.<a href="http://www.xmt.design/2016/04/04/blog-depoly-via-dropbox.html" target="_blank" rel="external">使用 Dropbox 和 VPS 实现实时部署 Hexo 博客</a></p>
+</blockquote>
+<p>废话少说，直接进入正题：</p>
+<h2 id="VPS"><a href="#VPS" class="headerlink" title="VPS"></a>VPS</h2><p>为CentOS 6.8 x64 ,512MB内存</p>
+<h2 id="安装需要的所有软件"><a href="#安装需要的所有软件" class="headerlink" title="安装需要的所有软件"></a>安装需要的所有软件</h2><h3 id="安装-Git"><a href="#安装-Git" class="headerlink" title="安装 Git"></a>安装 Git</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">yum install git-core</div></pre></td></tr></table></figure>
+<a id="more"></a>
+<h3 id="安装NodeJS"><a href="#安装NodeJS" class="headerlink" title="安装NodeJS"></a>安装NodeJS</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">% 前三步是先安装EPEL</div><div class="line"># wget http://dl.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm </div><div class="line"># wget http://rpms.famillecollet.com/enterprise/remi-release-6.rpm</div><div class="line"># rpm -Uvh remi-release-6*.rpm epel-release-6*.rpm</div><div class="line">% 安装node</div><div class="line">yum install nodejs npm --enablerepo=epel</div></pre></td></tr></table></figure>
+<h3 id="安装Dropbox"><a href="#安装Dropbox" class="headerlink" title="安装Dropbox"></a>安装Dropbox</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">cd ~ &amp;&amp; wget -O - &quot;https://www.dropbox.com/download?plat=lnx.x86_64&quot; | tar xzf -</div><div class="line">%然后，从新建的 .dropbox-dist 文件夹运行 Dropbox 守护程序.</div><div class="line">~/.dropbox-dist/dropboxd</div><div class="line">%下载官方提供的 cli 来控制和管理Dropbox</div><div class="line">wget https://linux.dropbox.com/packages/dropbox.py</div><div class="line">%更改权限:</div><div class="line">chmod +x ./dropbox.py</div><div class="line">%启动Dropbox:</div><div class="line">./dropbox.py start y</div><div class="line">关闭局域网广播:</div><div class="line">./dropbox.py lansync n</div></pre></td></tr></table></figure>
+<h3 id="安装Hexo"><a href="#安装Hexo" class="headerlink" title="安装Hexo"></a>安装Hexo</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">npm install -g hexo-cli</div><div class="line">cd Dropbox</div><div class="line">mkdir hexo</div><div class="line">cd hexo</div><div class="line">hexo init</div></pre></td></tr></table></figure>
+<h3 id="安装Nginx"><a href="#安装Nginx" class="headerlink" title="安装Nginx"></a>安装Nginx</h3><p>这里推荐不是很熟悉Nginx设置的用以下链接提供的一键安装包安装，可以只安装Nginx，自动设置<br><a href="https://blog.linuxeye.com/31.html" target="_blank" rel="external">lnmp、lamp、lnmpa一键安装包</a><br>这里设置时，可以将主机目录设置为dropbox的同步目录<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/root/Dropbox/hexo/public</div></pre></td></tr></table></figure></p>
+<p>添加权限：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">chmod -R 755 /root/Dropbox/hexo/public</div><div class="line">chown www:www /root/Dropbox/hexo/public</div><div class="line">chmod +x /root/Dropbox/ /root/Dropbox/hexo/</div></pre></td></tr></table></figure></p>
+<h3 id="安装incron"><a href="#安装incron" class="headerlink" title="安装incron"></a>安装incron</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">yum install incron</div><div class="line">service incrond start</div></pre></td></tr></table></figure>
+<h2 id="同步发布"><a href="#同步发布" class="headerlink" title="同步发布"></a>同步发布</h2><p>incron 监测文件夹配置<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">incrontab -e</div></pre></td></tr></table></figure></p>
+<p>在其中添加：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">/root/Dropbox/hexo/source/_posts/ IN_MOVE,IN_MODIFY,IN_CREATE,IN_DELETE /root/runhexo.bash</div><div class="line">/root/Dropbox/hexo/theme/ IN_MOVE,IN_MODIFY,IN_CREATE,IN_DELETE /root/runhexo.bash</div></pre></td></tr></table></figure></p>
+<p>runhexo.bash:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">#!/usr/bin/env bash</div><div class="line">exec 200&lt;$0</div><div class="line">flock -n 200 || exit 1</div><div class="line">sleep 10</div><div class="line">cd /root/Dropbox/hexo &amp;&amp; hexo g</div></pre></td></tr></table></figure></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;VPS-Hexo-Dropbox创建个人博客&quot;&gt;&lt;a href=&quot;#VPS-Hexo-Dropbox创建个人博客&quot; class=&quot;headerlink&quot; title=&quot;VPS+Hexo+Dropbox创建个人博客&quot;&gt;&lt;/a&gt;VPS+Hexo+Dropbox创建个人博客&lt;/h1&gt;&lt;blockquote&gt;
+&lt;p&gt;本文参考以下文章完成：&lt;br&gt;1.&lt;a href=&quot;http://www.fanicy.com/2014/06/01/0001.hexowithvpsdropbox/&quot;&gt;用Hexo+Vps搭建博客并用Dropbox同步自动发布&lt;/a&gt;&lt;br&gt;2.&lt;a href=&quot;http://www.jianshu.com/p/0839b09dc381#&quot;&gt;VPS+Dropbox+markeditor打造Hexo完美体验 (长期更新)&lt;/a&gt;&lt;br&gt;3.&lt;a href=&quot;http://www.xmt.design/2016/04/04/blog-depoly-via-dropbox.html&quot;&gt;使用 Dropbox 和 VPS 实现实时部署 Hexo 博客&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;废话少说，直接进入正题：&lt;/p&gt;
+&lt;h2 id=&quot;VPS&quot;&gt;&lt;a href=&quot;#VPS&quot; class=&quot;headerlink&quot; title=&quot;VPS&quot;&gt;&lt;/a&gt;VPS&lt;/h2&gt;&lt;p&gt;为CentOS 6.8 x64 ,512MB内存&lt;/p&gt;
+&lt;h2 id=&quot;安装需要的所有软件&quot;&gt;&lt;a href=&quot;#安装需要的所有软件&quot; class=&quot;headerlink&quot; title=&quot;安装需要的所有软件&quot;&gt;&lt;/a&gt;安装需要的所有软件&lt;/h2&gt;&lt;h3 id=&quot;安装-Git&quot;&gt;&lt;a href=&quot;#安装-Git&quot; class=&quot;headerlink&quot; title=&quot;安装 Git&quot;&gt;&lt;/a&gt;安装 Git&lt;/h3&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;yum install git-core&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+    
+    </summary>
+    
+      <category term="web" scheme="https://heliublog.com/categories/web/"/>
+    
+    
+      <category term="Hexo" scheme="https://heliublog.com/tags/Hexo/"/>
+    
+      <category term="blog" scheme="https://heliublog.com/tags/blog/"/>
+    
+      <category term="VPS" scheme="https://heliublog.com/tags/VPS/"/>
+    
+      <category term="Dropbox" scheme="https://heliublog.com/tags/Dropbox/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>KeePass+KeePassHTTP+chromeIPass储存个人密码</title>
+    <link href="https://heliublog.com/2017/04/26/KeePass/"/>
+    <id>https://heliublog.com/2017/04/26/KeePass/</id>
+    <published>2017-04-26T12:26:32.199Z</published>
+    <updated>2017-04-26T12:25:30.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>现在密码越来越多，但是为了密码安全还是不愿所有网站用同一个密码。所以就想到了用密码管理软件。尝试过1Password和Lastpass，可惜都收费。所以找到了KeePass，不仅免费，还开源。支持多平台。结合插件，可以实现在chrome上自动填写密码。<br><a id="more"></a></p>
+<blockquote>
+<p>本文参考<a href="http://devzc.com/post/465" target="_blank" rel="external">http://devzc.com/post/465</a>写作而成，再次对原作者表示感谢。</p>
+</blockquote>
+<h2 id="安装步骤"><a href="#安装步骤" class="headerlink" title="安装步骤"></a>安装步骤</h2><ol>
+<li><p>首先从以下网址下载所需文件</p>
+<ul>
+<li><p>KeePass主体程序:<br><a href="http://keepass.info/download.html" target="_blank" rel="external">http://keepass.info/download.html</a></p>
+</li>
+<li><p>KeePassHTTP扩展下载:<br><a href="https://github.com/pfn/keepasshttp/blob/master/KeePassHttp.plgx?raw=true" target="_blank" rel="external">https://github.com/pfn/keepasshttp/blob/master/KeePassHttp.plgx?raw=true</a><br>源码: <a href="https://github.com/pfn/keepasshttp/" target="_blank" rel="external">https://github.com/pfn/keepasshttp/</a></p>
+</li>
+<li><p>chromeIPass:<br>Chrome应用商店搜索[chromeIPass],安装即可;<br>chromeIPass源码: <a href="https://github.com/pfn/passifox" target="_blank" rel="external">https://github.com/pfn/passifox</a></p>
+</li>
+</ul>
+</li>
+<li><p>依次安装以上文件。<br>注意KeePassHTTP的配置：</p>
+<ol>
+<li>将KeePassHttp.plgx放在KeePass.exe同目录下,重启KeePass。并单击工具下的“KeePassHttp Options”。</li>
+<li>按照如下图配置：<br><img src="http://i.imgur.com/0R82YzX.png" alt=""></li>
+<li>点击Chrome上的chromeIPass图标，会出现Connect按钮,点击进去；</li>
+<li>Key_Name自己起名</li>
+<li><p>保存后，重新点击chromeIPass，若出现以下信息，则说明成功：</p>
+<p><img src="http://i.imgur.com/PDcuXmf.png" alt=""></p>
+</li>
+</ol>
+</li>
+</ol>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;现在密码越来越多，但是为了密码安全还是不愿所有网站用同一个密码。所以就想到了用密码管理软件。尝试过1Password和Lastpass，可惜都收费。所以找到了KeePass，不仅免费，还开源。支持多平台。结合插件，可以实现在chrome上自动填写密码。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="软件" scheme="https://heliublog.com/categories/%E8%BD%AF%E4%BB%B6/"/>
+    
+    
+      <category term="KeePass" scheme="https://heliublog.com/tags/KeePass/"/>
+    
+      <category term="Chrome" scheme="https://heliublog.com/tags/Chrome/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Endnote的style</title>
+    <link href="https://heliublog.com/2017/04/26/Endnote%E7%9A%84style/"/>
+    <id>https://heliublog.com/2017/04/26/Endnote的style/</id>
+    <published>2017-04-26T12:26:32.183Z</published>
+    <updated>2017-04-26T12:25:30.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>参考文献style:</p>
+<p>Chinese Std GBT7714</p>
+<ul>
+<li><p>附上 <a href="https://my.pcloud.com/publink/show?code=XZlVCQZLKN5QnRFiPX6zm1oYzf9CfrRdCKk" target="_blank" rel="external">下载地址</a></p>
+</li>
+<li><p>安装方法：</p>
+<ul>
+<li>拷到…/style  文件夹下即可。</li>
+</ul>
+</li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;参考文献style:&lt;/p&gt;
+&lt;p&gt;Chinese Std GBT7714&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;附上 &lt;a href=&quot;https://my.pcloud.com/publink/show?code=XZlVCQZLKN5QnRFiPX6zm1oYzf9CfrR
+    
+    </summary>
+    
+      <category term="软件部件" scheme="https://heliublog.com/categories/%E8%BD%AF%E4%BB%B6%E9%83%A8%E4%BB%B6/"/>
+    
+    
+      <category term="Endnote" scheme="https://heliublog.com/tags/Endnote/"/>
+    
+      <category term="style" scheme="https://heliublog.com/tags/style/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hexo系列教程（二）——利用Swiftype建立站内搜索</title>
+    <link href="https://heliublog.com/2016/05/14/Hexo%E5%88%A9%E7%94%A8Swiftype%E5%BB%BA%E7%AB%8B%E7%AB%99%E5%86%85%E6%90%9C%E7%B4%A2/"/>
+    <id>https://heliublog.com/2016/05/14/Hexo利用Swiftype建立站内搜索/</id>
+    <published>2016-05-14T08:12:29.000Z</published>
+    <updated>2017-04-26T12:25:30.000Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote>
+<p>部分内容引用自<a href="http://www.jianshu.com/p/2010ad07d960" target="_blank" rel="external">http://www.jianshu.com/p/2010ad07d960</a></p>
+<p>原文链接：<a href="http://drunkevil.com/2015/04/08/swiftype-search-engine-for-hexo/" target="_blank" rel="external">http://drunkevil.com/2015/04/08/swiftype-search-engine-for-hexo/</a><br>作者：drunkevil</p>
+</blockquote>
+<h2 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h2><p>此方法是基于jacman主题，其余主题可能稍有不同</p>
+<h2 id="Swiftype账号注册及搜索引擎开通"><a href="#Swiftype账号注册及搜索引擎开通" class="headerlink" title="Swiftype账号注册及搜索引擎开通"></a>Swiftype账号注册及搜索引擎开通</h2><ul>
+<li>进入<a href="https://swiftype.com/" target="_blank" rel="external">Swiftype官网</a>注册账号，并根据提示初始化搜索引擎。</li>
+<li>获得js代码，复制到jacman\layout\ _partial目录下的footer.ejs文件，在最后一个<code>&lt;/div&gt;</code>标签前即可。<a id="more"></a>
+<h2 id="本地操作"><a href="#本地操作" class="headerlink" title="本地操作"></a>本地操作</h2></li>
+</ul>
+<ol>
+<li><p>在jacman主题下的_config.yml文件末尾添加如下代码：</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">swift_search:</div><div class="line">     	enable: true</div></pre></td></tr></table></figure>
+</li>
+<li><p>在hexo的source目录下建立一个search文件夹，并在其中新建一个index.md文件，其内容为：</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">layout: search</div><div class="line">title: search</div><div class="line">---</div></pre></td></tr></table></figure>
+</li>
+<li><p>找到jacman\layout\ _partial目录下的header.ejs文件，在其中添加如下代码：</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;% if (theme.swift_search.enable)&#123; %&gt;</div><div class="line">   &lt;form class=&quot;search&quot; action=&quot;&lt;%- config.root %&gt;search/index.html&quot; method=&quot;get&quot; accept-charset=&quot;utf-8&quot;&gt;</div><div class="line">   &lt;input type=&quot;text&quot; id=&quot;st-search-inpu&quot; maxlength=&quot;20&quot; placeholder=&quot;搜索&quot; /&gt;</div><div class="line">   &lt;/form&gt;</div><div class="line">&lt;% &#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>将jacman\layout\ _partial目录下的search.ejs中的内容替换为如下代码（主要用来控制结果的显示样式，可根据个人爱好修改）：</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line">&lt;% if(theme.swift_search.enable) &#123; %&gt;</div><div class="line">   &lt;div  id=&quot;container&quot; class=&quot;page&quot;&gt;</div><div class="line">     &lt;div id=&quot;st-results-container&quot; style=&quot;width:70%; margin:1.5em auto&quot;&gt;正在加载搜索结果，请稍等。&lt;/div&gt;</div><div class="line">&lt;style&gt;</div><div class="line">.st-result-text &#123;</div><div class="line">background: #fafafa;</div><div class="line">display: block;</div><div class="line">border-left: 0.5em solid #ccc;</div><div class="line">-webkit-transition: border-left 0.45s;</div><div class="line">-moz-transition: border-left 0.45s;</div><div class="line">-o-transition: border-left 0.45s;</div><div class="line">-ms-transition: border-left 0.45s;</div><div class="line">transition: border-left 0.45s;</div><div class="line">padding: 0.5em;</div><div class="line">&#125;</div><div class="line">@media only screen and (min-width: 768px) &#123;</div><div class="line">.st-result-text &#123;</div><div class="line">padding: 1em;</div><div class="line">     &#125;</div><div class="line">&#125;</div><div class="line">.st-result-text:hover &#123;</div><div class="line">     border-left: 0.5em solid #ea6753;</div><div class="line">   &#125;</div><div class="line">.st-result-text h3 a&#123;</div><div class="line">     color: #2ca6cb;</div><div class="line">     line-height: 1.5;</div><div class="line">     font-size: 22px;</div><div class="line">   &#125;</div><div class="line">.st-snippet em &#123;</div><div class="line">     font-weight: bold;</div><div class="line">     color: #ea6753;</div><div class="line">   &#125;</div><div class="line">&lt;/style&gt;</div><div class="line">&lt;% &#125; %&gt;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="完成"><a href="#完成" class="headerlink" title="完成"></a>完成</h2><p>至此，配置完成，hexo d -g重新部署一下即可出现站内搜索功能。搜索框的样式可根据个人爱好在CSS文件中修改。</p>
+<p>麻雀虽小，五脏俱全，博客的基础功能基本上都已实现。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;部分内容引用自&lt;a href=&quot;http://www.jianshu.com/p/2010ad07d960&quot;&gt;http://www.jianshu.com/p/2010ad07d960&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;原文链接：&lt;a href=&quot;http://drunkevil.com/2015/04/08/swiftype-search-engine-for-hexo/&quot;&gt;http://drunkevil.com/2015/04/08/swiftype-search-engine-for-hexo/&lt;/a&gt;&lt;br&gt;作者：drunkevil&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&quot;说明&quot;&gt;&lt;a href=&quot;#说明&quot; class=&quot;headerlink&quot; title=&quot;说明&quot;&gt;&lt;/a&gt;说明&lt;/h2&gt;&lt;p&gt;此方法是基于jacman主题，其余主题可能稍有不同&lt;/p&gt;
+&lt;h2 id=&quot;Swiftype账号注册及搜索引擎开通&quot;&gt;&lt;a href=&quot;#Swiftype账号注册及搜索引擎开通&quot; class=&quot;headerlink&quot; title=&quot;Swiftype账号注册及搜索引擎开通&quot;&gt;&lt;/a&gt;Swiftype账号注册及搜索引擎开通&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;进入&lt;a href=&quot;https://swiftype.com/&quot;&gt;Swiftype官网&lt;/a&gt;注册账号，并根据提示初始化搜索引擎。&lt;/li&gt;
+&lt;li&gt;获得js代码，复制到jacman\layout\ _partial目录下的footer.ejs文件，在最后一个&lt;code&gt;&amp;lt;/div&amp;gt;&lt;/code&gt;标签前即可。
+    
+    </summary>
+    
+      <category term="Hexo" scheme="https://heliublog.com/categories/Hexo/"/>
+    
+    
+      <category term="Hexo" scheme="https://heliublog.com/tags/Hexo/"/>
+    
+      <category term="Swiftype" scheme="https://heliublog.com/tags/Swiftype/"/>
+    
+      <category term="站内搜索" scheme="https://heliublog.com/tags/%E7%AB%99%E5%86%85%E6%90%9C%E7%B4%A2/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>win8.1与ubuntu双系统安装（硬盘安装）</title>
+    <link href="https://heliublog.com/2016/05/13/win8.1%E4%B8%8Eubuntu%E5%8F%8C%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85%EF%BC%88%E7%A1%AC%E7%9B%98%E5%AE%89%E8%A3%85%EF%BC%89/"/>
+    <id>https://heliublog.com/2016/05/13/win8.1与ubuntu双系统安装（硬盘安装）/</id>
+    <published>2016-05-13T12:27:14.000Z</published>
+    <updated>2017-04-26T12:25:30.000Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote>
+<p>部分内容引用自<a href="http://blog.csdn.net/risingwonderland/article/details/37902777" target="_blank" rel="external">http://blog.csdn.net/risingwonderland/article/details/37902777</a><br>作者：RisingWonderland</p>
+</blockquote>
+<h2 id="安装特点"><a href="#安装特点" class="headerlink" title="安装特点"></a>安装特点</h2><p>此方法可使用Win8.1,Ubuntu双系统，直接硬盘安装，无需制作U盘启动，很方便。</p>
+<h2 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h2><ul>
+<li>下载Ubuntu镜像文件</li>
+<li>下载EasyBCD<a id="more"></a>
+<h2 id="第一步，磁盘分区"><a href="#第一步，磁盘分区" class="headerlink" title="第一步，磁盘分区"></a>第一步，磁盘分区</h2></li>
+</ul>
+<p>在Windows下，分割出一块分区，我分出来的是50G，建议在磁盘最后分。注意该分区不要增添盘符，而是让其保持“空闲”状态。</p>
+<h2 id="第二步，NeoGrub"><a href="#第二步，NeoGrub" class="headerlink" title="第二步，NeoGrub"></a>第二步，NeoGrub</h2><p>Windows安装好EasyBCD软件，安好后，点击左侧“添加新条目”，再点击右侧“NeoGrub”选项卡，点击“安装”按钮。如下图：</p>
+<p><img src="http://i.imgur.com/ygVfVWC.png" alt=""></p>
+<p>安装后，点击“配置”按钮，会打开一个名为“menu.lst”的记事本文件。清空文件内容，写入下面的文字：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">title Install Ububtu</div><div class="line">root (hd0,0)</div><div class="line">kernel (hd0,0)/vmlinuz.efi boot=casper iso-scan/filename=/ubuntu-14.04-desktop-amd64.iso ro quiet splash locale=zh_CN.UTF-8</div><div class="line">initrd (hd0,0)/initrd.lz</div></pre></td></tr></table></figure></p>
+<p>如下图所示，注意空格：</p>
+<p><img src="http://i.imgur.com/6tqyUBh.png" alt=""></p>
+<p></p><p style="color:#DD2D2D"><strong>注意1</strong></p>文件第2、3、4行出现的“(hd0,0)”指向的是当前系统盘的位置，我这里是C盘。但假如C盘并非首个分区，而是第二个，需要修改为“(hd0,1)”，依此类推。<p></p>
+<p></p><p style="color:#DD2D2D"><strong>注意2</strong></p>文件第三行，“ubuntu-14.04-desktop-amd64.iso”是我的Ubuntu系统镜像的文件名，将其修改为你的。<p></p>
+<p></p><p style="color:#DD2D2D"><strong>注意3</strong></p>文件第三行出现了“vmlinuz.efi”，由于我安装的Ubuntu是64位操作系统，此处必须是“vmlinuz.efi”，不能缺少扩展名。<p></p>
+<h2 id="第三步"><a href="#第三步" class="headerlink" title="第三步"></a>第三步</h2><p>使用压缩工具打开Ubuntu镜像文件，将“.disk”文件夹和casper文件夹内的“initrd.lz”和“vmlinuz.efi”文件复制到C盘根目录，再将Ubuntu系统镜像文件复制到C盘根目录：</p>
+<p><img src="http://i.imgur.com/XVxEkBK.png" alt=""></p>
+<h2 id="第四步"><a href="#第四步" class="headerlink" title="第四步"></a>第四步</h2><ul>
+<li>重启计算机，在启动界面看到操作系统选择项，选择“NeoGrub引导加载器”：<br><img src="http://o6hbo6ufa.bkt.clouddn.com/4.png" alt=""></li>
+<li>之后出现Ubuntu选择界面，选择“Install Ubuntu”。</li>
+<li>注意：此处有可能出现“File not found”错误，若出现，请转至原文博客查看：<a href="http://blog.csdn.net/risingwonderland/article/details/37902777" target="_blank" rel="external">http://blog.csdn.net/risingwonderland/article/details/37902777</a></li>
+</ul>
+<h2 id="第五步"><a href="#第五步" class="headerlink" title="第五步"></a>第五步</h2><p>成功进入Ubuntu试用界面后，桌面上有两个文件。<br>按Ctrl+Alt+T打开终端，输入<code>sudo umount –l /isodevice</code>，取消光盘驱动器挂载，否则在后面安装过程中可能会无限卡进度：</p>
+<p></p><p style="color:#DD2D2D"><strong>注意</strong></p>注意空格，而且“-l”中的“l”是大写字母“L”的小写形态。不是数字1，也不是字母“i”。<p></p>
+<h2 id="第六步"><a href="#第六步" class="headerlink" title="第六步"></a>第六步</h2><p>双击桌面图标“安装Ubuntu14.04 LTS”，开始安装Ubuntu。<br>如果你连接了网络，可以选择“安装中下载更新”，会延长安装时间，也可以在安装完Ubuntu系统后再下载安装更新。<br>在“安装类型”界面会有多个安装选项：<br>如果选择第一项，Ubuntu会自动进行分区安装，之后与Windows操作系统共存为双系统。对分区没有细致要求的用户选择此项即可，本教程即可直接跳过步骤Step7、Step8。如果要自定义分区，选择“其它选项”。此处，我选择“其他选项”。<br><img src="http://o6hbo6ufa.bkt.clouddn.com/5.png" alt=""></p>
+<p>我们要将Ubuntu安装在“空闲”分区内。选择“空闲”分区，再点击左下方红线处的加号，进行分区。</p>
+<p>下面说一下我的分区状况：</p>
+<p>总共50GB空闲分区，（分区时需要选择文件系统类型，选择“Ext4”即可）</p>
+<ul>
+<li>根目录“/”我分了8 GB；</li>
+<li>交换分区swap我分了2 GB；（类似于虚拟内存）</li>
+<li>/boot我分了200 MB；（引导分区）</li>
+<li>/home 10 GB;（存放用户文件）</li>
+<li>/usr 30GB;（存放应用程序）</li>
+</ul>
+<h2 id="第七步"><a href="#第七步" class="headerlink" title="第七步"></a>第七步</h2><p>分区完成后，开始安装。<br>如果你没有分配交换空间，系统会给出提示，跳过即可。</p>
+<h2 id="安装成功"><a href="#安装成功" class="headerlink" title="安装成功"></a>安装成功</h2><p>安装完成后，选择重启。如果一切正常，可以看到如下图所示的Ubuntu样式的启动项选择界面：</p>
+<p><img src="http://o6hbo6ufa.bkt.clouddn.com/6.png" alt=""></p>
+<h2 id="可选操作"><a href="#可选操作" class="headerlink" title="可选操作"></a>可选操作</h2><p>在系统启动界面，Win8.1系统处于最后一项，如果需要让Win8.1处于第一项，可以这样设置：</p>
+<ol>
+<li>进入Ubuntu系统。</li>
+<li>Ctrl+Alt+T打开终端，输入“sudo nautilus”，以root权限打开资源管理器。</li>
+<li>找到“30_os-prober”文件，将其名称修改为“06_os-prober”即可：</li>
+</ol>
+<p>进入Windows系统，清除C盘下之前复制的文件。<br>打开EasyBCD，在之前的“添加新条目”功能中，点击“删除”按钮，清除“NeoGrub”引导。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;部分内容引用自&lt;a href=&quot;http://blog.csdn.net/risingwonderland/article/details/37902777&quot;&gt;http://blog.csdn.net/risingwonderland/article/details/37902777&lt;/a&gt;&lt;br&gt;作者：RisingWonderland&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&quot;安装特点&quot;&gt;&lt;a href=&quot;#安装特点&quot; class=&quot;headerlink&quot; title=&quot;安装特点&quot;&gt;&lt;/a&gt;安装特点&lt;/h2&gt;&lt;p&gt;此方法可使用Win8.1,Ubuntu双系统，直接硬盘安装，无需制作U盘启动，很方便。&lt;/p&gt;
+&lt;h2 id=&quot;准备&quot;&gt;&lt;a href=&quot;#准备&quot; class=&quot;headerlink&quot; title=&quot;准备&quot;&gt;&lt;/a&gt;准备&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;下载Ubuntu镜像文件&lt;/li&gt;
+&lt;li&gt;下载EasyBCD
+    
+    </summary>
+    
+      <category term="Linux" scheme="https://heliublog.com/categories/Linux/"/>
+    
+    
+      <category term="Ubuntu" scheme="https://heliublog.com/tags/Ubuntu/"/>
+    
+      <category term="系统安装" scheme="https://heliublog.com/tags/%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85/"/>
+    
+      <category term="Linux" scheme="https://heliublog.com/tags/Linux/"/>
+    
+  </entry>
+  
+</feed>

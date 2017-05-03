@@ -80,6 +80,8 @@
 
 
 
+  <link rel="alternate" href="/atom.xml" title="Liu's Blog" type="application/atom+xml" />
+
 
 
 
@@ -202,6 +204,16 @@
         </li>
       
         
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
         <li class="menu-item menu-item-archives">
           <a href="/archives" rel="section">
             
@@ -218,6 +230,16 @@
               <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
             
             标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
           </a>
         </li>
       
@@ -843,7 +865,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://heliublog.com/2017/04/26/VPS+Hexo+Dropbox创建个人博客/">
+    <link itemprop="mainEntityOfPage" href="https://heliublog.com/2017/04/26/coding和github同时使用/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Liu He">
@@ -865,8 +887,8 @@
             
               
                 
-                <a class="post-title-link" href="/2017/04/26/VPS+Hexo+Dropbox创建个人博客/" itemprop="url">
-                  VPS+Hexo+Dropbox创建个人博客
+                <a class="post-title-link" href="/2017/04/26/coding和github同时使用/" itemprop="url">
+                  coding和github同时使用
                 </a>
               
             
@@ -905,8 +927,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/web/" itemprop="url" rel="index">
-                    <span itemprop="name">web</span>
+                  <a href="/categories/Git/" itemprop="url" rel="index">
+                    <span itemprop="name">Git</span>
                   </a>
                 </span>
 
@@ -940,19 +962,14 @@
 
       
         
-          <h1 id="VPS-Hexo-Dropbox创建个人博客"><a href="#VPS-Hexo-Dropbox创建个人博客" class="headerlink" title="VPS+Hexo+Dropbox创建个人博客"></a>VPS+Hexo+Dropbox创建个人博客</h1><blockquote>
-<p>本文参考以下文章完成：<br>1.<a href="http://www.fanicy.com/2014/06/01/0001.hexowithvpsdropbox/">用Hexo+Vps搭建博客并用Dropbox同步自动发布</a><br>2.<a href="http://www.jianshu.com/p/0839b09dc381#">VPS+Dropbox+markeditor打造Hexo完美体验 (长期更新)</a><br>3.<a href="http://www.xmt.design/2016/04/04/blog-depoly-via-dropbox.html">使用 Dropbox 和 VPS 实现实时部署 Hexo 博客</a></p>
+          
+            <h1 id="coding和github同时使用"><a href="#coding和github同时使用" class="headerlink" title="coding和github同时使用"></a>coding和github同时使用</h1><p>##引言  </p>
+<p>先贴几个我的参考网站：</p>
+<blockquote>
+<p><a href="http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000" target="_blank" rel="external">非常好的git学习站（入门）</a><br><a href="http://www.tuicool.com/articles/NZNJVvB" target="_blank" rel="external">Git管理多个远程仓库(以Github和Coding为例)</a><br><a href="http://my.oschina.net/450192529/blog/636106" target="_blank" rel="external">如何在同一台电脑上使用两个github,一个往coding推，一个往github推，亲测有效哦</a><br><a href="http://blog.csdn.net/chaoyue0071/article/details/41824339" target="_blank" rel="external">如何在同一台电脑上使用两个github账户</a><br><a href="http://www.cnblogs.com/sheldonxu/archive/2012/09/17/2688281.html" target="_blank" rel="external">执行ssh-add时出现Could not open a connection to your authentication agent</a><br><a href="http://blog.163.com/023_dns/blog/static/1187273662013111301046930/" target="_blank" rel="external">github常见操作和常见错误！错误提示：fatal: remote origin already exists. </a></p>
 </blockquote>
-<p>废话少说，直接进入正题：</p>
-<h2 id="VPS"><a href="#VPS" class="headerlink" title="VPS"></a>VPS</h2><p>为CentOS 6.8 x64 ,512MB内存</p>
-<h2 id="安装需要的所有软件"><a href="#安装需要的所有软件" class="headerlink" title="安装需要的所有软件"></a>安装需要的所有软件</h2><h3 id="安装-Git"><a href="#安装-Git" class="headerlink" title="安装 Git"></a>安装 Git</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">yum install git-core</div></pre></td></tr></table></figure>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/04/26/VPS+Hexo+Dropbox创建个人博客/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+
+          
         
       
     </div>
@@ -1144,7 +1161,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://heliublog.com/2017/04/26/coding和github同时使用/">
+    <link itemprop="mainEntityOfPage" href="https://heliublog.com/2017/04/26/VPS+Hexo+Dropbox创建个人博客/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Liu He">
@@ -1166,8 +1183,8 @@
             
               
                 
-                <a class="post-title-link" href="/2017/04/26/coding和github同时使用/" itemprop="url">
-                  coding和github同时使用
+                <a class="post-title-link" href="/2017/04/26/VPS+Hexo+Dropbox创建个人博客/" itemprop="url">
+                  VPS+Hexo+Dropbox创建个人博客
                 </a>
               
             
@@ -1206,8 +1223,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Git/" itemprop="url" rel="index">
-                    <span itemprop="name">Git</span>
+                  <a href="/categories/web/" itemprop="url" rel="index">
+                    <span itemprop="name">web</span>
                   </a>
                 </span>
 
@@ -1241,14 +1258,19 @@
 
       
         
-          
-            <h1 id="coding和github同时使用"><a href="#coding和github同时使用" class="headerlink" title="coding和github同时使用"></a>coding和github同时使用</h1><p>##引言  </p>
-<p>先贴几个我的参考网站：</p>
-<blockquote>
-<p><a href="http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000" target="_blank" rel="external">非常好的git学习站（入门）</a><br><a href="http://www.tuicool.com/articles/NZNJVvB" target="_blank" rel="external">Git管理多个远程仓库(以Github和Coding为例)</a><br><a href="http://my.oschina.net/450192529/blog/636106" target="_blank" rel="external">如何在同一台电脑上使用两个github,一个往coding推，一个往github推，亲测有效哦</a><br><a href="http://blog.csdn.net/chaoyue0071/article/details/41824339" target="_blank" rel="external">如何在同一台电脑上使用两个github账户</a><br><a href="http://www.cnblogs.com/sheldonxu/archive/2012/09/17/2688281.html" target="_blank" rel="external">执行ssh-add时出现Could not open a connection to your authentication agent</a><br><a href="http://blog.163.com/023_dns/blog/static/1187273662013111301046930/" target="_blank" rel="external">github常见操作和常见错误！错误提示：fatal: remote origin already exists. </a></p>
+          <h1 id="VPS-Hexo-Dropbox创建个人博客"><a href="#VPS-Hexo-Dropbox创建个人博客" class="headerlink" title="VPS+Hexo+Dropbox创建个人博客"></a>VPS+Hexo+Dropbox创建个人博客</h1><blockquote>
+<p>本文参考以下文章完成：<br>1.<a href="http://www.fanicy.com/2014/06/01/0001.hexowithvpsdropbox/">用Hexo+Vps搭建博客并用Dropbox同步自动发布</a><br>2.<a href="http://www.jianshu.com/p/0839b09dc381#">VPS+Dropbox+markeditor打造Hexo完美体验 (长期更新)</a><br>3.<a href="http://www.xmt.design/2016/04/04/blog-depoly-via-dropbox.html">使用 Dropbox 和 VPS 实现实时部署 Hexo 博客</a></p>
 </blockquote>
-
-          
+<p>废话少说，直接进入正题：</p>
+<h2 id="VPS"><a href="#VPS" class="headerlink" title="VPS"></a>VPS</h2><p>为CentOS 6.8 x64 ,512MB内存</p>
+<h2 id="安装需要的所有软件"><a href="#安装需要的所有软件" class="headerlink" title="安装需要的所有软件"></a>安装需要的所有软件</h2><h3 id="安装-Git"><a href="#安装-Git" class="headerlink" title="安装 Git"></a>安装 Git</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">yum install git-core</div></pre></td></tr></table></figure>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/04/26/VPS+Hexo+Dropbox创建个人博客/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1791,10 +1813,10 @@
             
             
             <div class="site-state-item site-state-categories">
-              
+              <a href="/categories/index.html">
                 <span class="site-state-item-count">9</span>
                 <span class="site-state-item-name">分类</span>
-              
+              </a>
             </div>
           
 
@@ -1802,18 +1824,63 @@
             
             
             <div class="site-state-item site-state-tags">
-              
+              <a href="/tags/index.html">
                 <span class="site-state-item-count">22</span>
                 <span class="site-state-item-name">标签</span>
-              
+              </a>
             </div>
           
 
         </nav>
 
         
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
 
         <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/heliuphy" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/liuhephy" target="_blank" title="Twitter">
+                  
+                    <i class="fa fa-fw fa-twitter"></i>
+                  
+                  Twitter
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/2553167443" target="_blank" title="微博">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  微博
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/he-xi-wen-97" target="_blank" title="知乎">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  知乎
+                </a>
+              </span>
+            
           
         </div>
 
