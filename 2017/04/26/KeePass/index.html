@@ -404,8 +404,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a class="cloud-tie-join-count" href="/2017/04/26/KeePass/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count join-count" itemprop="commentCount"></span>
+                <a href="/2017/04/26/KeePass/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2017/04/26/KeePass/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -517,8 +518,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/04/26/VPS服务器搭建ghost blog/" rel="next" title="VPS服务器搭建ghost blog">
-                <i class="fa fa-chevron-left"></i> VPS服务器搭建ghost blog
+              <a href="/2017/04/26/coding和github同时使用/" rel="next" title="coding和github同时使用">
+                <i class="fa fa-chevron-left"></i> coding和github同时使用
               </a>
             
           </div>
@@ -561,7 +562,12 @@
           
   <div class="comments" id="comments">
     
-      <div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
     
   </div>
 
@@ -847,6 +853,26 @@
 
   
 
+    
+      <script id="dsq-count-scr" src="https://liusblog.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'https://heliublog.com/2017/04/26/KeePass/';
+          this.page.identifier = '2017/04/26/KeePass/';
+          this.page.title = 'KeePass+KeePassHTTP+chromeIPass储存个人密码';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://liusblog.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
 
 
 
@@ -857,19 +883,12 @@
 
 
   
-    
-    <script>
-      var cloudTieConfig = {
-        url: document.location.href, 
-        sourceId: "",
-        productKey: "a75237c9b1d742a1a73f5f0849996c0d",
-        target: "cloud-tie-wrapper"
-      };
-    </script>
-    <script src="https://img1.ws.126.net/f2e/tie/yun/sdk/loader.js"></script>
+
+
+
+
+
   
-
-
 
 
 

@@ -401,8 +401,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a class="cloud-tie-join-count" href="/2016/05/14/Hexo利用Swiftype建立站内搜索/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count join-count" itemprop="commentCount"></span>
+                <a href="/2016/05/14/Hexo利用Swiftype建立站内搜索/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2016/05/14/Hexo利用Swiftype建立站内搜索/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -559,7 +560,12 @@
           
   <div class="comments" id="comments">
     
-      <div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
     
   </div>
 
@@ -845,6 +851,26 @@
 
   
 
+    
+      <script id="dsq-count-scr" src="https://liusblog.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'https://heliublog.com/2016/05/14/Hexo利用Swiftype建立站内搜索/';
+          this.page.identifier = '2016/05/14/Hexo利用Swiftype建立站内搜索/';
+          this.page.title = 'Hexo系列教程（二）——利用Swiftype建立站内搜索';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://liusblog.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
 
 
 
@@ -855,19 +881,12 @@
 
 
   
-    
-    <script>
-      var cloudTieConfig = {
-        url: document.location.href, 
-        sourceId: "",
-        productKey: "a75237c9b1d742a1a73f5f0849996c0d",
-        target: "cloud-tie-wrapper"
-      };
-    </script>
-    <script src="https://img1.ws.126.net/f2e/tie/yun/sdk/loader.js"></script>
+
+
+
+
+
   
-
-
 
 
 
