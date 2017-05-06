@@ -122,13 +122,26 @@ branch: master
 <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>上篇博文介绍了利用软件Keepass保存密码。其实借助Dropbox或者其他同步软件将数据库.kpbx文件进行备份也很简单。但是由于某些原因，Dropbox很难上去。所以突然想到能否将文件保存在我的vps服务器上。在网上搜索教程就找到了这个方法。</p>
 <a id="more"></a>
 <h2 id="同步"><a href="#同步" class="headerlink" title="同步"></a>同步</h2><p>其实同步很简单，只要借助KeePass自带的URL同步功能即可。如下图：</p>
-<p><img src="http://i.imgur.com/XkgdsxV.png" alt=""></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://i.imgur.com/XkgdsxV.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
 <p>也就是选择“与URL同步”，<strong>但是要注意，必须现在指定位置建立一个.kpdb数据库文件</strong>，同步地址就填写该文件地址。</p>
 <h2 id="自动同步"><a href="#自动同步" class="headerlink" title="自动同步"></a>自动同步</h2><p>手动同步很麻烦，那么怎么设置自动同步呢？这里可以借助KeePass自带的触发器功能，有点像Windows的“计划任务”，以下方法可以实现本地保存后，立马服务器同步的功能。</p>
 <ol>
 <li><p>“属性”选项卡，命名该触发器，如 SavedSync.（注意，后面动作选择“更改触发器 开/关 状态”时触发器名称只能手动输入，无法选择，所以这里命名还是从简，具体描述可以写到下面的注释栏。）同时勾选“启用”和“启动时打开”复选框。 </p>
 </li>
-<li><p>“事件”选项卡，添加事件，选择“已保存数据库文件”，下面的文件/URL - 比较和过滤器可以无视。不过如果有多个数据库文件需要同步，则可以根据待保存的数据库文件名设定后续同步动作。这里我的设置如下：<br><img src="http://i.imgur.com/4zcHdI0.png" alt=""></p>
+<li><p>“事件”选项卡，添加事件，选择“已保存数据库文件”，下面的文件/URL - 比较和过滤器可以无视。不过如果有多个数据库文件需要同步，则可以根据待保存的数据库文件名设定后续同步动作。这里我的设置如下： </p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://i.imgur.com/4zcHdI0.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
 </li>
 <li><p>“条件”选项卡不加入任何条件。你也可以选择同步到 URL 文件时选择条件“远程主机可以连接(ping)”，这样只有当 URL 文件可以访问时才同步。不过我倾向于不加入这个条件，这样即使后面无法完成同步操作，也会有弹窗提示，让我们能更清楚当前的同步状态。</p>
 </li>
@@ -152,6 +165,55 @@ branch: master
       <category term="KeePass" scheme="https://heliublog.com/tags/KeePass/"/>
     
       <category term="Chrome" scheme="https://heliublog.com/tags/Chrome/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>VPS+Hexo+Dropbox创建个人博客</title>
+    <link href="https://heliublog.com/2017/04/26/VPS+Hexo+Dropbox%E5%88%9B%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/"/>
+    <id>https://heliublog.com/2017/04/26/VPS+Hexo+Dropbox创建个人博客/</id>
+    <published>2017-04-26T12:26:32.215Z</published>
+    <updated>2017-05-04T07:43:11.745Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote>
+<p>本文参考以下文章完成：<br>1.<a href="http://www.fanicy.com/2014/06/01/0001.hexowithvpsdropbox/" target="_blank" rel="external">用Hexo+Vps搭建博客并用Dropbox同步自动发布</a><br>2.<a href="http://www.jianshu.com/p/0839b09dc381#" target="_blank" rel="external">VPS+Dropbox+markeditor打造Hexo完美体验 (长期更新)</a><br>3.<a href="http://www.xmt.design/2016/04/04/blog-depoly-via-dropbox.html" target="_blank" rel="external">使用 Dropbox 和 VPS 实现实时部署 Hexo 博客</a></p>
+</blockquote>
+<p>废话少说，直接进入正题：</p>
+<h2 id="VPS"><a href="#VPS" class="headerlink" title="VPS"></a>VPS</h2><p>为CentOS 6.8 x64 ,512MB内存</p>
+<h2 id="安装需要的所有软件"><a href="#安装需要的所有软件" class="headerlink" title="安装需要的所有软件"></a>安装需要的所有软件</h2><h3 id="安装-Git"><a href="#安装-Git" class="headerlink" title="安装 Git"></a>安装 Git</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">yum install git-core</div></pre></td></tr></table></figure>
+<a id="more"></a>
+<h3 id="安装NodeJS"><a href="#安装NodeJS" class="headerlink" title="安装NodeJS"></a>安装NodeJS</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">% 前三步是先安装EPEL</div><div class="line"># wget http://dl.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm </div><div class="line"># wget http://rpms.famillecollet.com/enterprise/remi-release-6.rpm</div><div class="line"># rpm -Uvh remi-release-6*.rpm epel-release-6*.rpm</div><div class="line">% 安装node</div><div class="line">yum install nodejs npm --enablerepo=epel</div></pre></td></tr></table></figure>
+<h3 id="安装Dropbox"><a href="#安装Dropbox" class="headerlink" title="安装Dropbox"></a>安装Dropbox</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">cd ~ &amp;&amp; wget -O - &quot;https://www.dropbox.com/download?plat=lnx.x86_64&quot; | tar xzf -</div><div class="line">%然后，从新建的 .dropbox-dist 文件夹运行 Dropbox 守护程序.</div><div class="line">~/.dropbox-dist/dropboxd</div><div class="line">%下载官方提供的 cli 来控制和管理Dropbox</div><div class="line">wget https://linux.dropbox.com/packages/dropbox.py</div><div class="line">%更改权限:</div><div class="line">chmod +x ./dropbox.py</div><div class="line">%启动Dropbox:</div><div class="line">./dropbox.py start y</div><div class="line">关闭局域网广播:</div><div class="line">./dropbox.py lansync n</div></pre></td></tr></table></figure>
+<h3 id="安装Hexo"><a href="#安装Hexo" class="headerlink" title="安装Hexo"></a>安装Hexo</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">npm install -g hexo-cli</div><div class="line">cd Dropbox</div><div class="line">mkdir hexo</div><div class="line">cd hexo</div><div class="line">hexo init</div></pre></td></tr></table></figure>
+<h3 id="安装Nginx"><a href="#安装Nginx" class="headerlink" title="安装Nginx"></a>安装Nginx</h3><p>这里推荐不是很熟悉Nginx设置的用以下链接提供的一键安装包安装，可以只安装Nginx，自动设置<br><a href="https://blog.linuxeye.com/31.html" target="_blank" rel="external">lnmp、lamp、lnmpa一键安装包</a><br>这里设置时，可以将主机目录设置为dropbox的同步目录<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/root/Dropbox/hexo/public</div></pre></td></tr></table></figure></p>
+<p>添加权限：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">chmod -R 755 /root/Dropbox/hexo/public</div><div class="line">chown www:www /root/Dropbox/hexo/public</div><div class="line">chmod +x /root/Dropbox/ /root/Dropbox/hexo/</div></pre></td></tr></table></figure></p>
+<h3 id="安装incron"><a href="#安装incron" class="headerlink" title="安装incron"></a>安装incron</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">yum install incron</div><div class="line">service incrond start</div></pre></td></tr></table></figure>
+<h2 id="同步发布"><a href="#同步发布" class="headerlink" title="同步发布"></a>同步发布</h2><p>incron 监测文件夹配置<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">incrontab -e</div></pre></td></tr></table></figure></p>
+<p>在其中添加：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">/root/Dropbox/hexo/source/_posts/ IN_MOVE,IN_MODIFY,IN_CREATE,IN_DELETE /root/runhexo.bash</div><div class="line">/root/Dropbox/hexo/theme/ IN_MOVE,IN_MODIFY,IN_CREATE,IN_DELETE /root/runhexo.bash</div></pre></td></tr></table></figure></p>
+<p>runhexo.bash:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">#!/usr/bin/env bash</div><div class="line">exec 200&lt;$0</div><div class="line">flock -n 200 || exit 1</div><div class="line">sleep 10</div><div class="line">cd /root/Dropbox/hexo &amp;&amp; hexo g</div></pre></td></tr></table></figure></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;本文参考以下文章完成：&lt;br&gt;1.&lt;a href=&quot;http://www.fanicy.com/2014/06/01/0001.hexowithvpsdropbox/&quot;&gt;用Hexo+Vps搭建博客并用Dropbox同步自动发布&lt;/a&gt;&lt;br&gt;2.&lt;a href=&quot;http://www.jianshu.com/p/0839b09dc381#&quot;&gt;VPS+Dropbox+markeditor打造Hexo完美体验 (长期更新)&lt;/a&gt;&lt;br&gt;3.&lt;a href=&quot;http://www.xmt.design/2016/04/04/blog-depoly-via-dropbox.html&quot;&gt;使用 Dropbox 和 VPS 实现实时部署 Hexo 博客&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;废话少说，直接进入正题：&lt;/p&gt;
+&lt;h2 id=&quot;VPS&quot;&gt;&lt;a href=&quot;#VPS&quot; class=&quot;headerlink&quot; title=&quot;VPS&quot;&gt;&lt;/a&gt;VPS&lt;/h2&gt;&lt;p&gt;为CentOS 6.8 x64 ,512MB内存&lt;/p&gt;
+&lt;h2 id=&quot;安装需要的所有软件&quot;&gt;&lt;a href=&quot;#安装需要的所有软件&quot; class=&quot;headerlink&quot; title=&quot;安装需要的所有软件&quot;&gt;&lt;/a&gt;安装需要的所有软件&lt;/h2&gt;&lt;h3 id=&quot;安装-Git&quot;&gt;&lt;a href=&quot;#安装-Git&quot; class=&quot;headerlink&quot; title=&quot;安装 Git&quot;&gt;&lt;/a&gt;安装 Git&lt;/h3&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;yum install git-core&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+    
+    </summary>
+    
+      <category term="web" scheme="https://heliublog.com/categories/web/"/>
+    
+    
+      <category term="Hexo" scheme="https://heliublog.com/tags/Hexo/"/>
+    
+      <category term="blog" scheme="https://heliublog.com/tags/blog/"/>
+    
+      <category term="VPS" scheme="https://heliublog.com/tags/VPS/"/>
+    
+      <category term="Dropbox" scheme="https://heliublog.com/tags/Dropbox/"/>
     
   </entry>
   
@@ -265,55 +327,6 @@ NODE_ENV=production forever restart index.js //重启Ghost
     
     
       <category term="ghost blog" scheme="https://heliublog.com/tags/ghost-blog/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>VPS+Hexo+Dropbox创建个人博客</title>
-    <link href="https://heliublog.com/2017/04/26/VPS+Hexo+Dropbox%E5%88%9B%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/"/>
-    <id>https://heliublog.com/2017/04/26/VPS+Hexo+Dropbox创建个人博客/</id>
-    <published>2017-04-26T12:26:32.215Z</published>
-    <updated>2017-05-04T07:43:11.745Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote>
-<p>本文参考以下文章完成：<br>1.<a href="http://www.fanicy.com/2014/06/01/0001.hexowithvpsdropbox/" target="_blank" rel="external">用Hexo+Vps搭建博客并用Dropbox同步自动发布</a><br>2.<a href="http://www.jianshu.com/p/0839b09dc381#" target="_blank" rel="external">VPS+Dropbox+markeditor打造Hexo完美体验 (长期更新)</a><br>3.<a href="http://www.xmt.design/2016/04/04/blog-depoly-via-dropbox.html" target="_blank" rel="external">使用 Dropbox 和 VPS 实现实时部署 Hexo 博客</a></p>
-</blockquote>
-<p>废话少说，直接进入正题：</p>
-<h2 id="VPS"><a href="#VPS" class="headerlink" title="VPS"></a>VPS</h2><p>为CentOS 6.8 x64 ,512MB内存</p>
-<h2 id="安装需要的所有软件"><a href="#安装需要的所有软件" class="headerlink" title="安装需要的所有软件"></a>安装需要的所有软件</h2><h3 id="安装-Git"><a href="#安装-Git" class="headerlink" title="安装 Git"></a>安装 Git</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">yum install git-core</div></pre></td></tr></table></figure>
-<a id="more"></a>
-<h3 id="安装NodeJS"><a href="#安装NodeJS" class="headerlink" title="安装NodeJS"></a>安装NodeJS</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">% 前三步是先安装EPEL</div><div class="line"># wget http://dl.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm </div><div class="line"># wget http://rpms.famillecollet.com/enterprise/remi-release-6.rpm</div><div class="line"># rpm -Uvh remi-release-6*.rpm epel-release-6*.rpm</div><div class="line">% 安装node</div><div class="line">yum install nodejs npm --enablerepo=epel</div></pre></td></tr></table></figure>
-<h3 id="安装Dropbox"><a href="#安装Dropbox" class="headerlink" title="安装Dropbox"></a>安装Dropbox</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">cd ~ &amp;&amp; wget -O - &quot;https://www.dropbox.com/download?plat=lnx.x86_64&quot; | tar xzf -</div><div class="line">%然后，从新建的 .dropbox-dist 文件夹运行 Dropbox 守护程序.</div><div class="line">~/.dropbox-dist/dropboxd</div><div class="line">%下载官方提供的 cli 来控制和管理Dropbox</div><div class="line">wget https://linux.dropbox.com/packages/dropbox.py</div><div class="line">%更改权限:</div><div class="line">chmod +x ./dropbox.py</div><div class="line">%启动Dropbox:</div><div class="line">./dropbox.py start y</div><div class="line">关闭局域网广播:</div><div class="line">./dropbox.py lansync n</div></pre></td></tr></table></figure>
-<h3 id="安装Hexo"><a href="#安装Hexo" class="headerlink" title="安装Hexo"></a>安装Hexo</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">npm install -g hexo-cli</div><div class="line">cd Dropbox</div><div class="line">mkdir hexo</div><div class="line">cd hexo</div><div class="line">hexo init</div></pre></td></tr></table></figure>
-<h3 id="安装Nginx"><a href="#安装Nginx" class="headerlink" title="安装Nginx"></a>安装Nginx</h3><p>这里推荐不是很熟悉Nginx设置的用以下链接提供的一键安装包安装，可以只安装Nginx，自动设置<br><a href="https://blog.linuxeye.com/31.html" target="_blank" rel="external">lnmp、lamp、lnmpa一键安装包</a><br>这里设置时，可以将主机目录设置为dropbox的同步目录<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/root/Dropbox/hexo/public</div></pre></td></tr></table></figure></p>
-<p>添加权限：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">chmod -R 755 /root/Dropbox/hexo/public</div><div class="line">chown www:www /root/Dropbox/hexo/public</div><div class="line">chmod +x /root/Dropbox/ /root/Dropbox/hexo/</div></pre></td></tr></table></figure></p>
-<h3 id="安装incron"><a href="#安装incron" class="headerlink" title="安装incron"></a>安装incron</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">yum install incron</div><div class="line">service incrond start</div></pre></td></tr></table></figure>
-<h2 id="同步发布"><a href="#同步发布" class="headerlink" title="同步发布"></a>同步发布</h2><p>incron 监测文件夹配置<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">incrontab -e</div></pre></td></tr></table></figure></p>
-<p>在其中添加：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">/root/Dropbox/hexo/source/_posts/ IN_MOVE,IN_MODIFY,IN_CREATE,IN_DELETE /root/runhexo.bash</div><div class="line">/root/Dropbox/hexo/theme/ IN_MOVE,IN_MODIFY,IN_CREATE,IN_DELETE /root/runhexo.bash</div></pre></td></tr></table></figure></p>
-<p>runhexo.bash:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">#!/usr/bin/env bash</div><div class="line">exec 200&lt;$0</div><div class="line">flock -n 200 || exit 1</div><div class="line">sleep 10</div><div class="line">cd /root/Dropbox/hexo &amp;&amp; hexo g</div></pre></td></tr></table></figure></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;本文参考以下文章完成：&lt;br&gt;1.&lt;a href=&quot;http://www.fanicy.com/2014/06/01/0001.hexowithvpsdropbox/&quot;&gt;用Hexo+Vps搭建博客并用Dropbox同步自动发布&lt;/a&gt;&lt;br&gt;2.&lt;a href=&quot;http://www.jianshu.com/p/0839b09dc381#&quot;&gt;VPS+Dropbox+markeditor打造Hexo完美体验 (长期更新)&lt;/a&gt;&lt;br&gt;3.&lt;a href=&quot;http://www.xmt.design/2016/04/04/blog-depoly-via-dropbox.html&quot;&gt;使用 Dropbox 和 VPS 实现实时部署 Hexo 博客&lt;/a&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;废话少说，直接进入正题：&lt;/p&gt;
-&lt;h2 id=&quot;VPS&quot;&gt;&lt;a href=&quot;#VPS&quot; class=&quot;headerlink&quot; title=&quot;VPS&quot;&gt;&lt;/a&gt;VPS&lt;/h2&gt;&lt;p&gt;为CentOS 6.8 x64 ,512MB内存&lt;/p&gt;
-&lt;h2 id=&quot;安装需要的所有软件&quot;&gt;&lt;a href=&quot;#安装需要的所有软件&quot; class=&quot;headerlink&quot; title=&quot;安装需要的所有软件&quot;&gt;&lt;/a&gt;安装需要的所有软件&lt;/h2&gt;&lt;h3 id=&quot;安装-Git&quot;&gt;&lt;a href=&quot;#安装-Git&quot; class=&quot;headerlink&quot; title=&quot;安装 Git&quot;&gt;&lt;/a&gt;安装 Git&lt;/h3&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;yum install git-core&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-    
-    </summary>
-    
-      <category term="web" scheme="https://heliublog.com/categories/web/"/>
-    
-    
-      <category term="Hexo" scheme="https://heliublog.com/tags/Hexo/"/>
-    
-      <category term="blog" scheme="https://heliublog.com/tags/blog/"/>
-    
-      <category term="VPS" scheme="https://heliublog.com/tags/VPS/"/>
-    
-      <category term="Dropbox" scheme="https://heliublog.com/tags/Dropbox/"/>
     
   </entry>
   
@@ -551,23 +564,53 @@ NODE_ENV=production forever restart index.js //重启Ghost
 </ul>
 <p>在Windows下，分割出一块分区，我分出来的是50G，建议在磁盘最后分。注意该分区不要增添盘符，而是让其保持“空闲”状态。</p>
 <h2 id="第二步，NeoGrub"><a href="#第二步，NeoGrub" class="headerlink" title="第二步，NeoGrub"></a>第二步，NeoGrub</h2><p>Windows安装好EasyBCD软件，安好后，点击左侧“添加新条目”，再点击右侧“NeoGrub”选项卡，点击“安装”按钮。如下图：</p>
-<p><img src="http://i.imgur.com/ygVfVWC.png" alt=""></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://i.imgur.com/ygVfVWC.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
 <p>安装后，点击“配置”按钮，会打开一个名为“menu.lst”的记事本文件。清空文件内容，写入下面的文字：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">title Install Ububtu</div><div class="line">root (hd0,0)</div><div class="line">kernel (hd0,0)/vmlinuz.efi boot=casper iso-scan/filename=/ubuntu-14.04-desktop-amd64.iso ro quiet splash locale=zh_CN.UTF-8</div><div class="line">initrd (hd0,0)/initrd.lz</div></pre></td></tr></table></figure></p>
 <p>如下图所示，注意空格：</p>
-<p><img src="http://i.imgur.com/6tqyUBh.png" alt=""></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://i.imgur.com/6tqyUBh.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
 <p></p><p style="color:#DD2D2D"><strong>注意1</strong></p>文件第2、3、4行出现的“(hd0,0)”指向的是当前系统盘的位置，我这里是C盘。但假如C盘并非首个分区，而是第二个，需要修改为“(hd0,1)”，依此类推。<p></p>
 <p></p><p style="color:#DD2D2D"><strong>注意2</strong></p>文件第三行，“ubuntu-14.04-desktop-amd64.iso”是我的Ubuntu系统镜像的文件名，将其修改为你的。<p></p>
 <p></p><p style="color:#DD2D2D"><strong>注意3</strong></p>文件第三行出现了“vmlinuz.efi”，由于我安装的Ubuntu是64位操作系统，此处必须是“vmlinuz.efi”，不能缺少扩展名。<p></p>
 <h2 id="第三步"><a href="#第三步" class="headerlink" title="第三步"></a>第三步</h2><p>使用压缩工具打开Ubuntu镜像文件，将“.disk”文件夹和casper文件夹内的“initrd.lz”和“vmlinuz.efi”文件复制到C盘根目录，再将Ubuntu系统镜像文件复制到C盘根目录：</p>
-<p><img src="http://i.imgur.com/XVxEkBK.png" alt=""></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://i.imgur.com/XVxEkBK.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
 <h2 id="第四步"><a href="#第四步" class="headerlink" title="第四步"></a>第四步</h2><ul>
-<li>重启计算机，在启动界面看到操作系统选择项，选择“NeoGrub引导加载器”：<br><img src="http://o6hbo6ufa.bkt.clouddn.com/4.png" alt=""></li>
+<li>重启计算机，在启动界面看到操作系统选择项，选择“NeoGrub引导加载器”：<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://o6hbo6ufa.bkt.clouddn.com/4.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure></li>
 <li>之后出现Ubuntu选择界面，选择“Install Ubuntu”。</li>
 <li>注意：此处有可能出现“File not found”错误，若出现，请转至原文博客查看：<a href="http://blog.csdn.net/risingwonderland/article/details/37902777" target="_blank" rel="external">http://blog.csdn.net/risingwonderland/article/details/37902777</a></li>
 </ul>
 <h2 id="第五步"><a href="#第五步" class="headerlink" title="第五步"></a>第五步</h2><p>成功进入Ubuntu试用界面后，桌面上有两个文件。<br>按Ctrl+Alt+T打开终端，输入<code>sudo umount –l /isodevice</code>，取消光盘驱动器挂载，否则在后面安装过程中可能会无限卡进度：</p>
 <p></p><p style="color:#DD2D2D"><strong>注意</strong></p>注意空格，而且“-l”中的“l”是大写字母“L”的小写形态。不是数字1，也不是字母“i”。<p></p>
-<h2 id="第六步"><a href="#第六步" class="headerlink" title="第六步"></a>第六步</h2><p>双击桌面图标“安装Ubuntu14.04 LTS”，开始安装Ubuntu。<br>如果你连接了网络，可以选择“安装中下载更新”，会延长安装时间，也可以在安装完Ubuntu系统后再下载安装更新。<br>在“安装类型”界面会有多个安装选项：<br>如果选择第一项，Ubuntu会自动进行分区安装，之后与Windows操作系统共存为双系统。对分区没有细致要求的用户选择此项即可，本教程即可直接跳过步骤Step7、Step8。如果要自定义分区，选择“其它选项”。此处，我选择“其他选项”。<br><img src="http://o6hbo6ufa.bkt.clouddn.com/5.png" alt=""></p>
+<h2 id="第六步"><a href="#第六步" class="headerlink" title="第六步"></a>第六步</h2><p>双击桌面图标“安装Ubuntu14.04 LTS”，开始安装Ubuntu。<br>如果你连接了网络，可以选择“安装中下载更新”，会延长安装时间，也可以在安装完Ubuntu系统后再下载安装更新。<br>在“安装类型”界面会有多个安装选项：<br>如果选择第一项，Ubuntu会自动进行分区安装，之后与Windows操作系统共存为双系统。对分区没有细致要求的用户选择此项即可，本教程即可直接跳过步骤Step7、Step8。如果要自定义分区，选择“其它选项”。此处，我选择“其他选项”。<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://o6hbo6ufa.bkt.clouddn.com/5.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure></p>
 <p>我们要将Ubuntu安装在“空闲”分区内。选择“空闲”分区，再点击左下方红线处的加号，进行分区。</p>
 <p>下面说一下我的分区状况：</p>
 <p>总共50GB空闲分区，（分区时需要选择文件系统类型，选择“Ext4”即可）</p>
@@ -580,7 +623,13 @@ NODE_ENV=production forever restart index.js //重启Ghost
 </ul>
 <h2 id="第七步"><a href="#第七步" class="headerlink" title="第七步"></a>第七步</h2><p>分区完成后，开始安装。<br>如果你没有分配交换空间，系统会给出提示，跳过即可。</p>
 <h2 id="安装成功"><a href="#安装成功" class="headerlink" title="安装成功"></a>安装成功</h2><p>安装完成后，选择重启。如果一切正常，可以看到如下图所示的Ubuntu样式的启动项选择界面：</p>
-<p><img src="http://o6hbo6ufa.bkt.clouddn.com/6.png" alt=""></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://o6hbo6ufa.bkt.clouddn.com/6.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
 <h2 id="可选操作"><a href="#可选操作" class="headerlink" title="可选操作"></a>可选操作</h2><p>在系统启动界面，Win8.1系统处于最后一项，如果需要让Win8.1处于第一项，可以这样设置：</p>
 <ol>
 <li>进入Ubuntu系统。</li>
