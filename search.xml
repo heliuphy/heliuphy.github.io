@@ -38,6 +38,17 @@
       </tags>
   </entry>
   <entry>
+    <title><![CDATA[beamer的theme]]></title>
+    <url>%2F2017%2F04%2F26%2Fbeamer%E7%9A%84theme%2F</url>
+    <content type="text"><![CDATA[发现两个不错的网站 所有自带的主题列表 https://www.hartwork.org/beamer-theme-matrix/ 这个网站也有不少好主题 https://latex.simon04.net/]]></content>
+      <categories>
+        <category>软件零件</category>
+      </categories>
+      <tags>
+        <tag>latex</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[VPS+Hexo+Dropbox创建个人博客]]></title>
     <url>%2F2017%2F04%2F26%2FVPS%2BHexo%2BDropbox%E5%88%9B%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%2F</url>
     <content type="text"><![CDATA[本文参考以下文章完成：1.用Hexo+Vps搭建博客并用Dropbox同步自动发布2.VPS+Dropbox+markeditor打造Hexo完美体验 (长期更新)3.使用 Dropbox 和 VPS 实现实时部署 Hexo 博客 废话少说，直接进入正题： VPS为CentOS 6.8 x64 ,512MB内存 安装需要的所有软件安装 Git1yum install git-core 安装NodeJS123456% 前三步是先安装EPEL# wget http://dl.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm # wget http://rpms.famillecollet.com/enterprise/remi-release-6.rpm# rpm -Uvh remi-release-6*.rpm epel-release-6*.rpm% 安装nodeyum install nodejs npm --enablerepo=epel 安装Dropbox1234567891011cd ~ &amp;&amp; wget -O - &quot;https://www.dropbox.com/download?plat=lnx.x86_64&quot; | tar xzf -%然后，从新建的 .dropbox-dist 文件夹运行 Dropbox 守护程序.~/.dropbox-dist/dropboxd%下载官方提供的 cli 来控制和管理Dropboxwget https://linux.dropbox.com/packages/dropbox.py%更改权限:chmod +x ./dropbox.py%启动Dropbox:./dropbox.py start y关闭局域网广播:./dropbox.py lansync n 安装Hexo12345npm install -g hexo-clicd Dropboxmkdir hexocd hexohexo init 安装Nginx这里推荐不是很熟悉Nginx设置的用以下链接提供的一键安装包安装，可以只安装Nginx，自动设置lnmp、lamp、lnmpa一键安装包这里设置时，可以将主机目录设置为dropbox的同步目录1/root/Dropbox/hexo/public 添加权限：123chmod -R 755 /root/Dropbox/hexo/publicchown www:www /root/Dropbox/hexo/publicchmod +x /root/Dropbox/ /root/Dropbox/hexo/ 安装incron12yum install incronservice incrond start 同步发布incron 监测文件夹配置1incrontab -e 在其中添加：12/root/Dropbox/hexo/source/_posts/ IN_MOVE,IN_MODIFY,IN_CREATE,IN_DELETE /root/runhexo.bash/root/Dropbox/hexo/theme/ IN_MOVE,IN_MODIFY,IN_CREATE,IN_DELETE /root/runhexo.bash runhexo.bash:12345#!/usr/bin/env bashexec 200&lt;$0flock -n 200 || exit 1sleep 10cd /root/Dropbox/hexo &amp;&amp; hexo g]]></content>
@@ -60,17 +71,6 @@
       </categories>
       <tags>
         <tag>ghost blog</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[beamer的theme]]></title>
-    <url>%2F2017%2F04%2F26%2Fbeamer%E7%9A%84theme%2F</url>
-    <content type="text"><![CDATA[发现两个不错的网站 所有自带的主题列表 https://www.hartwork.org/beamer-theme-matrix/ 这个网站也有不少好主题 https://latex.simon04.net/]]></content>
-      <categories>
-        <category>软件零件</category>
-      </categories>
-      <tags>
-        <tag>latex</tag>
       </tags>
   </entry>
   <entry>
