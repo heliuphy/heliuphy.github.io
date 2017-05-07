@@ -299,9 +299,9 @@
       <category term="web" scheme="https://heliublog.com/categories/web/"/>
     
     
-      <category term="leanote" scheme="https://heliublog.com/tags/leanote/"/>
-    
       <category term="VPS" scheme="https://heliublog.com/tags/VPS/"/>
+    
+      <category term="leanote" scheme="https://heliublog.com/tags/leanote/"/>
     
       <category term="web" scheme="https://heliublog.com/tags/web/"/>
     
@@ -391,9 +391,9 @@ branch: master
       <category term="博客" scheme="https://heliublog.com/categories/%E5%8D%9A%E5%AE%A2/"/>
     
     
-      <category term="web" scheme="https://heliublog.com/tags/web/"/>
-    
       <category term="Hexo" scheme="https://heliublog.com/tags/Hexo/"/>
+    
+      <category term="web" scheme="https://heliublog.com/tags/web/"/>
     
       <category term="博客" scheme="https://heliublog.com/tags/%E5%8D%9A%E5%AE%A2/"/>
     
@@ -457,42 +457,6 @@ branch: master
       <category term="KeePass" scheme="https://heliublog.com/tags/KeePass/"/>
     
       <category term="Chrome" scheme="https://heliublog.com/tags/Chrome/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>beamer的theme</title>
-    <link href="https://heliublog.com/2017/04/26/beamer%E7%9A%84theme/"/>
-    <id>https://heliublog.com/2017/04/26/beamer的theme/</id>
-    <published>2017-04-26T12:26:32.215Z</published>
-    <updated>2017-04-26T12:25:30.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>发现两个不错的网站</p>
-<ul>
-<li><p>所有自带的主题列表</p>
-<pre><code>https://www.hartwork.org/beamer-theme-matrix/
-</code></pre></li>
-<li><p>这个网站也有不少好主题</p>
-<p><a href="https://latex.simon04.net/" target="_blank" rel="external">https://latex.simon04.net/</a></p>
-</li>
-</ul>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;发现两个不错的网站&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;所有自带的主题列表&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;https://www.hartwork.org/beamer-theme-matrix/
-&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;这个网站也有不少好主题&lt;/p
-    
-    </summary>
-    
-      <category term="软件零件" scheme="https://heliublog.com/categories/%E8%BD%AF%E4%BB%B6%E9%9B%B6%E4%BB%B6/"/>
-    
-    
-      <category term="latex" scheme="https://heliublog.com/tags/latex/"/>
     
   </entry>
   
@@ -680,13 +644,49 @@ NODE_ENV=production forever restart index.js //重启Ghost
       <category term="web" scheme="https://heliublog.com/categories/web/"/>
     
     
-      <category term="VPS" scheme="https://heliublog.com/tags/VPS/"/>
-    
       <category term="Hexo" scheme="https://heliublog.com/tags/Hexo/"/>
+    
+      <category term="blog" scheme="https://heliublog.com/tags/blog/"/>
+    
+      <category term="VPS" scheme="https://heliublog.com/tags/VPS/"/>
     
       <category term="Dropbox" scheme="https://heliublog.com/tags/Dropbox/"/>
     
-      <category term="blog" scheme="https://heliublog.com/tags/blog/"/>
+  </entry>
+  
+  <entry>
+    <title>beamer的theme</title>
+    <link href="https://heliublog.com/2017/04/26/beamer%E7%9A%84theme/"/>
+    <id>https://heliublog.com/2017/04/26/beamer的theme/</id>
+    <published>2017-04-26T12:26:32.215Z</published>
+    <updated>2017-04-26T12:25:30.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>发现两个不错的网站</p>
+<ul>
+<li><p>所有自带的主题列表</p>
+<pre><code>https://www.hartwork.org/beamer-theme-matrix/
+</code></pre></li>
+<li><p>这个网站也有不少好主题</p>
+<p><a href="https://latex.simon04.net/" target="_blank" rel="external">https://latex.simon04.net/</a></p>
+</li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;发现两个不错的网站&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;所有自带的主题列表&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;https://www.hartwork.org/beamer-theme-matrix/
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;这个网站也有不少好主题&lt;/p
+    
+    </summary>
+    
+      <category term="软件零件" scheme="https://heliublog.com/categories/%E8%BD%AF%E4%BB%B6%E9%9B%B6%E4%BB%B6/"/>
+    
+    
+      <category term="latex" scheme="https://heliublog.com/tags/latex/"/>
     
   </entry>
   

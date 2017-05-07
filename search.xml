@@ -77,8 +77,8 @@
         <category>web</category>
       </categories>
       <tags>
-        <tag>leanote</tag>
         <tag>VPS</tag>
+        <tag>leanote</tag>
         <tag>web</tag>
       </tags>
   </entry>
@@ -101,8 +101,8 @@
         <category>博客</category>
       </categories>
       <tags>
-        <tag>web</tag>
         <tag>Hexo</tag>
+        <tag>web</tag>
         <tag>博客</tag>
         <tag>网站</tag>
       </tags>
@@ -117,17 +117,6 @@
       <tags>
         <tag>KeePass</tag>
         <tag>Chrome</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[beamer的theme]]></title>
-    <url>%2F2017%2F04%2F26%2Fbeamer%E7%9A%84theme%2F</url>
-    <content type="text"><![CDATA[发现两个不错的网站 所有自带的主题列表 https://www.hartwork.org/beamer-theme-matrix/ 这个网站也有不少好主题 https://latex.simon04.net/]]></content>
-      <categories>
-        <category>软件零件</category>
-      </categories>
-      <tags>
-        <tag>latex</tag>
       </tags>
   </entry>
   <entry>
@@ -162,10 +151,21 @@
         <category>web</category>
       </categories>
       <tags>
-        <tag>VPS</tag>
         <tag>Hexo</tag>
-        <tag>Dropbox</tag>
         <tag>blog</tag>
+        <tag>VPS</tag>
+        <tag>Dropbox</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[beamer的theme]]></title>
+    <url>%2F2017%2F04%2F26%2Fbeamer%E7%9A%84theme%2F</url>
+    <content type="text"><![CDATA[发现两个不错的网站 所有自带的主题列表 https://www.hartwork.org/beamer-theme-matrix/ 这个网站也有不少好主题 https://latex.simon04.net/]]></content>
+      <categories>
+        <category>软件零件</category>
+      </categories>
+      <tags>
+        <tag>latex</tag>
       </tags>
   </entry>
   <entry>
