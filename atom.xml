@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://heliublog.com/"/>
-  <updated>2017-05-03T10:51:48.755Z</updated>
+  <updated>2017-05-07T15:02:16.920Z</updated>
   <id>https://heliublog.com/</id>
   
   <author>
@@ -14,6 +14,287 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>vtk-imageblend图像融合报错</title>
+    <link href="https://heliublog.com/2017/05/07/vtk-imageblend%E5%9B%BE%E5%83%8F%E8%9E%8D%E5%90%88%E6%8A%A5%E9%94%99/"/>
+    <id>https://heliublog.com/2017/05/07/vtk-imageblend图像融合报错/</id>
+    <published>2017-05-07T15:01:49.000Z</published>
+    <updated>2017-05-07T15:02:16.920Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+      <category term="VTK" scheme="https://heliublog.com/categories/VTK/"/>
+    
+    
+      <category term="VTK" scheme="https://heliublog.com/tags/VTK/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>VTK-5.10.1 to VTK-7.1.1的变动</title>
+    <link href="https://heliublog.com/2017/05/07/VTK-5.10.1%20TO%20VTK-7.1.1%E7%9A%84%E5%8F%98%E5%8A%A8/"/>
+    <id>https://heliublog.com/2017/05/07/VTK-5.10.1 TO VTK-7.1.1的变动/</id>
+    <published>2017-05-07T15:00:15.000Z</published>
+    <updated>2017-05-07T15:01:28.775Z</updated>
+    
+    <content type="html"><![CDATA[<ol>
+<li>namespace vtkstd ==&gt;&gt; std；</li>
+<li>SetInput()方法拆分为两个，一个SetInputData，一个SetInputConnection()。</li>
+<li>vtk的新版本在vtkImageData类中取消了SetScalarTypeToUnsignedChar()方法；(vtkImageCanvasSource2D类中依然可用)现在仅能用如下方法设置：  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">static void SetScalarType(int, vtkInformation* meta_data);</div></pre></td></tr></table></figure>
+</li>
+</ol>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;ol&gt;
+&lt;li&gt;namespace vtkstd ==&amp;gt;&amp;gt; std；&lt;/li&gt;
+&lt;li&gt;SetInput()方法拆分为两个，一个SetInputData，一个SetInputConnection()。&lt;/li&gt;
+&lt;li&gt;vtk的新版本在vtkImageData类中取
+    
+    </summary>
+    
+      <category term="VTK" scheme="https://heliublog.com/categories/VTK/"/>
+    
+    
+      <category term="VTK" scheme="https://heliublog.com/tags/VTK/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>VTK运行Tcl文件</title>
+    <link href="https://heliublog.com/2017/05/07/VTK%E8%BF%90%E8%A1%8CTcl%E6%96%87%E4%BB%B6/"/>
+    <id>https://heliublog.com/2017/05/07/VTK运行Tcl文件/</id>
+    <published>2017-05-07T14:59:20.000Z</published>
+    <updated>2017-05-07T14:59:55.512Z</updated>
+    
+    <content type="html"><![CDATA[<p>环境：</p>
+<ul>
+<li>Win10 64bit 家庭版</li>
+<li>VS-2008</li>
+<li>VTK-7.1.1</li>
+<li>Tcl-8.6</li>
+</ul>
+<ol>
+<li>下载ActiveTcl，可以去activestate网站下载。下载完成后安装，例如安装路径是d:\tcl  <strong>注意：安装时一定要以管理员身份运行，不然会加不进系统变量！</strong></li>
+<li>打开CMAKE，Configure完成后，将<code>VTK_WRAP_TCL</code>勾选上，再次Configure，之后将<code>TCL_INTERNAL_PATH</code>更改为<code>\你的VTK源码解压路径\VTK-7.1.1\ThirdParty\TclTk\internals\tk8.6</code><br><strong>注意：切记:要用“/”而不是“\”。</strong></li>
+<li>打开生成文件夹，使用VTK.SLN生成，之后在INSTALL方案上选“仅用于项目”-&gt;“仅生成INSTALL”安装。</li>
+<li>在PATH中添加：D:\Tcl\bin;D:\VTK\bin;新建系统变量<code>TCLLIBPATH</code>，内容设为<code>\你的VTK生成文件夹\VTK-7.1.1-bin\Wrapping\Tcl\Debug</code><br>完成。<br>遇到的坑：</li>
+<li>安装Tcl时，未按照管理员身份运行，导致Tcl没有加进系统变量。</li>
+<li>未设置<code>TCL_INTERNAL_PATH</code>，因为这个的参数默认是错的。<br>这两条导致编译VTK.sln时，有80多个项目编译失败。</li>
+<li>由于<code>TCLLIBPATH</code>的设置错误，导致打开Tcl文件时提示<code>can&#39;t find package vtk</code>。</li>
+</ol>
+<blockquote>
+<p>参考：<a href="http://www.cnblogs.com/limeng/archive/2010/08/28/1810701.html" target="_blank" rel="external">http://www.cnblogs.com/limeng/archive/2010/08/28/1810701.html</a></p>
+</blockquote>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;环境：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Win10 64bit 家庭版&lt;/li&gt;
+&lt;li&gt;VS-2008&lt;/li&gt;
+&lt;li&gt;VTK-7.1.1&lt;/li&gt;
+&lt;li&gt;Tcl-8.6&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ol&gt;
+&lt;li&gt;下载ActiveTcl，可以去activestate网站下载。
+    
+    </summary>
+    
+      <category term="VTK" scheme="https://heliublog.com/categories/VTK/"/>
+    
+    
+      <category term="VTK" scheme="https://heliublog.com/tags/VTK/"/>
+    
+      <category term="Tcl" scheme="https://heliublog.com/tags/Tcl/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>VTK-VS2008编译教程</title>
+    <link href="https://heliublog.com/2017/05/07/VTK-VS2008%E7%BC%96%E8%AF%91%E6%95%99%E7%A8%8B/"/>
+    <id>https://heliublog.com/2017/05/07/VTK-VS2008编译教程/</id>
+    <published>2017-05-07T14:57:45.000Z</published>
+    <updated>2017-05-07T14:58:56.720Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h2><h3 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h3><ul>
+<li>Win10 64bit 家庭版</li>
+<li>VS2008 SP1</li>
+<li>Qt 4.8.4</li>
+<li>CMake 3.8.0 64bit-win</li>
+<li>VTK-7.1.1<h3 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h3>将上述组件下载安装好<br>注意事项：</li>
+</ul>
+<ol>
+<li>Qt需要下载两个东西：<ul>
+<li>qt-win-opensource-4.8.4-vs2008.exe</li>
+<li>qt-vs-addin-1.1.11-opensource.exe<br>直接谷歌搜索文件名即可找到下载地址。</li>
+</ul>
+</li>
+<li>VTK-7.1.1可以下载data也可以不下载。<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><h3 id="安装Qt"><a href="#安装Qt" class="headerlink" title="安装Qt"></a>安装Qt</h3>按照提示一步步安装即可<h3 id="安装-CMAKE"><a href="#安装-CMAKE" class="headerlink" title="安装 CMAKE"></a>安装 CMAKE</h3>下载后安装即可<h3 id="编译VTK"><a href="#编译VTK" class="headerlink" title="编译VTK"></a>编译VTK</h3></li>
+<li>新建两个文件夹，一个src，用来存放源代码；一个bin，用来存放二进制文件。</li>
+<li>将VTK-7.1.1.zip解压至src。</li>
+<li>打开CMAKE，<code>Where is the source code</code> 填写src的绝对路径，<code>Where to build the binaries</code> 填写bin的绝对路径，比那一成功后的文件就放在这里。</li>
+<li>点击Config，选择VS2008，确定后，开始编译，过程大约几分钟。</li>
+<li>待编译完成后，会出现许多红色的选项，这些都是需要修改的选项。勾选CMake界面上的Grouped和Advanced, Grouped是对配置分组,Advanced是显示高级配置.</li>
+<li>VTK_Group_Qt          选中,使用Qt.</li>
+<li>CMAKE_INSTALL_PREFIX  修改为VTK/vsvtk  。这个目录可以自行指定,当VTK编译完成后,安装时,会将VTK安装到指定的目录。</li>
+<li>INSTALL_BIN_DIR<br>INSTALL_INC_DIR<br>INSTALL_LIB_DIR<br>INSTALL_MAN_DIR<br>INSTALL_PKGCONFIG_DIR<br>这些也分别更改到VTK\vsvtk 的相应目录下。</li>
+<li>configuer</li>
+<li>generate</li>
+<li>完成后，打开VTK\bin 用VS打开构建目录下的VTK.sln解决方案。</li>
+<li>等待IDE解析,解析完成后,状态栏会显示就绪.解析过程比较耗时,耐心等待VS解析完成。</li>
+<li>生成成功之后,就可以安装VTK了,右击INSTALL项目,选择仅生成INSTALL.然后就开始安装VTK了,安装完成,就可以在之前设置的prefix目录下看到安装之后的VTK.</li>
+<li>设置环境变量，将VTK\vsvtk 加入环境变量。<h2 id="案例运行"><a href="#案例运行" class="headerlink" title="案例运行"></a>案例运行</h2>新建文件夹Example，在文件夹下新建src和bin。<br>进入网址<a href="http://www.vtk.org/Wiki/VTK/Examples/Cxx/Rendering/Cylinder" target="_blank" rel="external">http://www.vtk.org/Wiki/VTK/Examples/Cxx/Rendering/Cylinder</a><br>复制源代码。<br>若VTK_DIR not found ，则手动填写为VTL\bin。<br>configure,generate。<br>用VS打开工程并编译。<br>打开cmd，进入所在目录，运行*.exe即可。</li>
+</ol>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;准备工作&quot;&gt;&lt;a href=&quot;#准备工作&quot; class=&quot;headerlink&quot; title=&quot;准备工作&quot;&gt;&lt;/a&gt;准备工作&lt;/h2&gt;&lt;h3 id=&quot;环境&quot;&gt;&lt;a href=&quot;#环境&quot; class=&quot;headerlink&quot; title=&quot;环境&quot;&gt;&lt;/a&gt;环境&lt;/h
+    
+    </summary>
+    
+      <category term="VTK" scheme="https://heliublog.com/categories/VTK/"/>
+    
+    
+      <category term="VTK" scheme="https://heliublog.com/tags/VTK/"/>
+    
+      <category term="visualstudio" scheme="https://heliublog.com/tags/visualstudio/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>如何利用Dropbox备份指定文件夹</title>
+    <link href="https://heliublog.com/2017/05/07/%E5%A6%82%E4%BD%95%E5%88%A9%E7%94%A8Dropbox%E5%A4%87%E4%BB%BD%E6%8C%87%E5%AE%9A%E6%96%87%E4%BB%B6%E5%A4%B9/"/>
+    <id>https://heliublog.com/2017/05/07/如何利用Dropbox备份指定文件夹/</id>
+    <published>2017-05-07T14:56:06.000Z</published>
+    <updated>2017-05-07T14:56:49.048Z</updated>
+    
+    <content type="html"><![CDATA[<p>Dropbox原生只带同步单文件夹的功能，但如果我想同步其他的文件夹怎么办呢？不能把那些文件夹都复制一份到该目录下吧。所以可用<code>mklink</code>的方法来同步。(Win Vista 及以上可用)</p>
+<p>命令如下，比如我的Dropbox备份文件夹为<code>C:\Dropbox</code>，而我想备份的文件夹为<code>d:\backup</code>，注意必须用管理员模式运行cmd</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mklink /d &quot;C:\Dropbox&quot; D:\backup</div></pre></td></tr></table></figure>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Dropbox原生只带同步单文件夹的功能，但如果我想同步其他的文件夹怎么办呢？不能把那些文件夹都复制一份到该目录下吧。所以可用&lt;code&gt;mklink&lt;/code&gt;的方法来同步。(Win Vista 及以上可用)&lt;/p&gt;
+&lt;p&gt;命令如下，比如我的Dropbox备份文件夹为&lt;
+    
+    </summary>
+    
+      <category term="软件" scheme="https://heliublog.com/categories/%E8%BD%AF%E4%BB%B6/"/>
+    
+    
+      <category term="Dropbox" scheme="https://heliublog.com/tags/Dropbox/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>利用Dropbox备份vps中的文件</title>
+    <link href="https://heliublog.com/2017/05/07/%E5%88%A9%E7%94%A8Dropbox%E5%A4%87%E4%BB%BDvps%E4%B8%AD%E7%9A%84%E6%96%87%E4%BB%B6/"/>
+    <id>https://heliublog.com/2017/05/07/利用Dropbox备份vps中的文件/</id>
+    <published>2017-05-07T14:53:30.000Z</published>
+    <updated>2017-05-07T14:55:34.178Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote>
+<p>部分内容参考自<a href="http://www.pythoner.com/324.html" target="_blank" rel="external">http://www.pythoner.com/324.html</a></p>
+</blockquote>
+<h2 id="1-Linux-中安装Dropbox-Uploader"><a href="#1-Linux-中安装Dropbox-Uploader" class="headerlink" title="1.Linux 中安装Dropbox Uploader"></a>1.Linux 中安装Dropbox Uploader</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">wget https://raw.github.com/andreafabrizi/Dropbox-Uploader/master/dropbox_uploader.sh</div><div class="line">chmod+x dropbox_uploader.sh</div><div class="line">./dropbox_uploader.sh</div></pre></td></tr></table></figure>
+<h2 id="2-新建Dropbox-App"><a href="#2-新建Dropbox-App" class="headerlink" title="2.新建Dropbox App"></a>2.新建Dropbox App</h2><ol>
+<li><p>需要通过浏览器访问 <a href="https://www.dropbox.com/developers/apps" target="_blank" rel="external">https://www.dropbox.com/developers/apps</a> 页面，并创建一个新的 Dropbox app。（具体根据上一步中脚本的提示），”the type of access”根据自己的要求选择。</p>
+</li>
+<li><p>创建好后，将会进入一个新的页面，复制里面的<code>app key</code> 和 <code>app secret</code>到终端窗口。完成后，dropboxploader.sh 将产生一个oAUTH网址，进去授权就OK了。</p>
+</li>
+<li>现在就可以上传文件了。我此处是做的leanote备份，命令如下。</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">./dropbox_uploader.sh upload /home/wwwroot/blog.heleou.com/web/leanote/public/upload/ /leanote/public/upload/</div><div class="line">./dropbox_uploader.sh upload /home/wwwroot/blog.heleou.com/web/leanote/files/ /leanote/files/</div><div class="line">./dropbox_uploader.sh upload /home/wwwroot/blog.heleou.com/web/leanote/conf/app.conf /leanote/conf/app.conf</div></pre></td></tr></table></figure>
+<p>也可以做个脚本，定时运行</p>
+<p>脚本如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">#!/bin/bash</div><div class="line"></div><div class="line">cd /root/bin</div><div class="line">#开始上传</div><div class="line"></div><div class="line">./dropbox_uploader.sh upload /home/wwwroot/blog.heleou.com/web/leanote/public/upload/ /leanote/public/upload/</div><div class="line">./dropbox_uploader.sh upload /home/wwwroot/blog.heleou.com/web/leanote/files/ /leanote/files/</div><div class="line">./dropbox_uploader.sh upload /home/wwwroot/blog.heleou.com/web/leanote/conf/app.conf /leanote/conf/app.conf</div><div class="line"></div><div class="line">echo -e &quot;Backup Done!&quot;</div></pre></td></tr></table></figure>
+<p>定时运行方法：（添加crontab）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">crontab –e</div><div class="line">添加：</div><div class="line">30 3 * * * /root/bin/backup.sh</div><div class="line">这样，就可以每天凌晨3：30自动备份到Dropbox了。</div></pre></td></tr></table></figure>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;部分内容参考自&lt;a href=&quot;http://www.pythoner.com/324.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www.pythoner.com/324.html&lt;/a&gt;&lt;/p&gt;
+&lt;/
+    
+    </summary>
+    
+      <category term="Linux" scheme="https://heliublog.com/categories/Linux/"/>
+    
+    
+      <category term="VPS" scheme="https://heliublog.com/tags/VPS/"/>
+    
+      <category term="Dropbox" scheme="https://heliublog.com/tags/Dropbox/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Leanote安装教程</title>
+    <link href="https://heliublog.com/2017/05/07/Leanote%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/"/>
+    <id>https://heliublog.com/2017/05/07/Leanote安装教程/</id>
+    <published>2017-05-07T14:47:13.000Z</published>
+    <updated>2017-05-07T14:52:19.009Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote>
+<p>此教程参考官方教程<a href="https://github.com/leanote/leanote/wiki/leanote%E4%BA%8C%E8%BF%9B%E5%88%B6%E7%89%88%E8%AF%A6%E7%BB%86%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B" target="_blank" rel="external">Leanote安装教程</a>而成，只是做了一点修改。</p>
+</blockquote>
+<h2 id="下载Leanote"><a href="#下载Leanote" class="headerlink" title="下载Leanote"></a>下载Leanote</h2><p>此处我下载的是二进制版，假设下载到<code>/home/wwwroot/blog.heleou.com/web/</code>下，那么下载后解压，命令如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">tar -xzvf leanote-*.tar.gz</div></pre></td></tr></table></figure></p>
+<h2 id="安装数据库-mongodb"><a href="#安装数据库-mongodb" class="headerlink" title="安装数据库-mongodb"></a>安装数据库-mongodb</h2><p>到 <a href="http://www.mongodb.org/downloads" target="_blank" rel="external">http://www.mongodb.org/downloads</a> 去下载</p>
+<p>64位linux mongodb2.6.4下载链接: <a href="http://www.mongodb.org/dr//fastdl.mongodb.org/linux/mongodb-linux-x86_64-2.6.4.tgz/download" target="_blank" rel="external">http://www.mongodb.org/dr//fastdl.mongodb.org/linux/mongodb-linux-x86_64-2.6.4.tgz/download</a><br>64位linux mongodb 3.0.1下载链接: <a href="https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-3.0.1.tgz" target="_blank" rel="external">https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-3.0.1.tgz</a></p>
+<p>我下载的是3.0.1版，这两个版本的拷贝数据库操作不太一样，到后面的时候需要稍微注意一下。</p>
+<p>还是直接解压<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">tar -xzvf mongodb-linux-x86_64-3.0.1.tgz/</div></pre></td></tr></table></figure></p>
+<p>为了快速使用mongodb的命令, 可以配置环境变量,</p>
+<p>编辑<code>/etc/profile</code> 将mongodb bin路径加入即可.（写到文件最后即可）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">vim /etc/profile</div><div class="line">export PATH=$PATH:/home/wwwroot/blog.heleou.com/web/mongodb/bin</div><div class="line">source /etc/profile</div></pre></td></tr></table></figure></p>
+<h2 id="简单使用mongoDB"><a href="#简单使用mongoDB" class="headerlink" title="简单使用mongoDB"></a>简单使用mongoDB</h2><p>先在/home/wwwroot/blog.heleou.com/web下新建一个目录data存放mongodb数据</p>
+<p>开启mongodb<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mongod --dbpath /home/wwwroot/blog.heleou.com/web/data</div></pre></td></tr></table></figure></p>
+<p>附：后台开启命令：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mongod --fork --dbpath /home/wwwroot/blog.heleou.com/web/data --logpath /home/wwwroot/blog.heleou.com/web/logpath1/mongodb.log</div></pre></td></tr></table></figure></p>
+<p><code>--logpath</code>是日志路径，自己设置即可。</p>
+<p>这时mongod已经启动了</p>
+<p>重新打开一个终端, 使用下mongodb</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt; mongo</div><div class="line">&gt; show dbs</div></pre></td></tr></table></figure>
+<p>mongodb安装到此为止, 下面为mongodb导入数据leanote初始数据</p>
+<h2 id="导入初始数据"><a href="#导入初始数据" class="headerlink" title="导入初始数据"></a>导入初始数据</h2><p>v3的导入命令<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mongorestore -h localhost -d leanote --dir /home/wwwroot/blog.heleou.com/web/leanote/mongodb_backup/leanote_install_data/</div></pre></td></tr></table></figure></p>
+<h2 id="配置leanote"><a href="#配置leanote" class="headerlink" title="配置leanote"></a>配置leanote</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">vim conf/app.conf</div></pre></td></tr></table></figure>
+<p>这里要做的有两件事，一个是修个URL，一个是修改安全信息。</p>
+<ol>
+<li>修改网址：<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">http.port=80</div><div class="line">site.url=http://blog.heleou.com</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>当然你还需要将a.com绑定ip到Leanote服务器.</p>
+<p>如果服务器上已有其它程序运行了80端口, 怎么办呢? 请google或百度下 “使用nginx分发请求到不同端口”.</p>
+<h2 id="运行leanote"><a href="#运行leanote" class="headerlink" title="运行leanote"></a>运行leanote</h2><p>注意 在此之前请确保mongodb已在运行!</p>
+<p>新开一个窗口, 运行:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">cd /home/wwwroot/blog.heleou.com/web/leanote/bin</div><div class="line">bash run.sh (或 sh run.sh)</div><div class="line"># 最后出现以下信息证明运行成功</div><div class="line">...</div><div class="line">TRACE 2013/06/06 15:01:27 watcher.go:72: Watching: /home/life/leanote/bin/src/github.com/leanote/leanote/conf/routes</div><div class="line">Go to /@tests to run the tests.</div><div class="line">Listening on :80...</div></pre></td></tr></table></figure>
+<p>附：后台运行方法</p>
+<p>此时按<code>Crtl + z</code>暂停进程，然后敲入<code>bg</code>命令即可，退出终端还可继续运行。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;此教程参考官方教程&lt;a href=&quot;https://github.com/leanote/leanote/wiki/leanote%E4%BA%8C%E8%BF%9B%E5%88%B6%E7%89%88%E8%AF%A6%E7%BB%86%E5%A
+    
+    </summary>
+    
+      <category term="web" scheme="https://heliublog.com/categories/web/"/>
+    
+    
+      <category term="leanote" scheme="https://heliublog.com/tags/leanote/"/>
+    
+      <category term="VPS" scheme="https://heliublog.com/tags/VPS/"/>
+    
+      <category term="web" scheme="https://heliublog.com/tags/web/"/>
+    
+  </entry>
   
   <entry>
     <title>VTK提示MetaImage cannot read data from file</title>
@@ -99,13 +380,13 @@ branch: master
       <category term="博客" scheme="https://heliublog.com/categories/%E5%8D%9A%E5%AE%A2/"/>
     
     
+      <category term="web" scheme="https://heliublog.com/tags/web/"/>
+    
       <category term="Hexo" scheme="https://heliublog.com/tags/Hexo/"/>
     
       <category term="博客" scheme="https://heliublog.com/tags/%E5%8D%9A%E5%AE%A2/"/>
     
       <category term="网站" scheme="https://heliublog.com/tags/%E7%BD%91%E7%AB%99/"/>
-    
-      <category term="web" scheme="https://heliublog.com/tags/web/"/>
     
   </entry>
   
@@ -165,6 +446,74 @@ branch: master
       <category term="KeePass" scheme="https://heliublog.com/tags/KeePass/"/>
     
       <category term="Chrome" scheme="https://heliublog.com/tags/Chrome/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>beamer的theme</title>
+    <link href="https://heliublog.com/2017/04/26/beamer%E7%9A%84theme/"/>
+    <id>https://heliublog.com/2017/04/26/beamer的theme/</id>
+    <published>2017-04-26T12:26:32.215Z</published>
+    <updated>2017-04-26T12:25:30.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>发现两个不错的网站</p>
+<ul>
+<li><p>所有自带的主题列表</p>
+<pre><code>https://www.hartwork.org/beamer-theme-matrix/
+</code></pre></li>
+<li><p>这个网站也有不少好主题</p>
+<p><a href="https://latex.simon04.net/" target="_blank" rel="external">https://latex.simon04.net/</a></p>
+</li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;发现两个不错的网站&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;所有自带的主题列表&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;https://www.hartwork.org/beamer-theme-matrix/
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;这个网站也有不少好主题&lt;/p
+    
+    </summary>
+    
+      <category term="软件零件" scheme="https://heliublog.com/categories/%E8%BD%AF%E4%BB%B6%E9%9B%B6%E4%BB%B6/"/>
+    
+    
+      <category term="latex" scheme="https://heliublog.com/tags/latex/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>coding和github同时使用</title>
+    <link href="https://heliublog.com/2017/04/26/coding%E5%92%8Cgithub%E5%90%8C%E6%97%B6%E4%BD%BF%E7%94%A8/"/>
+    <id>https://heliublog.com/2017/04/26/coding和github同时使用/</id>
+    <published>2017-04-26T12:26:32.215Z</published>
+    <updated>2017-05-04T07:42:23.419Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><p>先贴几个我的参考网站：</p>
+<blockquote>
+<p><a href="http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000" target="_blank" rel="external">非常好的git学习站（入门）</a><br><a href="http://www.tuicool.com/articles/NZNJVvB" target="_blank" rel="external">Git管理多个远程仓库(以Github和Coding为例)</a><br><a href="http://my.oschina.net/450192529/blog/636106" target="_blank" rel="external">如何在同一台电脑上使用两个github,一个往coding推，一个往github推，亲测有效哦</a><br><a href="http://blog.csdn.net/chaoyue0071/article/details/41824339" target="_blank" rel="external">如何在同一台电脑上使用两个github账户</a><br><a href="http://www.cnblogs.com/sheldonxu/archive/2012/09/17/2688281.html" target="_blank" rel="external">执行ssh-add时出现Could not open a connection to your authentication agent</a><br><a href="http://blog.163.com/023_dns/blog/static/1187273662013111301046930/" target="_blank" rel="external">github常见操作和常见错误！错误提示：fatal: remote origin already exists. </a></p>
+</blockquote>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;引言&quot;&gt;&lt;a href=&quot;#引言&quot; class=&quot;headerlink&quot; title=&quot;引言&quot;&gt;&lt;/a&gt;引言&lt;/h2&gt;&lt;p&gt;先贴几个我的参考网站：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;a href=&quot;http://www.liaoxuefeng.com/wi
+    
+    </summary>
+    
+      <category term="Git" scheme="https://heliublog.com/categories/Git/"/>
+    
+    
+      <category term="coding" scheme="https://heliublog.com/tags/coding/"/>
+    
+      <category term="Github" scheme="https://heliublog.com/tags/Github/"/>
+    
+      <category term="Git" scheme="https://heliublog.com/tags/Git/"/>
     
   </entry>
   
@@ -320,81 +669,13 @@ NODE_ENV=production forever restart index.js //重启Ghost
       <category term="web" scheme="https://heliublog.com/categories/web/"/>
     
     
-      <category term="Hexo" scheme="https://heliublog.com/tags/Hexo/"/>
-    
-      <category term="blog" scheme="https://heliublog.com/tags/blog/"/>
-    
       <category term="VPS" scheme="https://heliublog.com/tags/VPS/"/>
+    
+      <category term="Hexo" scheme="https://heliublog.com/tags/Hexo/"/>
     
       <category term="Dropbox" scheme="https://heliublog.com/tags/Dropbox/"/>
     
-  </entry>
-  
-  <entry>
-    <title>beamer的theme</title>
-    <link href="https://heliublog.com/2017/04/26/beamer%E7%9A%84theme/"/>
-    <id>https://heliublog.com/2017/04/26/beamer的theme/</id>
-    <published>2017-04-26T12:26:32.215Z</published>
-    <updated>2017-04-26T12:25:30.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>发现两个不错的网站</p>
-<ul>
-<li><p>所有自带的主题列表</p>
-<pre><code>https://www.hartwork.org/beamer-theme-matrix/
-</code></pre></li>
-<li><p>这个网站也有不少好主题</p>
-<p><a href="https://latex.simon04.net/" target="_blank" rel="external">https://latex.simon04.net/</a></p>
-</li>
-</ul>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;发现两个不错的网站&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;所有自带的主题列表&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;https://www.hartwork.org/beamer-theme-matrix/
-&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;这个网站也有不少好主题&lt;/p
-    
-    </summary>
-    
-      <category term="软件零件" scheme="https://heliublog.com/categories/%E8%BD%AF%E4%BB%B6%E9%9B%B6%E4%BB%B6/"/>
-    
-    
-      <category term="latex" scheme="https://heliublog.com/tags/latex/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>coding和github同时使用</title>
-    <link href="https://heliublog.com/2017/04/26/coding%E5%92%8Cgithub%E5%90%8C%E6%97%B6%E4%BD%BF%E7%94%A8/"/>
-    <id>https://heliublog.com/2017/04/26/coding和github同时使用/</id>
-    <published>2017-04-26T12:26:32.215Z</published>
-    <updated>2017-05-04T07:42:23.419Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><p>先贴几个我的参考网站：</p>
-<blockquote>
-<p><a href="http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000" target="_blank" rel="external">非常好的git学习站（入门）</a><br><a href="http://www.tuicool.com/articles/NZNJVvB" target="_blank" rel="external">Git管理多个远程仓库(以Github和Coding为例)</a><br><a href="http://my.oschina.net/450192529/blog/636106" target="_blank" rel="external">如何在同一台电脑上使用两个github,一个往coding推，一个往github推，亲测有效哦</a><br><a href="http://blog.csdn.net/chaoyue0071/article/details/41824339" target="_blank" rel="external">如何在同一台电脑上使用两个github账户</a><br><a href="http://www.cnblogs.com/sheldonxu/archive/2012/09/17/2688281.html" target="_blank" rel="external">执行ssh-add时出现Could not open a connection to your authentication agent</a><br><a href="http://blog.163.com/023_dns/blog/static/1187273662013111301046930/" target="_blank" rel="external">github常见操作和常见错误！错误提示：fatal: remote origin already exists. </a></p>
-</blockquote>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;引言&quot;&gt;&lt;a href=&quot;#引言&quot; class=&quot;headerlink&quot; title=&quot;引言&quot;&gt;&lt;/a&gt;引言&lt;/h2&gt;&lt;p&gt;先贴几个我的参考网站：&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;&lt;a href=&quot;http://www.liaoxuefeng.com/wi
-    
-    </summary>
-    
-      <category term="Git" scheme="https://heliublog.com/categories/Git/"/>
-    
-    
-      <category term="coding" scheme="https://heliublog.com/tags/coding/"/>
-    
-      <category term="Github" scheme="https://heliublog.com/tags/Github/"/>
-    
-      <category term="Git" scheme="https://heliublog.com/tags/Git/"/>
+      <category term="blog" scheme="https://heliublog.com/tags/blog/"/>
     
   </entry>
   
@@ -454,7 +735,7 @@ NODE_ENV=production forever restart index.js //重启Ghost
     <link href="https://heliublog.com/2017/04/26/Endnote%E7%9A%84style/"/>
     <id>https://heliublog.com/2017/04/26/Endnote的style/</id>
     <published>2017-04-26T12:26:32.183Z</published>
-    <updated>2017-04-26T12:25:30.000Z</updated>
+    <updated>2017-05-07T14:54:44.856Z</updated>
     
     <content type="html"><![CDATA[<p>参考文献style:</p>
 <p>Chinese Std GBT7714</p>
@@ -478,7 +759,7 @@ NODE_ENV=production forever restart index.js //重启Ghost
     
     </summary>
     
-      <category term="软件部件" scheme="https://heliublog.com/categories/%E8%BD%AF%E4%BB%B6%E9%83%A8%E4%BB%B6/"/>
+      <category term="软件" scheme="https://heliublog.com/categories/%E8%BD%AF%E4%BB%B6/"/>
     
     
       <category term="Endnote" scheme="https://heliublog.com/tags/Endnote/"/>

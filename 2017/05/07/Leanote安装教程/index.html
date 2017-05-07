@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+<!-- Baidu Tongji -->
+<script>var _hmt = _hmt || []</script>
+<script async src="//hm.baidu.com/hm.js?bf3208c4535129798a3cceee4fe5b975"></script>
+<!-- End Baidu Tongji -->
+
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    <title>Leanote安装教程 | Liu&#39;s Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="leanote,VPS,web">
+    <meta name="description" content="此教程参考官方教程Leanote安装教程而成，只是做了一点修改。  下载Leanote此处我下载的是二进制版，假设下载到/home/wwwroot/blog.heleou.com/web/下，那么下载后解压，命令如下：1tar -xzvf leanote-*.tar.gz 安装数据库-mongodb到 http://www.mongodb.org/downloads 去下载 64位linux m">
+<meta name="keywords" content="leanote,VPS,web">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Leanote安装教程">
+<meta property="og:url" content="https://heliublog.com/2017/05/07/Leanote安装教程/index.html">
+<meta property="og:site_name" content="Liu's Blog">
+<meta property="og:description" content="此教程参考官方教程Leanote安装教程而成，只是做了一点修改。  下载Leanote此处我下载的是二进制版，假设下载到/home/wwwroot/blog.heleou.com/web/下，那么下载后解压，命令如下：1tar -xzvf leanote-*.tar.gz 安装数据库-mongodb到 http://www.mongodb.org/downloads 去下载 64位linux m">
+<meta property="og:updated_time" content="2017-05-07T14:52:19.009Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Leanote安装教程">
+<meta name="twitter:description" content="此教程参考官方教程Leanote安装教程而成，只是做了一点修改。  下载Leanote此处我下载的是二进制版，假设下载到/home/wwwroot/blog.heleou.com/web/下，那么下载后解压，命令如下：1tar -xzvf leanote-*.tar.gz 安装数据库-mongodb到 http://www.mongodb.org/downloads 去下载 64位linux m">
+    
+        <link rel="alternate" type="application/atom+xml" title="Liu&#39;s Blog" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Liu He</h5>
+          <a href="mailto:me@heliublog.com" title="me@heliublog.com" class="mail">me@heliublog.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                Home
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/heliuphy" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="hhttp://weibo.com/2553167443" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                Weibo
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">Leanote安装教程</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">Leanote安装教程</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2017-05-07T14:47:13.000Z" itemprop="datePublished" class="page-time">
+  2017-05-07
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/web/">web</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#下载Leanote"><span class="post-toc-number">1.</span> <span class="post-toc-text">下载Leanote</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#安装数据库-mongodb"><span class="post-toc-number">2.</span> <span class="post-toc-text">安装数据库-mongodb</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#简单使用mongoDB"><span class="post-toc-number">3.</span> <span class="post-toc-text">简单使用mongoDB</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#导入初始数据"><span class="post-toc-number">4.</span> <span class="post-toc-text">导入初始数据</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#配置leanote"><span class="post-toc-number">5.</span> <span class="post-toc-text">配置leanote</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#运行leanote"><span class="post-toc-number">6.</span> <span class="post-toc-text">运行leanote</span></a></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-Leanote安装教程"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">Leanote安装教程</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2017-05-07 22:47:13" datetime="2017-05-07T14:47:13.000Z"  itemprop="datePublished">2017-05-07</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/web/">web</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <blockquote>
+<p>此教程参考官方教程<a href="https://github.com/leanote/leanote/wiki/leanote%E4%BA%8C%E8%BF%9B%E5%88%B6%E7%89%88%E8%AF%A6%E7%BB%86%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B" target="_blank" rel="external">Leanote安装教程</a>而成，只是做了一点修改。</p>
+</blockquote>
+<h2 id="下载Leanote"><a href="#下载Leanote" class="headerlink" title="下载Leanote"></a>下载Leanote</h2><p>此处我下载的是二进制版，假设下载到<code>/home/wwwroot/blog.heleou.com/web/</code>下，那么下载后解压，命令如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">tar -xzvf leanote-*.tar.gz</div></pre></td></tr></table></figure></p>
+<h2 id="安装数据库-mongodb"><a href="#安装数据库-mongodb" class="headerlink" title="安装数据库-mongodb"></a>安装数据库-mongodb</h2><p>到 <a href="http://www.mongodb.org/downloads" target="_blank" rel="external">http://www.mongodb.org/downloads</a> 去下载</p>
+<p>64位linux mongodb2.6.4下载链接: <a href="http://www.mongodb.org/dr//fastdl.mongodb.org/linux/mongodb-linux-x86_64-2.6.4.tgz/download" target="_blank" rel="external">http://www.mongodb.org/dr//fastdl.mongodb.org/linux/mongodb-linux-x86_64-2.6.4.tgz/download</a><br>64位linux mongodb 3.0.1下载链接: <a href="https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-3.0.1.tgz" target="_blank" rel="external">https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-3.0.1.tgz</a></p>
+<p>我下载的是3.0.1版，这两个版本的拷贝数据库操作不太一样，到后面的时候需要稍微注意一下。</p>
+<p>还是直接解压<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">tar -xzvf mongodb-linux-x86_64-3.0.1.tgz/</div></pre></td></tr></table></figure></p>
+<p>为了快速使用mongodb的命令, 可以配置环境变量,</p>
+<p>编辑<code>/etc/profile</code> 将mongodb bin路径加入即可.（写到文件最后即可）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">vim /etc/profile</div><div class="line">export PATH=$PATH:/home/wwwroot/blog.heleou.com/web/mongodb/bin</div><div class="line">source /etc/profile</div></pre></td></tr></table></figure></p>
+<h2 id="简单使用mongoDB"><a href="#简单使用mongoDB" class="headerlink" title="简单使用mongoDB"></a>简单使用mongoDB</h2><p>先在/home/wwwroot/blog.heleou.com/web下新建一个目录data存放mongodb数据</p>
+<p>开启mongodb<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mongod --dbpath /home/wwwroot/blog.heleou.com/web/data</div></pre></td></tr></table></figure></p>
+<p>附：后台开启命令：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mongod --fork --dbpath /home/wwwroot/blog.heleou.com/web/data --logpath /home/wwwroot/blog.heleou.com/web/logpath1/mongodb.log</div></pre></td></tr></table></figure></p>
+<p><code>--logpath</code>是日志路径，自己设置即可。</p>
+<p>这时mongod已经启动了</p>
+<p>重新打开一个终端, 使用下mongodb</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt; mongo</div><div class="line">&gt; show dbs</div></pre></td></tr></table></figure>
+<p>mongodb安装到此为止, 下面为mongodb导入数据leanote初始数据</p>
+<h2 id="导入初始数据"><a href="#导入初始数据" class="headerlink" title="导入初始数据"></a>导入初始数据</h2><p>v3的导入命令<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mongorestore -h localhost -d leanote --dir /home/wwwroot/blog.heleou.com/web/leanote/mongodb_backup/leanote_install_data/</div></pre></td></tr></table></figure></p>
+<h2 id="配置leanote"><a href="#配置leanote" class="headerlink" title="配置leanote"></a>配置leanote</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">vim conf/app.conf</div></pre></td></tr></table></figure>
+<p>这里要做的有两件事，一个是修个URL，一个是修改安全信息。</p>
+<ol>
+<li>修改网址：<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">http.port=80</div><div class="line">site.url=http://blog.heleou.com</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>当然你还需要将a.com绑定ip到Leanote服务器.</p>
+<p>如果服务器上已有其它程序运行了80端口, 怎么办呢? 请google或百度下 “使用nginx分发请求到不同端口”.</p>
+<h2 id="运行leanote"><a href="#运行leanote" class="headerlink" title="运行leanote"></a>运行leanote</h2><p>注意 在此之前请确保mongodb已在运行!</p>
+<p>新开一个窗口, 运行:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">cd /home/wwwroot/blog.heleou.com/web/leanote/bin</div><div class="line">bash run.sh (或 sh run.sh)</div><div class="line"># 最后出现以下信息证明运行成功</div><div class="line">...</div><div class="line">TRACE 2013/06/06 15:01:27 watcher.go:72: Watching: /home/life/leanote/bin/src/github.com/leanote/leanote/conf/routes</div><div class="line">Go to /@tests to run the tests.</div><div class="line">Listening on :80...</div></pre></td></tr></table></figure>
+<p>附：后台运行方法</p>
+<p>此时按<code>Crtl + z</code>暂停进程，然后敲入<code>bg</code>命令即可，退出终端还可继续运行。</p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    Last updated: <time datetime="2017-05-07T14:52:19.009Z" itemprop="dateUpdated">2017-05-07 22:52:19</time>
+</span><br>
+
+
+        
+        本站博文均为博主原创，转载请注明出处！<br />原文地址：<a href="/2017/05/07/Leanote安装教程/" target="_blank" rel="external">https://heliublog.com/2017/05/07/Leanote安装教程/</a>
+        
+    </div>
+    <footer>
+        <a href="https://heliublog.com">
+            <img src="/img/avatar.png" alt="Liu He">
+            Liu He
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/VPS/">VPS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leanote/">leanote</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/web/">web</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://heliublog.com/2017/05/07/Leanote安装教程/&title=《Leanote安装教程》 — Liu's Blog&pic=https://heliublog.com/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://heliublog.com/2017/05/07/Leanote安装教程/&title=《Leanote安装教程》 — Liu's Blog&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://heliublog.com/2017/05/07/Leanote安装教程/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Leanote安装教程》 — Liu's Blog&url=https://heliublog.com/2017/05/07/Leanote安装教程/&via=https://heliublog.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://heliublog.com/2017/05/07/Leanote安装教程/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2017/05/01/VTK提示MetaImage cannot read data from file/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">VTK提示MetaImage cannot read data from file</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2017/05/07/利用Dropbox备份vps中的文件/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">利用Dropbox备份vps中的文件</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+<section class="comments" id="comments">
+    <div id="disqus_thread"></div>
+    <script>
+    var disqus_shortname = 'liusblog';
+    lazyScripts.push('//' + disqus_shortname + '.disqus.com/embed.js')
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p>
+            <span>Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a></span>
+            <span>Liu He &copy; 2016 - 2017</span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://heliublog.com/2017/05/07/Leanote安装教程/&title=《Leanote安装教程》 — Liu's Blog&pic=https://heliublog.com/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://heliublog.com/2017/05/07/Leanote安装教程/&title=《Leanote安装教程》 — Liu's Blog&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://heliublog.com/2017/05/07/Leanote安装教程/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Leanote安装教程》 — Liu's Blog&url=https://heliublog.com/2017/05/07/Leanote安装教程/&via=https://heliublog.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://heliublog.com/2017/05/07/Leanote安装教程/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACJ0lEQVR42u3aQU4DMQwFUO5/6UFCLLpp+I6nFXVeVgjRIW+QPnacr694XT/r8evHlXxq/Zxn37l5YWBgfCzjWq71z3QAyZOTvWFgYJzDyEN2nXWdwF2D/9gzBgYGxvLRSRDnm8PAwMB4D6MT4hgYGBidJrbzqepLeWEvjoGB8YGMvcHAe75++XwDAwPj3zOu4sobzrxA7Ozn9zkYGBijGevDsmojmgRldfCZDyEwMDBOYOSHYnnIVtvRzgvCwMCYyrgrLvMYTS5k5P8Gnla4GBgYgxh5gCYNbTJCSNrgajuNgYFxJmPvF+Sb6ze6T4/bMDAwhjLunQlWf9negBMDA+Mcxt4woHps1x92FnpxDAyMAxjVYvHeki55EVHgYmBgDGIkkZds4nXBnY9IMTAwpjKS0KxGbeegv9pzY2BgnMDIr4L1YzcfIbRODTEwMMYxqqHWv5ZRLUYLfwEMDIyhjLuKv2pw3xvrGBgYJzA648a8Nd0bCZQP7zAwMMYx9trIvDTsjCcLrxgDA+MYxl505vGaF4jlQQIGBsZoxl5xlmwuv1qRr8KhGwYGxiDGVVzJFjsXLzbbaQwMjNGMathVi7/8gkW1ecbAwDiNUQ3BpGjrH6LlzS0GBsY5jL0ib+/4rPMfoNCFY2BgHMnoDA86Fy+iV4mBgYERF3z51a7qM28rDTEwMD6W0TmsrxZ21UsYERgDA2M0Y28wkA8M9q6xdoIeAwNjEOMbSIMpLicYrEMAAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+
+lazyScripts.push('//s95.cnzz.com/z_stat.php?id=1261861397&web_id=1261861397')
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>

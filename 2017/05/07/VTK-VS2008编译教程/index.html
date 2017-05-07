@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+<!-- Baidu Tongji -->
+<script>var _hmt = _hmt || []</script>
+<script async src="//hm.baidu.com/hm.js?bf3208c4535129798a3cceee4fe5b975"></script>
+<!-- End Baidu Tongji -->
+
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    <title>VTK-VS2008编译教程 | Liu&#39;s Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="VTK,visualstudio">
+    <meta name="description" content="准备工作环境 Win10 64bit 家庭版 VS2008 SP1 Qt 4.8.4 CMake 3.8.0 64bit-win VTK-7.1.1下载将上述组件下载安装好注意事项：   Qt需要下载两个东西： qt-win-opensource-4.8.4-vs2008.exe qt-vs-addin-1.1.11-opensource.exe直接谷歌搜索文件名即可找到下载地址。   VTK-7">
+<meta name="keywords" content="VTK,visualstudio">
+<meta property="og:type" content="article">
+<meta property="og:title" content="VTK-VS2008编译教程">
+<meta property="og:url" content="https://heliublog.com/2017/05/07/VTK-VS2008编译教程/index.html">
+<meta property="og:site_name" content="Liu's Blog">
+<meta property="og:description" content="准备工作环境 Win10 64bit 家庭版 VS2008 SP1 Qt 4.8.4 CMake 3.8.0 64bit-win VTK-7.1.1下载将上述组件下载安装好注意事项：   Qt需要下载两个东西： qt-win-opensource-4.8.4-vs2008.exe qt-vs-addin-1.1.11-opensource.exe直接谷歌搜索文件名即可找到下载地址。   VTK-7">
+<meta property="og:updated_time" content="2017-05-07T14:58:56.720Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="VTK-VS2008编译教程">
+<meta name="twitter:description" content="准备工作环境 Win10 64bit 家庭版 VS2008 SP1 Qt 4.8.4 CMake 3.8.0 64bit-win VTK-7.1.1下载将上述组件下载安装好注意事项：   Qt需要下载两个东西： qt-win-opensource-4.8.4-vs2008.exe qt-vs-addin-1.1.11-opensource.exe直接谷歌搜索文件名即可找到下载地址。   VTK-7">
+    
+        <link rel="alternate" type="application/atom+xml" title="Liu&#39;s Blog" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Liu He</h5>
+          <a href="mailto:me@heliublog.com" title="me@heliublog.com" class="mail">me@heliublog.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                Home
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/heliuphy" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="hhttp://weibo.com/2553167443" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                Weibo
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">VTK-VS2008编译教程</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">VTK-VS2008编译教程</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2017-05-07T14:57:45.000Z" itemprop="datePublished" class="page-time">
+  2017-05-07
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/VTK/">VTK</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#准备工作"><span class="post-toc-number">1.</span> <span class="post-toc-text">准备工作</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#环境"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">环境</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#下载"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">下载</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#安装"><span class="post-toc-number">2.</span> <span class="post-toc-text">安装</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#安装Qt"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">安装Qt</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#安装-CMAKE"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">安装 CMAKE</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#编译VTK"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">编译VTK</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#案例运行"><span class="post-toc-number">3.</span> <span class="post-toc-text">案例运行</span></a></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-VTK-VS2008编译教程"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">VTK-VS2008编译教程</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2017-05-07 22:57:45" datetime="2017-05-07T14:57:45.000Z"  itemprop="datePublished">2017-05-07</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/VTK/">VTK</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h2 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h2><h3 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h3><ul>
+<li>Win10 64bit 家庭版</li>
+<li>VS2008 SP1</li>
+<li>Qt 4.8.4</li>
+<li>CMake 3.8.0 64bit-win</li>
+<li>VTK-7.1.1<h3 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h3>将上述组件下载安装好<br>注意事项：</li>
+</ul>
+<ol>
+<li>Qt需要下载两个东西：<ul>
+<li>qt-win-opensource-4.8.4-vs2008.exe</li>
+<li>qt-vs-addin-1.1.11-opensource.exe<br>直接谷歌搜索文件名即可找到下载地址。</li>
+</ul>
+</li>
+<li>VTK-7.1.1可以下载data也可以不下载。<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><h3 id="安装Qt"><a href="#安装Qt" class="headerlink" title="安装Qt"></a>安装Qt</h3>按照提示一步步安装即可<h3 id="安装-CMAKE"><a href="#安装-CMAKE" class="headerlink" title="安装 CMAKE"></a>安装 CMAKE</h3>下载后安装即可<h3 id="编译VTK"><a href="#编译VTK" class="headerlink" title="编译VTK"></a>编译VTK</h3></li>
+<li>新建两个文件夹，一个src，用来存放源代码；一个bin，用来存放二进制文件。</li>
+<li>将VTK-7.1.1.zip解压至src。</li>
+<li>打开CMAKE，<code>Where is the source code</code> 填写src的绝对路径，<code>Where to build the binaries</code> 填写bin的绝对路径，比那一成功后的文件就放在这里。</li>
+<li>点击Config，选择VS2008，确定后，开始编译，过程大约几分钟。</li>
+<li>待编译完成后，会出现许多红色的选项，这些都是需要修改的选项。勾选CMake界面上的Grouped和Advanced, Grouped是对配置分组,Advanced是显示高级配置.</li>
+<li>VTK_Group_Qt          选中,使用Qt.</li>
+<li>CMAKE_INSTALL_PREFIX  修改为VTK/vsvtk  。这个目录可以自行指定,当VTK编译完成后,安装时,会将VTK安装到指定的目录。</li>
+<li>INSTALL_BIN_DIR<br>INSTALL_INC_DIR<br>INSTALL_LIB_DIR<br>INSTALL_MAN_DIR<br>INSTALL_PKGCONFIG_DIR<br>这些也分别更改到VTK\vsvtk 的相应目录下。</li>
+<li>configuer</li>
+<li>generate</li>
+<li>完成后，打开VTK\bin 用VS打开构建目录下的VTK.sln解决方案。</li>
+<li>等待IDE解析,解析完成后,状态栏会显示就绪.解析过程比较耗时,耐心等待VS解析完成。</li>
+<li>生成成功之后,就可以安装VTK了,右击INSTALL项目,选择仅生成INSTALL.然后就开始安装VTK了,安装完成,就可以在之前设置的prefix目录下看到安装之后的VTK.</li>
+<li>设置环境变量，将VTK\vsvtk 加入环境变量。<h2 id="案例运行"><a href="#案例运行" class="headerlink" title="案例运行"></a>案例运行</h2>新建文件夹Example，在文件夹下新建src和bin。<br>进入网址<a href="http://www.vtk.org/Wiki/VTK/Examples/Cxx/Rendering/Cylinder" target="_blank" rel="external">http://www.vtk.org/Wiki/VTK/Examples/Cxx/Rendering/Cylinder</a><br>复制源代码。<br>若VTK_DIR not found ，则手动填写为VTL\bin。<br>configure,generate。<br>用VS打开工程并编译。<br>打开cmd，进入所在目录，运行*.exe即可。</li>
+</ol>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    Last updated: <time datetime="2017-05-07T14:58:56.720Z" itemprop="dateUpdated">2017-05-07 22:58:56</time>
+</span><br>
+
+
+        
+        本站博文均为博主原创，转载请注明出处！<br />原文地址：<a href="/2017/05/07/VTK-VS2008编译教程/" target="_blank" rel="external">https://heliublog.com/2017/05/07/VTK-VS2008编译教程/</a>
+        
+    </div>
+    <footer>
+        <a href="https://heliublog.com">
+            <img src="/img/avatar.png" alt="Liu He">
+            Liu He
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/VTK/">VTK</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/visualstudio/">visualstudio</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://heliublog.com/2017/05/07/VTK-VS2008编译教程/&title=《VTK-VS2008编译教程》 — Liu's Blog&pic=https://heliublog.com/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://heliublog.com/2017/05/07/VTK-VS2008编译教程/&title=《VTK-VS2008编译教程》 — Liu's Blog&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://heliublog.com/2017/05/07/VTK-VS2008编译教程/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《VTK-VS2008编译教程》 — Liu's Blog&url=https://heliublog.com/2017/05/07/VTK-VS2008编译教程/&via=https://heliublog.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://heliublog.com/2017/05/07/VTK-VS2008编译教程/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2017/05/07/如何利用Dropbox备份指定文件夹/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">如何利用Dropbox备份指定文件夹</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2017/05/07/VTK运行Tcl文件/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">VTK运行Tcl文件</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+<section class="comments" id="comments">
+    <div id="disqus_thread"></div>
+    <script>
+    var disqus_shortname = 'liusblog';
+    lazyScripts.push('//' + disqus_shortname + '.disqus.com/embed.js')
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p>
+            <span>Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a></span>
+            <span>Liu He &copy; 2016 - 2017</span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://heliublog.com/2017/05/07/VTK-VS2008编译教程/&title=《VTK-VS2008编译教程》 — Liu's Blog&pic=https://heliublog.com/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://heliublog.com/2017/05/07/VTK-VS2008编译教程/&title=《VTK-VS2008编译教程》 — Liu's Blog&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://heliublog.com/2017/05/07/VTK-VS2008编译教程/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《VTK-VS2008编译教程》 — Liu's Blog&url=https://heliublog.com/2017/05/07/VTK-VS2008编译教程/&via=https://heliublog.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://heliublog.com/2017/05/07/VTK-VS2008编译教程/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACJElEQVR42u3a0W7CMAwFUP7/p5m0p0mD9NqGaSSnT6hErU8frDj27RZf9+/r9++fd5L7z9asn/OyCwMD42MZ9+W1XpP8m4RbffIDKgYGxgGMJMnmISYJN3/veg0GBgZGvoFbbw2T4DAwMDDex0juJIkbAwMDY81IytRkfRVQLW5fUItjYGB8IGPSGHj37z/qb2BgYPxjxr14zV9fbRtEUWFgYGzNmByK9Ujr+5MPgYGBsTcjGeSaNynnpXLyOTAwMHZl9MbCqqlw0jyI0joGBsamjLyYTDaRVV5vXCPqwWJgYGzN6I1TVBuW1aP/i/diYGBszagG1At0HXSe0C+iwsDAOIxRqICLwSWTEtV2AgYGxpmM+Wt6m8LeEAYGBsbejMk2rppYJyXrxUoMDIzDGJP2wLxA7TVNMTAwzmH0CtfqaFfCLo+LYWBgHMaoBjpJlL2S+OmwBQYGxtaMvLCskqplagJ7el6IgYGxKaMK6N3pHeFVeRgYGLsyqskrOZ7LE2tvpOzBvxgYGMcwepu/Hqk6TnERJwYGxtaManDVlmc1lVfXYGBgnMCYpLZ8TW87mDcyMTAw9mZUz9Wrm78kxOqQRy+hY2BgfDojf3Q+JDEfAss/AQYGxjmMXpJNNovV9kCz3MXAwMCIByB6zcs8nhckXAwMjCMZyaYwP7Brbj0xMDAOYPSK2F6zs9oYiFI2BgbG1oxJY6D5uCVskpQxMDC2Y3wBYXUUGT4R0qQAAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+
+lazyScripts.push('//s95.cnzz.com/z_stat.php?id=1261861397&web_id=1261861397')
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>
