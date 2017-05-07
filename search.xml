@@ -3,7 +3,7 @@
   <entry>
     <title><![CDATA[vtk-imageblend图像融合报错]]></title>
     <url>%2F2017%2F05%2F07%2Fvtk-imageblend%E5%9B%BE%E5%83%8F%E8%9E%8D%E5%90%88%E6%8A%A5%E9%94%99%2F</url>
-    <content type="text"></content>
+    <content type="text"><![CDATA[参考：http://blog.csdn.net/u012526003/article/details/52066403 在运行《VTK图像开发进阶》中5.2_ImageBlendExample.cpp代码时，报错vtkCompositeDataPipeline (004A4880): Input for connection on index 0 input port index 1 for algorithm vtkImageBlend(004A1958) is of type vtkImageData, but a vtkImageStencilData is required.正在无解之际，找到了解决办法，感谢原博主。只需将原程序中12imageBlend-&gt;SetInput(0,reader-&gt;GetOutput());imageBlend-&gt;SetInput(1,imageSource-&gt;GetOutput()); 改为12imageBlend-&gt;AddInputData(reader-&gt;GetOutput());imageBlend-&gt;AddInputData(imageSource-&gt;GetOutput()); 即可。]]></content>
       <categories>
         <category>VTK</category>
       </categories>

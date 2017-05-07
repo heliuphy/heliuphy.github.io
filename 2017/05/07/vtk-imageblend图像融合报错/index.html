@@ -25,14 +25,17 @@
     
     
     <meta name="keywords" content="VTK">
-    <meta name="keywords" content="VTK">
+    <meta name="description" content="参考：http://blog.csdn.net/u012526003/article/details/52066403  在运行《VTK图像开发进阶》中5.2_ImageBlendExample.cpp代码时，报错vtkCompositeDataPipeline (004A4880): Input for connection on index 0 input port index 1 for">
+<meta name="keywords" content="VTK">
 <meta property="og:type" content="article">
 <meta property="og:title" content="vtk-imageblend图像融合报错">
 <meta property="og:url" content="https://heliublog.com/2017/05/07/vtk-imageblend图像融合报错/index.html">
 <meta property="og:site_name" content="Liu's Blog">
-<meta property="og:updated_time" content="2017-05-07T15:02:16.920Z">
+<meta property="og:description" content="参考：http://blog.csdn.net/u012526003/article/details/52066403  在运行《VTK图像开发进阶》中5.2_ImageBlendExample.cpp代码时，报错vtkCompositeDataPipeline (004A4880): Input for connection on index 0 input port index 1 for">
+<meta property="og:updated_time" content="2017-05-07T15:05:12.610Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="vtk-imageblend图像融合报错">
+<meta name="twitter:description" content="参考：http://blog.csdn.net/u012526003/article/details/52066403  在运行《VTK图像开发进阶》中5.2_ImageBlendExample.cpp代码时，报错vtkCompositeDataPipeline (004A4880): Input for connection on index 0 input port index 1 for">
     
         <link rel="alternate" type="application/atom+xml" title="Liu&#39;s Blog" href="/atom.xml">
     
@@ -183,14 +186,20 @@
 
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
-            
+            <blockquote>
+<p>参考：<a href="http://blog.csdn.net/u012526003/article/details/52066403" target="_blank" rel="external">http://blog.csdn.net/u012526003/article/details/52066403</a></p>
+</blockquote>
+<p>在运行《VTK图像开发进阶》中<code>5.2_ImageBlendExample.cpp</code>代码时，报错<code>vtkCompositeDataPipeline (004A4880): Input for connection on index 0 input port index 1 for algorithm vtkImageBlend(004A1958) is of type vtkImageData, but a vtkImageStencilData is required.</code>正在无解之际，找到了解决办法，感谢原博主。<br>只需将原程序中<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">imageBlend-&gt;SetInput(0,reader-&gt;GetOutput());</div><div class="line">imageBlend-&gt;SetInput(1,imageSource-&gt;GetOutput());</div></pre></td></tr></table></figure></p>
+<p>改为<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">imageBlend-&gt;AddInputData(reader-&gt;GetOutput());</div><div class="line">imageBlend-&gt;AddInputData(imageSource-&gt;GetOutput());</div></pre></td></tr></table></figure></p>
+<p>即可。</p>
+
         </div>
 
         <blockquote class="post-copyright">
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2017-05-07T15:02:16.920Z" itemprop="dateUpdated">2017-05-07 23:02:16</time>
+    Last updated: <time datetime="2017-05-07T15:05:12.610Z" itemprop="dateUpdated">2017-05-07 23:05:12</time>
 </span><br>
 
 
