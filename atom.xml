@@ -74,7 +74,7 @@
     <link href="https://heliublog.com/2017/05/10/hexo%E5%9C%A8%E7%BA%BF%E7%BC%96%E5%86%99%E5%8D%9A%E5%AE%A2/"/>
     <id>https://heliublog.com/2017/05/10/hexo在线编写博客/</id>
     <published>2017-05-10T10:30:03.000Z</published>
-    <updated>2017-05-14T03:25:36.000Z</updated>
+    <updated>2017-05-15T02:20:45.189Z</updated>
     
     <content type="html"><![CDATA[<h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><p>这篇文章就是在线写出来的~</p>
 <p>从编辑、到生成，全部云上完成，妈妈再也不用担心我在别的电脑上没法写hexo了！</p>
@@ -106,8 +106,13 @@
 <p>不要用这个办法了，dockerhub上有现成的镜像<code>sapk/cloud9</code>，地址<a href="https://hub.docker.com/r/sapk/cloud9/" target="_blank" rel="external">点这里</a><br>想看旧方法，请<a href="https://heliublog.com/2017/05/10/hexo%E5%9C%A8%E7%BA%BF%E7%BC%96%E5%86%99%E5%8D%9A%E5%AE%A2/#cloud9-docker">点这里</a></p>
 <figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">docker pull sapk/cloud9</div><div class="line"></div><div class="line"><span class="comment"># start with auth 将username,password替换成自己的账号密码</span></div><div class="line">docker <span class="keyword">run</span><span class="bash"> <span class="_">-d</span> -v your-path/workspace:/workspace -p 8181:8181 sapk/cloud9 --auth username:password</span></div></pre></td></tr></table></figure>
 <p><a href="http://ip:8181" target="_blank" rel="external">http://ip:8181</a>  查看效果吧！</p>
-<h4 id="用Docker云"><a href="#用Docker云" class="headerlink" title="用Docker云"></a>用Docker云</h4><p>这里仅以<a href="https://arukas.io/" target="_blank" rel="external">Arukas</a>为例。<br>注册账号什么的就不说了。<br>直接创建应用，按照下图填写就行了：</p>
-<p><html><img src="/upload/1705112.jpg" alt="图片"></html><br>创建完成后启动应用，如果一次不成功就多试几次。<br>创建成功后，点击<code>Endpoint</code>后面的链接就可以进到你自己的cloud9了。</p>
+<h4 id="用Docker云"><a href="#用Docker云" class="headerlink" title="用Docker云"></a>用Docker云</h4><p>这里仅以<a href="https://arukas.io/" target="_blank" rel="external">Arukas</a>为例。<br>注册账号什么的就不说了。<br>直接创建应用，按照下图填写就行了：<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/upload/1705112.jpg" alt="Arukas设置" title="">
+                </div>
+                <div class="image-caption">Arukas设置</div>
+            </figure><br>创建完成后启动应用，如果一次不成功就多试几次。<br>创建成功后，点击<code>Endpoint</code>后面的链接就可以进到你自己的cloud9了。</p>
 <p><strong>千万注意：我不知道这里的数据都储存在了哪里，所以一定要定时将自己的博文通过cloud9页面下载到自己的电脑上，以作备份。</strong></p>
 <h3 id="nvm、node、npm、hexo"><a href="#nvm、node、npm、hexo" class="headerlink" title="nvm、node、npm、hexo"></a>nvm、node、npm、hexo</h3><p>这些我们一起讲，因为都是在cloud9中安装的。</p>
 <h4 id="nvm、node、npm的安装"><a href="#nvm、node、npm的安装" class="headerlink" title="nvm、node、npm的安装"></a>nvm、node、npm的安装</h4><p>nvm是node的版本管理器。</p>
