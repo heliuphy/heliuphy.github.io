@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+<!-- Baidu Tongji -->
+<script>var _hmt = _hmt || []</script>
+<script async src="//hm.baidu.com/hm.js?bf3208c4535129798a3cceee4fe5b975"></script>
+<!-- End Baidu Tongji -->
+
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    <title>搭建hexo博客小记——hexo系列文章（一） | 锡柳的博客 | 涓涓细流</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="Hexo">
+    <meta name="description" content="引言本文主要介绍在Github下搭建Hexo博客。总体说来，搭建Hexo总共需要两步：  第一部分，部署本地博客，也就是在你的电脑上搭建起来Web环境； 第二部分，生成静态页面，并上传到Github上去。">
+<meta name="keywords" content="Hexo">
+<meta property="og:type" content="article">
+<meta property="og:title" content="搭建hexo博客小记——hexo系列文章（一）">
+<meta property="og:url" content="https://heliublog.com/2016/05/01/搭建hexo博客小记/index.html">
+<meta property="og:site_name" content="锡柳的博客">
+<meta property="og:description" content="引言本文主要介绍在Github下搭建Hexo博客。总体说来，搭建Hexo总共需要两步：  第一部分，部署本地博客，也就是在你的电脑上搭建起来Web环境； 第二部分，生成静态页面，并上传到Github上去。">
+<meta property="og:updated_time" content="2017-05-10T14:16:46.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="搭建hexo博客小记——hexo系列文章（一）">
+<meta name="twitter:description" content="引言本文主要介绍在Github下搭建Hexo博客。总体说来，搭建Hexo总共需要两步：  第一部分，部署本地博客，也就是在你的电脑上搭建起来Web环境； 第二部分，生成静态页面，并上传到Github上去。">
+    
+        <link rel="alternate" type="application/atom+xml" title="锡柳的博客" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Liu He</h5>
+          <a href="mailto:me@heliublog.com" title="me@heliublog.com" class="mail">me@heliublog.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                Home
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/heliuphy" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://weibo.com/2553167443" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                Weibo
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about"  >
+                <i class="icon icon-lg icon-user-circle"></i>
+                about
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">搭建hexo博客小记——hexo系列文章（一）</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">搭建hexo博客小记——hexo系列文章（一）</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2016-05-01T10:06:12.000Z" itemprop="datePublished" class="page-time">
+  2016-05-01
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/博客/">博客</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#引言"><span class="post-toc-number">1.</span> <span class="post-toc-text">引言</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#搭建本地博客系统"><span class="post-toc-number">2.</span> <span class="post-toc-text">搭建本地博客系统</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Node-js的安装"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">Node.js的安装</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Git的安装"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">Git的安装</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Hexo的安装"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">Hexo的安装</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#安装依赖包"><span class="post-toc-number">2.4.</span> <span class="post-toc-text">安装依赖包</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#发布本地博客"><span class="post-toc-number">2.5.</span> <span class="post-toc-text">发布本地博客</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#上传本地文件到Github"><span class="post-toc-number">3.</span> <span class="post-toc-text">上传本地文件到Github</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#申请账号并建立仓库。"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">申请账号并建立仓库。</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#获取SSH公钥，并与Github账号绑定。"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">获取SSH公钥，并与Github账号绑定。</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#设置邮箱和用户名"><span class="post-toc-number">3.2.1.</span> <span class="post-toc-text">设置邮箱和用户名</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#生成密钥"><span class="post-toc-number">3.2.2.</span> <span class="post-toc-text">生成密钥</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#更改博客配置，为上传做准备。"><span class="post-toc-number">3.2.3.</span> <span class="post-toc-text">更改博客配置，为上传做准备。</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#上传博客内容"><span class="post-toc-number">4.</span> <span class="post-toc-text">上传博客内容</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#先生成静态文件"><span class="post-toc-number">4.1.</span> <span class="post-toc-text">先生成静态文件</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#部署前先输入以下命令，不然会出现error-deployer-not-found-github的报错。"><span class="post-toc-number">4.2.</span> <span class="post-toc-text">部署前先输入以下命令，不然会出现error deployer not found:github的报错。</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#上传文档（部署）"><span class="post-toc-number">4.3.</span> <span class="post-toc-text">上传文档（部署）</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-搭建hexo博客小记"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">搭建hexo博客小记——hexo系列文章（一）</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2016-05-01 18:06:12" datetime="2016-05-01T10:06:12.000Z"  itemprop="datePublished">2016-05-01</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/博客/">博客</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><p>本文主要介绍在Github下搭建Hexo博客。总体说来，搭建Hexo总共需要两步：</p>
+<ul>
+<li>第一部分，部署本地博客，也就是在你的电脑上搭建起来Web环境；</li>
+<li>第二部分，生成静态页面，并上传到Github上去。<a id="more"></a></li>
+</ul>
+<h2 id="搭建本地博客系统"><a href="#搭建本地博客系统" class="headerlink" title="搭建本地博客系统"></a>搭建本地博客系统</h2><p>搭建本地博客系统首先要部署环境，即Node.js和Git。</p>
+<h3 id="Node-js的安装"><a href="#Node-js的安装" class="headerlink" title="Node.js的安装"></a>Node.js的安装</h3><p>可以<a href="https://nodejs.org/" target="_blank" rel="external">点此</a>下载nodejs，并按照步骤一步步安装；一切默认即可；</p>
+<h3 id="Git的安装"><a href="#Git的安装" class="headerlink" title="Git的安装"></a>Git的安装</h3><p>git bash，<a href="https://git-scm.com/downloads" target="_blank" rel="external">点此</a>下载即可。<br>部署好本地环境，便可以开始安装博客系统Hexo了</p>
+<h3 id="Hexo的安装"><a href="#Hexo的安装" class="headerlink" title="Hexo的安装"></a>Hexo的安装</h3><p>Hexo可直接用<code>npm</code>安装，可在电脑任意文件夹下右键Git Bash Here，进去后，在命令行中输入</p>
+<pre><code>npm install -g hexo
+</code></pre><h3 id="安装依赖包"><a href="#安装依赖包" class="headerlink" title="安装依赖包"></a>安装依赖包</h3><pre><code>npm install
+</code></pre><h3 id="发布本地博客"><a href="#发布本地博客" class="headerlink" title="发布本地博客"></a>发布本地博客</h3><p>到上一步为止，本地博客已搭建完成，下面我们可以发布本地博客看看效果：（即生成静态页面）</p>
+<pre><code>hexo generate
+hexo server
+</code></pre><p>当然，也可以用简写：</p>
+<pre><code>hexo g
+hexo s
+</code></pre><p>本地服务器开启后，我们就可以进入<a href="http://localhost:4000" target="_blank" rel="external">http://localhost:4000</a>浏览本地博客了。</p>
+<h2 id="上传本地文件到Github"><a href="#上传本地文件到Github" class="headerlink" title="上传本地文件到Github"></a>上传本地文件到Github</h2><h3 id="申请账号并建立仓库。"><a href="#申请账号并建立仓库。" class="headerlink" title="申请账号并建立仓库。"></a>申请账号并建立仓库。</h3><p>账号自行申请，建立仓库即在页面右上角的+除新建一个<code>repository</code>。但是命名有要求，必须用你的用户名加上github.io来命名仓库名。比如你的用户名为user123，那么就命名为user123.github.io。</p>
+<h3 id="获取SSH公钥，并与Github账号绑定。"><a href="#获取SSH公钥，并与Github账号绑定。" class="headerlink" title="获取SSH公钥，并与Github账号绑定。"></a>获取SSH公钥，并与Github账号绑定。</h3><h4 id="设置邮箱和用户名"><a href="#设置邮箱和用户名" class="headerlink" title="设置邮箱和用户名"></a>设置邮箱和用户名</h4><pre><code>git config --global user.email &quot;user123@gmail.com&quot; 
+</code></pre><p>git config –global user.name “user123”</p>
+<h4 id="生成密钥"><a href="#生成密钥" class="headerlink" title="生成密钥"></a>生成密钥</h4><pre><code>ssh-keygen -t rsa -C &quot;user@gmail.com&quot;
+</code></pre><p>命令运行后，会在<code>C:\Users\你的计算机名\.ssh</code>中找到<code>id_rsa.pub</code>这个文件，貌似是pubication的文件，但是我用office打不开，所以不管它了，如果有老兄知道这个究竟是用什么打开比较好，可以在评论区告诉我。不过它也是可以用txt打开的，将其中的内容复制到以下位置：</p>
+<p>先登录github，点击右上角你的账户头像，进入settings，进入SSH key选项卡，将<code>id_rsa.pub</code>中的所有内容添加进去即可。</p>
+<h4 id="更改博客配置，为上传做准备。"><a href="#更改博客配置，为上传做准备。" class="headerlink" title="更改博客配置，为上传做准备。"></a>更改博客配置，为上传做准备。</h4><p>打开<code>D:\hexo</code>目录下的配置文件<code>_config.yml</code>（推荐用软件Sublime Text打开，不要用txt打开，因为这要UTF-8编码，而txt不会编码），翻到最下面，并改成以下内容，把<code>user123g</code>替换成你的用户名即可</p>
+<pre><code>deploy:
+type: git
+repository: https://github.com/user123/user123.github.io.git
+branch: master
+</code></pre><p>注意：<code>type</code>后面一定要是<code>git</code>，不要填<code>Github</code>。这是最新版hexo的要求。还有就是上面配置文件的语法较为严格<code>type:</code>后面一定要留一个空格，<code>repository</code>，<code>branch</code>也一样。</p>
+<h2 id="上传博客内容"><a href="#上传博客内容" class="headerlink" title="上传博客内容"></a>上传博客内容</h2><h3 id="先生成静态文件"><a href="#先生成静态文件" class="headerlink" title="先生成静态文件"></a>先生成静态文件</h3><pre><code>hexo g
+</code></pre><h3 id="部署前先输入以下命令，不然会出现error-deployer-not-found-github的报错。"><a href="#部署前先输入以下命令，不然会出现error-deployer-not-found-github的报错。" class="headerlink" title="部署前先输入以下命令，不然会出现error deployer not found:github的报错。"></a>部署前先输入以下命令，不然会出现<code>error deployer not found:github</code>的报错。</h3><pre><code>npm install hexo-deployer-git --save
+</code></pre><h3 id="上传文档（部署）"><a href="#上传文档（部署）" class="headerlink" title="上传文档（部署）"></a>上传文档（部署）</h3><pre><code>hexo d
+</code></pre><p>待出现<code>INFO Deploy done: git</code>即成功。成功后，进入网址<code>http://user123..github.io</code>浏览查看。</p>
+<p>至此，所有工作都已完成，如果想更改主题什么的，可以看我后续的博客。有问题欢迎大家留言。</p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2017-05-10T14:16:46.000Z" itemprop="dateUpdated">2017-05-10 22:16:46</time>
+</span><br>
+
+
+        
+        本站博文均为博主原创，转载请注明出处！<br />原文地址：<a href="/2016/05/01/搭建hexo博客小记/" target="_blank" rel="external">https://heliublog.com/2016/05/01/搭建hexo博客小记/</a>
+        
+    </div>
+    <footer>
+        <a href="https://heliublog.com">
+            <img src="/img/avatar.png" alt="Liu He">
+            Liu He
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hexo/">Hexo</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://heliublog.com/2016/05/01/搭建hexo博客小记/&title=《搭建hexo博客小记——hexo系列文章（一）》 — 锡柳的博客&pic=https://heliublog.com/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://heliublog.com/2016/05/01/搭建hexo博客小记/&title=《搭建hexo博客小记——hexo系列文章（一）》 — 锡柳的博客&source=引言本文主要介绍在Github下搭建Hexo博客。总体说来，搭建Hexo总共需要两步：
+
+第一部分，部署本地博客，也就是在你的电脑上搭建起来Web环境；
+..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://heliublog.com/2016/05/01/搭建hexo博客小记/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《搭建hexo博客小记——hexo系列文章（一）》 — 锡柳的博客&url=https://heliublog.com/2016/05/01/搭建hexo博客小记/&via=https://heliublog.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://heliublog.com/2016/05/01/搭建hexo博客小记/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2016/05/01/KeePass/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">KeePass+KeePassHTTP+chromeIPass储存个人密码</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2016/05/01/VPS+Hexo+Dropbox创建个人博客/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">VPS+Hexo+Dropbox创建个人博客——hexo系列教程（三）</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<section class="comments" id="comments">
+    <div id="gitment_thread"></div>
+    <link rel="stylesheet" href="//unpkg.com/gitment/style/default.css">
+    <script src="//unpkg.com/gitment/dist/gitment.browser.js"></script>
+    <script>
+        var gitment = new Gitment({
+            owner: 'heliuphy',
+            repo: 'HexoGitment',
+            oauth: {
+                client_id: 'e3b01812732c8b925e24',
+                client_secret: 'e16642c22f15078e6836cbfc31123ffd05acb13c',
+            },
+        })
+        gitment.render('comments')
+    </script>
+</section>
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循<a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p>
+            <span>Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a></span>
+            <span>Liu He &copy; 2016 - 2017</span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://heliublog.com/2016/05/01/搭建hexo博客小记/&title=《搭建hexo博客小记——hexo系列文章（一）》 — 锡柳的博客&pic=https://heliublog.com/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://heliublog.com/2016/05/01/搭建hexo博客小记/&title=《搭建hexo博客小记——hexo系列文章（一）》 — 锡柳的博客&source=引言本文主要介绍在Github下搭建Hexo博客。总体说来，搭建Hexo总共需要两步：
+
+第一部分，部署本地博客，也就是在你的电脑上搭建起来Web环境；
+..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://heliublog.com/2016/05/01/搭建hexo博客小记/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《搭建hexo博客小记——hexo系列文章（一）》 — 锡柳的博客&url=https://heliublog.com/2016/05/01/搭建hexo博客小记/&via=https://heliublog.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://heliublog.com/2016/05/01/搭建hexo博客小记/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACJElEQVR42u3aS27DMAwFwNz/0um2QBv3kZSBWhqvClixNV6w/Oj1iq/3j2uy8tOa5PmjCwMD47GM9+V1veb73evnX6+svveX52BgYBzAyF+fb7r6zPwDYWBgYMwDZZLFfUoHMTAwMFYxkhdPYBgYGBi9IjYpaPOUMWm33VKLY2BgPJCxKiDe8fct8w0MDIxHMd7Fq5c+VseZ5V1hYGBszcgDXDVxzJ/Wa9thYGBgVA9eVNv9eRGbNPswMDBOYCQhr3d33korF7cYGBjbMfLyMvkehbBYxL/KeSIGBsaejFVHtXor8zXRDBYDA2MjxlrMpPWf824PuxgYGP+MsapBljTpcnB5hxgYGMcwesPFXsusV7L+cWYEAwNja0ZvZLjqEFjevPt4FwMD4wBGUhXOR575u8ofEQMD4zBGb0iZt+HmH+6X92JgYGzNqLbMqkVv71f5eAADA+MERt4U66WDvUSwvAcMDIytGfkPksRx/jmqn6DsxsDAeDhjNEQsNsuu31sdoGJgYJzJ6B2emITsfA9/pIYYGBjHMPLt5iOB6mGL8kENDAyMTRnN0DYG56VslLZiYGBszegFu0lp2hseVIcKGBgY+zGqhWvCqI4HeqNQDAyM0xj3hc5ko/l/gKjdhoGBgXEZTPPQXA3cUUWOgYGBER/eqo42k3HCjakhBgbGQxj5ka/eSGBy5GLBIBMDA+PhjLx0nCdwk/HAgqEmBgbG8xhf33+yUJ7LmUsAAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+
+lazyScripts.push('//s95.cnzz.com/z_stat.php?id=1261861397&web_id=1261861397')
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>

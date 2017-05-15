@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+<!-- Baidu Tongji -->
+<script>var _hmt = _hmt || []</script>
+<script async src="//hm.baidu.com/hm.js?bf3208c4535129798a3cceee4fe5b975"></script>
+<!-- End Baidu Tongji -->
+
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    <title>VPS服务器搭建ghost blog | 锡柳的博客 | 涓涓细流</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="ghost blog">
+    <meta name="description" content="####前传  &amp;#160;&amp;#160;无意中看到markdown语法，立马就喜欢上它，所以就想博客能不能也用这种语法写，因为我的博客原来一直用wordpress来搞，第一个想到的当然是用插件，当然也下到了，不过估计是主题css的问题，代码框老显示不出来，对于想要代码框的我来说实在是不能忍，就上网搜有没有其他的博客工具，哈哈终于找到了它，ghostblog！ &amp;#160;&amp;#160;但是安装下来着">
+<meta name="keywords" content="ghost blog">
+<meta property="og:type" content="article">
+<meta property="og:title" content="VPS服务器搭建ghost blog">
+<meta property="og:url" content="https://heliublog.com/2016/05/01/VPS服务器搭建ghost blog/index.html">
+<meta property="og:site_name" content="锡柳的博客">
+<meta property="og:description" content="####前传  &amp;#160;&amp;#160;无意中看到markdown语法，立马就喜欢上它，所以就想博客能不能也用这种语法写，因为我的博客原来一直用wordpress来搞，第一个想到的当然是用插件，当然也下到了，不过估计是主题css的问题，代码框老显示不出来，对于想要代码框的我来说实在是不能忍，就上网搜有没有其他的博客工具，哈哈终于找到了它，ghostblog！ &amp;#160;&amp;#160;但是安装下来着">
+<meta property="og:updated_time" content="2017-05-10T10:21:26.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="VPS服务器搭建ghost blog">
+<meta name="twitter:description" content="####前传  &amp;#160;&amp;#160;无意中看到markdown语法，立马就喜欢上它，所以就想博客能不能也用这种语法写，因为我的博客原来一直用wordpress来搞，第一个想到的当然是用插件，当然也下到了，不过估计是主题css的问题，代码框老显示不出来，对于想要代码框的我来说实在是不能忍，就上网搜有没有其他的博客工具，哈哈终于找到了它，ghostblog！ &amp;#160;&amp;#160;但是安装下来着">
+    
+        <link rel="alternate" type="application/atom+xml" title="锡柳的博客" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Liu He</h5>
+          <a href="mailto:me@heliublog.com" title="me@heliublog.com" class="mail">me@heliublog.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                Home
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/heliuphy" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://weibo.com/2553167443" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                Weibo
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about"  >
+                <i class="icon icon-lg icon-user-circle"></i>
+                about
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">VPS服务器搭建ghost blog</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">VPS服务器搭建ghost blog</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2016-05-01T10:06:12.000Z" itemprop="datePublished" class="page-time">
+  2016-05-01
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/web/">web</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+<article id="post-VPS服务器搭建ghost blog"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">VPS服务器搭建ghost blog</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2016-05-01 18:06:12" datetime="2016-05-01T10:06:12.000Z"  itemprop="datePublished">2016-05-01</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/web/">web</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>####前传</p>
+<hr>
+<p>&#160;&#160;无意中看到markdown语法，立马就喜欢上它，所以就想博客能不能也用这种语法写，因为我的博客原来一直用wordpress来搞，第一个想到的当然是用插件，当然也下到了，不过估计是主题css的问题，代码框老显示不出来，对于想要代码框的我来说实在是不能忍，就上网搜有没有其他的博客工具，哈哈终于找到了它，ghostblog！</p>
+<p>&#160;&#160;但是安装下来着实费了不少功夫。总结起来比较简便的方法还是AMH+Node.js<br><a id="more"></a><br>注：以下步骤引用自：<br><a href="http://www.tuicool.com/articles/jQnIJf3" target="_blank" rel="external">http://www.tuicool.com/articles/jQnIJf3</a></p>
+<ol>
+<li><p>安装AMH，网上有详细教程</p>
+</li>
+<li><p>安装Node.js</p>
+<p>也是网上的教程，不过有些gcc版本可能支持不了太新的Node.js</p>
+</li>
+<li><p>安装ghost</p>
+<ol>
+<li><p>新建数据库</p>
+<p>登陆AMH面板，进入数据库，快速建库，很简单。</p>
+</li>
+<li><p>新建站点</p>
+<p>登陆AMH面板，点击虚拟主机，新建虚拟主机，这也很简单。</p>
+</li>
+<li><p>安装Ghost程序</p>
+<p>这里我们使用的是 <a href="http://ghostchina.com/" target="_blank" rel="external">http://ghostchina.com/</a> 发布的中文版Ghost。</p>
+<p>登陆ssh，运行命令，</p>
+<pre><code>wget http://dl.ghostchina.com/Ghost-0.5.9-zh-full.zip //下载Ghost到VPS  
+unzip Ghost-0.5.9-zh-full.zip -d ghost //解压Ghost-0.5.9-zh-full.zip并xiu修改文件夹名为ghost  
+</code></pre><p>如没有安装unzip，请执行 sudo yum install unzip 来安装，</p>
+<p>&#160;&#160;到这里需要注意，ghost文件夹里的所有文件全部移动到之前你新建虚拟主机的web根目录下，不然会出错，文件移动号后，进入虚拟主机的web根目录下</p>
+<pre><code>cd /虚拟主机web根目录路径   //进入虚拟主机web根目录，此步骤不能少  
+cp config.example.js config.js //复制config.example.js成config.js  
+vim config.js //用vim编辑config.js文件  
+</code></pre><p>将相关位置修改成以下这样：</p>
+<pre><code>production: {  
+url: &apos;http://your_blog_url&apos;,
+mail: {},
+database: {
+client: &apos;mysql&apos;,
+connection: {
+host     : &apos;127.0.0.1&apos;, 
+user     : &apos;root&apos;, //暂且直接用root账户
+password : &apos;password&apos;, //你的root账户密码
+database : &apos;ghost&apos;, //你之前建立的数据库名
+charset  : &apos;utf8&apos;
+},
+debug: false
+},
+server: {
+// Host to be passed to node&apos;s                 `net.Server#listen()`
+host: &apos;127.0.0.1&apos;,//改为0.0.0.0，否则他人无法访问
+// Port to be passed to node&apos;s `net.Server#listen()`, for iisnode set this to `process.env.PORT`
+port: &apos;2368&apos;
+}
+},
+</code></pre><p>这里说一下vim编辑器的一般用法：</p>
+<p>i: 进入插入编辑模式</p>
+<p>ESC: 退出编辑模式</p>
+<p>:x : 退出并保存文件（退出编辑模式下使用）</p>
+</li>
+<li><p>配置Nginx</p>
+<p>由于之前你新建的虚拟主机的Nginx配置是为php服务的，所以，我们要将其进行修改成为node.js服务，</p>
+<pre><code>vim /usr/local/nginx/conf/***.conf //进入Nginx配置文件目录,并编辑与你新建的虚拟主机相应的Nginx配置文件  
+</code></pre><p>清空里面的内容，替换成以下：</p>
+<pre><code>server {  
+listen 80;
+server_name  xxx.com www.xxxx.com; //替换为你自己的域名！
+location / {
+proxy_set_header   X-Real-IP $remote_addr;
+proxy_set_header   Host      $http_host;
+proxy_pass         http://127.0.0.1:2368;
+ }
+}
+</code></pre><p>然后进AMH控制面板重启一下Nginx，</p>
+<pre><code>npm start --production //启动Ghost，如果不出差错，在浏览器输入你的域名就可以看见Ghost的界面了，--production不能少  
+</code></pre><p>别以为到这就结束了，目前Ghost在我们SSH断开后就会结束进程，所以我们继续：</p>
+</li>
+<li><p>安装forever守护Ghost进程</p>
+<p>为了让Ghost程序能够后台运行不中断，我们还得再安装个工具，就是forever，使用-g参数就是在全局模式中安装，这样我们就可以再任何地方都能使用forever命令了。</p>
+<p>以下命令都请在网站根目录下运行</p>
+<pre><code>npm install forever -g //forever的安装命令  
+NODE_ENV=production forever start index.js  //安装forever后的Ghost启动命令  
+</code></pre><p>   好了，Ghost就此安装完成</p>
+</li>
+</ol>
+</li>
+</ol>
+<p>Ghost相关命令：</p>
+<p>//以下命令都请在网站根目录下运行</p>
+<pre><code>NODE_ENV=production forever start index.js //启动Ghost  
+NODE_ENV=production forever stop index.js //停止Ghost  
+NODE_ENV=production forever restart index.js //重启Ghost  
+</code></pre><p>现在，你就可以通过AMH控制面板进行数据管理、在线的文件编辑和上传 同样，你也可以按正常步骤新建一个php网站。</p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2017-05-10T10:21:26.000Z" itemprop="dateUpdated">2017-05-10 18:21:26</time>
+</span><br>
+
+
+        
+        本站博文均为博主原创，转载请注明出处！<br />原文地址：<a href="/2016/05/01/VPS服务器搭建ghost blog/" target="_blank" rel="external">https://heliublog.com/2016/05/01/VPS服务器搭建ghost blog/</a>
+        
+    </div>
+    <footer>
+        <a href="https://heliublog.com">
+            <img src="/img/avatar.png" alt="Liu He">
+            Liu He
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ghost-blog/">ghost blog</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://heliublog.com/2016/05/01/VPS服务器搭建ghost blog/&title=《VPS服务器搭建ghost blog》 — 锡柳的博客&pic=https://heliublog.com/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://heliublog.com/2016/05/01/VPS服务器搭建ghost blog/&title=《VPS服务器搭建ghost blog》 — 锡柳的博客&source=####前传
+
+&#160;&#160;无意中看到markdown语法，立马就喜欢上它，所以就想博客能不能也用这种语法写，因为我的博客原来一直用wordp..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://heliublog.com/2016/05/01/VPS服务器搭建ghost blog/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《VPS服务器搭建ghost blog》 — 锡柳的博客&url=https://heliublog.com/2016/05/01/VPS服务器搭建ghost blog/&via=https://heliublog.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://heliublog.com/2016/05/01/VPS服务器搭建ghost blog/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2016/05/01/利用Keepass2.x进行ftp或webdev同步/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">利用KeePass2.x进行ftp或webdev同步</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2016/05/01/coding和github同时使用/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">coding和github同时使用</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<section class="comments" id="comments">
+    <div id="gitment_thread"></div>
+    <link rel="stylesheet" href="//unpkg.com/gitment/style/default.css">
+    <script src="//unpkg.com/gitment/dist/gitment.browser.js"></script>
+    <script>
+        var gitment = new Gitment({
+            owner: 'heliuphy',
+            repo: 'HexoGitment',
+            oauth: {
+                client_id: 'e3b01812732c8b925e24',
+                client_secret: 'e16642c22f15078e6836cbfc31123ffd05acb13c',
+            },
+        })
+        gitment.render('comments')
+    </script>
+</section>
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循<a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p>
+            <span>Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a></span>
+            <span>Liu He &copy; 2016 - 2017</span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://heliublog.com/2016/05/01/VPS服务器搭建ghost blog/&title=《VPS服务器搭建ghost blog》 — 锡柳的博客&pic=https://heliublog.com/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://heliublog.com/2016/05/01/VPS服务器搭建ghost blog/&title=《VPS服务器搭建ghost blog》 — 锡柳的博客&source=####前传
+
+&#160;&#160;无意中看到markdown语法，立马就喜欢上它，所以就想博客能不能也用这种语法写，因为我的博客原来一直用wordp..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://heliublog.com/2016/05/01/VPS服务器搭建ghost blog/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《VPS服务器搭建ghost blog》 — 锡柳的博客&url=https://heliublog.com/2016/05/01/VPS服务器搭建ghost blog/&via=https://heliublog.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://heliublog.com/2016/05/01/VPS服务器搭建ghost blog/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACI0lEQVR42u3aQXLDIAwF0Nz/0uk2My3OlyCZGh6rTuIAzwsVIT0e8Xj+Gq+fj555/TafbfSrBQMDA+O2jOflGC2QbHdETVbP94aBgXEOI19+NNHMPElAf7MWBgYGRhAok01fh+9kXQwMDIweI/k8OThiYGBgXDN6R7Tk2yQNzlPlBbk4BgbGDRnVsPjNvz9S38DAwLgV41kca6/nekH2j11hYGBszZg52PWevD7eTa2CgYGxKSNJTQshLwijSZguF0cxMDAOYFSLkfl1W7VsWS0SYGBgnMDoLZBT84PgfCkUAwNjb0a1DeI6QH+iJLCgbICBgXFbxvxG53/1L943BgbGzRnVGfL5q8nwMKBjYGAczOhdpSXX+jO/jUqYGBgYWzOuMXm4zIuj0aX/dWjGwMA4jNFLWZMwurbZAgMD4xxG7xZrZuo8re29YgwMjP0Y1RbVvCSQlDaraw1fCgYGxtaM6hVbUnrsYfL/D8PjJgYGxtaMPDXtXZblW8mLBMMXjYGBsSkjyWvzPLj35MzzGBgY5zCS1LSXlM63X0RXexgYGAcwZg5812ltr9miPDAwMDZlPItjfp789RWoGBgYWzO+H5R7CfNUzwgGBsYWjE+0WeQHxPyVvbmYw8DAOICxqqki2WihspojMTAwMFrtXPnxccGVHAYGBkaxMaLXPDFTkMDAwDiBUW2wWNU20bvOw8DAOI2Rp47lIPiVYicGBsbWjB8R1yLg/igK0wAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+
+lazyScripts.push('//s95.cnzz.com/z_stat.php?id=1261861397&web_id=1261861397')
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>

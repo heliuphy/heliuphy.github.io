@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+<!-- Baidu Tongji -->
+<script>var _hmt = _hmt || []</script>
+<script async src="//hm.baidu.com/hm.js?bf3208c4535129798a3cceee4fe5b975"></script>
+<!-- End Baidu Tongji -->
+
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    <title>KeePass+KeePassHTTP+chromeIPass储存个人密码 | 锡柳的博客 | 涓涓细流</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="KeePass,Chrome">
+    <meta name="description" content="前言现在密码越来越多，但是为了密码安全还是不愿所有网站用同一个密码。所以就想到了用密码管理软件。尝试过1Password和Lastpass，可惜都收费。所以找到了KeePass，不仅免费，还开源。支持多平台。结合插件，可以实现在chrome上自动填写密码。">
+<meta name="keywords" content="KeePass,Chrome">
+<meta property="og:type" content="article">
+<meta property="og:title" content="KeePass+KeePassHTTP+chromeIPass储存个人密码">
+<meta property="og:url" content="https://heliublog.com/2016/05/01/KeePass/index.html">
+<meta property="og:site_name" content="锡柳的博客">
+<meta property="og:description" content="前言现在密码越来越多，但是为了密码安全还是不愿所有网站用同一个密码。所以就想到了用密码管理软件。尝试过1Password和Lastpass，可惜都收费。所以找到了KeePass，不仅免费，还开源。支持多平台。结合插件，可以实现在chrome上自动填写密码。">
+<meta property="og:image" content="http://i.imgur.com/0R82YzX.png">
+<meta property="og:image" content="http://i.imgur.com/PDcuXmf.png">
+<meta property="og:updated_time" content="2017-05-10T10:21:04.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="KeePass+KeePassHTTP+chromeIPass储存个人密码">
+<meta name="twitter:description" content="前言现在密码越来越多，但是为了密码安全还是不愿所有网站用同一个密码。所以就想到了用密码管理软件。尝试过1Password和Lastpass，可惜都收费。所以找到了KeePass，不仅免费，还开源。支持多平台。结合插件，可以实现在chrome上自动填写密码。">
+<meta name="twitter:image" content="http://i.imgur.com/0R82YzX.png">
+    
+        <link rel="alternate" type="application/atom+xml" title="锡柳的博客" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Liu He</h5>
+          <a href="mailto:me@heliublog.com" title="me@heliublog.com" class="mail">me@heliublog.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                Home
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/heliuphy" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://weibo.com/2553167443" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                Weibo
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about"  >
+                <i class="icon icon-lg icon-user-circle"></i>
+                about
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">KeePass+KeePassHTTP+chromeIPass储存个人密码</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">KeePass+KeePassHTTP+chromeIPass储存个人密码</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2016-05-01T10:06:12.000Z" itemprop="datePublished" class="page-time">
+  2016-05-01
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/软件/">软件</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#前言"><span class="post-toc-number">1.</span> <span class="post-toc-text">前言</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#安装步骤"><span class="post-toc-number">2.</span> <span class="post-toc-text">安装步骤</span></a></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-KeePass"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">KeePass+KeePassHTTP+chromeIPass储存个人密码</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2016-05-01 18:06:12" datetime="2016-05-01T10:06:12.000Z"  itemprop="datePublished">2016-05-01</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/软件/">软件</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>现在密码越来越多，但是为了密码安全还是不愿所有网站用同一个密码。所以就想到了用密码管理软件。尝试过1Password和Lastpass，可惜都收费。所以找到了KeePass，不仅免费，还开源。支持多平台。结合插件，可以实现在chrome上自动填写密码。<br><a id="more"></a></p>
+<blockquote>
+<p>本文参考<a href="http://devzc.com/post/465" target="_blank" rel="external">http://devzc.com/post/465</a>写作而成，再次对原作者表示感谢。</p>
+</blockquote>
+<h2 id="安装步骤"><a href="#安装步骤" class="headerlink" title="安装步骤"></a>安装步骤</h2><ol>
+<li><p>首先从以下网址下载所需文件</p>
+<ul>
+<li><p>KeePass主体程序:<br><a href="http://keepass.info/download.html" target="_blank" rel="external">http://keepass.info/download.html</a></p>
+</li>
+<li><p>KeePassHTTP扩展下载:<br><a href="https://github.com/pfn/keepasshttp/blob/master/KeePassHttp.plgx?raw=true" target="_blank" rel="external">https://github.com/pfn/keepasshttp/blob/master/KeePassHttp.plgx?raw=true</a><br>源码: <a href="https://github.com/pfn/keepasshttp/" target="_blank" rel="external">https://github.com/pfn/keepasshttp/</a></p>
+</li>
+<li><p>chromeIPass:<br>Chrome应用商店搜索[chromeIPass],安装即可;<br>chromeIPass源码: <a href="https://github.com/pfn/passifox" target="_blank" rel="external">https://github.com/pfn/passifox</a></p>
+</li>
+</ul>
+</li>
+<li><p>依次安装以上文件。<br>注意KeePassHTTP的配置：</p>
+<ol>
+<li>将KeePassHttp.plgx放在KeePass.exe同目录下,重启KeePass。并单击工具下的“KeePassHttp Options”。</li>
+<li>按照如下图配置：<br><img src="http://i.imgur.com/0R82YzX.png" alt=""></li>
+<li>点击Chrome上的chromeIPass图标，会出现Connect按钮,点击进去；</li>
+<li>Key_Name自己起名</li>
+<li><p>保存后，重新点击chromeIPass，若出现以下信息，则说明成功：</p>
+<p><img src="http://i.imgur.com/PDcuXmf.png" alt=""></p>
+</li>
+</ol>
+</li>
+</ol>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2017-05-10T10:21:04.000Z" itemprop="dateUpdated">2017-05-10 18:21:04</time>
+</span><br>
+
+
+        
+        本站博文均为博主原创，转载请注明出处！<br />原文地址：<a href="/2016/05/01/KeePass/" target="_blank" rel="external">https://heliublog.com/2016/05/01/KeePass/</a>
+        
+    </div>
+    <footer>
+        <a href="https://heliublog.com">
+            <img src="/img/avatar.png" alt="Liu He">
+            Liu He
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Chrome/">Chrome</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/KeePass/">KeePass</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://heliublog.com/2016/05/01/KeePass/&title=《KeePass+KeePassHTTP+chromeIPass储存个人密码》 — 锡柳的博客&pic=https://heliublog.com/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://heliublog.com/2016/05/01/KeePass/&title=《KeePass+KeePassHTTP+chromeIPass储存个人密码》 — 锡柳的博客&source=前言现在密码越来越多，但是为了密码安全还是不愿所有网站用同一个密码。所以就想到了用密码管理软件。尝试过1Password和Lastpass，可惜都收费。所..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://heliublog.com/2016/05/01/KeePass/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《KeePass+KeePassHTTP+chromeIPass储存个人密码》 — 锡柳的博客&url=https://heliublog.com/2016/05/01/KeePass/&via=https://heliublog.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://heliublog.com/2016/05/01/KeePass/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2016/05/01/搭建hexo博客小记/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">搭建hexo博客小记——hexo系列文章（一）</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<section class="comments" id="comments">
+    <div id="gitment_thread"></div>
+    <link rel="stylesheet" href="//unpkg.com/gitment/style/default.css">
+    <script src="//unpkg.com/gitment/dist/gitment.browser.js"></script>
+    <script>
+        var gitment = new Gitment({
+            owner: 'heliuphy',
+            repo: 'HexoGitment',
+            oauth: {
+                client_id: 'e3b01812732c8b925e24',
+                client_secret: 'e16642c22f15078e6836cbfc31123ffd05acb13c',
+            },
+        })
+        gitment.render('comments')
+    </script>
+</section>
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循<a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p>
+            <span>Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a></span>
+            <span>Liu He &copy; 2016 - 2017</span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://heliublog.com/2016/05/01/KeePass/&title=《KeePass+KeePassHTTP+chromeIPass储存个人密码》 — 锡柳的博客&pic=https://heliublog.com/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://heliublog.com/2016/05/01/KeePass/&title=《KeePass+KeePassHTTP+chromeIPass储存个人密码》 — 锡柳的博客&source=前言现在密码越来越多，但是为了密码安全还是不愿所有网站用同一个密码。所以就想到了用密码管理软件。尝试过1Password和Lastpass，可惜都收费。所..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://heliublog.com/2016/05/01/KeePass/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《KeePass+KeePassHTTP+chromeIPass储存个人密码》 — 锡柳的博客&url=https://heliublog.com/2016/05/01/KeePass/&via=https://heliublog.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://heliublog.com/2016/05/01/KeePass/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK4AAACuCAAAAACKZ2kyAAABx0lEQVR42u3aS46DMBAFQO5/aWYdRTjv2WChUXmFUDBFFq3++DjidX6t8f2rZ6/u3LxwcXGXuedwzf1m/K6r6/H+uLi4+7l3bf29W7v/j2dxcXFfzE2CV5v04OLi/g/uOLTlxQ8uLu47uckr837FSkC8rVbDxcVd4OZdyueuH+nv4uLiTnHPciVjlXvbKx9vwcXF3cJdSV/awUmSDEW/xMXFfZibFCorH5MXRclRD1xc3J3ctgHRBq+5z4gyMlxc3Ie5cwPU9iBXu8PHNS4u7kZuPkadC0Zt5zMqfnBxcR/mRkFkIfWZS6GK4gcXF/cBbktcOWK1EvJwcXF3ctsCph24rrdKcXFx38Bthx9RghIfuagDGS4u7q3cPIjkicvceCZpweDi4u7krpc9cwFu/BdE58hwcXE3ctuSJk9o8uMal38iLi7uRu7cYDVPhuZSnKPtvOLi4i5zz3IlgWZun+gjcXFxt3Db4NJu2hY5d70XFxd3nZsHnXaA2oa8qIGCi4u7kZsHmpxe12F5rYaLi/sy7koRNTdcwcXFfT+3rat+jEbaFiouLu5GbtskHVPyIicvonBxcXdy21CyciBj7pNwcXE3cv8AM4fiMZ/y1BwAAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+
+lazyScripts.push('//s95.cnzz.com/z_stat.php?id=1261861397&web_id=1261861397')
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>

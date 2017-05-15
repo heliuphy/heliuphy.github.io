@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+<!-- Baidu Tongji -->
+<script>var _hmt = _hmt || []</script>
+<script async src="//hm.baidu.com/hm.js?bf3208c4535129798a3cceee4fe5b975"></script>
+<!-- End Baidu Tongji -->
+
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    <title>hexo在线编写博客——hexo系列文章（四） | 锡柳的博客 | 涓涓细流</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="Hexo,VPS,Linux,cloud9,Docker">
+    <meta name="description" content="引言这篇文章就是在线写出来的~ 从编辑、到生成，全部云上完成，妈妈再也不用担心我在别的电脑上没法写hexo了！ 效果如图：                                                                                              cloud9在线写博客              综述搭建这个环境其实也并不麻烦啦，Clo">
+<meta name="keywords" content="Hexo,VPS,Linux,cloud9,Docker">
+<meta property="og:type" content="article">
+<meta property="og:title" content="hexo在线编写博客——hexo系列文章（四）">
+<meta property="og:url" content="https://heliublog.com/2017/05/10/hexo在线编写博客/index.html">
+<meta property="og:site_name" content="锡柳的博客">
+<meta property="og:description" content="引言这篇文章就是在线写出来的~ 从编辑、到生成，全部云上完成，妈妈再也不用担心我在别的电脑上没法写hexo了！ 效果如图：                                                                                              cloud9在线写博客              综述搭建这个环境其实也并不麻烦啦，Clo">
+<meta property="og:image" content="https://heliublog.com/upload/1705102.jpg">
+<meta property="og:image" content="https://heliublog.com/upload/1705112.jpg">
+<meta property="og:updated_time" content="2017-05-14T03:25:36.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="hexo在线编写博客——hexo系列文章（四）">
+<meta name="twitter:description" content="引言这篇文章就是在线写出来的~ 从编辑、到生成，全部云上完成，妈妈再也不用担心我在别的电脑上没法写hexo了！ 效果如图：                                                                                              cloud9在线写博客              综述搭建这个环境其实也并不麻烦啦，Clo">
+<meta name="twitter:image" content="https://heliublog.com/upload/1705102.jpg">
+    
+        <link rel="alternate" type="application/atom+xml" title="锡柳的博客" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Liu He</h5>
+          <a href="mailto:me@heliublog.com" title="me@heliublog.com" class="mail">me@heliublog.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                Home
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/heliuphy" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://weibo.com/2553167443" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                Weibo
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about"  >
+                <i class="icon icon-lg icon-user-circle"></i>
+                about
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">hexo在线编写博客——hexo系列文章（四）</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">hexo在线编写博客——hexo系列文章（四）</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2017-05-10T10:30:03.000Z" itemprop="datePublished" class="page-time">
+  2017-05-10
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/博客/">博客</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#引言"><span class="post-toc-number">1.</span> <span class="post-toc-text">引言</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#综述"><span class="post-toc-number">2.</span> <span class="post-toc-text">综述</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#安装"><span class="post-toc-number">3.</span> <span class="post-toc-text">安装</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#VPS篇"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">VPS篇</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Docker安装"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">Docker安装</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Cloud9安装（Docker）"><span class="post-toc-number">3.3.</span> <span class="post-toc-text">Cloud9安装（Docker）</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#用VPS"><span class="post-toc-number">3.3.1.</span> <span class="post-toc-text">用VPS</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#用Docker云"><span class="post-toc-number">3.3.2.</span> <span class="post-toc-text">用Docker云</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#nvm、node、npm、hexo"><span class="post-toc-number">3.4.</span> <span class="post-toc-text">nvm、node、npm、hexo</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#nvm、node、npm的安装"><span class="post-toc-number">3.4.1.</span> <span class="post-toc-text">nvm、node、npm的安装</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#首先安装必要的包"><span class="post-toc-number">3.4.1.1.</span> <span class="post-toc-text">首先安装必要的包</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#安装nvm的脚本"><span class="post-toc-number">3.4.1.2.</span> <span class="post-toc-text">安装nvm的脚本</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#使用nvm安装并使用node6"><span class="post-toc-number">3.4.1.3.</span> <span class="post-toc-text">使用nvm安装并使用node6</span></a></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#hexo安装"><span class="post-toc-number">3.4.2.</span> <span class="post-toc-text">hexo安装</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#apache安装"><span class="post-toc-number">3.5.</span> <span class="post-toc-text">apache安装</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#rsync的使用"><span class="post-toc-number">3.6.</span> <span class="post-toc-text">rsync的使用</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#incron"><span class="post-toc-number">3.7.</span> <span class="post-toc-text">incron</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#补充"><span class="post-toc-number">4.</span> <span class="post-toc-text">补充</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#时区问题"><span class="post-toc-number">4.1.</span> <span class="post-toc-text">时区问题</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#开机启动"><span class="post-toc-number">4.2.</span> <span class="post-toc-text">开机启动</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#old"><span class="post-toc-number">5.</span> <span class="post-toc-text">old</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#cloud9-docker"><span class="post-toc-number">5.1.</span> <span class="post-toc-text">cloud9-docker</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#推荐"><span class="post-toc-number">6.</span> <span class="post-toc-text">推荐</span></a></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-hexo在线编写博客"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">hexo在线编写博客——hexo系列文章（四）</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2017-05-10 18:30:03" datetime="2017-05-10T10:30:03.000Z"  itemprop="datePublished">2017-05-10</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/博客/">博客</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><p>这篇文章就是在线写出来的~</p>
+<p>从编辑、到生成，全部云上完成，妈妈再也不用担心我在别的电脑上没法写hexo了！</p>
+<p>效果如图：</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/upload/1705102.jpg" alt="cloud9在线写博客" title="">
+                </div>
+                <div class="image-caption">cloud9在线写博客</div>
+            </figure>
+<h2 id="综述"><a href="#综述" class="headerlink" title="综述"></a>综述</h2><p>搭建这个环境其实也并不麻烦啦，Cloud9我是用别人的镜像装的，所以简单很多。总体来说，大概需要这些东西：</p>
+<ul>
+<li>VPS一台</li>
+<li>Docker</li>
+<li>Cloud9</li>
+<li>nvm</li>
+<li>node(建议&gt;6.*)</li>
+<li>npm</li>
+<li>hexo</li>
+<li>apache(可选)</li>
+<li>rsync(可选)</li>
+<li>incrond（可选）</li>
+</ul>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><h3 id="VPS篇"><a href="#VPS篇" class="headerlink" title="VPS篇"></a>VPS篇</h3><p>我VPS用的系统是CentOS6.8 x64</p>
+<h3 id="Docker安装"><a href="#Docker安装" class="headerlink" title="Docker安装"></a>Docker安装</h3><p>CentOS下安装Docker还是很简单的，命令如下：<br><figure class="highlight cmake"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo yum <span class="keyword">install</span> docker-io</div></pre></td></tr></table></figure></p>
+<p>安装完后启动docker服务<br><figure class="highlight crmsh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">service docker <span class="literal">start</span></div></pre></td></tr></table></figure></p>
+<h3 id="Cloud9安装（Docker）"><a href="#Cloud9安装（Docker）" class="headerlink" title="Cloud9安装（Docker）"></a>Cloud9安装（Docker）</h3><h4 id="用VPS"><a href="#用VPS" class="headerlink" title="用VPS"></a>用VPS</h4><p><del><strong>注：</strong>dockerhub上现成的image是没有密码的，我可不希望别人谁都可以进来编辑我的博客，所以改一下Dockerfile，自己构建镜像。</del></p>
+<p>不要用这个办法了，dockerhub上有现成的镜像<code>sapk/cloud9</code>，地址<a href="https://hub.docker.com/r/sapk/cloud9/" target="_blank" rel="external">点这里</a><br>想看旧方法，请<a href="https://heliublog.com/2017/05/10/hexo%E5%9C%A8%E7%BA%BF%E7%BC%96%E5%86%99%E5%8D%9A%E5%AE%A2/#cloud9-docker">点这里</a></p>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">docker pull sapk/cloud9</div><div class="line"></div><div class="line"><span class="comment"># start with auth 将username,password替换成自己的账号密码</span></div><div class="line">docker <span class="keyword">run</span><span class="bash"> <span class="_">-d</span> -v your-path/workspace:/workspace -p 8181:8181 sapk/cloud9 --auth username:password</span></div></pre></td></tr></table></figure>
+<p><a href="http://ip:8181" target="_blank" rel="external">http://ip:8181</a>  查看效果吧！</p>
+<h4 id="用Docker云"><a href="#用Docker云" class="headerlink" title="用Docker云"></a>用Docker云</h4><p>这里仅以<a href="https://arukas.io/" target="_blank" rel="external">Arukas</a>为例。<br>注册账号什么的就不说了。<br>直接创建应用，按照下图填写就行了：</p>
+<p><html><img src="/upload/1705112.jpg" alt="图片"></html><br>创建完成后启动应用，如果一次不成功就多试几次。<br>创建成功后，点击<code>Endpoint</code>后面的链接就可以进到你自己的cloud9了。</p>
+<p><strong>千万注意：我不知道这里的数据都储存在了哪里，所以一定要定时将自己的博文通过cloud9页面下载到自己的电脑上，以作备份。</strong></p>
+<h3 id="nvm、node、npm、hexo"><a href="#nvm、node、npm、hexo" class="headerlink" title="nvm、node、npm、hexo"></a>nvm、node、npm、hexo</h3><p>这些我们一起讲，因为都是在cloud9中安装的。</p>
+<h4 id="nvm、node、npm的安装"><a href="#nvm、node、npm的安装" class="headerlink" title="nvm、node、npm的安装"></a>nvm、node、npm的安装</h4><p>nvm是node的版本管理器。</p>
+<h5 id="首先安装必要的包"><a href="#首先安装必要的包" class="headerlink" title="首先安装必要的包"></a>首先安装必要的包</h5><figure class="highlight q"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">sudo apt-<span class="built_in">get</span> <span class="keyword">update</span>  </div><div class="line">sudo apt-<span class="built_in">get</span> install build-essential libssl-<span class="built_in">dev</span></div></pre></td></tr></table></figure>
+<p><strong>注意：cloud9镜像是用ubuntu搭建的，所以要用apt-get，这个不是centos系统了，不要弄混了~</strong></p>
+<h5 id="安装nvm的脚本"><a href="#安装nvm的脚本" class="headerlink" title="安装nvm的脚本"></a>安装nvm的脚本</h5><figure class="highlight awk"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">wget -qO- https:<span class="regexp">//</span>raw.githubusercontent.com<span class="regexp">/creationix/</span>nvm<span class="regexp">/v0.31.4/i</span>nstall.sh | bash</div></pre></td></tr></table></figure>
+<h5 id="使用nvm安装并使用node6"><a href="#使用nvm安装并使用node6" class="headerlink" title="使用nvm安装并使用node6"></a>使用nvm安装并使用node6</h5><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">nvm</span> <span class="selector-tag">install</span> <span class="selector-tag">v6</span><span class="selector-class">.10</span><span class="selector-class">.3</span></div><div class="line"><span class="selector-tag">nvm</span> <span class="selector-tag">use</span> <span class="selector-tag">v6</span><span class="selector-class">.10</span><span class="selector-class">.3</span></div><div class="line"><span class="selector-tag">node</span> <span class="selector-tag">-v</span></div><div class="line"># <span class="selector-tag">v6</span><span class="selector-class">.10</span><span class="selector-class">.3</span>  即表示安装成功</div></pre></td></tr></table></figure>
+<p>npm有了，就不必装了</p>
+<h4 id="hexo安装"><a href="#hexo安装" class="headerlink" title="hexo安装"></a>hexo安装</h4><blockquote>
+<p>这个不是本文重点，可以参考我以前的文章<br><a href="https://heliublog.com/2016/05/01/%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2%E5%B0%8F%E8%AE%B0/">搭建hexo博客小记——hexo系列文章（一）</a><br><figure class="highlight cmake"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">npm <span class="keyword">install</span> -g hexo-cli</div><div class="line">mkdir hexo</div><div class="line">hexo init</div><div class="line">npm <span class="keyword">install</span></div><div class="line">hexo g</div></pre></td></tr></table></figure></p>
+</blockquote>
+<p>好了，到此为止，整个在线环境就部署成功了，你可以<code>hexo d</code>来提交你的博客到github，当然，也可以用你的VPS来<br>做网页服务器。如果不想的话，下面的部分就不用看了。</p>
+<hr>
+<h3 id="apache安装"><a href="#apache安装" class="headerlink" title="apache安装"></a>apache安装</h3><p>由于我没学过前端，这里我用的是<a href="https://blog.linuxeye.com/31.html" target="_blank" rel="external">lnmp一键安装包</a>，可以只装Apache，别的都不用装。</p>
+<p>将主机目录设置为<code>your-workspace/hexo/public</code></p>
+<p>我的这样做是不行，改了权限也不行，所以只能用默认的目录<code>/data/wwwroot/your-domain-name</code>然后同步两个文件夹了。<br>这是就用到最后两个工具：</p>
+<ul>
+<li>rsync用来同步</li>
+<li>incron用来监控文件改动</li>
+</ul>
+<h3 id="rsync的使用"><a href="#rsync的使用" class="headerlink" title="rsync的使用"></a>rsync的使用</h3><p>使用方法如下：<br><figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">rsync -av <span class="params">--delete</span> <span class="string">/ressourcen</span> <span class="string">/ressourcen_backup</span></div></pre></td></tr></table></figure></p>
+<p>这样当<code>/ressourcen</code>目录中的文件有变动、删除时，就会同步到<code>/ressourcen_backup</code>。</p>
+<p>我们要把这个文件写到一个脚本中，这样才能发挥他的作用（后述）。</p>
+<h3 id="incron"><a href="#incron" class="headerlink" title="incron"></a>incron</h3><p>incron的使用，我在前面的文章中也提到过<a href="https://heliublog.com/2016/05/01/VPS+Hexo+Dropbox%E5%88%9B%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/#安装incron">VPS+Hexo+Dropbox创建个人博客</a></p>
+<p>安装incron<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">yum <span class="keyword">install</span> incron</div><div class="line">service incrond <span class="keyword">start</span></div></pre></td></tr></table></figure></p>
+<p>用incron来监测文件夹变动<br><figure class="highlight vala"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">incrontab -e</div><div class="line"><span class="meta"># 在其中添加：</span></div><div class="line">your-path/hexo/<span class="keyword">public</span> IN_MOVE,IN_MODIFY,IN_CREATE,IN_DELETE your-path/runrsync.bash</div></pre></td></tr></table></figure></p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">vim</span> <span class="selector-tag">runrsync</span><span class="selector-class">.bash</span></div></pre></td></tr></table></figure>
+<p>runrsync.bash中写入:<br><figure class="highlight awk"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#!/usr/bin/env bash</span></div><div class="line">exec <span class="number">200</span>&lt;<span class="variable">$0</span></div><div class="line">flock -n <span class="number">200</span> || <span class="keyword">exit</span> <span class="number">1</span></div><div class="line">sleep <span class="number">1</span></div><div class="line">rsync -av --<span class="keyword">delete</span> <span class="regexp">/ressourcen /</span>ressourcen_backup</div></pre></td></tr></table></figure></p>
+<p>赋予权限<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">chmod</span> +<span class="selector-tag">x</span> <span class="selector-tag">runrsync</span><span class="selector-class">.bash</span></div></pre></td></tr></table></figure></p>
+<p>这样当<code>hexo g</code>，<code>public</code>文件夹就会发生变动，此时incron检测到了文件变动，运行脚本<code>runrsync.bash</code>，实现两个文件夹的同步。</p>
+<h2 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h2><h3 id="时区问题"><a href="#时区问题" class="headerlink" title="时区问题"></a>时区问题</h3><p>若用国外主机，在<code>hexo new</code>时，会由于时区设置的问题，<code>date</code>显示的不是本地时间，可以更改时区：<br><figure class="highlight dts"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">date -R  <span class="meta"># 查看当前系统时区</span></div><div class="line">cp <span class="meta-keyword">/usr/</span>share<span class="meta-keyword">/zoneinfo/</span>Asia/Shanghai <span class="meta-keyword">/etc/</span>localtime  <span class="meta"># 设置时区为东八区</span></div></pre></td></tr></table></figure></p>
+<h3 id="开机启动"><a href="#开机启动" class="headerlink" title="开机启动"></a>开机启动</h3><p>我们写了很多脚本，运行了很多服务，机器重启之后都不会开起来，所以我们要加入开机自启，才能保证功能的正常。<br><figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">vim /etc/rc.d/rc.<span class="built_in">local</span></div><div class="line"></div><div class="line"><span class="comment"># 写入以下内容</span></div><div class="line"></div><div class="line"><span class="comment"># Docker</span></div><div class="line">service docker <span class="built_in">start</span></div><div class="line"></div><div class="line"><span class="comment"># cloud9</span></div><div class="line">docker <span class="built_in">start</span> <span class="number">3e9</span>a55a</div><div class="line"></div><div class="line"><span class="comment"># incrond</span></div><div class="line">service incrond <span class="built_in">start</span></div></pre></td></tr></table></figure></p>
+<h2 id="old"><a href="#old" class="headerlink" title="old"></a>old</h2><h3 id="cloud9-docker"><a href="#cloud9-docker" class="headerlink" title="cloud9-docker"></a>cloud9-docker</h3><p><strong>(此方法已过期)</strong><br>Dockerfile的github地址在这里：<a href="https://github.com/kdelfour/cloud9-docker" target="_blank" rel="external">https://github.com/kdelfour/cloud9-docker</a></p>
+<p>我们将它克隆下来：</p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">cd</span> ~</div><div class="line"><span class="built_in">mkdir</span> cloud9</div><div class="line"><span class="keyword">cd</span> cloud9</div><div class="line">git clone http<span class="variable">s:</span>//github.<span class="keyword">com</span>/kdelfour/cloud9-docker.git</div></pre></td></tr></table></figure>
+<p>然后就要改改文件了，方法如下：</p>
+<p>（我是参考别人的）</p>
+<blockquote>
+<p>参考issue页面<a href="https://github.com/kdelfour/cloud9-docker/issues/15" target="_blank" rel="external">https://github.com/kdelfour/cloud9-docker/issues/15</a><br>pbelyaev的回答:<br>Just clone this repository and edit conf/cloud9.conf:</p>
+<p>[program:cloud9]<br>command = node /cloud9/server.js –listen 0.0.0.0 –port 80 –auth user:password -w /workspace<br>directory = /cloud9<br>user = root<br>autostart = true<br>autorestart = true<br>stdout_logfile = /var/log/supervisor/cloud9.log<br>stderr_logfile = /var/log/supervisor/cloud9_errors.log<br>environment = NODE_ENV=”production”<br>Then edit docker-compose.yml file:</p>
+<p>…<br>  cnine:<br>    build: ./dir/to/cloned/repository</p>
+</blockquote>
+<p>改好以后就可以构建镜像了，build命令格式如下<br><figure class="highlight armasm"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="symbol">docker</span> <span class="keyword">build </span>-t image_name Dockerfile_path</div></pre></td></tr></table></figure></p>
+<p>所以我们敲命令：<br><figure class="highlight armasm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="symbol">cd</span> Dockerfile所在目录</div><div class="line"><span class="symbol">docker</span> <span class="keyword">build </span>-t yourname/cloud9 .</div></pre></td></tr></table></figure></p>
+<p>构建完成后，我们来创建并启动容器：</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker run -it -d -p <span class="number">80</span>:<span class="number">80</span> -v <span class="regexp">/your-path/</span>workspace<span class="regexp">/:/</span>workspace<span class="regexp">/ yourname/</span>cloud9 --auth <span class="string">user:</span>password</div></pre></td></tr></table></figure>
+<p><strong>注：记得将user:password改为你自己的用户名:密码；yourname/cloud9是你自己起的image名字。</strong></p>
+<p><a href="http://your-server-ip" target="_blank" rel="external">http://your-server-ip</a></p>
+<p>就可以进入icloud了。</p>
+<h2 id="推荐"><a href="#推荐" class="headerlink" title="推荐"></a>推荐</h2><p>推荐大家看我以前写的hexo系列：</p>
+<p><a href="https://heliublog.com/2016/05/01/%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2%E5%B0%8F%E8%AE%B0/">搭建hexo博客小记——hexo系列文章（一）</a></p>
+<p><a href="https://heliublog.com/2016/05/14/Hexo%E5%88%A9%E7%94%A8Swiftype%E5%BB%BA%E7%AB%8B%E7%AB%99%E5%86%85%E6%90%9C%E7%B4%A2/">利用Swiftype建立站内搜索——hexo系列文章（二）</a></p>
+<p><a href="https://heliublog.com/2016/05/01/VPS+Hexo+Dropbox%E5%88%9B%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/">VPS+Hexo+Dropbox创建个人博客——hexo系列教程（三）</a></p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2017-05-14T03:25:36.000Z" itemprop="dateUpdated">2017-05-14 11:25:36</time>
+</span><br>
+
+
+        
+        本站博文均为博主原创，转载请注明出处！<br />原文地址：<a href="/2017/05/10/hexo在线编写博客/" target="_blank" rel="external">https://heliublog.com/2017/05/10/hexo在线编写博客/</a>
+        
+    </div>
+    <footer>
+        <a href="https://heliublog.com">
+            <img src="/img/avatar.png" alt="Liu He">
+            Liu He
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Docker/">Docker</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hexo/">Hexo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux/">Linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/VPS/">VPS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/cloud9/">cloud9</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://heliublog.com/2017/05/10/hexo在线编写博客/&title=《hexo在线编写博客——hexo系列文章（四）》 — 锡柳的博客&pic=https://heliublog.com/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://heliublog.com/2017/05/10/hexo在线编写博客/&title=《hexo在线编写博客——hexo系列文章（四）》 — 锡柳的博客&source=记录自己的成长之路。技术&&生活。" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://heliublog.com/2017/05/10/hexo在线编写博客/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《hexo在线编写博客——hexo系列文章（四）》 — 锡柳的博客&url=https://heliublog.com/2017/05/10/hexo在线编写博客/&via=https://heliublog.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://heliublog.com/2017/05/10/hexo在线编写博客/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2017/05/10/分享一款极好用的Chrome插件/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">分享一些极好用的Chrome插件</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2017/05/11/Linux零打碎敲/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">Linux零打碎敲</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<section class="comments" id="comments">
+    <div id="gitment_thread"></div>
+    <link rel="stylesheet" href="//unpkg.com/gitment/style/default.css">
+    <script src="//unpkg.com/gitment/dist/gitment.browser.js"></script>
+    <script>
+        var gitment = new Gitment({
+            owner: 'heliuphy',
+            repo: 'HexoGitment',
+            oauth: {
+                client_id: 'e3b01812732c8b925e24',
+                client_secret: 'e16642c22f15078e6836cbfc31123ffd05acb13c',
+            },
+        })
+        gitment.render('comments')
+    </script>
+</section>
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循<a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p>
+            <span>Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a></span>
+            <span>Liu He &copy; 2016 - 2017</span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://heliublog.com/2017/05/10/hexo在线编写博客/&title=《hexo在线编写博客——hexo系列文章（四）》 — 锡柳的博客&pic=https://heliublog.com/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://heliublog.com/2017/05/10/hexo在线编写博客/&title=《hexo在线编写博客——hexo系列文章（四）》 — 锡柳的博客&source=记录自己的成长之路。技术&&生活。" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://heliublog.com/2017/05/10/hexo在线编写博客/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《hexo在线编写博客——hexo系列文章（四）》 — 锡柳的博客&url=https://heliublog.com/2017/05/10/hexo在线编写博客/&via=https://heliublog.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://heliublog.com/2017/05/10/hexo在线编写博客/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACL0lEQVR42u3aQY7CMAwFUO5/aUaa3QgRvu0yguRlhUqhfV24ju3bLV7337X+9vGcx+PPzln/z2ULAwPjaxn35UouUP3t+sj6+NM7wcDAOICxDrLr0Ln+nJy5vm70AsDAwMAI0rV1apj/GwYGBsac0Uv+1jAMDAyMhJFsRPMtaFJ6m/wzBgbGaYxqY+A/P7+xv4GBgfEljHtxrUNkfvk87EZ3hYGBsTVjUhTrBc2kCZpH19u8toeBgfHxjHyQK798HprnofzPewMDA+MARl4smxfU8iAbPSYMDIytGUmq1xv/qvKq29dydRADA2MjRm+zWg2+8+1xk4SBgfHljOoIRW9be9XwGQYGxmmMSbhMGgC9xDFvdmJgYJzDmDQXr2ow5I/jxbAFBgbGRoxJGncVeJ4sYmBgnMbobSYT2NuHLTAwMDZlJBfLi2u9Ol/eZnjBw8DA2JqRjz7kQxiTYJo/DgwMjNMY+U0k5+cDHJMAfctzUgwMjC9nrG83CZ3NsBi3BKLfYmBgbMqoNgaSAYheDOxtgzEwME5j5ElhYVSrOGrWWxgYGHszemNeo8L9eBVeDxgYGFswJqFt0p6spoMvmp0YGBhbM3phrlqYq5bkqltfDAyMExjVIJi3P/OWQB5wnyIxMDAOYIx2vW8YDqu2PDEwMDB6CVzv1pPWwtPUEAMDA6OVwE2GLRIMBgbGOYxesb4aUqvsQrsCAwNja8ZkUmO+Bb0P1mUDJxgYGJ/L+AFkYKOJ0kH2FQAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+
+lazyScripts.push('//s95.cnzz.com/z_stat.php?id=1261861397&web_id=1261861397')
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>

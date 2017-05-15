@@ -18,7 +18,7 @@
     
     
     
-    <title>VTK运行Tcl文件 | Liu&#39;s Blog</title>
+    <title>VTK运行Tcl文件 | 锡柳的博客 | 涓涓细流</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
     <meta name="theme-color" content="#3F51B5">
@@ -30,16 +30,16 @@
 <meta property="og:type" content="article">
 <meta property="og:title" content="VTK运行Tcl文件">
 <meta property="og:url" content="https://heliublog.com/2017/05/07/VTK运行Tcl文件/index.html">
-<meta property="og:site_name" content="Liu's Blog">
+<meta property="og:site_name" content="锡柳的博客">
 <meta property="og:description" content="环境：  Win10 64bit 家庭版 VS-2008 VTK-7.1.1 Tcl-8.6   下载ActiveTcl，可以去activestate网站下载。下载完成后安装，例如安装路径是d:\tcl  注意：安装时一定要以管理员身份运行，不然会加不进系统变量！ 打开CMAKE，Configure完成后，将VTK_WRAP_TCL勾选上，再次Configure，之后将TCL_INTERNAL_P">
 <meta property="og:updated_time" content="2017-05-07T14:59:55.512Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="VTK运行Tcl文件">
 <meta name="twitter:description" content="环境：  Win10 64bit 家庭版 VS-2008 VTK-7.1.1 Tcl-8.6   下载ActiveTcl，可以去activestate网站下载。下载完成后安装，例如安装路径是d:\tcl  注意：安装时一定要以管理员身份运行，不然会加不进系统变量！ 打开CMAKE，Configure完成后，将VTK_WRAP_TCL勾选上，再次Configure，之后将TCL_INTERNAL_P">
     
-        <link rel="alternate" type="application/atom+xml" title="Liu&#39;s Blog" href="/atom.xml">
+        <link rel="alternate" type="application/atom+xml" title="锡柳的博客" href="/atom.xml">
     
-    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="shortcut icon" href="/img/favicon.ico">
     <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
     <script>window.lazyScripts=[]</script>
 </head>
@@ -109,9 +109,9 @@
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="/tag-cloud"  >
-                <i class="icon icon-lg icon-cloud"></i>
-                tag-cloud
+              <a href="/about"  >
+                <i class="icon icon-lg icon-user-circle"></i>
+                about
               </a>
             </li>
         
@@ -250,7 +250,7 @@
 <div class="page-share" id="pageShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://heliublog.com/2017/05/07/VTK运行Tcl文件/&title=《VTK运行Tcl文件》 — Liu's Blog&pic=https://heliublog.com/img/avatar.png" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://heliublog.com/2017/05/07/VTK运行Tcl文件/&title=《VTK运行Tcl文件》 — 锡柳的博客&pic=https://heliublog.com/img/avatar.png" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -260,7 +260,7 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://heliublog.com/2017/05/07/VTK运行Tcl文件/&title=《VTK运行Tcl文件》 — Liu's Blog&source=" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://heliublog.com/2017/05/07/VTK运行Tcl文件/&title=《VTK运行Tcl文件》 — 锡柳的博客&source=记录自己的成长之路。技术&&生活。" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
@@ -270,7 +270,7 @@
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《VTK运行Tcl文件》 — Liu's Blog&url=https://heliublog.com/2017/05/07/VTK运行Tcl文件/&via=https://heliublog.com" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《VTK运行Tcl文件》 — 锡柳的博客&url=https://heliublog.com/2017/05/07/VTK运行Tcl文件/&via=https://heliublog.com" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
@@ -322,23 +322,31 @@
 
 
 
+
+
+
+
+
+
+
+
+
 <section class="comments" id="comments">
-    <div id="disqus_thread"></div>
+    <div id="gitment_thread"></div>
+    <link rel="stylesheet" href="//unpkg.com/gitment/style/default.css">
+    <script src="//unpkg.com/gitment/dist/gitment.browser.js"></script>
     <script>
-    var disqus_shortname = 'liusblog';
-    lazyScripts.push('//' + disqus_shortname + '.disqus.com/embed.js')
+        var gitment = new Gitment({
+            owner: 'heliuphy',
+            repo: 'HexoGitment',
+            oauth: {
+                client_id: 'e3b01812732c8b925e24',
+                client_secret: 'e16642c22f15078e6836cbfc31123ffd05acb13c',
+            },
+        })
+        gitment.render('comments')
     </script>
-    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 </section>
-
-
-
-
-
-
-
-
-
 
 
 
@@ -386,7 +394,7 @@
 <div class="global-share" id="globalShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://heliublog.com/2017/05/07/VTK运行Tcl文件/&title=《VTK运行Tcl文件》 — Liu's Blog&pic=https://heliublog.com/img/avatar.png" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://heliublog.com/2017/05/07/VTK运行Tcl文件/&title=《VTK运行Tcl文件》 — 锡柳的博客&pic=https://heliublog.com/img/avatar.png" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -396,7 +404,7 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://heliublog.com/2017/05/07/VTK运行Tcl文件/&title=《VTK运行Tcl文件》 — Liu's Blog&source=" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://heliublog.com/2017/05/07/VTK运行Tcl文件/&title=《VTK运行Tcl文件》 — 锡柳的博客&source=记录自己的成长之路。技术&&生活。" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
@@ -406,7 +414,7 @@
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《VTK运行Tcl文件》 — Liu's Blog&url=https://heliublog.com/2017/05/07/VTK运行Tcl文件/&via=https://heliublog.com" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《VTK运行Tcl文件》 — 锡柳的博客&url=https://heliublog.com/2017/05/07/VTK运行Tcl文件/&via=https://heliublog.com" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>

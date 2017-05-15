@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+<!-- Baidu Tongji -->
+<script>var _hmt = _hmt || []</script>
+<script async src="//hm.baidu.com/hm.js?bf3208c4535129798a3cceee4fe5b975"></script>
+<!-- End Baidu Tongji -->
+
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    <title>Linux零打碎敲 | 锡柳的博客 | 涓涓细流</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="Linux">
+    <meta name="description" content="引言整理一些平时用到的Linux小东西，做积累。 定时启动工具crond先看看机子有没有启动crond1service crond status 如果没有安装crond，可以先安装123456#安装Crondyum install vixie-cron crontabs#设置开机启动Crontabchkconfig crond on#启动Crontabservice crond start 添加定">
+<meta name="keywords" content="Linux">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux零打碎敲">
+<meta property="og:url" content="https://heliublog.com/2017/05/11/Linux零打碎敲/index.html">
+<meta property="og:site_name" content="锡柳的博客">
+<meta property="og:description" content="引言整理一些平时用到的Linux小东西，做积累。 定时启动工具crond先看看机子有没有启动crond1service crond status 如果没有安装crond，可以先安装123456#安装Crondyum install vixie-cron crontabs#设置开机启动Crontabchkconfig crond on#启动Crontabservice crond start 添加定">
+<meta property="og:image" content="http://op0n2nyjd.bkt.clouddn.com/1705111.JPG">
+<meta property="og:updated_time" content="2017-05-12T09:59:36.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Linux零打碎敲">
+<meta name="twitter:description" content="引言整理一些平时用到的Linux小东西，做积累。 定时启动工具crond先看看机子有没有启动crond1service crond status 如果没有安装crond，可以先安装123456#安装Crondyum install vixie-cron crontabs#设置开机启动Crontabchkconfig crond on#启动Crontabservice crond start 添加定">
+<meta name="twitter:image" content="http://op0n2nyjd.bkt.clouddn.com/1705111.JPG">
+    
+        <link rel="alternate" type="application/atom+xml" title="锡柳的博客" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Liu He</h5>
+          <a href="mailto:me@heliublog.com" title="me@heliublog.com" class="mail">me@heliublog.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                Home
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/heliuphy" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://weibo.com/2553167443" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                Weibo
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about"  >
+                <i class="icon icon-lg icon-user-circle"></i>
+                about
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">Linux零打碎敲</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">Linux零打碎敲</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2017-05-11T01:45:51.000Z" itemprop="datePublished" class="page-time">
+  2017-05-11
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Linux/">Linux</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#引言"><span class="post-toc-number">1.</span> <span class="post-toc-text">引言</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#定时启动工具crond"><span class="post-toc-number">2.</span> <span class="post-toc-text">定时启动工具crond</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#先看看机子有没有启动crond"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">先看看机子有没有启动crond</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#添加定时任务"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">添加定时任务</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#重启crond"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">重启crond</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#查看磁盘空间大小"><span class="post-toc-number">3.</span> <span class="post-toc-text">查看磁盘空间大小</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#sh文件格式"><span class="post-toc-number">4.</span> <span class="post-toc-text">.sh文件格式</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#开头"><span class="post-toc-number">4.1.</span> <span class="post-toc-text">开头</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#注释"><span class="post-toc-number">4.2.</span> <span class="post-toc-text">注释</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-Linux零打碎敲"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">Linux零打碎敲</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2017-05-11 09:45:51" datetime="2017-05-11T01:45:51.000Z"  itemprop="datePublished">2017-05-11</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Linux/">Linux</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><p>整理一些平时用到的Linux小东西，做积累。</p>
+<h2 id="定时启动工具crond"><a href="#定时启动工具crond" class="headerlink" title="定时启动工具crond"></a>定时启动工具crond</h2><h3 id="先看看机子有没有启动crond"><a href="#先看看机子有没有启动crond" class="headerlink" title="先看看机子有没有启动crond"></a>先看看机子有没有启动crond</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">service crond status</div></pre></td></tr></table></figure>
+<p>如果没有安装crond，可以先安装<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#安装Crond</span></div><div class="line">yum install vixie-cron crontabs</div><div class="line"><span class="comment">#设置开机启动Crontab</span></div><div class="line">chkconfig crond on</div><div class="line"><span class="comment">#启动Crontab</span></div><div class="line">service crond start</div></pre></td></tr></table></figure></p>
+<h3 id="添加定时任务"><a href="#添加定时任务" class="headerlink" title="添加定时任务"></a>添加定时任务</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">crontab <span class="_">-e</span></div></pre></td></tr></table></figure>
+<blockquote>
+<p>以下引用自<a href="http://www.linuxidc.com/Linux/2010-08/27700.htm" target="_blank" rel="external">来源：Linux社区  作者：RedHat Linux中crond服务与crontab用法</a><br>crontab file的格式:<br>    crontab 文件中的行由 6 个字段组成，不同字段间用空格或 tab 键分隔。前 5 个字段指定命令要运行的时间<br>       分钟 (0-59)<br>       小时 (0-23)<br>       日期 (1-31)<br>       月份 (1-12)<br>       星期几（0-6，其中 0 代表星期日）<br>       第 6 个字段是一个要在适当时间执行的字符串<br>例子: </p>
+<pre><code>#MIN HOUR DAY MONTH DAYOFWEEK COMMAND 
+#每天早上6点10分 
+10 6 * * * date 
+#每两个小时 
+0 */2 * * * date    (solaris 5.8似乎不支持此种写法) 
+#晚上11点到早上8点之间每两个小时，早上8点 
+0 23-7/2，8 * * * date 
+#每个月的4号和每个礼拜的礼拜一到礼拜三的早上11点 
+0 11 4 * mon-wed date 
+#1月份日早上4点 
+0 4 1 jan * date
+</code></pre></blockquote>
+<h3 id="重启crond"><a href="#重启crond" class="headerlink" title="重启crond"></a>重启crond</h3><figure class="highlight ebnf"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">service crond restart</span></div></pre></td></tr></table></figure>
+<h2 id="查看磁盘空间大小"><a href="#查看磁盘空间大小" class="headerlink" title="查看磁盘空间大小"></a>查看磁盘空间大小</h2><figure class="highlight ebnf"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">df -hl</span></div></pre></td></tr></table></figure>
+<p>如下图<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://op0n2nyjd.bkt.clouddn.com/1705111.JPG" alt="df -hl命令效果" title="">
+                </div>
+                <div class="image-caption">df -hl命令效果</div>
+            </figure></p>
+<h2 id="sh文件格式"><a href="#sh文件格式" class="headerlink" title=".sh文件格式"></a>.sh文件格式</h2><h3 id="开头"><a href="#开头" class="headerlink" title="开头"></a>开头</h3><p>文件的第一行必须是：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#!/bin/sh</span></div></pre></td></tr></table></figure></p>
+<p>符号#!用来告诉系统它后面的参数是用来执行该文件的程序。在这个例子中我们使用/bin/sh来执行程序。<br>当编写脚本完成时，如果要执行该脚本，还必须使其可执行。<br><figure class="highlight llvm"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">chmod +<span class="keyword">x</span> filename</div></pre></td></tr></table></figure></p>
+<p>用<code>./filename</code>来运行</p>
+<h3 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h3><p>以<code>#</code>开头的句子表示注释，直到这一行的结束。</p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2017-05-12T09:59:36.000Z" itemprop="dateUpdated">2017-05-12 17:59:36</time>
+</span><br>
+
+
+        
+        本站博文均为博主原创，转载请注明出处！<br />原文地址：<a href="/2017/05/11/Linux零打碎敲/" target="_blank" rel="external">https://heliublog.com/2017/05/11/Linux零打碎敲/</a>
+        
+    </div>
+    <footer>
+        <a href="https://heliublog.com">
+            <img src="/img/avatar.png" alt="Liu He">
+            Liu He
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux/">Linux</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://heliublog.com/2017/05/11/Linux零打碎敲/&title=《Linux零打碎敲》 — 锡柳的博客&pic=https://heliublog.com/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://heliublog.com/2017/05/11/Linux零打碎敲/&title=《Linux零打碎敲》 — 锡柳的博客&source=记录自己的成长之路。技术&&生活。" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://heliublog.com/2017/05/11/Linux零打碎敲/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Linux零打碎敲》 — 锡柳的博客&url=https://heliublog.com/2017/05/11/Linux零打碎敲/&via=https://heliublog.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://heliublog.com/2017/05/11/Linux零打碎敲/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2017/05/10/hexo在线编写博客/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">hexo在线编写博客——hexo系列文章（四）</h4>
+      </a>
+    </div>
+  
+
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<section class="comments" id="comments">
+    <div id="gitment_thread"></div>
+    <link rel="stylesheet" href="//unpkg.com/gitment/style/default.css">
+    <script src="//unpkg.com/gitment/dist/gitment.browser.js"></script>
+    <script>
+        var gitment = new Gitment({
+            owner: 'heliuphy',
+            repo: 'HexoGitment',
+            oauth: {
+                client_id: 'e3b01812732c8b925e24',
+                client_secret: 'e16642c22f15078e6836cbfc31123ffd05acb13c',
+            },
+        })
+        gitment.render('comments')
+    </script>
+</section>
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循<a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p>
+            <span>Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a></span>
+            <span>Liu He &copy; 2016 - 2017</span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://heliublog.com/2017/05/11/Linux零打碎敲/&title=《Linux零打碎敲》 — 锡柳的博客&pic=https://heliublog.com/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://heliublog.com/2017/05/11/Linux零打碎敲/&title=《Linux零打碎敲》 — 锡柳的博客&source=记录自己的成长之路。技术&&生活。" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://heliublog.com/2017/05/11/Linux零打碎敲/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Linux零打碎敲》 — 锡柳的博客&url=https://heliublog.com/2017/05/11/Linux零打碎敲/&via=https://heliublog.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://heliublog.com/2017/05/11/Linux零打碎敲/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACJElEQVR42u3aSW7DMAwF0Nz/0u62QBD3k1QDWHpaBYYHvSwIDnq94nW9rd/XP91fvf7+/sULAwPjsYzrduXbSp6tMpK9YWBgnMNItji5J+GNAjoGBgbG2z15YE1SvV6AxsDAwPgUEJNn78Nu/hUMDAyMahFbxVTD8ZdqcQwMjAcy8nD5/d//Mt/AwMB4FOMqrt7o8T5M31+PdoWBgbE1ozfCTNLE+6B5nwLmb8PAwDiN0UsEJwVtHmqbXUMMDIwtGL3SMX9q3kpLxqgYGBgYvet5+34+HMXAwNibkSeI1XI0Twfz9xTmsRgYGBsxqkXpqlRvVTFcro8xMDAeyKg+UC07C5uI083CYAADA2M7RnVIOYFV74nCMQYGxjGM6qvztlrvQEahkYeBgbEpIyk1e2POfEiwoMTFwMDYmpF/uFrozseck78PAwNjP0Z09CouPufjyWZ7DgMD4xhGkpD12nCrQu0fpSwGBsamjF67f9WzSaC/fzMGBsYJjEmjPz8ctqoBV+gdYmBgbMeYNOAmw8hJs+9VrXcxMDAey8g/0EvakvFAdYcYGBjnMK7iqoa/XuOs/F0MDIytGZNDGL2G2mQwkBe3GBgY+zHyIFstYqvX85Zc+Z/GwMDYglFt0OdbTMJrbxQRDQYwMDCOZCS85ABZdZwQVeQYGBgYre1W01AMDAyMeRE7v3+Sei5rt2FgYDyK0etlTRK+PNHMRwUYGBibMn4AHaoI3idQIwIAAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+
+lazyScripts.push('//s95.cnzz.com/z_stat.php?id=1261861397&web_id=1261861397')
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>

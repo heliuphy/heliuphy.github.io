@@ -18,23 +18,26 @@
     
     
     
-    <title>Liu&#39;s Blog</title>
+    <title>锡柳的博客 | 涓涓细流</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
     <meta name="theme-color" content="#3F51B5">
     
     
     <meta name="keywords" content="undefined">
-    <meta property="og:type" content="website">
-<meta property="og:title" content="Liu's Blog">
+    <meta name="description" content="记录自己的成长之路。技术&amp;&amp;生活。">
+<meta property="og:type" content="website">
+<meta property="og:title" content="锡柳的博客">
 <meta property="og:url" content="https://heliublog.com/index.html">
-<meta property="og:site_name" content="Liu's Blog">
+<meta property="og:site_name" content="锡柳的博客">
+<meta property="og:description" content="记录自己的成长之路。技术&amp;&amp;生活。">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Liu's Blog">
+<meta name="twitter:title" content="锡柳的博客">
+<meta name="twitter:description" content="记录自己的成长之路。技术&amp;&amp;生活。">
     
-        <link rel="alternate" type="application/atom+xml" title="Liu&#39;s Blog" href="/atom.xml">
+        <link rel="alternate" type="application/atom+xml" title="锡柳的博客" href="/atom.xml">
     
-    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="shortcut icon" href="/img/favicon.ico">
     <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
     <script>window.lazyScripts=[]</script>
 </head>
@@ -104,9 +107,9 @@
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="/tag-cloud"  >
-                <i class="icon icon-lg icon-cloud"></i>
-                tag-cloud
+              <a href="/about"  >
+                <i class="icon icon-lg icon-user-circle"></i>
+                about
               </a>
             </li>
         
@@ -121,7 +124,7 @@
         <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
           <i class="icon icon-lg icon-navicon"></i>
         </a>
-        <div class="flex-col header-title ellipsis">Liu&#39;s Blog</div>
+        <div class="flex-col header-title ellipsis">锡柳的博客</div>
         
         <div class="search-wrap" id="search-wrap">
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
@@ -143,10 +146,10 @@
 <header class="content-header index-header">
 
     <div class="container fade-scale">
-        <h1 class="title">Liu&#39;s Blog</h1>
+        <h1 class="title">锡柳的博客</h1>
         <h5 class="subtitle">
             
-                
+                涓涓细流
             
         </h5>
     </div>
@@ -159,6 +162,170 @@
 <div class="container body-wrap">
 
     <ul class="post-list">
+    
+        <li class="post-list-item fade">
+            <article id="post-Linux零打碎敲"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2017-05-11 09:45:51" datetime="2017-05-11T01:45:51.000Z"  itemprop="datePublished">2017-05-11</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Linux/">Linux</a></li></ul>
+
+
+
+        
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2017/05/11/Linux零打碎敲/">Linux零打碎敲</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        引言整理一些平时用到的Linux小东西，做积累。
+定时启动工具crond先看看机子有没有启动crond1service crond status
+如果没有安装crond，可以先安装123456#安装Crondyum install vixie-cron crontabs#设置开机启动Crontabchkconfig crond on#启动Crontabservice crond start
+...
+    
+
+        <a href="/2017/05/11/Linux零打碎敲/" class="post-more waves-effect waves-button">
+            阅读全文…
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux/">Linux</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-hexo在线编写博客"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2017-05-10 18:30:03" datetime="2017-05-10T10:30:03.000Z"  itemprop="datePublished">2017-05-10</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/博客/">博客</a></li></ul>
+
+
+
+        
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2017/05/10/hexo在线编写博客/">hexo在线编写博客——hexo系列文章（四）</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        引言这篇文章就是在线写出来的~
+从编辑、到生成，全部云上完成，妈妈再也不用担心我在别的电脑上没法写hexo了！
+效果如图：
+
+                
+                    
+                    
+                
+                cloud9在线写博客
+            
+综述搭建这个环境其实也并不麻烦啦，...
+    
+
+        <a href="/2017/05/10/hexo在线编写博客/" class="post-more waves-effect waves-button">
+            阅读全文…
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Docker/">Docker</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hexo/">Hexo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux/">Linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/VPS/">VPS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/cloud9/">cloud9</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-分享一款极好用的Chrome插件"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2017-05-10 18:06:12" datetime="2017-05-10T10:06:12.000Z"  itemprop="datePublished">2017-05-10</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/软件/">软件</a></li></ul>
+
+
+
+        
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2017/05/10/分享一款极好用的Chrome插件/">分享一些极好用的Chrome插件</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        Bookmark Search引言你的Chrome书签是不是存了好多呢？当用到的时候却不知道放在那个目录了？哈哈哈，现在有福了，我们可以借助Chrome插件”Bookmark Search”来解决这个棘手的问题，有了它，我们就可以很方便的搜索以前存过的书签啦~~~！！！是不是很爽呢？
+插件效果
+                
+                    
+           ...
+    
+
+        <a href="/2017/05/10/分享一款极好用的Chrome插件/" class="post-more waves-effect waves-button">
+            阅读全文…
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Chrome/">Chrome</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/插件/">插件</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
     
         <li class="post-list-item fade">
             <article id="post-vtk-imageblend图像融合报错"
@@ -541,165 +708,12 @@ VT...
 
         </li>
     
-        <li class="post-list-item fade">
-            <article id="post-VTK提示MetaImage cannot read data from file"
-  class="article-card article-type-post" itemprop="blogPost">
-
-    <div class="post-meta">
-        <time class="post-time" title="2017-05-01 12:43:25" datetime="2017-05-01T04:43:25.125Z"  itemprop="datePublished">2017-05-01</time>
-
-        
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/VTK/">VTK</a></li></ul>
-
-
-
-        
-
-    </div>
-
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2017/05/01/VTK提示MetaImage cannot read data from file/">VTK提示MetaImage cannot read data from file</a>
-    </h3>
-  
-
-
-
-
-    <div class="post-content" id="post-content" itemprop="postContent">
-
-    
-        在运行《VTK图形图像进阶》第五章5.3_ImageResliceExample.cpp时，会提示MetaImage cannot read data from file或者显示窗口是空白，后来搜索了VTKExample中的例子，发现可以这样解决：
-    
-
-        <a href="/2017/05/01/VTK提示MetaImage cannot read data from file/" class="post-more waves-effect waves-button">
-            阅读全文…
-        </a>
-    </div>
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/VTK/">VTK</a></li></ul>
-
-    </div>
-    
-</article>
-
-        </li>
-    
-        <li class="post-list-item fade">
-            <article id="post-搭建hexo博客小记"
-  class="article-card article-type-post" itemprop="blogPost">
-
-    <div class="post-meta">
-        <time class="post-time" title="2017-04-26 20:26:32" datetime="2017-04-26T12:26:32.251Z"  itemprop="datePublished">2017-04-26</time>
-
-        
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/博客/">博客</a></li></ul>
-
-
-
-        
-
-    </div>
-
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2017/04/26/搭建hexo博客小记/">搭建hexo博客小记——hexo系列文章（一）</a>
-    </h3>
-  
-
-
-
-
-    <div class="post-content" id="post-content" itemprop="postContent">
-
-    
-        引言本文主要介绍在Github下搭建Hexo博客。总体说来，搭建Hexo总共需要两步：
-
-第一部分，部署本地博客，也就是在你的电脑上搭建起来Web环境；
-第二部分，生成静态页面，并上传到Github上去。
-    
-
-        <a href="/2017/04/26/搭建hexo博客小记/" class="post-more waves-effect waves-button">
-            阅读全文…
-        </a>
-    </div>
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hexo/">Hexo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/web/">web</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/博客/">博客</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/网站/">网站</a></li></ul>
-
-    </div>
-    
-</article>
-
-        </li>
-    
-        <li class="post-list-item fade">
-            <article id="post-利用Keepass2.x进行ftp或webdev同步"
-  class="article-card article-type-post" itemprop="blogPost">
-
-    <div class="post-meta">
-        <time class="post-time" title="2017-04-26 20:26:32" datetime="2017-04-26T12:26:32.246Z"  itemprop="datePublished">2017-04-26</time>
-
-        
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/软件/">软件</a></li></ul>
-
-
-
-        
-
-    </div>
-
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2017/04/26/利用Keepass2.x进行ftp或webdev同步/">利用KeePass2.x进行ftp或webdev同步</a>
-    </h3>
-  
-
-
-
-
-    <div class="post-content" id="post-content" itemprop="postContent">
-
-    
-        
-方法参考http://www.cnblogs.com/gumuyueying/p/keepass2-sync-trigger.html
-
-前言上篇博文介绍了利用软件Keepass保存密码。其实借助Dropbox或者其他同步软件将数据库.kpbx文件进行备份也很简单。但是由于某些原因，Dropbox很难上去。所以突然想到能否将文件保存在我的vps服务器上。在网上搜索教程就找到了这个方法。
-    
-
-        <a href="/2017/04/26/利用Keepass2.x进行ftp或webdev同步/" class="post-more waves-effect waves-button">
-            阅读全文…
-        </a>
-    </div>
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Chrome/">Chrome</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/KeePass/">KeePass</a></li></ul>
-
-    </div>
-    
-</article>
-
-        </li>
-    
     </ul>
 
     
 <nav id="page-nav">
     <div class="inner">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">下一页</a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">下一页</a>
     </div>
 </nav>
 
@@ -743,7 +757,7 @@ VT...
 <div class="global-share" id="globalShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://heliublog.com/&title=Liu's Blog&pic=https://heliublog.com/img/avatar.png" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://heliublog.com/&title=锡柳的博客&pic=https://heliublog.com/img/avatar.png" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -753,7 +767,7 @@ VT...
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://heliublog.com/&title=Liu's Blog&source=" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://heliublog.com/&title=锡柳的博客&source=记录自己的成长之路。技术&&生活。" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
@@ -763,7 +777,7 @@ VT...
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=Liu's Blog&url=https://heliublog.com/&via=https://heliublog.com" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=锡柳的博客&url=https://heliublog.com/&via=https://heliublog.com" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>

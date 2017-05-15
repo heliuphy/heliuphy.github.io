@@ -18,24 +18,27 @@
     
     
     
-    <title>About | Liu&#39;s Blog</title>
+    <title>About | 锡柳的博客 | 涓涓细流</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
     <meta name="theme-color" content="#3F51B5">
     
     
     <meta name="keywords" content="undefined">
-    <meta property="og:type" content="website">
+    <meta name="description" content="记录自己的成长之路。技术&amp;&amp;生活。">
+<meta property="og:type" content="website">
 <meta property="og:title" content="About">
 <meta property="og:url" content="https://heliublog.com/about/index.html">
-<meta property="og:site_name" content="Liu's Blog">
+<meta property="og:site_name" content="锡柳的博客">
+<meta property="og:description" content="记录自己的成长之路。技术&amp;&amp;生活。">
 <meta property="og:updated_time" content="2017-04-25T14:39:21.797Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="About">
+<meta name="twitter:description" content="记录自己的成长之路。技术&amp;&amp;生活。">
     
-        <link rel="alternate" type="application/atom+xml" title="Liu&#39;s Blog" href="/atom.xml">
+        <link rel="alternate" type="application/atom+xml" title="锡柳的博客" href="/atom.xml">
     
-    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="shortcut icon" href="/img/favicon.ico">
     <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
     <script>window.lazyScripts=[]</script>
 </head>
@@ -104,10 +107,10 @@
               </a>
             </li>
         
-            <li class="waves-block waves-effect">
-              <a href="/tag-cloud"  >
-                <i class="icon icon-lg icon-cloud"></i>
-                tag-cloud
+            <li class="waves-block waves-effect active">
+              <a href="/about"  >
+                <i class="icon icon-lg icon-user-circle"></i>
+                about
               </a>
             </li>
         
@@ -167,8 +170,8 @@
             <a href="/" class="avatar waves-effect waves-circle waves-light"><img src="/img/avatar.png"></a>
             <div class="content flex-col">
                 <p><strong>Liu He</strong></p>
-                <p><em></em></p>
-                <p>用户页面中作者相关的描述性文字，如不需要设为 false</p>
+                <p><em>涓涓细流</em></p>
+                <p>一切都是最好的安排！</p>
             </div>
 
             
@@ -178,7 +181,7 @@
 <div class="page-share" id="pageShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://heliublog.com/about/&title=《About》 — Liu's Blog&pic=https://heliublog.com/img/avatar.png" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://heliublog.com/about/&title=《About》 — 锡柳的博客&pic=https://heliublog.com/img/avatar.png" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -188,7 +191,7 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://heliublog.com/about/&title=《About》 — Liu's Blog&source=" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://heliublog.com/about/&title=《About》 — 锡柳的博客&source=记录自己的成长之路。技术&&生活。" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
@@ -198,7 +201,7 @@
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《About》 — Liu's Blog&url=https://heliublog.com/about/&via=https://heliublog.com" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《About》 — 锡柳的博客&url=https://heliublog.com/about/&via=https://heliublog.com" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
@@ -230,23 +233,31 @@
 
 
 
+
+
+
+
+
+
+
+
+
 <section class="comments" id="comments">
-    <div id="disqus_thread"></div>
+    <div id="gitment_thread"></div>
+    <link rel="stylesheet" href="//unpkg.com/gitment/style/default.css">
+    <script src="//unpkg.com/gitment/dist/gitment.browser.js"></script>
     <script>
-    var disqus_shortname = 'liusblog';
-    lazyScripts.push('//' + disqus_shortname + '.disqus.com/embed.js')
+        var gitment = new Gitment({
+            owner: 'heliuphy',
+            repo: 'HexoGitment',
+            oauth: {
+                client_id: 'e3b01812732c8b925e24',
+                client_secret: 'e16642c22f15078e6836cbfc31123ffd05acb13c',
+            },
+        })
+        gitment.render('comments')
     </script>
-    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 </section>
-
-
-
-
-
-
-
-
-
 
 
 
@@ -293,7 +304,7 @@
 <div class="global-share" id="globalShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://heliublog.com/about/&title=《About》 — Liu's Blog&pic=https://heliublog.com/img/avatar.png" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://heliublog.com/about/&title=《About》 — 锡柳的博客&pic=https://heliublog.com/img/avatar.png" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -303,7 +314,7 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://heliublog.com/about/&title=《About》 — Liu's Blog&source=" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://heliublog.com/about/&title=《About》 — 锡柳的博客&source=记录自己的成长之路。技术&&生活。" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
@@ -313,7 +324,7 @@
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《About》 — Liu's Blog&url=https://heliublog.com/about/&via=https://heliublog.com" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《About》 — 锡柳的博客&url=https://heliublog.com/about/&via=https://heliublog.com" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>

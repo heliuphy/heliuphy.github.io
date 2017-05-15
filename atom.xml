@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>Liu&#39;s Blog</title>
-  
+  <title>锡柳的博客</title>
+  <subtitle>涓涓细流</subtitle>
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://heliublog.com/"/>
-  <updated>2017-05-07T15:05:12.610Z</updated>
+  <updated>2017-05-12T09:59:36.000Z</updated>
   <id>https://heliublog.com/</id>
   
   <author>
@@ -14,6 +14,219 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Linux零打碎敲</title>
+    <link href="https://heliublog.com/2017/05/11/Linux%E9%9B%B6%E6%89%93%E7%A2%8E%E6%95%B2/"/>
+    <id>https://heliublog.com/2017/05/11/Linux零打碎敲/</id>
+    <published>2017-05-11T01:45:51.000Z</published>
+    <updated>2017-05-12T09:59:36.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><p>整理一些平时用到的Linux小东西，做积累。</p>
+<h2 id="定时启动工具crond"><a href="#定时启动工具crond" class="headerlink" title="定时启动工具crond"></a>定时启动工具crond</h2><h3 id="先看看机子有没有启动crond"><a href="#先看看机子有没有启动crond" class="headerlink" title="先看看机子有没有启动crond"></a>先看看机子有没有启动crond</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">service crond status</div></pre></td></tr></table></figure>
+<p>如果没有安装crond，可以先安装<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#安装Crond</span></div><div class="line">yum install vixie-cron crontabs</div><div class="line"><span class="comment">#设置开机启动Crontab</span></div><div class="line">chkconfig crond on</div><div class="line"><span class="comment">#启动Crontab</span></div><div class="line">service crond start</div></pre></td></tr></table></figure></p>
+<h3 id="添加定时任务"><a href="#添加定时任务" class="headerlink" title="添加定时任务"></a>添加定时任务</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">crontab <span class="_">-e</span></div></pre></td></tr></table></figure>
+<blockquote>
+<p>以下引用自<a href="http://www.linuxidc.com/Linux/2010-08/27700.htm" target="_blank" rel="external">来源：Linux社区  作者：RedHat Linux中crond服务与crontab用法</a><br>crontab file的格式:<br>    crontab 文件中的行由 6 个字段组成，不同字段间用空格或 tab 键分隔。前 5 个字段指定命令要运行的时间<br>       分钟 (0-59)<br>       小时 (0-23)<br>       日期 (1-31)<br>       月份 (1-12)<br>       星期几（0-6，其中 0 代表星期日）<br>       第 6 个字段是一个要在适当时间执行的字符串<br>例子: </p>
+<pre><code>#MIN HOUR DAY MONTH DAYOFWEEK COMMAND 
+#每天早上6点10分 
+10 6 * * * date 
+#每两个小时 
+0 */2 * * * date    (solaris 5.8似乎不支持此种写法) 
+#晚上11点到早上8点之间每两个小时，早上8点 
+0 23-7/2，8 * * * date 
+#每个月的4号和每个礼拜的礼拜一到礼拜三的早上11点 
+0 11 4 * mon-wed date 
+#1月份日早上4点 
+0 4 1 jan * date
+</code></pre></blockquote>
+<h3 id="重启crond"><a href="#重启crond" class="headerlink" title="重启crond"></a>重启crond</h3><figure class="highlight ebnf"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">service crond restart</span></div></pre></td></tr></table></figure>
+<h2 id="查看磁盘空间大小"><a href="#查看磁盘空间大小" class="headerlink" title="查看磁盘空间大小"></a>查看磁盘空间大小</h2><figure class="highlight ebnf"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">df -hl</span></div></pre></td></tr></table></figure>
+<p>如下图<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://op0n2nyjd.bkt.clouddn.com/1705111.JPG" alt="df -hl命令效果" title="">
+                </div>
+                <div class="image-caption">df -hl命令效果</div>
+            </figure></p>
+<h2 id="sh文件格式"><a href="#sh文件格式" class="headerlink" title=".sh文件格式"></a>.sh文件格式</h2><h3 id="开头"><a href="#开头" class="headerlink" title="开头"></a>开头</h3><p>文件的第一行必须是：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#!/bin/sh</span></div></pre></td></tr></table></figure></p>
+<p>符号#!用来告诉系统它后面的参数是用来执行该文件的程序。在这个例子中我们使用/bin/sh来执行程序。<br>当编写脚本完成时，如果要执行该脚本，还必须使其可执行。<br><figure class="highlight llvm"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">chmod +<span class="keyword">x</span> filename</div></pre></td></tr></table></figure></p>
+<p>用<code>./filename</code>来运行</p>
+<h3 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h3><p>以<code>#</code>开头的句子表示注释，直到这一行的结束。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;引言&quot;&gt;&lt;a href=&quot;#引言&quot; class=&quot;headerlink&quot; title=&quot;引言&quot;&gt;&lt;/a&gt;引言&lt;/h2&gt;&lt;p&gt;整理一些平时用到的Linux小东西，做积累。&lt;/p&gt;
+&lt;h2 id=&quot;定时启动工具crond&quot;&gt;&lt;a href=&quot;#定时启动工具crond&quot;
+    
+    </summary>
+    
+      <category term="Linux" scheme="https://heliublog.com/categories/Linux/"/>
+    
+    
+      <category term="Linux" scheme="https://heliublog.com/tags/Linux/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>hexo在线编写博客——hexo系列文章（四）</title>
+    <link href="https://heliublog.com/2017/05/10/hexo%E5%9C%A8%E7%BA%BF%E7%BC%96%E5%86%99%E5%8D%9A%E5%AE%A2/"/>
+    <id>https://heliublog.com/2017/05/10/hexo在线编写博客/</id>
+    <published>2017-05-10T10:30:03.000Z</published>
+    <updated>2017-05-14T03:25:36.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><p>这篇文章就是在线写出来的~</p>
+<p>从编辑、到生成，全部云上完成，妈妈再也不用担心我在别的电脑上没法写hexo了！</p>
+<p>效果如图：</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/upload/1705102.jpg" alt="cloud9在线写博客" title="">
+                </div>
+                <div class="image-caption">cloud9在线写博客</div>
+            </figure>
+<h2 id="综述"><a href="#综述" class="headerlink" title="综述"></a>综述</h2><p>搭建这个环境其实也并不麻烦啦，Cloud9我是用别人的镜像装的，所以简单很多。总体来说，大概需要这些东西：</p>
+<ul>
+<li>VPS一台</li>
+<li>Docker</li>
+<li>Cloud9</li>
+<li>nvm</li>
+<li>node(建议&gt;6.*)</li>
+<li>npm</li>
+<li>hexo</li>
+<li>apache(可选)</li>
+<li>rsync(可选)</li>
+<li>incrond（可选）</li>
+</ul>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><h3 id="VPS篇"><a href="#VPS篇" class="headerlink" title="VPS篇"></a>VPS篇</h3><p>我VPS用的系统是CentOS6.8 x64</p>
+<h3 id="Docker安装"><a href="#Docker安装" class="headerlink" title="Docker安装"></a>Docker安装</h3><p>CentOS下安装Docker还是很简单的，命令如下：<br><figure class="highlight cmake"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo yum <span class="keyword">install</span> docker-io</div></pre></td></tr></table></figure></p>
+<p>安装完后启动docker服务<br><figure class="highlight crmsh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">service docker <span class="literal">start</span></div></pre></td></tr></table></figure></p>
+<h3 id="Cloud9安装（Docker）"><a href="#Cloud9安装（Docker）" class="headerlink" title="Cloud9安装（Docker）"></a>Cloud9安装（Docker）</h3><h4 id="用VPS"><a href="#用VPS" class="headerlink" title="用VPS"></a>用VPS</h4><p><del><strong>注：</strong>dockerhub上现成的image是没有密码的，我可不希望别人谁都可以进来编辑我的博客，所以改一下Dockerfile，自己构建镜像。</del></p>
+<p>不要用这个办法了，dockerhub上有现成的镜像<code>sapk/cloud9</code>，地址<a href="https://hub.docker.com/r/sapk/cloud9/" target="_blank" rel="external">点这里</a><br>想看旧方法，请<a href="https://heliublog.com/2017/05/10/hexo%E5%9C%A8%E7%BA%BF%E7%BC%96%E5%86%99%E5%8D%9A%E5%AE%A2/#cloud9-docker">点这里</a></p>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">docker pull sapk/cloud9</div><div class="line"></div><div class="line"><span class="comment"># start with auth 将username,password替换成自己的账号密码</span></div><div class="line">docker <span class="keyword">run</span><span class="bash"> <span class="_">-d</span> -v your-path/workspace:/workspace -p 8181:8181 sapk/cloud9 --auth username:password</span></div></pre></td></tr></table></figure>
+<p><a href="http://ip:8181" target="_blank" rel="external">http://ip:8181</a>  查看效果吧！</p>
+<h4 id="用Docker云"><a href="#用Docker云" class="headerlink" title="用Docker云"></a>用Docker云</h4><p>这里仅以<a href="https://arukas.io/" target="_blank" rel="external">Arukas</a>为例。<br>注册账号什么的就不说了。<br>直接创建应用，按照下图填写就行了：</p>
+<p><html><img src="/upload/1705112.jpg" alt="图片"></html><br>创建完成后启动应用，如果一次不成功就多试几次。<br>创建成功后，点击<code>Endpoint</code>后面的链接就可以进到你自己的cloud9了。</p>
+<p><strong>千万注意：我不知道这里的数据都储存在了哪里，所以一定要定时将自己的博文通过cloud9页面下载到自己的电脑上，以作备份。</strong></p>
+<h3 id="nvm、node、npm、hexo"><a href="#nvm、node、npm、hexo" class="headerlink" title="nvm、node、npm、hexo"></a>nvm、node、npm、hexo</h3><p>这些我们一起讲，因为都是在cloud9中安装的。</p>
+<h4 id="nvm、node、npm的安装"><a href="#nvm、node、npm的安装" class="headerlink" title="nvm、node、npm的安装"></a>nvm、node、npm的安装</h4><p>nvm是node的版本管理器。</p>
+<h5 id="首先安装必要的包"><a href="#首先安装必要的包" class="headerlink" title="首先安装必要的包"></a>首先安装必要的包</h5><figure class="highlight q"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">sudo apt-<span class="built_in">get</span> <span class="keyword">update</span>  </div><div class="line">sudo apt-<span class="built_in">get</span> install build-essential libssl-<span class="built_in">dev</span></div></pre></td></tr></table></figure>
+<p><strong>注意：cloud9镜像是用ubuntu搭建的，所以要用apt-get，这个不是centos系统了，不要弄混了~</strong></p>
+<h5 id="安装nvm的脚本"><a href="#安装nvm的脚本" class="headerlink" title="安装nvm的脚本"></a>安装nvm的脚本</h5><figure class="highlight awk"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">wget -qO- https:<span class="regexp">//</span>raw.githubusercontent.com<span class="regexp">/creationix/</span>nvm<span class="regexp">/v0.31.4/i</span>nstall.sh | bash</div></pre></td></tr></table></figure>
+<h5 id="使用nvm安装并使用node6"><a href="#使用nvm安装并使用node6" class="headerlink" title="使用nvm安装并使用node6"></a>使用nvm安装并使用node6</h5><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">nvm</span> <span class="selector-tag">install</span> <span class="selector-tag">v6</span><span class="selector-class">.10</span><span class="selector-class">.3</span></div><div class="line"><span class="selector-tag">nvm</span> <span class="selector-tag">use</span> <span class="selector-tag">v6</span><span class="selector-class">.10</span><span class="selector-class">.3</span></div><div class="line"><span class="selector-tag">node</span> <span class="selector-tag">-v</span></div><div class="line"># <span class="selector-tag">v6</span><span class="selector-class">.10</span><span class="selector-class">.3</span>  即表示安装成功</div></pre></td></tr></table></figure>
+<p>npm有了，就不必装了</p>
+<h4 id="hexo安装"><a href="#hexo安装" class="headerlink" title="hexo安装"></a>hexo安装</h4><blockquote>
+<p>这个不是本文重点，可以参考我以前的文章<br><a href="https://heliublog.com/2016/05/01/%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2%E5%B0%8F%E8%AE%B0/">搭建hexo博客小记——hexo系列文章（一）</a><br><figure class="highlight cmake"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">npm <span class="keyword">install</span> -g hexo-cli</div><div class="line">mkdir hexo</div><div class="line">hexo init</div><div class="line">npm <span class="keyword">install</span></div><div class="line">hexo g</div></pre></td></tr></table></figure></p>
+</blockquote>
+<p>好了，到此为止，整个在线环境就部署成功了，你可以<code>hexo d</code>来提交你的博客到github，当然，也可以用你的VPS来<br>做网页服务器。如果不想的话，下面的部分就不用看了。</p>
+<hr>
+<h3 id="apache安装"><a href="#apache安装" class="headerlink" title="apache安装"></a>apache安装</h3><p>由于我没学过前端，这里我用的是<a href="https://blog.linuxeye.com/31.html" target="_blank" rel="external">lnmp一键安装包</a>，可以只装Apache，别的都不用装。</p>
+<p>将主机目录设置为<code>your-workspace/hexo/public</code></p>
+<p>我的这样做是不行，改了权限也不行，所以只能用默认的目录<code>/data/wwwroot/your-domain-name</code>然后同步两个文件夹了。<br>这是就用到最后两个工具：</p>
+<ul>
+<li>rsync用来同步</li>
+<li>incron用来监控文件改动</li>
+</ul>
+<h3 id="rsync的使用"><a href="#rsync的使用" class="headerlink" title="rsync的使用"></a>rsync的使用</h3><p>使用方法如下：<br><figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">rsync -av <span class="params">--delete</span> <span class="string">/ressourcen</span> <span class="string">/ressourcen_backup</span></div></pre></td></tr></table></figure></p>
+<p>这样当<code>/ressourcen</code>目录中的文件有变动、删除时，就会同步到<code>/ressourcen_backup</code>。</p>
+<p>我们要把这个文件写到一个脚本中，这样才能发挥他的作用（后述）。</p>
+<h3 id="incron"><a href="#incron" class="headerlink" title="incron"></a>incron</h3><p>incron的使用，我在前面的文章中也提到过<a href="https://heliublog.com/2016/05/01/VPS+Hexo+Dropbox%E5%88%9B%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/#安装incron">VPS+Hexo+Dropbox创建个人博客</a></p>
+<p>安装incron<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">yum <span class="keyword">install</span> incron</div><div class="line">service incrond <span class="keyword">start</span></div></pre></td></tr></table></figure></p>
+<p>用incron来监测文件夹变动<br><figure class="highlight vala"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">incrontab -e</div><div class="line"><span class="meta"># 在其中添加：</span></div><div class="line">your-path/hexo/<span class="keyword">public</span> IN_MOVE,IN_MODIFY,IN_CREATE,IN_DELETE your-path/runrsync.bash</div></pre></td></tr></table></figure></p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">vim</span> <span class="selector-tag">runrsync</span><span class="selector-class">.bash</span></div></pre></td></tr></table></figure>
+<p>runrsync.bash中写入:<br><figure class="highlight awk"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#!/usr/bin/env bash</span></div><div class="line">exec <span class="number">200</span>&lt;<span class="variable">$0</span></div><div class="line">flock -n <span class="number">200</span> || <span class="keyword">exit</span> <span class="number">1</span></div><div class="line">sleep <span class="number">1</span></div><div class="line">rsync -av --<span class="keyword">delete</span> <span class="regexp">/ressourcen /</span>ressourcen_backup</div></pre></td></tr></table></figure></p>
+<p>赋予权限<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">chmod</span> +<span class="selector-tag">x</span> <span class="selector-tag">runrsync</span><span class="selector-class">.bash</span></div></pre></td></tr></table></figure></p>
+<p>这样当<code>hexo g</code>，<code>public</code>文件夹就会发生变动，此时incron检测到了文件变动，运行脚本<code>runrsync.bash</code>，实现两个文件夹的同步。</p>
+<h2 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h2><h3 id="时区问题"><a href="#时区问题" class="headerlink" title="时区问题"></a>时区问题</h3><p>若用国外主机，在<code>hexo new</code>时，会由于时区设置的问题，<code>date</code>显示的不是本地时间，可以更改时区：<br><figure class="highlight dts"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">date -R  <span class="meta"># 查看当前系统时区</span></div><div class="line">cp <span class="meta-keyword">/usr/</span>share<span class="meta-keyword">/zoneinfo/</span>Asia/Shanghai <span class="meta-keyword">/etc/</span>localtime  <span class="meta"># 设置时区为东八区</span></div></pre></td></tr></table></figure></p>
+<h3 id="开机启动"><a href="#开机启动" class="headerlink" title="开机启动"></a>开机启动</h3><p>我们写了很多脚本，运行了很多服务，机器重启之后都不会开起来，所以我们要加入开机自启，才能保证功能的正常。<br><figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">vim /etc/rc.d/rc.<span class="built_in">local</span></div><div class="line"></div><div class="line"><span class="comment"># 写入以下内容</span></div><div class="line"></div><div class="line"><span class="comment"># Docker</span></div><div class="line">service docker <span class="built_in">start</span></div><div class="line"></div><div class="line"><span class="comment"># cloud9</span></div><div class="line">docker <span class="built_in">start</span> <span class="number">3e9</span>a55a</div><div class="line"></div><div class="line"><span class="comment"># incrond</span></div><div class="line">service incrond <span class="built_in">start</span></div></pre></td></tr></table></figure></p>
+<h2 id="old"><a href="#old" class="headerlink" title="old"></a>old</h2><h3 id="cloud9-docker"><a href="#cloud9-docker" class="headerlink" title="cloud9-docker"></a>cloud9-docker</h3><p><strong>(此方法已过期)</strong><br>Dockerfile的github地址在这里：<a href="https://github.com/kdelfour/cloud9-docker" target="_blank" rel="external">https://github.com/kdelfour/cloud9-docker</a></p>
+<p>我们将它克隆下来：</p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">cd</span> ~</div><div class="line"><span class="built_in">mkdir</span> cloud9</div><div class="line"><span class="keyword">cd</span> cloud9</div><div class="line">git clone http<span class="variable">s:</span>//github.<span class="keyword">com</span>/kdelfour/cloud9-docker.git</div></pre></td></tr></table></figure>
+<p>然后就要改改文件了，方法如下：</p>
+<p>（我是参考别人的）</p>
+<blockquote>
+<p>参考issue页面<a href="https://github.com/kdelfour/cloud9-docker/issues/15" target="_blank" rel="external">https://github.com/kdelfour/cloud9-docker/issues/15</a><br>pbelyaev的回答:<br>Just clone this repository and edit conf/cloud9.conf:</p>
+<p>[program:cloud9]<br>command = node /cloud9/server.js –listen 0.0.0.0 –port 80 –auth user:password -w /workspace<br>directory = /cloud9<br>user = root<br>autostart = true<br>autorestart = true<br>stdout_logfile = /var/log/supervisor/cloud9.log<br>stderr_logfile = /var/log/supervisor/cloud9_errors.log<br>environment = NODE_ENV=”production”<br>Then edit docker-compose.yml file:</p>
+<p>…<br>  cnine:<br>    build: ./dir/to/cloned/repository</p>
+</blockquote>
+<p>改好以后就可以构建镜像了，build命令格式如下<br><figure class="highlight armasm"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="symbol">docker</span> <span class="keyword">build </span>-t image_name Dockerfile_path</div></pre></td></tr></table></figure></p>
+<p>所以我们敲命令：<br><figure class="highlight armasm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="symbol">cd</span> Dockerfile所在目录</div><div class="line"><span class="symbol">docker</span> <span class="keyword">build </span>-t yourname/cloud9 .</div></pre></td></tr></table></figure></p>
+<p>构建完成后，我们来创建并启动容器：</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker run -it -d -p <span class="number">80</span>:<span class="number">80</span> -v <span class="regexp">/your-path/</span>workspace<span class="regexp">/:/</span>workspace<span class="regexp">/ yourname/</span>cloud9 --auth <span class="string">user:</span>password</div></pre></td></tr></table></figure>
+<p><strong>注：记得将user:password改为你自己的用户名:密码；yourname/cloud9是你自己起的image名字。</strong></p>
+<p><a href="http://your-server-ip" target="_blank" rel="external">http://your-server-ip</a></p>
+<p>就可以进入icloud了。</p>
+<h2 id="推荐"><a href="#推荐" class="headerlink" title="推荐"></a>推荐</h2><p>推荐大家看我以前写的hexo系列：</p>
+<p><a href="https://heliublog.com/2016/05/01/%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2%E5%B0%8F%E8%AE%B0/">搭建hexo博客小记——hexo系列文章（一）</a></p>
+<p><a href="https://heliublog.com/2016/05/14/Hexo%E5%88%A9%E7%94%A8Swiftype%E5%BB%BA%E7%AB%8B%E7%AB%99%E5%86%85%E6%90%9C%E7%B4%A2/">利用Swiftype建立站内搜索——hexo系列文章（二）</a></p>
+<p><a href="https://heliublog.com/2016/05/01/VPS+Hexo+Dropbox%E5%88%9B%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/">VPS+Hexo+Dropbox创建个人博客——hexo系列教程（三）</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;引言&quot;&gt;&lt;a href=&quot;#引言&quot; class=&quot;headerlink&quot; title=&quot;引言&quot;&gt;&lt;/a&gt;引言&lt;/h2&gt;&lt;p&gt;这篇文章就是在线写出来的~&lt;/p&gt;
+&lt;p&gt;从编辑、到生成，全部云上完成，妈妈再也不用担心我在别的电脑上没法写hexo了！&lt;/p&gt;
+&lt;p&gt;效果
+    
+    </summary>
+    
+      <category term="博客" scheme="https://heliublog.com/categories/%E5%8D%9A%E5%AE%A2/"/>
+    
+    
+      <category term="Hexo" scheme="https://heliublog.com/tags/Hexo/"/>
+    
+      <category term="VPS" scheme="https://heliublog.com/tags/VPS/"/>
+    
+      <category term="Linux" scheme="https://heliublog.com/tags/Linux/"/>
+    
+      <category term="cloud9" scheme="https://heliublog.com/tags/cloud9/"/>
+    
+      <category term="Docker" scheme="https://heliublog.com/tags/Docker/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>分享一些极好用的Chrome插件</title>
+    <link href="https://heliublog.com/2017/05/10/%E5%88%86%E4%BA%AB%E4%B8%80%E6%AC%BE%E6%9E%81%E5%A5%BD%E7%94%A8%E7%9A%84Chrome%E6%8F%92%E4%BB%B6/"/>
+    <id>https://heliublog.com/2017/05/10/分享一款极好用的Chrome插件/</id>
+    <published>2017-05-10T10:06:12.000Z</published>
+    <updated>2017-05-12T09:44:26.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="Bookmark-Search"><a href="#Bookmark-Search" class="headerlink" title="Bookmark Search"></a>Bookmark Search</h2><h3 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h3><p>你的Chrome书签是不是存了好多呢？当用到的时候却不知道放在那个目录了？哈哈哈，<br>现在有福了，我们可以借助Chrome插件”Bookmark Search”来解决这个棘手的问题，<br>有了它，我们就可以很方便的搜索以前存过的书签啦~~~！！！是不是很爽呢？</p>
+<h3 id="插件效果"><a href="#插件效果" class="headerlink" title="插件效果"></a>插件效果</h3><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/upload/1705101.jpg" alt="Bookmark Search 插件效果" title="">
+                </div>
+                <div class="image-caption">Bookmark Search 插件效果</div>
+            </figure>
+<h3 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h3><p>只要在地址栏输入<code>bm</code>然后敲空格或<code>Tab</code>键就可以进入书签索引了，然后在地址栏里敲进你想<br>搜索的书签名就可以啦！</p>
+<h2 id="start-me"><a href="#start-me" class="headerlink" title="start.me"></a>start.me</h2><h3 id="引言-1"><a href="#引言-1" class="headerlink" title="引言"></a>引言</h3><p>其实严格说来这个也不算是插件吧，就是个网页。但是也会有个辅助的插件。</p>
+<h3 id="插件效果-1"><a href="#插件效果-1" class="headerlink" title="插件效果"></a>插件效果</h3><p>效果呢，就是在你打开一个新Chrome标签页后，显示的不是8个格子和一个大大的搜索框，而是一个网页，这个网页上显示了你所有的书签。<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/upload/1705121.png" alt="start.me" title="">
+                </div>
+                <div class="image-caption">start.me</div>
+            </figure></p>
+<h3 id="使用方法-1"><a href="#使用方法-1" class="headerlink" title="使用方法"></a>使用方法</h3><p>打开一个新的标签页就可以使用啦！</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;Bookmark-Search&quot;&gt;&lt;a href=&quot;#Bookmark-Search&quot; class=&quot;headerlink&quot; title=&quot;Bookmark Search&quot;&gt;&lt;/a&gt;Bookmark Search&lt;/h2&gt;&lt;h3 id=&quot;引言&quot;&gt;&lt;a href=&quot;
+    
+    </summary>
+    
+      <category term="软件" scheme="https://heliublog.com/categories/%E8%BD%AF%E4%BB%B6/"/>
+    
+    
+      <category term="Chrome" scheme="https://heliublog.com/tags/Chrome/"/>
+    
+      <category term="插件" scheme="https://heliublog.com/tags/%E6%8F%92%E4%BB%B6/"/>
+    
+  </entry>
   
   <entry>
     <title>vtk-imageblend图像融合报错</title>
@@ -336,455 +549,11 @@
   </entry>
   
   <entry>
-    <title>搭建hexo博客小记——hexo系列文章（一）</title>
-    <link href="https://heliublog.com/2017/04/26/%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2%E5%B0%8F%E8%AE%B0/"/>
-    <id>https://heliublog.com/2017/04/26/搭建hexo博客小记/</id>
-    <published>2017-04-26T12:26:32.251Z</published>
-    <updated>2017-04-26T12:25:30.000Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><p>本文主要介绍在Github下搭建Hexo博客。总体说来，搭建Hexo总共需要两步：</p>
-<ul>
-<li>第一部分，部署本地博客，也就是在你的电脑上搭建起来Web环境；</li>
-<li>第二部分，生成静态页面，并上传到Github上去。<a id="more"></a></li>
-</ul>
-<h2 id="搭建本地博客系统"><a href="#搭建本地博客系统" class="headerlink" title="搭建本地博客系统"></a>搭建本地博客系统</h2><p>搭建本地博客系统首先要部署环境，即Node.js和Git。</p>
-<h3 id="Node-js的安装"><a href="#Node-js的安装" class="headerlink" title="Node.js的安装"></a>Node.js的安装</h3><p>可以<a href="https://nodejs.org/" target="_blank" rel="external">点此</a>下载nodejs，并按照步骤一步步安装；一切默认即可；</p>
-<h3 id="Git的安装"><a href="#Git的安装" class="headerlink" title="Git的安装"></a>Git的安装</h3><p>git bash，<a href="https://git-scm.com/downloads" target="_blank" rel="external">点此</a>下载即可。<br>部署好本地环境，便可以开始安装博客系统Hexo了</p>
-<h3 id="Hexo的安装"><a href="#Hexo的安装" class="headerlink" title="Hexo的安装"></a>Hexo的安装</h3><p>Hexo可直接用<code>npm</code>安装，可在电脑任意文件夹下右键Git Bash Here，进去后，在命令行中输入</p>
-<pre><code>npm install -g hexo
-</code></pre><h3 id="安装依赖包"><a href="#安装依赖包" class="headerlink" title="安装依赖包"></a>安装依赖包</h3><pre><code>npm install
-</code></pre><h3 id="发布本地博客"><a href="#发布本地博客" class="headerlink" title="发布本地博客"></a>发布本地博客</h3><p>到上一步为止，本地博客已搭建完成，下面我们可以发布本地博客看看效果：（即生成静态页面）</p>
-<pre><code>hexo generate
-hexo server
-</code></pre><p>当然，也可以用简写：</p>
-<pre><code>hexo g
-hexo s
-</code></pre><p>本地服务器开启后，我们就可以进入<a href="http://localhost:4000" target="_blank" rel="external">http://localhost:4000</a>浏览本地博客了。</p>
-<h2 id="上传本地文件到Github"><a href="#上传本地文件到Github" class="headerlink" title="上传本地文件到Github"></a>上传本地文件到Github</h2><h3 id="申请账号并建立仓库。"><a href="#申请账号并建立仓库。" class="headerlink" title="申请账号并建立仓库。"></a>申请账号并建立仓库。</h3><p>账号自行申请，建立仓库即在页面右上角的+除新建一个<code>repository</code>。但是命名有要求，必须用你的用户名加上github.io来命名仓库名。比如你的用户名为user123，那么就命名为user123.github.io。</p>
-<h3 id="获取SSH公钥，并与Github账号绑定。"><a href="#获取SSH公钥，并与Github账号绑定。" class="headerlink" title="获取SSH公钥，并与Github账号绑定。"></a>获取SSH公钥，并与Github账号绑定。</h3><h4 id="设置邮箱和用户名"><a href="#设置邮箱和用户名" class="headerlink" title="设置邮箱和用户名"></a>设置邮箱和用户名</h4><pre><code>git config --global user.email &quot;user123@gmail.com&quot; 
-</code></pre><p>git config –global user.name “user123”</p>
-<h4 id="生成密钥"><a href="#生成密钥" class="headerlink" title="生成密钥"></a>生成密钥</h4><pre><code>ssh-keygen -t rsa -C &quot;user@gmail.com&quot;
-</code></pre><p>命令运行后，会在<code>C:\Users\你的计算机名\.ssh</code>中找到<code>id_rsa.pub</code>这个文件，貌似是pubication的文件，但是我用office打不开，所以不管它了，如果有老兄知道这个究竟是用什么打开比较好，可以在评论区告诉我。不过它也是可以用txt打开的，将其中的内容复制到以下位置：</p>
-<p>先登录github，点击右上角你的账户头像，进入settings，进入SSH key选项卡，将<code>id_rsa.pub</code>中的所有内容添加进去即可。</p>
-<h4 id="更改博客配置，为上传做准备。"><a href="#更改博客配置，为上传做准备。" class="headerlink" title="更改博客配置，为上传做准备。"></a>更改博客配置，为上传做准备。</h4><p>打开<code>D:\hexo</code>目录下的配置文件<code>_config.yml</code>（推荐用软件Sublime Text打开，不要用txt打开，因为这要UTF-8编码，而txt不会编码），翻到最下面，并改成以下内容，把<code>user123g</code>替换成你的用户名即可</p>
-<pre><code>deploy:
-type: git
-repository: https://github.com/user123/user123.github.io.git
-branch: master
-</code></pre><p>注意：<code>type</code>后面一定要是<code>git</code>，不要填<code>Github</code>。这是最新版hexo的要求。还有就是上面配置文件的语法较为严格<code>type:</code>后面一定要留一个空格，<code>repository</code>，<code>branch</code>也一样。</p>
-<h2 id="上传博客内容"><a href="#上传博客内容" class="headerlink" title="上传博客内容"></a>上传博客内容</h2><h3 id="先生成静态文件"><a href="#先生成静态文件" class="headerlink" title="先生成静态文件"></a>先生成静态文件</h3><pre><code>hexo g
-</code></pre><h3 id="部署前先输入以下命令，不然会出现error-deployer-not-found-github的报错。"><a href="#部署前先输入以下命令，不然会出现error-deployer-not-found-github的报错。" class="headerlink" title="部署前先输入以下命令，不然会出现error deployer not found:github的报错。"></a>部署前先输入以下命令，不然会出现<code>error deployer not found:github</code>的报错。</h3><pre><code>npm install hexo-deployer-git --save
-</code></pre><h3 id="上传文档（部署）"><a href="#上传文档（部署）" class="headerlink" title="上传文档（部署）"></a>上传文档（部署）</h3><pre><code>hexo d
-</code></pre><p>待出现<code>INFO Deploy done: git</code>即成功。成功后，进入网址<code>http://user123..github.io</code>浏览查看。</p>
-<p>至此，所有工作都已完成，如果想更改主题什么的，可以看我后续的博客。有问题欢迎大家留言。</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;引言&quot;&gt;&lt;a href=&quot;#引言&quot; class=&quot;headerlink&quot; title=&quot;引言&quot;&gt;&lt;/a&gt;引言&lt;/h2&gt;&lt;p&gt;本文主要介绍在Github下搭建Hexo博客。总体说来，搭建Hexo总共需要两步：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;第一部分，部署本地博客，也就是在你的电脑上搭建起来Web环境；&lt;/li&gt;
-&lt;li&gt;第二部分，生成静态页面，并上传到Github上去。
-    
-    </summary>
-    
-      <category term="博客" scheme="https://heliublog.com/categories/%E5%8D%9A%E5%AE%A2/"/>
-    
-    
-      <category term="Hexo" scheme="https://heliublog.com/tags/Hexo/"/>
-    
-      <category term="web" scheme="https://heliublog.com/tags/web/"/>
-    
-      <category term="博客" scheme="https://heliublog.com/tags/%E5%8D%9A%E5%AE%A2/"/>
-    
-      <category term="网站" scheme="https://heliublog.com/tags/%E7%BD%91%E7%AB%99/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>利用KeePass2.x进行ftp或webdev同步</title>
-    <link href="https://heliublog.com/2017/04/26/%E5%88%A9%E7%94%A8Keepass2.x%E8%BF%9B%E8%A1%8Cftp%E6%88%96webdev%E5%90%8C%E6%AD%A5/"/>
-    <id>https://heliublog.com/2017/04/26/利用Keepass2.x进行ftp或webdev同步/</id>
-    <published>2017-04-26T12:26:32.246Z</published>
-    <updated>2017-04-26T12:25:30.000Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote>
-<p>方法参考<a href="http://www.cnblogs.com/gumuyueying/p/keepass2-sync-trigger.html" target="_blank" rel="external">http://www.cnblogs.com/gumuyueying/p/keepass2-sync-trigger.html</a></p>
-</blockquote>
-<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>上篇博文介绍了利用软件Keepass保存密码。其实借助Dropbox或者其他同步软件将数据库.kpbx文件进行备份也很简单。但是由于某些原因，Dropbox很难上去。所以突然想到能否将文件保存在我的vps服务器上。在网上搜索教程就找到了这个方法。</p>
-<a id="more"></a>
-<h2 id="同步"><a href="#同步" class="headerlink" title="同步"></a>同步</h2><p>其实同步很简单，只要借助KeePass自带的URL同步功能即可。如下图：</p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://i.imgur.com/XkgdsxV.png" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-<p>也就是选择“与URL同步”，<strong>但是要注意，必须现在指定位置建立一个.kpdb数据库文件</strong>，同步地址就填写该文件地址。</p>
-<h2 id="自动同步"><a href="#自动同步" class="headerlink" title="自动同步"></a>自动同步</h2><p>手动同步很麻烦，那么怎么设置自动同步呢？这里可以借助KeePass自带的触发器功能，有点像Windows的“计划任务”，以下方法可以实现本地保存后，立马服务器同步的功能。</p>
-<ol>
-<li><p>“属性”选项卡，命名该触发器，如 SavedSync.（注意，后面动作选择“更改触发器 开/关 状态”时触发器名称只能手动输入，无法选择，所以这里命名还是从简，具体描述可以写到下面的注释栏。）同时勾选“启用”和“启动时打开”复选框。 </p>
-</li>
-<li><p>“事件”选项卡，添加事件，选择“已保存数据库文件”，下面的文件/URL - 比较和过滤器可以无视。不过如果有多个数据库文件需要同步，则可以根据待保存的数据库文件名设定后续同步动作。这里我的设置如下： </p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://i.imgur.com/4zcHdI0.png" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-</li>
-<li><p>“条件”选项卡不加入任何条件。你也可以选择同步到 URL 文件时选择条件“远程主机可以连接(ping)”，这样只有当 URL 文件可以访问时才同步。不过我倾向于不加入这个条件，这样即使后面无法完成同步操作，也会有弹窗提示，让我们能更清楚当前的同步状态。</p>
-</li>
-</ol>
-<p>我这里只做了简写，如果遇到某些问题，或者想更加详细地了解“触发器”功能，请访问原博客地址：<a href="http://www.cnblogs.com/gumuyueying/p/keepass2-sync-trigger.html" target="_blank" rel="external">http://www.cnblogs.com/gumuyueying/p/keepass2-sync-trigger.html</a></p>
-<p>在此，对原作者表示感谢！</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;方法参考&lt;a href=&quot;http://www.cnblogs.com/gumuyueying/p/keepass2-sync-trigger.html&quot;&gt;http://www.cnblogs.com/gumuyueying/p/keepass2-sync-trigger.html&lt;/a&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;上篇博文介绍了利用软件Keepass保存密码。其实借助Dropbox或者其他同步软件将数据库.kpbx文件进行备份也很简单。但是由于某些原因，Dropbox很难上去。所以突然想到能否将文件保存在我的vps服务器上。在网上搜索教程就找到了这个方法。&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="软件" scheme="https://heliublog.com/categories/%E8%BD%AF%E4%BB%B6/"/>
-    
-    
-      <category term="KeePass" scheme="https://heliublog.com/tags/KeePass/"/>
-    
-      <category term="Chrome" scheme="https://heliublog.com/tags/Chrome/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>coding和github同时使用</title>
-    <link href="https://heliublog.com/2017/04/26/coding%E5%92%8Cgithub%E5%90%8C%E6%97%B6%E4%BD%BF%E7%94%A8/"/>
-    <id>https://heliublog.com/2017/04/26/coding和github同时使用/</id>
-    <published>2017-04-26T12:26:32.215Z</published>
-    <updated>2017-05-04T07:42:23.419Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><p>先贴几个我的参考网站：</p>
-<blockquote>
-<p><a href="http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000" target="_blank" rel="external">非常好的git学习站（入门）</a><br><a href="http://www.tuicool.com/articles/NZNJVvB" target="_blank" rel="external">Git管理多个远程仓库(以Github和Coding为例)</a><br><a href="http://my.oschina.net/450192529/blog/636106" target="_blank" rel="external">如何在同一台电脑上使用两个github,一个往coding推，一个往github推，亲测有效哦</a><br><a href="http://blog.csdn.net/chaoyue0071/article/details/41824339" target="_blank" rel="external">如何在同一台电脑上使用两个github账户</a><br><a href="http://www.cnblogs.com/sheldonxu/archive/2012/09/17/2688281.html" target="_blank" rel="external">执行ssh-add时出现Could not open a connection to your authentication agent</a><br><a href="http://blog.163.com/023_dns/blog/static/1187273662013111301046930/" target="_blank" rel="external">github常见操作和常见错误！错误提示：fatal: remote origin already exists. </a></p>
-</blockquote>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;引言&quot;&gt;&lt;a href=&quot;#引言&quot; class=&quot;headerlink&quot; title=&quot;引言&quot;&gt;&lt;/a&gt;引言&lt;/h2&gt;&lt;p&gt;先贴几个我的参考网站：&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;&lt;a href=&quot;http://www.liaoxuefeng.com/wi
-    
-    </summary>
-    
-      <category term="Git" scheme="https://heliublog.com/categories/Git/"/>
-    
-    
-      <category term="coding" scheme="https://heliublog.com/tags/coding/"/>
-    
-      <category term="Github" scheme="https://heliublog.com/tags/Github/"/>
-    
-      <category term="Git" scheme="https://heliublog.com/tags/Git/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>VPS服务器搭建ghost blog</title>
-    <link href="https://heliublog.com/2017/04/26/VPS%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%90%AD%E5%BB%BAghost%20blog/"/>
-    <id>https://heliublog.com/2017/04/26/VPS服务器搭建ghost blog/</id>
-    <published>2017-04-26T12:26:32.215Z</published>
-    <updated>2017-04-26T12:25:30.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>####前传</p>
-<hr>
-<p>&#160;&#160;无意中看到markdown语法，立马就喜欢上它，所以就想博客能不能也用这种语法写，因为我的博客原来一直用wordpress来搞，第一个想到的当然是用插件，当然也下到了，不过估计是主题css的问题，代码框老显示不出来，对于想要代码框的我来说实在是不能忍，就上网搜有没有其他的博客工具，哈哈终于找到了它，ghostblog！</p>
-<p>&#160;&#160;但是安装下来着实费了不少功夫。总结起来比较简便的方法还是AMH+Node.js<br><a id="more"></a><br>注：以下步骤引用自：<br><a href="http://www.tuicool.com/articles/jQnIJf3" target="_blank" rel="external">http://www.tuicool.com/articles/jQnIJf3</a></p>
-<ol>
-<li><p>安装AMH，网上有详细教程</p>
-</li>
-<li><p>安装Node.js</p>
-<p>也是网上的教程，不过有些gcc版本可能支持不了太新的Node.js</p>
-</li>
-<li><p>安装ghost</p>
-<ol>
-<li><p>新建数据库</p>
-<p>登陆AMH面板，进入数据库，快速建库，很简单。</p>
-</li>
-<li><p>新建站点</p>
-<p>登陆AMH面板，点击虚拟主机，新建虚拟主机，这也很简单。</p>
-</li>
-<li><p>安装Ghost程序</p>
-<p>这里我们使用的是 <a href="http://ghostchina.com/" target="_blank" rel="external">http://ghostchina.com/</a> 发布的中文版Ghost。</p>
-<p>登陆ssh，运行命令，</p>
-<pre><code>wget http://dl.ghostchina.com/Ghost-0.5.9-zh-full.zip //下载Ghost到VPS  
-unzip Ghost-0.5.9-zh-full.zip -d ghost //解压Ghost-0.5.9-zh-full.zip并xiu修改文件夹名为ghost  
-</code></pre><p>如没有安装unzip，请执行 sudo yum install unzip 来安装，</p>
-<p>&#160;&#160;到这里需要注意，ghost文件夹里的所有文件全部移动到之前你新建虚拟主机的web根目录下，不然会出错，文件移动号后，进入虚拟主机的web根目录下</p>
-<pre><code>cd /虚拟主机web根目录路径   //进入虚拟主机web根目录，此步骤不能少  
-cp config.example.js config.js //复制config.example.js成config.js  
-vim config.js //用vim编辑config.js文件  
-</code></pre><p>将相关位置修改成以下这样：</p>
-<pre><code>production: {  
-url: &apos;http://your_blog_url&apos;,
-mail: {},
-database: {
-client: &apos;mysql&apos;,
-connection: {
-host     : &apos;127.0.0.1&apos;, 
-user     : &apos;root&apos;, //暂且直接用root账户
-password : &apos;password&apos;, //你的root账户密码
-database : &apos;ghost&apos;, //你之前建立的数据库名
-charset  : &apos;utf8&apos;
-},
-debug: false
-},
-server: {
-// Host to be passed to node&apos;s                 `net.Server#listen()`
-host: &apos;127.0.0.1&apos;,//改为0.0.0.0，否则他人无法访问
-// Port to be passed to node&apos;s `net.Server#listen()`, for iisnode set this to `process.env.PORT`
-port: &apos;2368&apos;
-}
-},
-</code></pre><p>这里说一下vim编辑器的一般用法：</p>
-<p>i: 进入插入编辑模式</p>
-<p>ESC: 退出编辑模式</p>
-<p>:x : 退出并保存文件（退出编辑模式下使用）</p>
-</li>
-<li><p>配置Nginx</p>
-<p>由于之前你新建的虚拟主机的Nginx配置是为php服务的，所以，我们要将其进行修改成为node.js服务，</p>
-<pre><code>vim /usr/local/nginx/conf/***.conf //进入Nginx配置文件目录,并编辑与你新建的虚拟主机相应的Nginx配置文件  
-</code></pre><p>清空里面的内容，替换成以下：</p>
-<pre><code>server {  
-listen 80;
-server_name  xxx.com www.xxxx.com; //替换为你自己的域名！
-location / {
-proxy_set_header   X-Real-IP $remote_addr;
-proxy_set_header   Host      $http_host;
-proxy_pass         http://127.0.0.1:2368;
- }
-}
-</code></pre><p>然后进AMH控制面板重启一下Nginx，</p>
-<pre><code>npm start --production //启动Ghost，如果不出差错，在浏览器输入你的域名就可以看见Ghost的界面了，--production不能少  
-</code></pre><p>别以为到这就结束了，目前Ghost在我们SSH断开后就会结束进程，所以我们继续：</p>
-</li>
-<li><p>安装forever守护Ghost进程</p>
-<p>为了让Ghost程序能够后台运行不中断，我们还得再安装个工具，就是forever，使用-g参数就是在全局模式中安装，这样我们就可以再任何地方都能使用forever命令了。</p>
-<p>以下命令都请在网站根目录下运行</p>
-<pre><code>npm install forever -g //forever的安装命令  
-NODE_ENV=production forever start index.js  //安装forever后的Ghost启动命令  
-</code></pre><p>   好了，Ghost就此安装完成</p>
-</li>
-</ol>
-</li>
-</ol>
-<p>Ghost相关命令：</p>
-<p>//以下命令都请在网站根目录下运行</p>
-<pre><code>NODE_ENV=production forever start index.js //启动Ghost  
-NODE_ENV=production forever stop index.js //停止Ghost  
-NODE_ENV=production forever restart index.js //重启Ghost  
-</code></pre><p>现在，你就可以通过AMH控制面板进行数据管理、在线的文件编辑和上传 同样，你也可以按正常步骤新建一个php网站。</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;####前传&lt;/p&gt;
-&lt;hr&gt;
-&lt;p&gt;&amp;#160;&amp;#160;无意中看到markdown语法，立马就喜欢上它，所以就想博客能不能也用这种语法写，因为我的博客原来一直用wordpress来搞，第一个想到的当然是用插件，当然也下到了，不过估计是主题css的问题，代码框老显示不出来，对于想要代码框的我来说实在是不能忍，就上网搜有没有其他的博客工具，哈哈终于找到了它，ghostblog！&lt;/p&gt;
-&lt;p&gt;&amp;#160;&amp;#160;但是安装下来着实费了不少功夫。总结起来比较简便的方法还是AMH+Node.js&lt;br&gt;
-    
-    </summary>
-    
-      <category term="web" scheme="https://heliublog.com/categories/web/"/>
-    
-    
-      <category term="ghost blog" scheme="https://heliublog.com/tags/ghost-blog/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>VPS+Hexo+Dropbox创建个人博客</title>
-    <link href="https://heliublog.com/2017/04/26/VPS+Hexo+Dropbox%E5%88%9B%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/"/>
-    <id>https://heliublog.com/2017/04/26/VPS+Hexo+Dropbox创建个人博客/</id>
-    <published>2017-04-26T12:26:32.215Z</published>
-    <updated>2017-05-04T07:43:11.745Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote>
-<p>本文参考以下文章完成：<br>1.<a href="http://www.fanicy.com/2014/06/01/0001.hexowithvpsdropbox/" target="_blank" rel="external">用Hexo+Vps搭建博客并用Dropbox同步自动发布</a><br>2.<a href="http://www.jianshu.com/p/0839b09dc381#" target="_blank" rel="external">VPS+Dropbox+markeditor打造Hexo完美体验 (长期更新)</a><br>3.<a href="http://www.xmt.design/2016/04/04/blog-depoly-via-dropbox.html" target="_blank" rel="external">使用 Dropbox 和 VPS 实现实时部署 Hexo 博客</a></p>
-</blockquote>
-<p>废话少说，直接进入正题：</p>
-<h2 id="VPS"><a href="#VPS" class="headerlink" title="VPS"></a>VPS</h2><p>为CentOS 6.8 x64 ,512MB内存</p>
-<h2 id="安装需要的所有软件"><a href="#安装需要的所有软件" class="headerlink" title="安装需要的所有软件"></a>安装需要的所有软件</h2><h3 id="安装-Git"><a href="#安装-Git" class="headerlink" title="安装 Git"></a>安装 Git</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">yum install git-core</div></pre></td></tr></table></figure>
-<a id="more"></a>
-<h3 id="安装NodeJS"><a href="#安装NodeJS" class="headerlink" title="安装NodeJS"></a>安装NodeJS</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">% 前三步是先安装EPEL</div><div class="line"># wget http://dl.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm </div><div class="line"># wget http://rpms.famillecollet.com/enterprise/remi-release-6.rpm</div><div class="line"># rpm -Uvh remi-release-6*.rpm epel-release-6*.rpm</div><div class="line">% 安装node</div><div class="line">yum install nodejs npm --enablerepo=epel</div></pre></td></tr></table></figure>
-<h3 id="安装Dropbox"><a href="#安装Dropbox" class="headerlink" title="安装Dropbox"></a>安装Dropbox</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">cd ~ &amp;&amp; wget -O - &quot;https://www.dropbox.com/download?plat=lnx.x86_64&quot; | tar xzf -</div><div class="line">%然后，从新建的 .dropbox-dist 文件夹运行 Dropbox 守护程序.</div><div class="line">~/.dropbox-dist/dropboxd</div><div class="line">%下载官方提供的 cli 来控制和管理Dropbox</div><div class="line">wget https://linux.dropbox.com/packages/dropbox.py</div><div class="line">%更改权限:</div><div class="line">chmod +x ./dropbox.py</div><div class="line">%启动Dropbox:</div><div class="line">./dropbox.py start y</div><div class="line">关闭局域网广播:</div><div class="line">./dropbox.py lansync n</div></pre></td></tr></table></figure>
-<h3 id="安装Hexo"><a href="#安装Hexo" class="headerlink" title="安装Hexo"></a>安装Hexo</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">npm install -g hexo-cli</div><div class="line">cd Dropbox</div><div class="line">mkdir hexo</div><div class="line">cd hexo</div><div class="line">hexo init</div></pre></td></tr></table></figure>
-<h3 id="安装Nginx"><a href="#安装Nginx" class="headerlink" title="安装Nginx"></a>安装Nginx</h3><p>这里推荐不是很熟悉Nginx设置的用以下链接提供的一键安装包安装，可以只安装Nginx，自动设置<br><a href="https://blog.linuxeye.com/31.html" target="_blank" rel="external">lnmp、lamp、lnmpa一键安装包</a><br>这里设置时，可以将主机目录设置为dropbox的同步目录<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/root/Dropbox/hexo/public</div></pre></td></tr></table></figure></p>
-<p>添加权限：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">chmod -R 755 /root/Dropbox/hexo/public</div><div class="line">chown www:www /root/Dropbox/hexo/public</div><div class="line">chmod +x /root/Dropbox/ /root/Dropbox/hexo/</div></pre></td></tr></table></figure></p>
-<h3 id="安装incron"><a href="#安装incron" class="headerlink" title="安装incron"></a>安装incron</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">yum install incron</div><div class="line">service incrond start</div></pre></td></tr></table></figure>
-<h2 id="同步发布"><a href="#同步发布" class="headerlink" title="同步发布"></a>同步发布</h2><p>incron 监测文件夹配置<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">incrontab -e</div></pre></td></tr></table></figure></p>
-<p>在其中添加：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">/root/Dropbox/hexo/source/_posts/ IN_MOVE,IN_MODIFY,IN_CREATE,IN_DELETE /root/runhexo.bash</div><div class="line">/root/Dropbox/hexo/theme/ IN_MOVE,IN_MODIFY,IN_CREATE,IN_DELETE /root/runhexo.bash</div></pre></td></tr></table></figure></p>
-<p>runhexo.bash:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">#!/usr/bin/env bash</div><div class="line">exec 200&lt;$0</div><div class="line">flock -n 200 || exit 1</div><div class="line">sleep 10</div><div class="line">cd /root/Dropbox/hexo &amp;&amp; hexo g</div></pre></td></tr></table></figure></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;本文参考以下文章完成：&lt;br&gt;1.&lt;a href=&quot;http://www.fanicy.com/2014/06/01/0001.hexowithvpsdropbox/&quot;&gt;用Hexo+Vps搭建博客并用Dropbox同步自动发布&lt;/a&gt;&lt;br&gt;2.&lt;a href=&quot;http://www.jianshu.com/p/0839b09dc381#&quot;&gt;VPS+Dropbox+markeditor打造Hexo完美体验 (长期更新)&lt;/a&gt;&lt;br&gt;3.&lt;a href=&quot;http://www.xmt.design/2016/04/04/blog-depoly-via-dropbox.html&quot;&gt;使用 Dropbox 和 VPS 实现实时部署 Hexo 博客&lt;/a&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;废话少说，直接进入正题：&lt;/p&gt;
-&lt;h2 id=&quot;VPS&quot;&gt;&lt;a href=&quot;#VPS&quot; class=&quot;headerlink&quot; title=&quot;VPS&quot;&gt;&lt;/a&gt;VPS&lt;/h2&gt;&lt;p&gt;为CentOS 6.8 x64 ,512MB内存&lt;/p&gt;
-&lt;h2 id=&quot;安装需要的所有软件&quot;&gt;&lt;a href=&quot;#安装需要的所有软件&quot; class=&quot;headerlink&quot; title=&quot;安装需要的所有软件&quot;&gt;&lt;/a&gt;安装需要的所有软件&lt;/h2&gt;&lt;h3 id=&quot;安装-Git&quot;&gt;&lt;a href=&quot;#安装-Git&quot; class=&quot;headerlink&quot; title=&quot;安装 Git&quot;&gt;&lt;/a&gt;安装 Git&lt;/h3&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;yum install git-core&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-    
-    </summary>
-    
-      <category term="web" scheme="https://heliublog.com/categories/web/"/>
-    
-    
-      <category term="Hexo" scheme="https://heliublog.com/tags/Hexo/"/>
-    
-      <category term="blog" scheme="https://heliublog.com/tags/blog/"/>
-    
-      <category term="VPS" scheme="https://heliublog.com/tags/VPS/"/>
-    
-      <category term="Dropbox" scheme="https://heliublog.com/tags/Dropbox/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>beamer的theme</title>
-    <link href="https://heliublog.com/2017/04/26/beamer%E7%9A%84theme/"/>
-    <id>https://heliublog.com/2017/04/26/beamer的theme/</id>
-    <published>2017-04-26T12:26:32.215Z</published>
-    <updated>2017-04-26T12:25:30.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>发现两个不错的网站</p>
-<ul>
-<li><p>所有自带的主题列表</p>
-<pre><code>https://www.hartwork.org/beamer-theme-matrix/
-</code></pre></li>
-<li><p>这个网站也有不少好主题</p>
-<p><a href="https://latex.simon04.net/" target="_blank" rel="external">https://latex.simon04.net/</a></p>
-</li>
-</ul>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;发现两个不错的网站&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;所有自带的主题列表&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;https://www.hartwork.org/beamer-theme-matrix/
-&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;这个网站也有不少好主题&lt;/p
-    
-    </summary>
-    
-      <category term="软件零件" scheme="https://heliublog.com/categories/%E8%BD%AF%E4%BB%B6%E9%9B%B6%E4%BB%B6/"/>
-    
-    
-      <category term="latex" scheme="https://heliublog.com/tags/latex/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>KeePass+KeePassHTTP+chromeIPass储存个人密码</title>
-    <link href="https://heliublog.com/2017/04/26/KeePass/"/>
-    <id>https://heliublog.com/2017/04/26/KeePass/</id>
-    <published>2017-04-26T12:26:32.199Z</published>
-    <updated>2017-04-26T12:25:30.000Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>现在密码越来越多，但是为了密码安全还是不愿所有网站用同一个密码。所以就想到了用密码管理软件。尝试过1Password和Lastpass，可惜都收费。所以找到了KeePass，不仅免费，还开源。支持多平台。结合插件，可以实现在chrome上自动填写密码。<br><a id="more"></a></p>
-<blockquote>
-<p>本文参考<a href="http://devzc.com/post/465" target="_blank" rel="external">http://devzc.com/post/465</a>写作而成，再次对原作者表示感谢。</p>
-</blockquote>
-<h2 id="安装步骤"><a href="#安装步骤" class="headerlink" title="安装步骤"></a>安装步骤</h2><ol>
-<li><p>首先从以下网址下载所需文件</p>
-<ul>
-<li><p>KeePass主体程序:<br><a href="http://keepass.info/download.html" target="_blank" rel="external">http://keepass.info/download.html</a></p>
-</li>
-<li><p>KeePassHTTP扩展下载:<br><a href="https://github.com/pfn/keepasshttp/blob/master/KeePassHttp.plgx?raw=true" target="_blank" rel="external">https://github.com/pfn/keepasshttp/blob/master/KeePassHttp.plgx?raw=true</a><br>源码: <a href="https://github.com/pfn/keepasshttp/" target="_blank" rel="external">https://github.com/pfn/keepasshttp/</a></p>
-</li>
-<li><p>chromeIPass:<br>Chrome应用商店搜索[chromeIPass],安装即可;<br>chromeIPass源码: <a href="https://github.com/pfn/passifox" target="_blank" rel="external">https://github.com/pfn/passifox</a></p>
-</li>
-</ul>
-</li>
-<li><p>依次安装以上文件。<br>注意KeePassHTTP的配置：</p>
-<ol>
-<li>将KeePassHttp.plgx放在KeePass.exe同目录下,重启KeePass。并单击工具下的“KeePassHttp Options”。</li>
-<li>按照如下图配置：<br><img src="http://i.imgur.com/0R82YzX.png" alt=""></li>
-<li>点击Chrome上的chromeIPass图标，会出现Connect按钮,点击进去；</li>
-<li>Key_Name自己起名</li>
-<li><p>保存后，重新点击chromeIPass，若出现以下信息，则说明成功：</p>
-<p><img src="http://i.imgur.com/PDcuXmf.png" alt=""></p>
-</li>
-</ol>
-</li>
-</ol>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;现在密码越来越多，但是为了密码安全还是不愿所有网站用同一个密码。所以就想到了用密码管理软件。尝试过1Password和Lastpass，可惜都收费。所以找到了KeePass，不仅免费，还开源。支持多平台。结合插件，可以实现在chrome上自动填写密码。&lt;br&gt;
-    
-    </summary>
-    
-      <category term="软件" scheme="https://heliublog.com/categories/%E8%BD%AF%E4%BB%B6/"/>
-    
-    
-      <category term="KeePass" scheme="https://heliublog.com/tags/KeePass/"/>
-    
-      <category term="Chrome" scheme="https://heliublog.com/tags/Chrome/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Endnote的style</title>
-    <link href="https://heliublog.com/2017/04/26/Endnote%E7%9A%84style/"/>
-    <id>https://heliublog.com/2017/04/26/Endnote的style/</id>
-    <published>2017-04-26T12:26:32.183Z</published>
-    <updated>2017-05-07T14:54:44.856Z</updated>
-    
-    <content type="html"><![CDATA[<p>参考文献style:</p>
-<p>Chinese Std GBT7714</p>
-<ul>
-<li><p>附上 <a href="https://my.pcloud.com/publink/show?code=XZlVCQZLKN5QnRFiPX6zm1oYzf9CfrRdCKk" target="_blank" rel="external">下载地址</a></p>
-</li>
-<li><p>安装方法：</p>
-<ul>
-<li>拷到…/style  文件夹下即可。</li>
-</ul>
-</li>
-</ul>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;参考文献style:&lt;/p&gt;
-&lt;p&gt;Chinese Std GBT7714&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;附上 &lt;a href=&quot;https://my.pcloud.com/publink/show?code=XZlVCQZLKN5QnRFiPX6zm1oYzf9CfrR
-    
-    </summary>
-    
-      <category term="软件" scheme="https://heliublog.com/categories/%E8%BD%AF%E4%BB%B6/"/>
-    
-    
-      <category term="Endnote" scheme="https://heliublog.com/tags/Endnote/"/>
-    
-      <category term="style" scheme="https://heliublog.com/tags/style/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Hexo系列教程（二）——利用Swiftype建立站内搜索</title>
+    <title>利用Swiftype建立站内搜索——hexo系列文章（二）</title>
     <link href="https://heliublog.com/2016/05/14/Hexo%E5%88%A9%E7%94%A8Swiftype%E5%BB%BA%E7%AB%8B%E7%AB%99%E5%86%85%E6%90%9C%E7%B4%A2/"/>
     <id>https://heliublog.com/2016/05/14/Hexo利用Swiftype建立站内搜索/</id>
     <published>2016-05-14T08:12:29.000Z</published>
-    <updated>2017-04-26T12:25:30.000Z</updated>
+    <updated>2017-05-12T01:47:48.000Z</updated>
     
     <content type="html"><![CDATA[<blockquote>
 <p>部分内容引用自<a href="http://www.jianshu.com/p/2010ad07d960" target="_blank" rel="external">http://www.jianshu.com/p/2010ad07d960</a></p>
@@ -798,16 +567,16 @@ NODE_ENV=production forever restart index.js //重启Ghost
 </ul>
 <ol>
 <li><p>在jacman主题下的_config.yml文件末尾添加如下代码：</p>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">swift_search:</div><div class="line">     	enable: true</div></pre></td></tr></table></figure>
+ <figure class="highlight yaml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="attr">swift_search:</span></div><div class="line">     	<span class="attr">enable:</span> <span class="literal">true</span></div></pre></td></tr></table></figure>
 </li>
 <li><p>在hexo的source目录下建立一个search文件夹，并在其中新建一个index.md文件，其内容为：</p>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">layout: search</div><div class="line">title: search</div><div class="line">---</div></pre></td></tr></table></figure>
+ <figure class="highlight yaml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="attr">layout:</span> <span class="string">search</span></div><div class="line"><span class="attr">title:</span> <span class="string">search</span></div><div class="line"><span class="meta">---</span></div></pre></td></tr></table></figure>
 </li>
 <li><p>找到jacman\layout\ _partial目录下的header.ejs文件，在其中添加如下代码：</p>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;% if (theme.swift_search.enable)&#123; %&gt;</div><div class="line">   &lt;form class=&quot;search&quot; action=&quot;&lt;%- config.root %&gt;search/index.html&quot; method=&quot;get&quot; accept-charset=&quot;utf-8&quot;&gt;</div><div class="line">   &lt;input type=&quot;text&quot; id=&quot;st-search-inpu&quot; maxlength=&quot;20&quot; placeholder=&quot;搜索&quot; /&gt;</div><div class="line">   &lt;/form&gt;</div><div class="line">&lt;% &#125;</div></pre></td></tr></table></figure>
+ <figure class="highlight erb"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="xml"><span class="tag">&lt;<span class="name">%</span></span></span><span class="ruby"> <span class="keyword">if</span> (theme.swift_search.enable)&#123; </span><span class="xml"><span class="tag">%&gt;</span></span></div><div class="line">   <span class="tag">&lt;<span class="name">form</span> <span class="attr">class</span>=<span class="string">"search"</span> <span class="attr">action</span>=<span class="string">"&lt;%-</span></span><span class="ruby"> config.root </span><span class="xml"><span class="tag"><span class="string">%&gt;search/index.html"</span> <span class="attr">method</span>=<span class="string">"get"</span> <span class="attr">accept-charset</span>=<span class="string">"utf-8"</span>&gt;</span></span></div><div class="line">   <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">id</span>=<span class="string">"st-search-inpu"</span> <span class="attr">maxlength</span>=<span class="string">"20"</span> <span class="attr">placeholder</span>=<span class="string">"搜索"</span> /&gt;</span></div><div class="line">   <span class="tag">&lt;/<span class="name">form</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">%</span></span><span class="ruby"> &#125;</span></div></pre></td></tr></table></figure>
 </li>
 <li><p>将jacman\layout\ _partial目录下的search.ejs中的内容替换为如下代码（主要用来控制结果的显示样式，可根据个人爱好修改）：</p>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line">&lt;% if(theme.swift_search.enable) &#123; %&gt;</div><div class="line">   &lt;div  id=&quot;container&quot; class=&quot;page&quot;&gt;</div><div class="line">     &lt;div id=&quot;st-results-container&quot; style=&quot;width:70%; margin:1.5em auto&quot;&gt;正在加载搜索结果，请稍等。&lt;/div&gt;</div><div class="line">&lt;style&gt;</div><div class="line">.st-result-text &#123;</div><div class="line">background: #fafafa;</div><div class="line">display: block;</div><div class="line">border-left: 0.5em solid #ccc;</div><div class="line">-webkit-transition: border-left 0.45s;</div><div class="line">-moz-transition: border-left 0.45s;</div><div class="line">-o-transition: border-left 0.45s;</div><div class="line">-ms-transition: border-left 0.45s;</div><div class="line">transition: border-left 0.45s;</div><div class="line">padding: 0.5em;</div><div class="line">&#125;</div><div class="line">@media only screen and (min-width: 768px) &#123;</div><div class="line">.st-result-text &#123;</div><div class="line">padding: 1em;</div><div class="line">     &#125;</div><div class="line">&#125;</div><div class="line">.st-result-text:hover &#123;</div><div class="line">     border-left: 0.5em solid #ea6753;</div><div class="line">   &#125;</div><div class="line">.st-result-text h3 a&#123;</div><div class="line">     color: #2ca6cb;</div><div class="line">     line-height: 1.5;</div><div class="line">     font-size: 22px;</div><div class="line">   &#125;</div><div class="line">.st-snippet em &#123;</div><div class="line">     font-weight: bold;</div><div class="line">     color: #ea6753;</div><div class="line">   &#125;</div><div class="line">&lt;/style&gt;</div><div class="line">&lt;% &#125; %&gt;</div></pre></td></tr></table></figure>
+ <figure class="highlight erb"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line"><span class="xml"><span class="tag">&lt;<span class="name">%</span></span></span><span class="ruby"> <span class="keyword">if</span>(theme.swift_search.enable) &#123; </span><span class="xml"><span class="tag">%&gt;</span></span></div><div class="line">   <span class="tag">&lt;<span class="name">div</span>  <span class="attr">id</span>=<span class="string">"container"</span> <span class="attr">class</span>=<span class="string">"page"</span>&gt;</span></div><div class="line">     <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"st-results-container"</span> <span class="attr">style</span>=<span class="string">"width:70%; margin:1.5em auto"</span>&gt;</span>正在加载搜索结果，请稍等。<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="css"></span></div><div class="line"><span class="selector-class">.st-result-text</span> &#123;</div><div class="line"><span class="attribute">background</span>: <span class="number">#fafafa</span>;</div><div class="line"><span class="attribute">display</span>: block;</div><div class="line"><span class="attribute">border-left</span>: <span class="number">0.5em</span> solid <span class="number">#ccc</span>;</div><div class="line"><span class="attribute">-webkit-transition</span>: border-left <span class="number">0.45s</span>;</div><div class="line"><span class="attribute">-moz-transition</span>: border-left <span class="number">0.45s</span>;</div><div class="line"><span class="attribute">-o-transition</span>: border-left <span class="number">0.45s</span>;</div><div class="line"><span class="attribute">-ms-transition</span>: border-left <span class="number">0.45s</span>;</div><div class="line"><span class="attribute">transition</span>: border-left <span class="number">0.45s</span>;</div><div class="line"><span class="attribute">padding</span>: <span class="number">0.5em</span>;</div><div class="line">&#125;</div><div class="line">@<span class="keyword">media</span> only screen and (min-width: <span class="number">768px</span>) &#123;</div><div class="line"><span class="selector-class">.st-result-text</span> &#123;</div><div class="line"><span class="attribute">padding</span>: <span class="number">1em</span>;</div><div class="line">     &#125;</div><div class="line">&#125;</div><div class="line"><span class="selector-class">.st-result-text</span><span class="selector-pseudo">:hover</span> &#123;</div><div class="line">     <span class="attribute">border-left</span>: <span class="number">0.5em</span> solid <span class="number">#ea6753</span>;</div><div class="line">   &#125;</div><div class="line"><span class="selector-class">.st-result-text</span> <span class="selector-tag">h3</span> <span class="selector-tag">a</span>&#123;</div><div class="line">     <span class="attribute">color</span>: <span class="number">#2ca6cb</span>;</div><div class="line">     <span class="attribute">line-height</span>: <span class="number">1.5</span>;</div><div class="line">     <span class="attribute">font-size</span>: <span class="number">22px</span>;</div><div class="line">   &#125;</div><div class="line"><span class="selector-class">.st-snippet</span> <span class="selector-tag">em</span> &#123;</div><div class="line">     <span class="attribute">font-weight</span>: bold;</div><div class="line">     <span class="attribute">color</span>: <span class="number">#ea6753</span>;</div><div class="line">   &#125;</div><div class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">%</span></span><span class="ruby"> &#125; </span><span class="xml"><span class="tag">%&gt;</span></span></div></pre></td></tr></table></figure>
 </li>
 </ol>
 <h2 id="完成"><a href="#完成" class="headerlink" title="完成"></a>完成</h2><p>至此，配置完成，hexo d -g重新部署一下即可出现站内搜索功能。搜索框的样式可根据个人爱好在CSS文件中修改。</p>
@@ -827,7 +596,7 @@ NODE_ENV=production forever restart index.js //重启Ghost
     
     </summary>
     
-      <category term="Hexo" scheme="https://heliublog.com/categories/Hexo/"/>
+      <category term="博客" scheme="https://heliublog.com/categories/%E5%8D%9A%E5%AE%A2/"/>
     
     
       <category term="Hexo" scheme="https://heliublog.com/tags/Hexo/"/>
@@ -951,6 +720,443 @@ NODE_ENV=production forever restart index.js //重启Ghost
       <category term="系统安装" scheme="https://heliublog.com/tags/%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85/"/>
     
       <category term="Linux" scheme="https://heliublog.com/tags/Linux/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>beamer的theme</title>
+    <link href="https://heliublog.com/2016/05/10/beamer%E7%9A%84theme/"/>
+    <id>https://heliublog.com/2016/05/10/beamer的theme/</id>
+    <published>2016-05-10T10:06:12.000Z</published>
+    <updated>2017-05-10T10:20:24.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>发现两个不错的网站</p>
+<ul>
+<li><p>所有自带的主题列表</p>
+<pre><code>https://www.hartwork.org/beamer-theme-matrix/
+</code></pre></li>
+<li><p>这个网站也有不少好主题</p>
+<p><a href="https://latex.simon04.net/" target="_blank" rel="external">https://latex.simon04.net/</a></p>
+</li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;发现两个不错的网站&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;所有自带的主题列表&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;https://www.hartwork.org/beamer-theme-matrix/
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;这个网站也有不少好主题&lt;/p
+    
+    </summary>
+    
+      <category term="软件" scheme="https://heliublog.com/categories/%E8%BD%AF%E4%BB%B6/"/>
+    
+    
+      <category term="latex" scheme="https://heliublog.com/tags/latex/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>coding和github同时使用</title>
+    <link href="https://heliublog.com/2016/05/01/coding%E5%92%8Cgithub%E5%90%8C%E6%97%B6%E4%BD%BF%E7%94%A8/"/>
+    <id>https://heliublog.com/2016/05/01/coding和github同时使用/</id>
+    <published>2016-05-01T10:06:12.000Z</published>
+    <updated>2017-05-10T10:20:44.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><p>先贴几个我的参考网站：</p>
+<blockquote>
+<p><a href="http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000" target="_blank" rel="external">非常好的git学习站（入门）</a><br><a href="http://www.tuicool.com/articles/NZNJVvB" target="_blank" rel="external">Git管理多个远程仓库(以Github和Coding为例)</a><br><a href="http://my.oschina.net/450192529/blog/636106" target="_blank" rel="external">如何在同一台电脑上使用两个github,一个往coding推，一个往github推，亲测有效哦</a><br><a href="http://blog.csdn.net/chaoyue0071/article/details/41824339" target="_blank" rel="external">如何在同一台电脑上使用两个github账户</a><br><a href="http://www.cnblogs.com/sheldonxu/archive/2012/09/17/2688281.html" target="_blank" rel="external">执行ssh-add时出现Could not open a connection to your authentication agent</a><br><a href="http://blog.163.com/023_dns/blog/static/1187273662013111301046930/" target="_blank" rel="external">github常见操作和常见错误！错误提示：fatal: remote origin already exists. </a></p>
+</blockquote>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;引言&quot;&gt;&lt;a href=&quot;#引言&quot; class=&quot;headerlink&quot; title=&quot;引言&quot;&gt;&lt;/a&gt;引言&lt;/h2&gt;&lt;p&gt;先贴几个我的参考网站：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;a href=&quot;http://www.liaoxuefeng.com/wi
+    
+    </summary>
+    
+      <category term="Git" scheme="https://heliublog.com/categories/Git/"/>
+    
+    
+      <category term="coding" scheme="https://heliublog.com/tags/coding/"/>
+    
+      <category term="Github" scheme="https://heliublog.com/tags/Github/"/>
+    
+      <category term="Git" scheme="https://heliublog.com/tags/Git/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Endnote的style</title>
+    <link href="https://heliublog.com/2016/05/01/Endnote%E7%9A%84style/"/>
+    <id>https://heliublog.com/2016/05/01/Endnote的style/</id>
+    <published>2016-05-01T10:06:12.000Z</published>
+    <updated>2017-05-10T10:20:54.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>参考文献style:</p>
+<p>Chinese Std GBT7714</p>
+<ul>
+<li><p>附上 <a href="https://my.pcloud.com/publink/show?code=XZlVCQZLKN5QnRFiPX6zm1oYzf9CfrRdCKk" target="_blank" rel="external">下载地址</a></p>
+</li>
+<li><p>安装方法：</p>
+<ul>
+<li>拷到…/style  文件夹下即可。</li>
+</ul>
+</li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;参考文献style:&lt;/p&gt;
+&lt;p&gt;Chinese Std GBT7714&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;附上 &lt;a href=&quot;https://my.pcloud.com/publink/show?code=XZlVCQZLKN5QnRFiPX6zm1oYzf9CfrR
+    
+    </summary>
+    
+      <category term="软件" scheme="https://heliublog.com/categories/%E8%BD%AF%E4%BB%B6/"/>
+    
+    
+      <category term="Endnote" scheme="https://heliublog.com/tags/Endnote/"/>
+    
+      <category term="style" scheme="https://heliublog.com/tags/style/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>利用KeePass2.x进行ftp或webdev同步</title>
+    <link href="https://heliublog.com/2016/05/01/%E5%88%A9%E7%94%A8Keepass2.x%E8%BF%9B%E8%A1%8Cftp%E6%88%96webdev%E5%90%8C%E6%AD%A5/"/>
+    <id>https://heliublog.com/2016/05/01/利用Keepass2.x进行ftp或webdev同步/</id>
+    <published>2016-05-01T10:06:12.000Z</published>
+    <updated>2017-05-10T10:21:50.000Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote>
+<p>方法参考<a href="http://www.cnblogs.com/gumuyueying/p/keepass2-sync-trigger.html" target="_blank" rel="external">http://www.cnblogs.com/gumuyueying/p/keepass2-sync-trigger.html</a></p>
+</blockquote>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>上篇博文介绍了利用软件Keepass保存密码。其实借助Dropbox或者其他同步软件将数据库.kpbx文件进行备份也很简单。但是由于某些原因，Dropbox很难上去。所以突然想到能否将文件保存在我的vps服务器上。在网上搜索教程就找到了这个方法。</p>
+<a id="more"></a>
+<h2 id="同步"><a href="#同步" class="headerlink" title="同步"></a>同步</h2><p>其实同步很简单，只要借助KeePass自带的URL同步功能即可。如下图：</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://i.imgur.com/XkgdsxV.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>也就是选择“与URL同步”，<strong>但是要注意，必须现在指定位置建立一个.kpdb数据库文件</strong>，同步地址就填写该文件地址。</p>
+<h2 id="自动同步"><a href="#自动同步" class="headerlink" title="自动同步"></a>自动同步</h2><p>手动同步很麻烦，那么怎么设置自动同步呢？这里可以借助KeePass自带的触发器功能，有点像Windows的“计划任务”，以下方法可以实现本地保存后，立马服务器同步的功能。</p>
+<ol>
+<li><p>“属性”选项卡，命名该触发器，如 SavedSync.（注意，后面动作选择“更改触发器 开/关 状态”时触发器名称只能手动输入，无法选择，所以这里命名还是从简，具体描述可以写到下面的注释栏。）同时勾选“启用”和“启动时打开”复选框。 </p>
+</li>
+<li><p>“事件”选项卡，添加事件，选择“已保存数据库文件”，下面的文件/URL - 比较和过滤器可以无视。不过如果有多个数据库文件需要同步，则可以根据待保存的数据库文件名设定后续同步动作。这里我的设置如下： </p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://i.imgur.com/4zcHdI0.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+</li>
+<li><p>“条件”选项卡不加入任何条件。你也可以选择同步到 URL 文件时选择条件“远程主机可以连接(ping)”，这样只有当 URL 文件可以访问时才同步。不过我倾向于不加入这个条件，这样即使后面无法完成同步操作，也会有弹窗提示，让我们能更清楚当前的同步状态。</p>
+</li>
+</ol>
+<p>我这里只做了简写，如果遇到某些问题，或者想更加详细地了解“触发器”功能，请访问原博客地址：<a href="http://www.cnblogs.com/gumuyueying/p/keepass2-sync-trigger.html" target="_blank" rel="external">http://www.cnblogs.com/gumuyueying/p/keepass2-sync-trigger.html</a></p>
+<p>在此，对原作者表示感谢！</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;方法参考&lt;a href=&quot;http://www.cnblogs.com/gumuyueying/p/keepass2-sync-trigger.html&quot;&gt;http://www.cnblogs.com/gumuyueying/p/keepass2-sync-trigger.html&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;上篇博文介绍了利用软件Keepass保存密码。其实借助Dropbox或者其他同步软件将数据库.kpbx文件进行备份也很简单。但是由于某些原因，Dropbox很难上去。所以突然想到能否将文件保存在我的vps服务器上。在网上搜索教程就找到了这个方法。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="软件" scheme="https://heliublog.com/categories/%E8%BD%AF%E4%BB%B6/"/>
+    
+    
+      <category term="KeePass" scheme="https://heliublog.com/tags/KeePass/"/>
+    
+      <category term="Chrome" scheme="https://heliublog.com/tags/Chrome/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>搭建hexo博客小记——hexo系列文章（一）</title>
+    <link href="https://heliublog.com/2016/05/01/%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2%E5%B0%8F%E8%AE%B0/"/>
+    <id>https://heliublog.com/2016/05/01/搭建hexo博客小记/</id>
+    <published>2016-05-01T10:06:12.000Z</published>
+    <updated>2017-05-10T14:16:46.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><p>本文主要介绍在Github下搭建Hexo博客。总体说来，搭建Hexo总共需要两步：</p>
+<ul>
+<li>第一部分，部署本地博客，也就是在你的电脑上搭建起来Web环境；</li>
+<li>第二部分，生成静态页面，并上传到Github上去。<a id="more"></a></li>
+</ul>
+<h2 id="搭建本地博客系统"><a href="#搭建本地博客系统" class="headerlink" title="搭建本地博客系统"></a>搭建本地博客系统</h2><p>搭建本地博客系统首先要部署环境，即Node.js和Git。</p>
+<h3 id="Node-js的安装"><a href="#Node-js的安装" class="headerlink" title="Node.js的安装"></a>Node.js的安装</h3><p>可以<a href="https://nodejs.org/" target="_blank" rel="external">点此</a>下载nodejs，并按照步骤一步步安装；一切默认即可；</p>
+<h3 id="Git的安装"><a href="#Git的安装" class="headerlink" title="Git的安装"></a>Git的安装</h3><p>git bash，<a href="https://git-scm.com/downloads" target="_blank" rel="external">点此</a>下载即可。<br>部署好本地环境，便可以开始安装博客系统Hexo了</p>
+<h3 id="Hexo的安装"><a href="#Hexo的安装" class="headerlink" title="Hexo的安装"></a>Hexo的安装</h3><p>Hexo可直接用<code>npm</code>安装，可在电脑任意文件夹下右键Git Bash Here，进去后，在命令行中输入</p>
+<pre><code>npm install -g hexo
+</code></pre><h3 id="安装依赖包"><a href="#安装依赖包" class="headerlink" title="安装依赖包"></a>安装依赖包</h3><pre><code>npm install
+</code></pre><h3 id="发布本地博客"><a href="#发布本地博客" class="headerlink" title="发布本地博客"></a>发布本地博客</h3><p>到上一步为止，本地博客已搭建完成，下面我们可以发布本地博客看看效果：（即生成静态页面）</p>
+<pre><code>hexo generate
+hexo server
+</code></pre><p>当然，也可以用简写：</p>
+<pre><code>hexo g
+hexo s
+</code></pre><p>本地服务器开启后，我们就可以进入<a href="http://localhost:4000" target="_blank" rel="external">http://localhost:4000</a>浏览本地博客了。</p>
+<h2 id="上传本地文件到Github"><a href="#上传本地文件到Github" class="headerlink" title="上传本地文件到Github"></a>上传本地文件到Github</h2><h3 id="申请账号并建立仓库。"><a href="#申请账号并建立仓库。" class="headerlink" title="申请账号并建立仓库。"></a>申请账号并建立仓库。</h3><p>账号自行申请，建立仓库即在页面右上角的+除新建一个<code>repository</code>。但是命名有要求，必须用你的用户名加上github.io来命名仓库名。比如你的用户名为user123，那么就命名为user123.github.io。</p>
+<h3 id="获取SSH公钥，并与Github账号绑定。"><a href="#获取SSH公钥，并与Github账号绑定。" class="headerlink" title="获取SSH公钥，并与Github账号绑定。"></a>获取SSH公钥，并与Github账号绑定。</h3><h4 id="设置邮箱和用户名"><a href="#设置邮箱和用户名" class="headerlink" title="设置邮箱和用户名"></a>设置邮箱和用户名</h4><pre><code>git config --global user.email &quot;user123@gmail.com&quot; 
+</code></pre><p>git config –global user.name “user123”</p>
+<h4 id="生成密钥"><a href="#生成密钥" class="headerlink" title="生成密钥"></a>生成密钥</h4><pre><code>ssh-keygen -t rsa -C &quot;user@gmail.com&quot;
+</code></pre><p>命令运行后，会在<code>C:\Users\你的计算机名\.ssh</code>中找到<code>id_rsa.pub</code>这个文件，貌似是pubication的文件，但是我用office打不开，所以不管它了，如果有老兄知道这个究竟是用什么打开比较好，可以在评论区告诉我。不过它也是可以用txt打开的，将其中的内容复制到以下位置：</p>
+<p>先登录github，点击右上角你的账户头像，进入settings，进入SSH key选项卡，将<code>id_rsa.pub</code>中的所有内容添加进去即可。</p>
+<h4 id="更改博客配置，为上传做准备。"><a href="#更改博客配置，为上传做准备。" class="headerlink" title="更改博客配置，为上传做准备。"></a>更改博客配置，为上传做准备。</h4><p>打开<code>D:\hexo</code>目录下的配置文件<code>_config.yml</code>（推荐用软件Sublime Text打开，不要用txt打开，因为这要UTF-8编码，而txt不会编码），翻到最下面，并改成以下内容，把<code>user123g</code>替换成你的用户名即可</p>
+<pre><code>deploy:
+type: git
+repository: https://github.com/user123/user123.github.io.git
+branch: master
+</code></pre><p>注意：<code>type</code>后面一定要是<code>git</code>，不要填<code>Github</code>。这是最新版hexo的要求。还有就是上面配置文件的语法较为严格<code>type:</code>后面一定要留一个空格，<code>repository</code>，<code>branch</code>也一样。</p>
+<h2 id="上传博客内容"><a href="#上传博客内容" class="headerlink" title="上传博客内容"></a>上传博客内容</h2><h3 id="先生成静态文件"><a href="#先生成静态文件" class="headerlink" title="先生成静态文件"></a>先生成静态文件</h3><pre><code>hexo g
+</code></pre><h3 id="部署前先输入以下命令，不然会出现error-deployer-not-found-github的报错。"><a href="#部署前先输入以下命令，不然会出现error-deployer-not-found-github的报错。" class="headerlink" title="部署前先输入以下命令，不然会出现error deployer not found:github的报错。"></a>部署前先输入以下命令，不然会出现<code>error deployer not found:github</code>的报错。</h3><pre><code>npm install hexo-deployer-git --save
+</code></pre><h3 id="上传文档（部署）"><a href="#上传文档（部署）" class="headerlink" title="上传文档（部署）"></a>上传文档（部署）</h3><pre><code>hexo d
+</code></pre><p>待出现<code>INFO Deploy done: git</code>即成功。成功后，进入网址<code>http://user123..github.io</code>浏览查看。</p>
+<p>至此，所有工作都已完成，如果想更改主题什么的，可以看我后续的博客。有问题欢迎大家留言。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;引言&quot;&gt;&lt;a href=&quot;#引言&quot; class=&quot;headerlink&quot; title=&quot;引言&quot;&gt;&lt;/a&gt;引言&lt;/h2&gt;&lt;p&gt;本文主要介绍在Github下搭建Hexo博客。总体说来，搭建Hexo总共需要两步：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;第一部分，部署本地博客，也就是在你的电脑上搭建起来Web环境；&lt;/li&gt;
+&lt;li&gt;第二部分，生成静态页面，并上传到Github上去。
+    
+    </summary>
+    
+      <category term="博客" scheme="https://heliublog.com/categories/%E5%8D%9A%E5%AE%A2/"/>
+    
+    
+      <category term="Hexo" scheme="https://heliublog.com/tags/Hexo/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>VPS服务器搭建ghost blog</title>
+    <link href="https://heliublog.com/2016/05/01/VPS%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%90%AD%E5%BB%BAghost%20blog/"/>
+    <id>https://heliublog.com/2016/05/01/VPS服务器搭建ghost blog/</id>
+    <published>2016-05-01T10:06:12.000Z</published>
+    <updated>2017-05-10T10:21:26.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>####前传</p>
+<hr>
+<p>&#160;&#160;无意中看到markdown语法，立马就喜欢上它，所以就想博客能不能也用这种语法写，因为我的博客原来一直用wordpress来搞，第一个想到的当然是用插件，当然也下到了，不过估计是主题css的问题，代码框老显示不出来，对于想要代码框的我来说实在是不能忍，就上网搜有没有其他的博客工具，哈哈终于找到了它，ghostblog！</p>
+<p>&#160;&#160;但是安装下来着实费了不少功夫。总结起来比较简便的方法还是AMH+Node.js<br><a id="more"></a><br>注：以下步骤引用自：<br><a href="http://www.tuicool.com/articles/jQnIJf3" target="_blank" rel="external">http://www.tuicool.com/articles/jQnIJf3</a></p>
+<ol>
+<li><p>安装AMH，网上有详细教程</p>
+</li>
+<li><p>安装Node.js</p>
+<p>也是网上的教程，不过有些gcc版本可能支持不了太新的Node.js</p>
+</li>
+<li><p>安装ghost</p>
+<ol>
+<li><p>新建数据库</p>
+<p>登陆AMH面板，进入数据库，快速建库，很简单。</p>
+</li>
+<li><p>新建站点</p>
+<p>登陆AMH面板，点击虚拟主机，新建虚拟主机，这也很简单。</p>
+</li>
+<li><p>安装Ghost程序</p>
+<p>这里我们使用的是 <a href="http://ghostchina.com/" target="_blank" rel="external">http://ghostchina.com/</a> 发布的中文版Ghost。</p>
+<p>登陆ssh，运行命令，</p>
+<pre><code>wget http://dl.ghostchina.com/Ghost-0.5.9-zh-full.zip //下载Ghost到VPS  
+unzip Ghost-0.5.9-zh-full.zip -d ghost //解压Ghost-0.5.9-zh-full.zip并xiu修改文件夹名为ghost  
+</code></pre><p>如没有安装unzip，请执行 sudo yum install unzip 来安装，</p>
+<p>&#160;&#160;到这里需要注意，ghost文件夹里的所有文件全部移动到之前你新建虚拟主机的web根目录下，不然会出错，文件移动号后，进入虚拟主机的web根目录下</p>
+<pre><code>cd /虚拟主机web根目录路径   //进入虚拟主机web根目录，此步骤不能少  
+cp config.example.js config.js //复制config.example.js成config.js  
+vim config.js //用vim编辑config.js文件  
+</code></pre><p>将相关位置修改成以下这样：</p>
+<pre><code>production: {  
+url: &apos;http://your_blog_url&apos;,
+mail: {},
+database: {
+client: &apos;mysql&apos;,
+connection: {
+host     : &apos;127.0.0.1&apos;, 
+user     : &apos;root&apos;, //暂且直接用root账户
+password : &apos;password&apos;, //你的root账户密码
+database : &apos;ghost&apos;, //你之前建立的数据库名
+charset  : &apos;utf8&apos;
+},
+debug: false
+},
+server: {
+// Host to be passed to node&apos;s                 `net.Server#listen()`
+host: &apos;127.0.0.1&apos;,//改为0.0.0.0，否则他人无法访问
+// Port to be passed to node&apos;s `net.Server#listen()`, for iisnode set this to `process.env.PORT`
+port: &apos;2368&apos;
+}
+},
+</code></pre><p>这里说一下vim编辑器的一般用法：</p>
+<p>i: 进入插入编辑模式</p>
+<p>ESC: 退出编辑模式</p>
+<p>:x : 退出并保存文件（退出编辑模式下使用）</p>
+</li>
+<li><p>配置Nginx</p>
+<p>由于之前你新建的虚拟主机的Nginx配置是为php服务的，所以，我们要将其进行修改成为node.js服务，</p>
+<pre><code>vim /usr/local/nginx/conf/***.conf //进入Nginx配置文件目录,并编辑与你新建的虚拟主机相应的Nginx配置文件  
+</code></pre><p>清空里面的内容，替换成以下：</p>
+<pre><code>server {  
+listen 80;
+server_name  xxx.com www.xxxx.com; //替换为你自己的域名！
+location / {
+proxy_set_header   X-Real-IP $remote_addr;
+proxy_set_header   Host      $http_host;
+proxy_pass         http://127.0.0.1:2368;
+ }
+}
+</code></pre><p>然后进AMH控制面板重启一下Nginx，</p>
+<pre><code>npm start --production //启动Ghost，如果不出差错，在浏览器输入你的域名就可以看见Ghost的界面了，--production不能少  
+</code></pre><p>别以为到这就结束了，目前Ghost在我们SSH断开后就会结束进程，所以我们继续：</p>
+</li>
+<li><p>安装forever守护Ghost进程</p>
+<p>为了让Ghost程序能够后台运行不中断，我们还得再安装个工具，就是forever，使用-g参数就是在全局模式中安装，这样我们就可以再任何地方都能使用forever命令了。</p>
+<p>以下命令都请在网站根目录下运行</p>
+<pre><code>npm install forever -g //forever的安装命令  
+NODE_ENV=production forever start index.js  //安装forever后的Ghost启动命令  
+</code></pre><p>   好了，Ghost就此安装完成</p>
+</li>
+</ol>
+</li>
+</ol>
+<p>Ghost相关命令：</p>
+<p>//以下命令都请在网站根目录下运行</p>
+<pre><code>NODE_ENV=production forever start index.js //启动Ghost  
+NODE_ENV=production forever stop index.js //停止Ghost  
+NODE_ENV=production forever restart index.js //重启Ghost  
+</code></pre><p>现在，你就可以通过AMH控制面板进行数据管理、在线的文件编辑和上传 同样，你也可以按正常步骤新建一个php网站。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;####前传&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;&amp;#160;&amp;#160;无意中看到markdown语法，立马就喜欢上它，所以就想博客能不能也用这种语法写，因为我的博客原来一直用wordpress来搞，第一个想到的当然是用插件，当然也下到了，不过估计是主题css的问题，代码框老显示不出来，对于想要代码框的我来说实在是不能忍，就上网搜有没有其他的博客工具，哈哈终于找到了它，ghostblog！&lt;/p&gt;
+&lt;p&gt;&amp;#160;&amp;#160;但是安装下来着实费了不少功夫。总结起来比较简便的方法还是AMH+Node.js&lt;br&gt;
+    
+    </summary>
+    
+      <category term="web" scheme="https://heliublog.com/categories/web/"/>
+    
+    
+      <category term="ghost blog" scheme="https://heliublog.com/tags/ghost-blog/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>VPS+Hexo+Dropbox创建个人博客——hexo系列教程（三）</title>
+    <link href="https://heliublog.com/2016/05/01/VPS+Hexo+Dropbox%E5%88%9B%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/"/>
+    <id>https://heliublog.com/2016/05/01/VPS+Hexo+Dropbox创建个人博客/</id>
+    <published>2016-05-01T10:06:12.000Z</published>
+    <updated>2017-05-10T14:17:30.000Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote>
+<p>本文参考以下文章完成：<br>1.<a href="http://www.fanicy.com/2014/06/01/0001.hexowithvpsdropbox/" target="_blank" rel="external">用Hexo+Vps搭建博客并用Dropbox同步自动发布</a><br>2.<a href="http://www.jianshu.com/p/0839b09dc381#" target="_blank" rel="external">VPS+Dropbox+markeditor打造Hexo完美体验 (长期更新)</a><br>3.<a href="http://www.xmt.design/2016/04/04/blog-depoly-via-dropbox.html" target="_blank" rel="external">使用 Dropbox 和 VPS 实现实时部署 Hexo 博客</a></p>
+</blockquote>
+<p>废话少说，直接进入正题：</p>
+<h2 id="VPS"><a href="#VPS" class="headerlink" title="VPS"></a>VPS</h2><p>为CentOS 6.8 x64 ,512MB内存</p>
+<h2 id="安装需要的所有软件"><a href="#安装需要的所有软件" class="headerlink" title="安装需要的所有软件"></a>安装需要的所有软件</h2><h3 id="安装-Git"><a href="#安装-Git" class="headerlink" title="安装 Git"></a>安装 Git</h3><figure class="highlight cmake"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">yum <span class="keyword">install</span> git-core</div></pre></td></tr></table></figure>
+<a id="more"></a>
+<h3 id="安装NodeJS"><a href="#安装NodeJS" class="headerlink" title="安装NodeJS"></a>安装NodeJS</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="meta">%</span><span class="bash"> 前三步是先安装EPEL</span></div><div class="line"><span class="meta">#</span><span class="bash"> wget http://dl.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm </span></div><div class="line"><span class="meta">#</span><span class="bash"> wget http://rpms.famillecollet.com/enterprise/remi-release-6.rpm</span></div><div class="line"><span class="meta">#</span><span class="bash"> rpm -Uvh remi-release-6*.rpm epel-release-6*.rpm</span></div><div class="line"><span class="meta">%</span><span class="bash"> 安装node</span></div><div class="line">yum install nodejs npm --enablerepo=epel</div></pre></td></tr></table></figure>
+<h3 id="安装Dropbox"><a href="#安装Dropbox" class="headerlink" title="安装Dropbox"></a>安装Dropbox</h3><figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">cd</span> ~ &amp;&amp; wget -O - <span class="string">"https://www.dropbox.com/download?plat=lnx.x86_64"</span> | tar xzf -</div><div class="line">%然后，从新建的 <span class="string">.dropbox-dist</span> 文件夹运行 Dropbox 守护程序.</div><div class="line">~<span class="string">/.dropbox-dist/dropboxd</span></div><div class="line">%下载官方提供的 cli 来控制和管理Dropbox</div><div class="line">wget https:<span class="string">//linux.dropbox.com/packages/dropbox.py</span></div><div class="line">%更改权限:</div><div class="line">chmod +x <span class="string">./dropbox.py</span></div><div class="line">%启动Dropbox:</div><div class="line"><span class="string">./dropbox.py</span> start y</div><div class="line">关闭局域网广播:</div><div class="line"><span class="string">./dropbox.py</span> lansync n</div></pre></td></tr></table></figure>
+<h3 id="安装Hexo"><a href="#安装Hexo" class="headerlink" title="安装Hexo"></a>安装Hexo</h3><figure class="highlight stata"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">npm install -<span class="keyword">g</span> hexo-<span class="keyword">cli</span></div><div class="line"><span class="keyword">cd</span> Dropbox</div><div class="line"><span class="keyword">mkdir</span> hexo</div><div class="line"><span class="keyword">cd</span> hexo</div><div class="line">hexo init</div></pre></td></tr></table></figure>
+<h3 id="安装Nginx"><a href="#安装Nginx" class="headerlink" title="安装Nginx"></a>安装Nginx</h3><p>这里推荐不是很熟悉Nginx设置的用以下链接提供的一键安装包安装，可以只安装Nginx，自动设置<br><a href="https://blog.linuxeye.com/31.html" target="_blank" rel="external">lnmp、lamp、lnmpa一键安装包</a><br>这里设置时，可以将主机目录设置为dropbox的同步目录<br><figure class="highlight gradle"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="regexp">/root/</span>Dropbox<span class="regexp">/hexo/</span><span class="keyword">public</span></div></pre></td></tr></table></figure></p>
+<p>添加权限：<br><figure class="highlight groovy"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">chmod -R <span class="number">755</span> <span class="regexp">/root/</span>Dropbox<span class="regexp">/hexo/</span><span class="keyword">public</span></div><div class="line">chown <span class="string">www:</span>www <span class="regexp">/root/</span>Dropbox<span class="regexp">/hexo/</span><span class="keyword">public</span></div><div class="line">chmod +x <span class="regexp">/root/</span>Dropbox<span class="regexp">/ /</span>root<span class="regexp">/Dropbox/</span>hexo/</div></pre></td></tr></table></figure></p>
+<h3 id="安装incron"><a href="#安装incron" class="headerlink" title="安装incron"></a>安装incron</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">yum <span class="keyword">install</span> incron</div><div class="line">service incrond <span class="keyword">start</span></div></pre></td></tr></table></figure>
+<h2 id="同步发布"><a href="#同步发布" class="headerlink" title="同步发布"></a>同步发布</h2><p>incron 监测文件夹配置<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">incrontab <span class="_">-e</span></div></pre></td></tr></table></figure></p>
+<p>在其中添加：<br><figure class="highlight gradle"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="regexp">/root/</span>Dropbox<span class="regexp">/hexo/</span><span class="keyword">source</span><span class="regexp">/_posts/</span> IN_MOVE,IN_MODIFY,IN_CREATE,IN_DELETE <span class="regexp">/root/</span>runhexo.bash</div><div class="line"><span class="regexp">/root/</span>Dropbox<span class="regexp">/hexo/</span>theme<span class="regexp">/ IN_MOVE,IN_MODIFY,IN_CREATE,IN_DELETE /</span>root<span class="regexp">/runhexo.bash</span></div></pre></td></tr></table></figure></p>
+<p>runhexo.bash:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#!/usr/bin/env bash</span></div><div class="line"><span class="built_in">exec</span> 200&lt;<span class="variable">$0</span></div><div class="line">flock -n 200 || <span class="built_in">exit</span> 1</div><div class="line">sleep 10</div><div class="line"><span class="built_in">cd</span> /root/Dropbox/hexo &amp;&amp; hexo g</div></pre></td></tr></table></figure></p>
+<p>添加权限<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">chmod</span> +<span class="selector-tag">x</span> <span class="selector-tag">runhexo</span><span class="selector-class">.bash</span></div></pre></td></tr></table></figure></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;本文参考以下文章完成：&lt;br&gt;1.&lt;a href=&quot;http://www.fanicy.com/2014/06/01/0001.hexowithvpsdropbox/&quot;&gt;用Hexo+Vps搭建博客并用Dropbox同步自动发布&lt;/a&gt;&lt;br&gt;2.&lt;a href=&quot;http://www.jianshu.com/p/0839b09dc381#&quot;&gt;VPS+Dropbox+markeditor打造Hexo完美体验 (长期更新)&lt;/a&gt;&lt;br&gt;3.&lt;a href=&quot;http://www.xmt.design/2016/04/04/blog-depoly-via-dropbox.html&quot;&gt;使用 Dropbox 和 VPS 实现实时部署 Hexo 博客&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;废话少说，直接进入正题：&lt;/p&gt;
+&lt;h2 id=&quot;VPS&quot;&gt;&lt;a href=&quot;#VPS&quot; class=&quot;headerlink&quot; title=&quot;VPS&quot;&gt;&lt;/a&gt;VPS&lt;/h2&gt;&lt;p&gt;为CentOS 6.8 x64 ,512MB内存&lt;/p&gt;
+&lt;h2 id=&quot;安装需要的所有软件&quot;&gt;&lt;a href=&quot;#安装需要的所有软件&quot; class=&quot;headerlink&quot; title=&quot;安装需要的所有软件&quot;&gt;&lt;/a&gt;安装需要的所有软件&lt;/h2&gt;&lt;h3 id=&quot;安装-Git&quot;&gt;&lt;a href=&quot;#安装-Git&quot; class=&quot;headerlink&quot; title=&quot;安装 Git&quot;&gt;&lt;/a&gt;安装 Git&lt;/h3&gt;&lt;figure class=&quot;highlight cmake&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;yum &lt;span class=&quot;keyword&quot;&gt;install&lt;/span&gt; git-core&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+    
+    </summary>
+    
+      <category term="web" scheme="https://heliublog.com/categories/web/"/>
+    
+    
+      <category term="Hexo" scheme="https://heliublog.com/tags/Hexo/"/>
+    
+      <category term="VPS" scheme="https://heliublog.com/tags/VPS/"/>
+    
+      <category term="Dropbox" scheme="https://heliublog.com/tags/Dropbox/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>KeePass+KeePassHTTP+chromeIPass储存个人密码</title>
+    <link href="https://heliublog.com/2016/05/01/KeePass/"/>
+    <id>https://heliublog.com/2016/05/01/KeePass/</id>
+    <published>2016-05-01T10:06:12.000Z</published>
+    <updated>2017-05-10T10:21:04.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>现在密码越来越多，但是为了密码安全还是不愿所有网站用同一个密码。所以就想到了用密码管理软件。尝试过1Password和Lastpass，可惜都收费。所以找到了KeePass，不仅免费，还开源。支持多平台。结合插件，可以实现在chrome上自动填写密码。<br><a id="more"></a></p>
+<blockquote>
+<p>本文参考<a href="http://devzc.com/post/465" target="_blank" rel="external">http://devzc.com/post/465</a>写作而成，再次对原作者表示感谢。</p>
+</blockquote>
+<h2 id="安装步骤"><a href="#安装步骤" class="headerlink" title="安装步骤"></a>安装步骤</h2><ol>
+<li><p>首先从以下网址下载所需文件</p>
+<ul>
+<li><p>KeePass主体程序:<br><a href="http://keepass.info/download.html" target="_blank" rel="external">http://keepass.info/download.html</a></p>
+</li>
+<li><p>KeePassHTTP扩展下载:<br><a href="https://github.com/pfn/keepasshttp/blob/master/KeePassHttp.plgx?raw=true" target="_blank" rel="external">https://github.com/pfn/keepasshttp/blob/master/KeePassHttp.plgx?raw=true</a><br>源码: <a href="https://github.com/pfn/keepasshttp/" target="_blank" rel="external">https://github.com/pfn/keepasshttp/</a></p>
+</li>
+<li><p>chromeIPass:<br>Chrome应用商店搜索[chromeIPass],安装即可;<br>chromeIPass源码: <a href="https://github.com/pfn/passifox" target="_blank" rel="external">https://github.com/pfn/passifox</a></p>
+</li>
+</ul>
+</li>
+<li><p>依次安装以上文件。<br>注意KeePassHTTP的配置：</p>
+<ol>
+<li>将KeePassHttp.plgx放在KeePass.exe同目录下,重启KeePass。并单击工具下的“KeePassHttp Options”。</li>
+<li>按照如下图配置：<br><img src="http://i.imgur.com/0R82YzX.png" alt=""></li>
+<li>点击Chrome上的chromeIPass图标，会出现Connect按钮,点击进去；</li>
+<li>Key_Name自己起名</li>
+<li><p>保存后，重新点击chromeIPass，若出现以下信息，则说明成功：</p>
+<p><img src="http://i.imgur.com/PDcuXmf.png" alt=""></p>
+</li>
+</ol>
+</li>
+</ol>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;现在密码越来越多，但是为了密码安全还是不愿所有网站用同一个密码。所以就想到了用密码管理软件。尝试过1Password和Lastpass，可惜都收费。所以找到了KeePass，不仅免费，还开源。支持多平台。结合插件，可以实现在chrome上自动填写密码。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="软件" scheme="https://heliublog.com/categories/%E8%BD%AF%E4%BB%B6/"/>
+    
+    
+      <category term="KeePass" scheme="https://heliublog.com/tags/KeePass/"/>
+    
+      <category term="Chrome" scheme="https://heliublog.com/tags/Chrome/"/>
     
   </entry>
   

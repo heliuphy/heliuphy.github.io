@@ -18,7 +18,7 @@
     
     
     
-    <title>如何利用Dropbox备份指定文件夹 | Liu&#39;s Blog</title>
+    <title>如何利用Dropbox备份指定文件夹 | 锡柳的博客 | 涓涓细流</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
     <meta name="theme-color" content="#3F51B5">
@@ -30,16 +30,16 @@
 <meta property="og:type" content="article">
 <meta property="og:title" content="如何利用Dropbox备份指定文件夹">
 <meta property="og:url" content="https://heliublog.com/2017/05/07/如何利用Dropbox备份指定文件夹/index.html">
-<meta property="og:site_name" content="Liu's Blog">
+<meta property="og:site_name" content="锡柳的博客">
 <meta property="og:description" content="Dropbox原生只带同步单文件夹的功能，但如果我想同步其他的文件夹怎么办呢？不能把那些文件夹都复制一份到该目录下吧。所以可用mklink的方法来同步。(Win Vista 及以上可用) 命令如下，比如我的Dropbox备份文件夹为C:\Dropbox，而我想备份的文件夹为d:\backup，注意必须用管理员模式运行cmd 1mklink /d &amp;quot;C:\Dropbox&amp;quot; D:\">
 <meta property="og:updated_time" content="2017-05-07T14:56:49.048Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="如何利用Dropbox备份指定文件夹">
 <meta name="twitter:description" content="Dropbox原生只带同步单文件夹的功能，但如果我想同步其他的文件夹怎么办呢？不能把那些文件夹都复制一份到该目录下吧。所以可用mklink的方法来同步。(Win Vista 及以上可用) 命令如下，比如我的Dropbox备份文件夹为C:\Dropbox，而我想备份的文件夹为d:\backup，注意必须用管理员模式运行cmd 1mklink /d &amp;quot;C:\Dropbox&amp;quot; D:\">
     
-        <link rel="alternate" type="application/atom+xml" title="Liu&#39;s Blog" href="/atom.xml">
+        <link rel="alternate" type="application/atom+xml" title="锡柳的博客" href="/atom.xml">
     
-    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="shortcut icon" href="/img/favicon.ico">
     <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
     <script>window.lazyScripts=[]</script>
 </head>
@@ -109,9 +109,9 @@
             </li>
         
             <li class="waves-block waves-effect">
-              <a href="/tag-cloud"  >
-                <i class="icon icon-lg icon-cloud"></i>
-                tag-cloud
+              <a href="/about"  >
+                <i class="icon icon-lg icon-user-circle"></i>
+                about
               </a>
             </li>
         
@@ -234,7 +234,7 @@
 <div class="page-share" id="pageShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://heliublog.com/2017/05/07/如何利用Dropbox备份指定文件夹/&title=《如何利用Dropbox备份指定文件夹》 — Liu's Blog&pic=https://heliublog.com/img/avatar.png" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://heliublog.com/2017/05/07/如何利用Dropbox备份指定文件夹/&title=《如何利用Dropbox备份指定文件夹》 — 锡柳的博客&pic=https://heliublog.com/img/avatar.png" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -244,7 +244,7 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://heliublog.com/2017/05/07/如何利用Dropbox备份指定文件夹/&title=《如何利用Dropbox备份指定文件夹》 — Liu's Blog&source=" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://heliublog.com/2017/05/07/如何利用Dropbox备份指定文件夹/&title=《如何利用Dropbox备份指定文件夹》 — 锡柳的博客&source=记录自己的成长之路。技术&&生活。" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
@@ -254,7 +254,7 @@
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《如何利用Dropbox备份指定文件夹》 — Liu's Blog&url=https://heliublog.com/2017/05/07/如何利用Dropbox备份指定文件夹/&via=https://heliublog.com" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《如何利用Dropbox备份指定文件夹》 — 锡柳的博客&url=https://heliublog.com/2017/05/07/如何利用Dropbox备份指定文件夹/&via=https://heliublog.com" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
@@ -306,23 +306,31 @@
 
 
 
+
+
+
+
+
+
+
+
+
 <section class="comments" id="comments">
-    <div id="disqus_thread"></div>
+    <div id="gitment_thread"></div>
+    <link rel="stylesheet" href="//unpkg.com/gitment/style/default.css">
+    <script src="//unpkg.com/gitment/dist/gitment.browser.js"></script>
     <script>
-    var disqus_shortname = 'liusblog';
-    lazyScripts.push('//' + disqus_shortname + '.disqus.com/embed.js')
+        var gitment = new Gitment({
+            owner: 'heliuphy',
+            repo: 'HexoGitment',
+            oauth: {
+                client_id: 'e3b01812732c8b925e24',
+                client_secret: 'e16642c22f15078e6836cbfc31123ffd05acb13c',
+            },
+        })
+        gitment.render('comments')
     </script>
-    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 </section>
-
-
-
-
-
-
-
-
-
 
 
 
@@ -370,7 +378,7 @@
 <div class="global-share" id="globalShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://heliublog.com/2017/05/07/如何利用Dropbox备份指定文件夹/&title=《如何利用Dropbox备份指定文件夹》 — Liu's Blog&pic=https://heliublog.com/img/avatar.png" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://heliublog.com/2017/05/07/如何利用Dropbox备份指定文件夹/&title=《如何利用Dropbox备份指定文件夹》 — 锡柳的博客&pic=https://heliublog.com/img/avatar.png" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -380,7 +388,7 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://heliublog.com/2017/05/07/如何利用Dropbox备份指定文件夹/&title=《如何利用Dropbox备份指定文件夹》 — Liu's Blog&source=" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://heliublog.com/2017/05/07/如何利用Dropbox备份指定文件夹/&title=《如何利用Dropbox备份指定文件夹》 — 锡柳的博客&source=记录自己的成长之路。技术&&生活。" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
@@ -390,7 +398,7 @@
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《如何利用Dropbox备份指定文件夹》 — Liu's Blog&url=https://heliublog.com/2017/05/07/如何利用Dropbox备份指定文件夹/&via=https://heliublog.com" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《如何利用Dropbox备份指定文件夹》 — 锡柳的博客&url=https://heliublog.com/2017/05/07/如何利用Dropbox备份指定文件夹/&via=https://heliublog.com" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>

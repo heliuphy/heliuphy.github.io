@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+<!-- Baidu Tongji -->
+<script>var _hmt = _hmt || []</script>
+<script async src="//hm.baidu.com/hm.js?bf3208c4535129798a3cceee4fe5b975"></script>
+<!-- End Baidu Tongji -->
+
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    <title>VPS+Hexo+Dropbox创建个人博客——hexo系列教程（三） | 锡柳的博客 | 涓涓细流</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="Hexo,VPS,Dropbox">
+    <meta name="description" content="本文参考以下文章完成：1.用Hexo+Vps搭建博客并用Dropbox同步自动发布2.VPS+Dropbox+markeditor打造Hexo完美体验 (长期更新)3.使用 Dropbox 和 VPS 实现实时部署 Hexo 博客  废话少说，直接进入正题： VPS为CentOS 6.8 x64 ,512MB内存 安装需要的所有软件安装 Git1yum install git-core">
+<meta name="keywords" content="Hexo,VPS,Dropbox">
+<meta property="og:type" content="article">
+<meta property="og:title" content="VPS+Hexo+Dropbox创建个人博客——hexo系列教程（三）">
+<meta property="og:url" content="https://heliublog.com/2016/05/01/VPS+Hexo+Dropbox创建个人博客/index.html">
+<meta property="og:site_name" content="锡柳的博客">
+<meta property="og:description" content="本文参考以下文章完成：1.用Hexo+Vps搭建博客并用Dropbox同步自动发布2.VPS+Dropbox+markeditor打造Hexo完美体验 (长期更新)3.使用 Dropbox 和 VPS 实现实时部署 Hexo 博客  废话少说，直接进入正题： VPS为CentOS 6.8 x64 ,512MB内存 安装需要的所有软件安装 Git1yum install git-core">
+<meta property="og:updated_time" content="2017-05-10T14:17:30.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="VPS+Hexo+Dropbox创建个人博客——hexo系列教程（三）">
+<meta name="twitter:description" content="本文参考以下文章完成：1.用Hexo+Vps搭建博客并用Dropbox同步自动发布2.VPS+Dropbox+markeditor打造Hexo完美体验 (长期更新)3.使用 Dropbox 和 VPS 实现实时部署 Hexo 博客  废话少说，直接进入正题： VPS为CentOS 6.8 x64 ,512MB内存 安装需要的所有软件安装 Git1yum install git-core">
+    
+        <link rel="alternate" type="application/atom+xml" title="锡柳的博客" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Liu He</h5>
+          <a href="mailto:me@heliublog.com" title="me@heliublog.com" class="mail">me@heliublog.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                Home
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/heliuphy" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://weibo.com/2553167443" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                Weibo
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about"  >
+                <i class="icon icon-lg icon-user-circle"></i>
+                about
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">VPS+Hexo+Dropbox创建个人博客——hexo系列教程（三）</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">VPS+Hexo+Dropbox创建个人博客——hexo系列教程（三）</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2016-05-01T10:06:12.000Z" itemprop="datePublished" class="page-time">
+  2016-05-01
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/web/">web</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#VPS"><span class="post-toc-number">1.</span> <span class="post-toc-text">VPS</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#安装需要的所有软件"><span class="post-toc-number">2.</span> <span class="post-toc-text">安装需要的所有软件</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#安装-Git"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">安装 Git</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#安装NodeJS"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">安装NodeJS</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#安装Dropbox"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">安装Dropbox</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#安装Hexo"><span class="post-toc-number">2.4.</span> <span class="post-toc-text">安装Hexo</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#安装Nginx"><span class="post-toc-number">2.5.</span> <span class="post-toc-text">安装Nginx</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#安装incron"><span class="post-toc-number">2.6.</span> <span class="post-toc-text">安装incron</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#同步发布"><span class="post-toc-number">3.</span> <span class="post-toc-text">同步发布</span></a></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-VPS+Hexo+Dropbox创建个人博客"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">VPS+Hexo+Dropbox创建个人博客——hexo系列教程（三）</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2016-05-01 18:06:12" datetime="2016-05-01T10:06:12.000Z"  itemprop="datePublished">2016-05-01</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/web/">web</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <blockquote>
+<p>本文参考以下文章完成：<br>1.<a href="http://www.fanicy.com/2014/06/01/0001.hexowithvpsdropbox/" target="_blank" rel="external">用Hexo+Vps搭建博客并用Dropbox同步自动发布</a><br>2.<a href="http://www.jianshu.com/p/0839b09dc381#" target="_blank" rel="external">VPS+Dropbox+markeditor打造Hexo完美体验 (长期更新)</a><br>3.<a href="http://www.xmt.design/2016/04/04/blog-depoly-via-dropbox.html" target="_blank" rel="external">使用 Dropbox 和 VPS 实现实时部署 Hexo 博客</a></p>
+</blockquote>
+<p>废话少说，直接进入正题：</p>
+<h2 id="VPS"><a href="#VPS" class="headerlink" title="VPS"></a>VPS</h2><p>为CentOS 6.8 x64 ,512MB内存</p>
+<h2 id="安装需要的所有软件"><a href="#安装需要的所有软件" class="headerlink" title="安装需要的所有软件"></a>安装需要的所有软件</h2><h3 id="安装-Git"><a href="#安装-Git" class="headerlink" title="安装 Git"></a>安装 Git</h3><figure class="highlight cmake"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">yum <span class="keyword">install</span> git-core</div></pre></td></tr></table></figure>
+<a id="more"></a>
+<h3 id="安装NodeJS"><a href="#安装NodeJS" class="headerlink" title="安装NodeJS"></a>安装NodeJS</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="meta">%</span><span class="bash"> 前三步是先安装EPEL</span></div><div class="line"><span class="meta">#</span><span class="bash"> wget http://dl.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm </span></div><div class="line"><span class="meta">#</span><span class="bash"> wget http://rpms.famillecollet.com/enterprise/remi-release-6.rpm</span></div><div class="line"><span class="meta">#</span><span class="bash"> rpm -Uvh remi-release-6*.rpm epel-release-6*.rpm</span></div><div class="line"><span class="meta">%</span><span class="bash"> 安装node</span></div><div class="line">yum install nodejs npm --enablerepo=epel</div></pre></td></tr></table></figure>
+<h3 id="安装Dropbox"><a href="#安装Dropbox" class="headerlink" title="安装Dropbox"></a>安装Dropbox</h3><figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">cd</span> ~ &amp;&amp; wget -O - <span class="string">"https://www.dropbox.com/download?plat=lnx.x86_64"</span> | tar xzf -</div><div class="line">%然后，从新建的 <span class="string">.dropbox-dist</span> 文件夹运行 Dropbox 守护程序.</div><div class="line">~<span class="string">/.dropbox-dist/dropboxd</span></div><div class="line">%下载官方提供的 cli 来控制和管理Dropbox</div><div class="line">wget https:<span class="string">//linux.dropbox.com/packages/dropbox.py</span></div><div class="line">%更改权限:</div><div class="line">chmod +x <span class="string">./dropbox.py</span></div><div class="line">%启动Dropbox:</div><div class="line"><span class="string">./dropbox.py</span> start y</div><div class="line">关闭局域网广播:</div><div class="line"><span class="string">./dropbox.py</span> lansync n</div></pre></td></tr></table></figure>
+<h3 id="安装Hexo"><a href="#安装Hexo" class="headerlink" title="安装Hexo"></a>安装Hexo</h3><figure class="highlight stata"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">npm install -<span class="keyword">g</span> hexo-<span class="keyword">cli</span></div><div class="line"><span class="keyword">cd</span> Dropbox</div><div class="line"><span class="keyword">mkdir</span> hexo</div><div class="line"><span class="keyword">cd</span> hexo</div><div class="line">hexo init</div></pre></td></tr></table></figure>
+<h3 id="安装Nginx"><a href="#安装Nginx" class="headerlink" title="安装Nginx"></a>安装Nginx</h3><p>这里推荐不是很熟悉Nginx设置的用以下链接提供的一键安装包安装，可以只安装Nginx，自动设置<br><a href="https://blog.linuxeye.com/31.html" target="_blank" rel="external">lnmp、lamp、lnmpa一键安装包</a><br>这里设置时，可以将主机目录设置为dropbox的同步目录<br><figure class="highlight gradle"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="regexp">/root/</span>Dropbox<span class="regexp">/hexo/</span><span class="keyword">public</span></div></pre></td></tr></table></figure></p>
+<p>添加权限：<br><figure class="highlight groovy"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">chmod -R <span class="number">755</span> <span class="regexp">/root/</span>Dropbox<span class="regexp">/hexo/</span><span class="keyword">public</span></div><div class="line">chown <span class="string">www:</span>www <span class="regexp">/root/</span>Dropbox<span class="regexp">/hexo/</span><span class="keyword">public</span></div><div class="line">chmod +x <span class="regexp">/root/</span>Dropbox<span class="regexp">/ /</span>root<span class="regexp">/Dropbox/</span>hexo/</div></pre></td></tr></table></figure></p>
+<h3 id="安装incron"><a href="#安装incron" class="headerlink" title="安装incron"></a>安装incron</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">yum <span class="keyword">install</span> incron</div><div class="line">service incrond <span class="keyword">start</span></div></pre></td></tr></table></figure>
+<h2 id="同步发布"><a href="#同步发布" class="headerlink" title="同步发布"></a>同步发布</h2><p>incron 监测文件夹配置<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">incrontab <span class="_">-e</span></div></pre></td></tr></table></figure></p>
+<p>在其中添加：<br><figure class="highlight gradle"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="regexp">/root/</span>Dropbox<span class="regexp">/hexo/</span><span class="keyword">source</span><span class="regexp">/_posts/</span> IN_MOVE,IN_MODIFY,IN_CREATE,IN_DELETE <span class="regexp">/root/</span>runhexo.bash</div><div class="line"><span class="regexp">/root/</span>Dropbox<span class="regexp">/hexo/</span>theme<span class="regexp">/ IN_MOVE,IN_MODIFY,IN_CREATE,IN_DELETE /</span>root<span class="regexp">/runhexo.bash</span></div></pre></td></tr></table></figure></p>
+<p>runhexo.bash:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#!/usr/bin/env bash</span></div><div class="line"><span class="built_in">exec</span> 200&lt;<span class="variable">$0</span></div><div class="line">flock -n 200 || <span class="built_in">exit</span> 1</div><div class="line">sleep 10</div><div class="line"><span class="built_in">cd</span> /root/Dropbox/hexo &amp;&amp; hexo g</div></pre></td></tr></table></figure></p>
+<p>添加权限<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">chmod</span> +<span class="selector-tag">x</span> <span class="selector-tag">runhexo</span><span class="selector-class">.bash</span></div></pre></td></tr></table></figure></p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2017-05-10T14:17:30.000Z" itemprop="dateUpdated">2017-05-10 22:17:30</time>
+</span><br>
+
+
+        
+        本站博文均为博主原创，转载请注明出处！<br />原文地址：<a href="/2016/05/01/VPS+Hexo+Dropbox创建个人博客/" target="_blank" rel="external">https://heliublog.com/2016/05/01/VPS+Hexo+Dropbox创建个人博客/</a>
+        
+    </div>
+    <footer>
+        <a href="https://heliublog.com">
+            <img src="/img/avatar.png" alt="Liu He">
+            Liu He
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Dropbox/">Dropbox</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hexo/">Hexo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/VPS/">VPS</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://heliublog.com/2016/05/01/VPS+Hexo+Dropbox创建个人博客/&title=《VPS+Hexo+Dropbox创建个人博客——hexo系列教程（三）》 — 锡柳的博客&pic=https://heliublog.com/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://heliublog.com/2016/05/01/VPS+Hexo+Dropbox创建个人博客/&title=《VPS+Hexo+Dropbox创建个人博客——hexo系列教程（三）》 — 锡柳的博客&source=
+本文参考以下文章完成：1.用Hexo+Vps搭建博客并用Dropbox同步自动发布2.VPS+Dropbox+markeditor打造Hexo完美体验 ..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://heliublog.com/2016/05/01/VPS+Hexo+Dropbox创建个人博客/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《VPS+Hexo+Dropbox创建个人博客——hexo系列教程（三）》 — 锡柳的博客&url=https://heliublog.com/2016/05/01/VPS+Hexo+Dropbox创建个人博客/&via=https://heliublog.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://heliublog.com/2016/05/01/VPS+Hexo+Dropbox创建个人博客/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2016/05/01/搭建hexo博客小记/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">搭建hexo博客小记——hexo系列文章（一）</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2016/05/01/利用Keepass2.x进行ftp或webdev同步/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">利用KeePass2.x进行ftp或webdev同步</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<section class="comments" id="comments">
+    <div id="gitment_thread"></div>
+    <link rel="stylesheet" href="//unpkg.com/gitment/style/default.css">
+    <script src="//unpkg.com/gitment/dist/gitment.browser.js"></script>
+    <script>
+        var gitment = new Gitment({
+            owner: 'heliuphy',
+            repo: 'HexoGitment',
+            oauth: {
+                client_id: 'e3b01812732c8b925e24',
+                client_secret: 'e16642c22f15078e6836cbfc31123ffd05acb13c',
+            },
+        })
+        gitment.render('comments')
+    </script>
+</section>
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循<a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p>
+            <span>Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a></span>
+            <span>Liu He &copy; 2016 - 2017</span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://heliublog.com/2016/05/01/VPS+Hexo+Dropbox创建个人博客/&title=《VPS+Hexo+Dropbox创建个人博客——hexo系列教程（三）》 — 锡柳的博客&pic=https://heliublog.com/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://heliublog.com/2016/05/01/VPS+Hexo+Dropbox创建个人博客/&title=《VPS+Hexo+Dropbox创建个人博客——hexo系列教程（三）》 — 锡柳的博客&source=
+本文参考以下文章完成：1.用Hexo+Vps搭建博客并用Dropbox同步自动发布2.VPS+Dropbox+markeditor打造Hexo完美体验 ..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://heliublog.com/2016/05/01/VPS+Hexo+Dropbox创建个人博客/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《VPS+Hexo+Dropbox创建个人博客——hexo系列教程（三）》 — 锡柳的博客&url=https://heliublog.com/2016/05/01/VPS+Hexo+Dropbox创建个人博客/&via=https://heliublog.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://heliublog.com/2016/05/01/VPS+Hexo+Dropbox创建个人博客/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACqklEQVR42u3aUW4CMQwFQO5/6fYA1e4+2zFQafiq6DZkUikOz3m94tfPn9fVb6+evxrh72j3Y742Xnh4eHjjqd9P9+qdHHz/ZLKsyZzx8PDwtnlXQ189k2z01UW5HyEvJ3h4eHjfyTt1mM4P63h4eHj/nVeNCXoxxH3JwcPDw/ssrxq29rbyZLrzmBgPDw9vm5d3kb7n55X+Hh4eHt64q55suHlhyJcvH/lhtnh4eHgLvF6U0FuCvEmWh7zJZ+Hh4eFt8CbRQO/qQF4S7vH5mHh4eHhneZNJzP92ryDh4eHhbfAmja5qjpoHxHkD7CH+wMPDw1vm9ULbfLr5+0kcHDXG8PDw8NZ4+df+CSCf+n0xKFy9wsPDw1vgFVLe+P18E6/+VbNo4eHh4a3x8o24eiifXziYNOTw8PDw3sOb30TIJ9crToXx8fDw8I7y8g+uLkG1/d+7OvDwD8DDw8Nb5uVhbv5hZwtMNQTBw8PD+xQvuS6QRLT5ciQFoxBD4OHh4R3l9R6tfvCkwEyiCjw8PLwN3n0ZmP82KSH5AuUBLh4eHt57ePdT77Xt7yfXa5UVlgwPDw9vjZdHCb0D7rFYNo4k8PDw8N7Py/F5pDspAM0R8PDw8BZ4yQE6vxyQH8EnDa38ahceHh7eNq8aT/Sa/XmZqYYXzRqFh4eHd4iXb/3VllX1WsAkIMbDw8Pb5lUbTlVANdLttcEKYQQeHh7eGJa88uKRhBRnD9MPKQseHh7eId6p4pFv7r0rWfOGHB4eHt5ZXq8YTFplvXZX9Uk8PDy8bV61TZUvSrUxNm+n4eHh4X0br3e0rS5Brww89Pfw8PDwPsTLt+be5YNJqlAYFA8PD2/MmxyOJw2zaoxbvtqFh4eHt8CbfOHPo9vmth604o719/Dw8PCeeb894LtglLMQiwAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+
+lazyScripts.push('//s95.cnzz.com/z_stat.php?id=1261861397&web_id=1261861397')
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>
