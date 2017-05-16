@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://heliublog.com/"/>
-  <updated>2017-05-16T03:47:12.331Z</updated>
+  <updated>2017-05-16T03:51:09.391Z</updated>
   <id>https://heliublog.com/</id>
   
   <author>
@@ -16,29 +16,19 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title></title>
-    <link href="https://heliublog.com/2017/05/16/%E5%B0%86%E5%9B%BE%E7%89%87%E8%87%AA%E5%8A%A8%E4%B8%8A%E4%BC%A0%E5%88%B0%E4%B8%83%E7%89%9B%E5%B9%B6%E6%8F%92%E5%85%A5markdown/"/>
-    <id>https://heliublog.com/2017/05/16/将图片自动上传到七牛并插入markdown/</id>
-    <published>2017-05-16T03:27:31.947Z</published>
-    <updated>2017-05-16T03:47:12.331Z</updated>
+    <title>将图片自动上传到七牛并在markdown中引用</title>
+    <link href="https://heliublog.com/2017/05/16/%E5%B0%86%E5%9B%BE%E7%89%87%E8%87%AA%E5%8A%A8%E4%B8%8A%E4%BC%A0%E5%88%B0%E4%B8%83%E7%89%9B%E5%B9%B6%E5%9C%A8markdown%E4%B8%AD%E5%BC%95%E7%94%A8/"/>
+    <id>https://heliublog.com/2017/05/16/将图片自动上传到七牛并在markdown中引用/</id>
+    <published>2017-05-16T03:50:27.000Z</published>
+    <updated>2017-05-16T03:51:09.391Z</updated>
     
-    <content type="html"><![CDATA[<hr>
-<p>title: 将图片自动上传到七牛并插入markdown<br>date: 2017-05-16 11:27:31<br>tags:</p>
-<ul>
-<li>markdown</li>
-<li>七牛<br>categories: 博客</li>
-</ul>
-<hr>
-<h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><p>Markdown传统的插入图片的步骤实在是让人心累，所以我就上网搜了搜有没有啥简单的解决办法。倒是找到了不少支持自动上传到七牛云的Markdown编辑器，然而大多是只支持OSX,Win用户哭晕在厕所。。。。<br>不过我还是找到了个好用的工具，Github地址在这里：<a href="https://github.com/jiwenxing/qiniu-image-tool-win" target="_blank" rel="external">qiniu-image-tool-win</a><br>配置完后，使用起来也很简单。</p>
+    <content type="html"><![CDATA[<h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><p>Markdown传统的插入图片的步骤实在是让人心累，所以我就上网搜了搜有没有啥简单的解决办法。倒是找到了不少支持自动上传到七牛云的Markdown编辑器，然而大多是只支持OSX,Win用户哭晕在厕所。。。。<br>不过我还是找到了个好用的工具，Github地址在这里：<a href="https://github.com/jiwenxing/qiniu-image-tool-win" target="_blank" rel="external">qiniu-image-tool-win</a><br>配置完后，使用起来也很简单。</p>
 <h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><ol>
 <li>从<a href="https://github.com/jiwenxing/qiniu-image-tool-win/releases" target="_blank" rel="external">release</a>页面下载成功后，解压。</li>
-<li>安装AutoHotkey。<h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2>编辑<code>qiniu-image-upload.ahk</code>文件，将一下内容做一些修改：<pre><code>ACCESS_KEY = ***
-SECRET_KEY = ***
-BUCKET_NAME = ***  ;qiniu bucket name
-BUCKET_DOMAIN = http://7xry05.com1.z0.glb.clouddn.com/  ;qiniu domain for the image
-WORKING_DIR = E:\TOOLS\qiniu-image-tool-win\  ;directory that you put the qshell.exe
-</code></pre>具体的内容请参考原作者博客，点<a href="http://jverson.com/2016/08/30/autohotkey-markdown-uploadImage/" target="_blank" rel="external">这里</a></li>
+<li>安装AutoHotkey。<h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2>编辑<code>qiniu-image-upload.ahk</code>文件，将一下内容做一些修改：<figure class="highlight ini"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="attr">ACCESS_KEY</span> = ***</div><div class="line"><span class="attr">SECRET_KEY</span> = ***</div><div class="line"><span class="attr">BUCKET_NAME</span> = ***  ;qiniu bucket name</div><div class="line"><span class="attr">BUCKET_DOMAIN</span> = http://<span class="number">7</span>xry05.com1.z0.glb.clouddn.com/  ;qiniu domain for the image</div><div class="line"><span class="attr">WORKING_DIR</span> = E:\TOOLS\qiniu-image-tool-win\  ;directory that you put the qshell.exe</div></pre></td></tr></table></figure>
+</li>
 </ol>
+<p>具体的内容请参考原作者博客，点<a href="http://jverson.com/2016/08/30/autohotkey-markdown-uploadImage/" target="_blank" rel="external">这里</a></p>
 <h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><p>安装并配置成功后，只需两步即可插入图片到<code>markdown</code>文档中：</p>
 <ol>
 <li><code>Ctrl+c</code>复制图片</li>
@@ -51,16 +41,16 @@ WORKING_DIR = E:\TOOLS\qiniu-image-tool-win\  ;directory that you put the qshell
     
     <summary type="html">
     
-      &lt;hr&gt;
-&lt;p&gt;title: 将图片自动上传到七牛并插入markdown&lt;br&gt;date: 2017-05-16 11:27:31&lt;br&gt;tags:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;markdown&lt;/li&gt;
-&lt;li&gt;七牛&lt;br&gt;categories: 博客&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h
+      &lt;h2 id=&quot;引言&quot;&gt;&lt;a href=&quot;#引言&quot; class=&quot;headerlink&quot; title=&quot;引言&quot;&gt;&lt;/a&gt;引言&lt;/h2&gt;&lt;p&gt;Markdown传统的插入图片的步骤实在是让人心累，所以我就上网搜了搜有没有啥简单的解决办法。倒是找到了不少支持自动上传到七牛云的Markd
     
     </summary>
     
+      <category term="博客" scheme="https://heliublog.com/categories/%E5%8D%9A%E5%AE%A2/"/>
+    
+    
+      <category term="Markdown" scheme="https://heliublog.com/tags/Markdown/"/>
+    
+      <category term="七牛云" scheme="https://heliublog.com/tags/%E4%B8%83%E7%89%9B%E4%BA%91/"/>
     
   </entry>
   
@@ -285,9 +275,9 @@ WORKING_DIR = E:\TOOLS\qiniu-image-tool-win\  ;directory that you put the qshell
       <category term="博客" scheme="https://heliublog.com/categories/%E5%8D%9A%E5%AE%A2/"/>
     
     
-      <category term="Linux" scheme="https://heliublog.com/tags/Linux/"/>
-    
       <category term="Hexo" scheme="https://heliublog.com/tags/Hexo/"/>
+    
+      <category term="Linux" scheme="https://heliublog.com/tags/Linux/"/>
     
       <category term="VPS" scheme="https://heliublog.com/tags/VPS/"/>
     
@@ -956,6 +946,86 @@ NODE_ENV=production forever restart index.js //重启Ghost
   </entry>
   
   <entry>
+    <title>coding和github同时使用</title>
+    <link href="https://heliublog.com/2016/05/01/coding%E5%92%8Cgithub%E5%90%8C%E6%97%B6%E4%BD%BF%E7%94%A8/"/>
+    <id>https://heliublog.com/2016/05/01/coding和github同时使用/</id>
+    <published>2016-05-01T10:06:12.000Z</published>
+    <updated>2017-05-10T10:20:44.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><p>先贴几个我的参考网站：</p>
+<blockquote>
+<p><a href="http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000" target="_blank" rel="external">非常好的git学习站（入门）</a><br><a href="http://www.tuicool.com/articles/NZNJVvB" target="_blank" rel="external">Git管理多个远程仓库(以Github和Coding为例)</a><br><a href="http://my.oschina.net/450192529/blog/636106" target="_blank" rel="external">如何在同一台电脑上使用两个github,一个往coding推，一个往github推，亲测有效哦</a><br><a href="http://blog.csdn.net/chaoyue0071/article/details/41824339" target="_blank" rel="external">如何在同一台电脑上使用两个github账户</a><br><a href="http://www.cnblogs.com/sheldonxu/archive/2012/09/17/2688281.html" target="_blank" rel="external">执行ssh-add时出现Could not open a connection to your authentication agent</a><br><a href="http://blog.163.com/023_dns/blog/static/1187273662013111301046930/" target="_blank" rel="external">github常见操作和常见错误！错误提示：fatal: remote origin already exists. </a></p>
+</blockquote>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;引言&quot;&gt;&lt;a href=&quot;#引言&quot; class=&quot;headerlink&quot; title=&quot;引言&quot;&gt;&lt;/a&gt;引言&lt;/h2&gt;&lt;p&gt;先贴几个我的参考网站：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;a href=&quot;http://www.liaoxuefeng.com/wi
+    
+    </summary>
+    
+      <category term="Git" scheme="https://heliublog.com/categories/Git/"/>
+    
+    
+      <category term="coding" scheme="https://heliublog.com/tags/coding/"/>
+    
+      <category term="Github" scheme="https://heliublog.com/tags/Github/"/>
+    
+      <category term="Git" scheme="https://heliublog.com/tags/Git/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>VPS+Hexo+Dropbox创建个人博客——hexo系列教程（三）</title>
+    <link href="https://heliublog.com/2016/05/01/VPS+Hexo+Dropbox%E5%88%9B%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/"/>
+    <id>https://heliublog.com/2016/05/01/VPS+Hexo+Dropbox创建个人博客/</id>
+    <published>2016-05-01T10:06:12.000Z</published>
+    <updated>2017-05-10T14:17:30.000Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote>
+<p>本文参考以下文章完成：<br>1.<a href="http://www.fanicy.com/2014/06/01/0001.hexowithvpsdropbox/" target="_blank" rel="external">用Hexo+Vps搭建博客并用Dropbox同步自动发布</a><br>2.<a href="http://www.jianshu.com/p/0839b09dc381#" target="_blank" rel="external">VPS+Dropbox+markeditor打造Hexo完美体验 (长期更新)</a><br>3.<a href="http://www.xmt.design/2016/04/04/blog-depoly-via-dropbox.html" target="_blank" rel="external">使用 Dropbox 和 VPS 实现实时部署 Hexo 博客</a></p>
+</blockquote>
+<p>废话少说，直接进入正题：</p>
+<h2 id="VPS"><a href="#VPS" class="headerlink" title="VPS"></a>VPS</h2><p>为CentOS 6.8 x64 ,512MB内存</p>
+<h2 id="安装需要的所有软件"><a href="#安装需要的所有软件" class="headerlink" title="安装需要的所有软件"></a>安装需要的所有软件</h2><h3 id="安装-Git"><a href="#安装-Git" class="headerlink" title="安装 Git"></a>安装 Git</h3><figure class="highlight cmake"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">yum <span class="keyword">install</span> git-core</div></pre></td></tr></table></figure>
+<a id="more"></a>
+<h3 id="安装NodeJS"><a href="#安装NodeJS" class="headerlink" title="安装NodeJS"></a>安装NodeJS</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="meta">%</span><span class="bash"> 前三步是先安装EPEL</span></div><div class="line"><span class="meta">#</span><span class="bash"> wget http://dl.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm </span></div><div class="line"><span class="meta">#</span><span class="bash"> wget http://rpms.famillecollet.com/enterprise/remi-release-6.rpm</span></div><div class="line"><span class="meta">#</span><span class="bash"> rpm -Uvh remi-release-6*.rpm epel-release-6*.rpm</span></div><div class="line"><span class="meta">%</span><span class="bash"> 安装node</span></div><div class="line">yum install nodejs npm --enablerepo=epel</div></pre></td></tr></table></figure>
+<h3 id="安装Dropbox"><a href="#安装Dropbox" class="headerlink" title="安装Dropbox"></a>安装Dropbox</h3><figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">cd</span> ~ &amp;&amp; wget -O - <span class="string">"https://www.dropbox.com/download?plat=lnx.x86_64"</span> | tar xzf -</div><div class="line">%然后，从新建的 <span class="string">.dropbox-dist</span> 文件夹运行 Dropbox 守护程序.</div><div class="line">~<span class="string">/.dropbox-dist/dropboxd</span></div><div class="line">%下载官方提供的 cli 来控制和管理Dropbox</div><div class="line">wget https:<span class="string">//linux.dropbox.com/packages/dropbox.py</span></div><div class="line">%更改权限:</div><div class="line">chmod +x <span class="string">./dropbox.py</span></div><div class="line">%启动Dropbox:</div><div class="line"><span class="string">./dropbox.py</span> start y</div><div class="line">关闭局域网广播:</div><div class="line"><span class="string">./dropbox.py</span> lansync n</div></pre></td></tr></table></figure>
+<h3 id="安装Hexo"><a href="#安装Hexo" class="headerlink" title="安装Hexo"></a>安装Hexo</h3><figure class="highlight stata"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">npm install -<span class="keyword">g</span> hexo-<span class="keyword">cli</span></div><div class="line"><span class="keyword">cd</span> Dropbox</div><div class="line"><span class="keyword">mkdir</span> hexo</div><div class="line"><span class="keyword">cd</span> hexo</div><div class="line">hexo init</div></pre></td></tr></table></figure>
+<h3 id="安装Nginx"><a href="#安装Nginx" class="headerlink" title="安装Nginx"></a>安装Nginx</h3><p>这里推荐不是很熟悉Nginx设置的用以下链接提供的一键安装包安装，可以只安装Nginx，自动设置<br><a href="https://blog.linuxeye.com/31.html" target="_blank" rel="external">lnmp、lamp、lnmpa一键安装包</a><br>这里设置时，可以将主机目录设置为dropbox的同步目录<br><figure class="highlight gradle"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="regexp">/root/</span>Dropbox<span class="regexp">/hexo/</span><span class="keyword">public</span></div></pre></td></tr></table></figure></p>
+<p>添加权限：<br><figure class="highlight groovy"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">chmod -R <span class="number">755</span> <span class="regexp">/root/</span>Dropbox<span class="regexp">/hexo/</span><span class="keyword">public</span></div><div class="line">chown <span class="string">www:</span>www <span class="regexp">/root/</span>Dropbox<span class="regexp">/hexo/</span><span class="keyword">public</span></div><div class="line">chmod +x <span class="regexp">/root/</span>Dropbox<span class="regexp">/ /</span>root<span class="regexp">/Dropbox/</span>hexo/</div></pre></td></tr></table></figure></p>
+<h3 id="安装incron"><a href="#安装incron" class="headerlink" title="安装incron"></a>安装incron</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">yum <span class="keyword">install</span> incron</div><div class="line">service incrond <span class="keyword">start</span></div></pre></td></tr></table></figure>
+<h2 id="同步发布"><a href="#同步发布" class="headerlink" title="同步发布"></a>同步发布</h2><p>incron 监测文件夹配置<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">incrontab <span class="_">-e</span></div></pre></td></tr></table></figure></p>
+<p>在其中添加：<br><figure class="highlight gradle"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="regexp">/root/</span>Dropbox<span class="regexp">/hexo/</span><span class="keyword">source</span><span class="regexp">/_posts/</span> IN_MOVE,IN_MODIFY,IN_CREATE,IN_DELETE <span class="regexp">/root/</span>runhexo.bash</div><div class="line"><span class="regexp">/root/</span>Dropbox<span class="regexp">/hexo/</span>theme<span class="regexp">/ IN_MOVE,IN_MODIFY,IN_CREATE,IN_DELETE /</span>root<span class="regexp">/runhexo.bash</span></div></pre></td></tr></table></figure></p>
+<p>runhexo.bash:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#!/usr/bin/env bash</span></div><div class="line"><span class="built_in">exec</span> 200&lt;<span class="variable">$0</span></div><div class="line">flock -n 200 || <span class="built_in">exit</span> 1</div><div class="line">sleep 10</div><div class="line"><span class="built_in">cd</span> /root/Dropbox/hexo &amp;&amp; hexo g</div></pre></td></tr></table></figure></p>
+<p>添加权限<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">chmod</span> +<span class="selector-tag">x</span> <span class="selector-tag">runhexo</span><span class="selector-class">.bash</span></div></pre></td></tr></table></figure></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;本文参考以下文章完成：&lt;br&gt;1.&lt;a href=&quot;http://www.fanicy.com/2014/06/01/0001.hexowithvpsdropbox/&quot;&gt;用Hexo+Vps搭建博客并用Dropbox同步自动发布&lt;/a&gt;&lt;br&gt;2.&lt;a href=&quot;http://www.jianshu.com/p/0839b09dc381#&quot;&gt;VPS+Dropbox+markeditor打造Hexo完美体验 (长期更新)&lt;/a&gt;&lt;br&gt;3.&lt;a href=&quot;http://www.xmt.design/2016/04/04/blog-depoly-via-dropbox.html&quot;&gt;使用 Dropbox 和 VPS 实现实时部署 Hexo 博客&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;废话少说，直接进入正题：&lt;/p&gt;
+&lt;h2 id=&quot;VPS&quot;&gt;&lt;a href=&quot;#VPS&quot; class=&quot;headerlink&quot; title=&quot;VPS&quot;&gt;&lt;/a&gt;VPS&lt;/h2&gt;&lt;p&gt;为CentOS 6.8 x64 ,512MB内存&lt;/p&gt;
+&lt;h2 id=&quot;安装需要的所有软件&quot;&gt;&lt;a href=&quot;#安装需要的所有软件&quot; class=&quot;headerlink&quot; title=&quot;安装需要的所有软件&quot;&gt;&lt;/a&gt;安装需要的所有软件&lt;/h2&gt;&lt;h3 id=&quot;安装-Git&quot;&gt;&lt;a href=&quot;#安装-Git&quot; class=&quot;headerlink&quot; title=&quot;安装 Git&quot;&gt;&lt;/a&gt;安装 Git&lt;/h3&gt;&lt;figure class=&quot;highlight cmake&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;yum &lt;span class=&quot;keyword&quot;&gt;install&lt;/span&gt; git-core&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+    
+    </summary>
+    
+      <category term="web" scheme="https://heliublog.com/categories/web/"/>
+    
+    
+      <category term="Hexo" scheme="https://heliublog.com/tags/Hexo/"/>
+    
+      <category term="VPS" scheme="https://heliublog.com/tags/VPS/"/>
+    
+      <category term="Dropbox" scheme="https://heliublog.com/tags/Dropbox/"/>
+    
+  </entry>
+  
+  <entry>
     <title>KeePass+KeePassHTTP+chromeIPass储存个人密码</title>
     <link href="https://heliublog.com/2016/05/01/KeePass/"/>
     <id>https://heliublog.com/2016/05/01/KeePass/</id>
@@ -1007,50 +1077,61 @@ NODE_ENV=production forever restart index.js //重启Ghost
   </entry>
   
   <entry>
-    <title>VPS+Hexo+Dropbox创建个人博客——hexo系列教程（三）</title>
-    <link href="https://heliublog.com/2016/05/01/VPS+Hexo+Dropbox%E5%88%9B%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/"/>
-    <id>https://heliublog.com/2016/05/01/VPS+Hexo+Dropbox创建个人博客/</id>
+    <title>利用KeePass2.x进行ftp或webdev同步</title>
+    <link href="https://heliublog.com/2016/05/01/%E5%88%A9%E7%94%A8Keepass2.x%E8%BF%9B%E8%A1%8Cftp%E6%88%96webdev%E5%90%8C%E6%AD%A5/"/>
+    <id>https://heliublog.com/2016/05/01/利用Keepass2.x进行ftp或webdev同步/</id>
     <published>2016-05-01T10:06:12.000Z</published>
-    <updated>2017-05-10T14:17:30.000Z</updated>
+    <updated>2017-05-10T10:21:50.000Z</updated>
     
     <content type="html"><![CDATA[<blockquote>
-<p>本文参考以下文章完成：<br>1.<a href="http://www.fanicy.com/2014/06/01/0001.hexowithvpsdropbox/" target="_blank" rel="external">用Hexo+Vps搭建博客并用Dropbox同步自动发布</a><br>2.<a href="http://www.jianshu.com/p/0839b09dc381#" target="_blank" rel="external">VPS+Dropbox+markeditor打造Hexo完美体验 (长期更新)</a><br>3.<a href="http://www.xmt.design/2016/04/04/blog-depoly-via-dropbox.html" target="_blank" rel="external">使用 Dropbox 和 VPS 实现实时部署 Hexo 博客</a></p>
+<p>方法参考<a href="http://www.cnblogs.com/gumuyueying/p/keepass2-sync-trigger.html" target="_blank" rel="external">http://www.cnblogs.com/gumuyueying/p/keepass2-sync-trigger.html</a></p>
 </blockquote>
-<p>废话少说，直接进入正题：</p>
-<h2 id="VPS"><a href="#VPS" class="headerlink" title="VPS"></a>VPS</h2><p>为CentOS 6.8 x64 ,512MB内存</p>
-<h2 id="安装需要的所有软件"><a href="#安装需要的所有软件" class="headerlink" title="安装需要的所有软件"></a>安装需要的所有软件</h2><h3 id="安装-Git"><a href="#安装-Git" class="headerlink" title="安装 Git"></a>安装 Git</h3><figure class="highlight cmake"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">yum <span class="keyword">install</span> git-core</div></pre></td></tr></table></figure>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>上篇博文介绍了利用软件Keepass保存密码。其实借助Dropbox或者其他同步软件将数据库.kpbx文件进行备份也很简单。但是由于某些原因，Dropbox很难上去。所以突然想到能否将文件保存在我的vps服务器上。在网上搜索教程就找到了这个方法。</p>
 <a id="more"></a>
-<h3 id="安装NodeJS"><a href="#安装NodeJS" class="headerlink" title="安装NodeJS"></a>安装NodeJS</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="meta">%</span><span class="bash"> 前三步是先安装EPEL</span></div><div class="line"><span class="meta">#</span><span class="bash"> wget http://dl.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm </span></div><div class="line"><span class="meta">#</span><span class="bash"> wget http://rpms.famillecollet.com/enterprise/remi-release-6.rpm</span></div><div class="line"><span class="meta">#</span><span class="bash"> rpm -Uvh remi-release-6*.rpm epel-release-6*.rpm</span></div><div class="line"><span class="meta">%</span><span class="bash"> 安装node</span></div><div class="line">yum install nodejs npm --enablerepo=epel</div></pre></td></tr></table></figure>
-<h3 id="安装Dropbox"><a href="#安装Dropbox" class="headerlink" title="安装Dropbox"></a>安装Dropbox</h3><figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">cd</span> ~ &amp;&amp; wget -O - <span class="string">"https://www.dropbox.com/download?plat=lnx.x86_64"</span> | tar xzf -</div><div class="line">%然后，从新建的 <span class="string">.dropbox-dist</span> 文件夹运行 Dropbox 守护程序.</div><div class="line">~<span class="string">/.dropbox-dist/dropboxd</span></div><div class="line">%下载官方提供的 cli 来控制和管理Dropbox</div><div class="line">wget https:<span class="string">//linux.dropbox.com/packages/dropbox.py</span></div><div class="line">%更改权限:</div><div class="line">chmod +x <span class="string">./dropbox.py</span></div><div class="line">%启动Dropbox:</div><div class="line"><span class="string">./dropbox.py</span> start y</div><div class="line">关闭局域网广播:</div><div class="line"><span class="string">./dropbox.py</span> lansync n</div></pre></td></tr></table></figure>
-<h3 id="安装Hexo"><a href="#安装Hexo" class="headerlink" title="安装Hexo"></a>安装Hexo</h3><figure class="highlight stata"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">npm install -<span class="keyword">g</span> hexo-<span class="keyword">cli</span></div><div class="line"><span class="keyword">cd</span> Dropbox</div><div class="line"><span class="keyword">mkdir</span> hexo</div><div class="line"><span class="keyword">cd</span> hexo</div><div class="line">hexo init</div></pre></td></tr></table></figure>
-<h3 id="安装Nginx"><a href="#安装Nginx" class="headerlink" title="安装Nginx"></a>安装Nginx</h3><p>这里推荐不是很熟悉Nginx设置的用以下链接提供的一键安装包安装，可以只安装Nginx，自动设置<br><a href="https://blog.linuxeye.com/31.html" target="_blank" rel="external">lnmp、lamp、lnmpa一键安装包</a><br>这里设置时，可以将主机目录设置为dropbox的同步目录<br><figure class="highlight gradle"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="regexp">/root/</span>Dropbox<span class="regexp">/hexo/</span><span class="keyword">public</span></div></pre></td></tr></table></figure></p>
-<p>添加权限：<br><figure class="highlight groovy"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">chmod -R <span class="number">755</span> <span class="regexp">/root/</span>Dropbox<span class="regexp">/hexo/</span><span class="keyword">public</span></div><div class="line">chown <span class="string">www:</span>www <span class="regexp">/root/</span>Dropbox<span class="regexp">/hexo/</span><span class="keyword">public</span></div><div class="line">chmod +x <span class="regexp">/root/</span>Dropbox<span class="regexp">/ /</span>root<span class="regexp">/Dropbox/</span>hexo/</div></pre></td></tr></table></figure></p>
-<h3 id="安装incron"><a href="#安装incron" class="headerlink" title="安装incron"></a>安装incron</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">yum <span class="keyword">install</span> incron</div><div class="line">service incrond <span class="keyword">start</span></div></pre></td></tr></table></figure>
-<h2 id="同步发布"><a href="#同步发布" class="headerlink" title="同步发布"></a>同步发布</h2><p>incron 监测文件夹配置<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">incrontab <span class="_">-e</span></div></pre></td></tr></table></figure></p>
-<p>在其中添加：<br><figure class="highlight gradle"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="regexp">/root/</span>Dropbox<span class="regexp">/hexo/</span><span class="keyword">source</span><span class="regexp">/_posts/</span> IN_MOVE,IN_MODIFY,IN_CREATE,IN_DELETE <span class="regexp">/root/</span>runhexo.bash</div><div class="line"><span class="regexp">/root/</span>Dropbox<span class="regexp">/hexo/</span>theme<span class="regexp">/ IN_MOVE,IN_MODIFY,IN_CREATE,IN_DELETE /</span>root<span class="regexp">/runhexo.bash</span></div></pre></td></tr></table></figure></p>
-<p>runhexo.bash:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#!/usr/bin/env bash</span></div><div class="line"><span class="built_in">exec</span> 200&lt;<span class="variable">$0</span></div><div class="line">flock -n 200 || <span class="built_in">exit</span> 1</div><div class="line">sleep 10</div><div class="line"><span class="built_in">cd</span> /root/Dropbox/hexo &amp;&amp; hexo g</div></pre></td></tr></table></figure></p>
-<p>添加权限<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">chmod</span> +<span class="selector-tag">x</span> <span class="selector-tag">runhexo</span><span class="selector-class">.bash</span></div></pre></td></tr></table></figure></p>
+<h2 id="同步"><a href="#同步" class="headerlink" title="同步"></a>同步</h2><p>其实同步很简单，只要借助KeePass自带的URL同步功能即可。如下图：</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://i.imgur.com/XkgdsxV.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>也就是选择“与URL同步”，<strong>但是要注意，必须现在指定位置建立一个.kpdb数据库文件</strong>，同步地址就填写该文件地址。</p>
+<h2 id="自动同步"><a href="#自动同步" class="headerlink" title="自动同步"></a>自动同步</h2><p>手动同步很麻烦，那么怎么设置自动同步呢？这里可以借助KeePass自带的触发器功能，有点像Windows的“计划任务”，以下方法可以实现本地保存后，立马服务器同步的功能。</p>
+<ol>
+<li><p>“属性”选项卡，命名该触发器，如 SavedSync.（注意，后面动作选择“更改触发器 开/关 状态”时触发器名称只能手动输入，无法选择，所以这里命名还是从简，具体描述可以写到下面的注释栏。）同时勾选“启用”和“启动时打开”复选框。 </p>
+</li>
+<li><p>“事件”选项卡，添加事件，选择“已保存数据库文件”，下面的文件/URL - 比较和过滤器可以无视。不过如果有多个数据库文件需要同步，则可以根据待保存的数据库文件名设定后续同步动作。这里我的设置如下： </p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://i.imgur.com/4zcHdI0.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+</li>
+<li><p>“条件”选项卡不加入任何条件。你也可以选择同步到 URL 文件时选择条件“远程主机可以连接(ping)”，这样只有当 URL 文件可以访问时才同步。不过我倾向于不加入这个条件，这样即使后面无法完成同步操作，也会有弹窗提示，让我们能更清楚当前的同步状态。</p>
+</li>
+</ol>
+<p>我这里只做了简写，如果遇到某些问题，或者想更加详细地了解“触发器”功能，请访问原博客地址：<a href="http://www.cnblogs.com/gumuyueying/p/keepass2-sync-trigger.html" target="_blank" rel="external">http://www.cnblogs.com/gumuyueying/p/keepass2-sync-trigger.html</a></p>
+<p>在此，对原作者表示感谢！</p>
 ]]></content>
     
     <summary type="html">
     
       &lt;blockquote&gt;
-&lt;p&gt;本文参考以下文章完成：&lt;br&gt;1.&lt;a href=&quot;http://www.fanicy.com/2014/06/01/0001.hexowithvpsdropbox/&quot;&gt;用Hexo+Vps搭建博客并用Dropbox同步自动发布&lt;/a&gt;&lt;br&gt;2.&lt;a href=&quot;http://www.jianshu.com/p/0839b09dc381#&quot;&gt;VPS+Dropbox+markeditor打造Hexo完美体验 (长期更新)&lt;/a&gt;&lt;br&gt;3.&lt;a href=&quot;http://www.xmt.design/2016/04/04/blog-depoly-via-dropbox.html&quot;&gt;使用 Dropbox 和 VPS 实现实时部署 Hexo 博客&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;方法参考&lt;a href=&quot;http://www.cnblogs.com/gumuyueying/p/keepass2-sync-trigger.html&quot;&gt;http://www.cnblogs.com/gumuyueying/p/keepass2-sync-trigger.html&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;废话少说，直接进入正题：&lt;/p&gt;
-&lt;h2 id=&quot;VPS&quot;&gt;&lt;a href=&quot;#VPS&quot; class=&quot;headerlink&quot; title=&quot;VPS&quot;&gt;&lt;/a&gt;VPS&lt;/h2&gt;&lt;p&gt;为CentOS 6.8 x64 ,512MB内存&lt;/p&gt;
-&lt;h2 id=&quot;安装需要的所有软件&quot;&gt;&lt;a href=&quot;#安装需要的所有软件&quot; class=&quot;headerlink&quot; title=&quot;安装需要的所有软件&quot;&gt;&lt;/a&gt;安装需要的所有软件&lt;/h2&gt;&lt;h3 id=&quot;安装-Git&quot;&gt;&lt;a href=&quot;#安装-Git&quot; class=&quot;headerlink&quot; title=&quot;安装 Git&quot;&gt;&lt;/a&gt;安装 Git&lt;/h3&gt;&lt;figure class=&quot;highlight cmake&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;yum &lt;span class=&quot;keyword&quot;&gt;install&lt;/span&gt; git-core&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;上篇博文介绍了利用软件Keepass保存密码。其实借助Dropbox或者其他同步软件将数据库.kpbx文件进行备份也很简单。但是由于某些原因，Dropbox很难上去。所以突然想到能否将文件保存在我的vps服务器上。在网上搜索教程就找到了这个方法。&lt;/p&gt;
     
     </summary>
     
-      <category term="web" scheme="https://heliublog.com/categories/web/"/>
+      <category term="软件" scheme="https://heliublog.com/categories/%E8%BD%AF%E4%BB%B6/"/>
     
     
-      <category term="Hexo" scheme="https://heliublog.com/tags/Hexo/"/>
+      <category term="KeePass" scheme="https://heliublog.com/tags/KeePass/"/>
     
-      <category term="VPS" scheme="https://heliublog.com/tags/VPS/"/>
-    
-      <category term="Dropbox" scheme="https://heliublog.com/tags/Dropbox/"/>
+      <category term="Chrome" scheme="https://heliublog.com/tags/Chrome/"/>
     
   </entry>
   
@@ -1149,97 +1230,6 @@ branch: master
       <category term="Endnote" scheme="https://heliublog.com/tags/Endnote/"/>
     
       <category term="style" scheme="https://heliublog.com/tags/style/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>利用KeePass2.x进行ftp或webdev同步</title>
-    <link href="https://heliublog.com/2016/05/01/%E5%88%A9%E7%94%A8Keepass2.x%E8%BF%9B%E8%A1%8Cftp%E6%88%96webdev%E5%90%8C%E6%AD%A5/"/>
-    <id>https://heliublog.com/2016/05/01/利用Keepass2.x进行ftp或webdev同步/</id>
-    <published>2016-05-01T10:06:12.000Z</published>
-    <updated>2017-05-10T10:21:50.000Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote>
-<p>方法参考<a href="http://www.cnblogs.com/gumuyueying/p/keepass2-sync-trigger.html" target="_blank" rel="external">http://www.cnblogs.com/gumuyueying/p/keepass2-sync-trigger.html</a></p>
-</blockquote>
-<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>上篇博文介绍了利用软件Keepass保存密码。其实借助Dropbox或者其他同步软件将数据库.kpbx文件进行备份也很简单。但是由于某些原因，Dropbox很难上去。所以突然想到能否将文件保存在我的vps服务器上。在网上搜索教程就找到了这个方法。</p>
-<a id="more"></a>
-<h2 id="同步"><a href="#同步" class="headerlink" title="同步"></a>同步</h2><p>其实同步很简单，只要借助KeePass自带的URL同步功能即可。如下图：</p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://i.imgur.com/XkgdsxV.png" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-<p>也就是选择“与URL同步”，<strong>但是要注意，必须现在指定位置建立一个.kpdb数据库文件</strong>，同步地址就填写该文件地址。</p>
-<h2 id="自动同步"><a href="#自动同步" class="headerlink" title="自动同步"></a>自动同步</h2><p>手动同步很麻烦，那么怎么设置自动同步呢？这里可以借助KeePass自带的触发器功能，有点像Windows的“计划任务”，以下方法可以实现本地保存后，立马服务器同步的功能。</p>
-<ol>
-<li><p>“属性”选项卡，命名该触发器，如 SavedSync.（注意，后面动作选择“更改触发器 开/关 状态”时触发器名称只能手动输入，无法选择，所以这里命名还是从简，具体描述可以写到下面的注释栏。）同时勾选“启用”和“启动时打开”复选框。 </p>
-</li>
-<li><p>“事件”选项卡，添加事件，选择“已保存数据库文件”，下面的文件/URL - 比较和过滤器可以无视。不过如果有多个数据库文件需要同步，则可以根据待保存的数据库文件名设定后续同步动作。这里我的设置如下： </p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://i.imgur.com/4zcHdI0.png" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-</li>
-<li><p>“条件”选项卡不加入任何条件。你也可以选择同步到 URL 文件时选择条件“远程主机可以连接(ping)”，这样只有当 URL 文件可以访问时才同步。不过我倾向于不加入这个条件，这样即使后面无法完成同步操作，也会有弹窗提示，让我们能更清楚当前的同步状态。</p>
-</li>
-</ol>
-<p>我这里只做了简写，如果遇到某些问题，或者想更加详细地了解“触发器”功能，请访问原博客地址：<a href="http://www.cnblogs.com/gumuyueying/p/keepass2-sync-trigger.html" target="_blank" rel="external">http://www.cnblogs.com/gumuyueying/p/keepass2-sync-trigger.html</a></p>
-<p>在此，对原作者表示感谢！</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;方法参考&lt;a href=&quot;http://www.cnblogs.com/gumuyueying/p/keepass2-sync-trigger.html&quot;&gt;http://www.cnblogs.com/gumuyueying/p/keepass2-sync-trigger.html&lt;/a&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;上篇博文介绍了利用软件Keepass保存密码。其实借助Dropbox或者其他同步软件将数据库.kpbx文件进行备份也很简单。但是由于某些原因，Dropbox很难上去。所以突然想到能否将文件保存在我的vps服务器上。在网上搜索教程就找到了这个方法。&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="软件" scheme="https://heliublog.com/categories/%E8%BD%AF%E4%BB%B6/"/>
-    
-    
-      <category term="KeePass" scheme="https://heliublog.com/tags/KeePass/"/>
-    
-      <category term="Chrome" scheme="https://heliublog.com/tags/Chrome/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>coding和github同时使用</title>
-    <link href="https://heliublog.com/2016/05/01/coding%E5%92%8Cgithub%E5%90%8C%E6%97%B6%E4%BD%BF%E7%94%A8/"/>
-    <id>https://heliublog.com/2016/05/01/coding和github同时使用/</id>
-    <published>2016-05-01T10:06:12.000Z</published>
-    <updated>2017-05-10T10:20:44.000Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><p>先贴几个我的参考网站：</p>
-<blockquote>
-<p><a href="http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000" target="_blank" rel="external">非常好的git学习站（入门）</a><br><a href="http://www.tuicool.com/articles/NZNJVvB" target="_blank" rel="external">Git管理多个远程仓库(以Github和Coding为例)</a><br><a href="http://my.oschina.net/450192529/blog/636106" target="_blank" rel="external">如何在同一台电脑上使用两个github,一个往coding推，一个往github推，亲测有效哦</a><br><a href="http://blog.csdn.net/chaoyue0071/article/details/41824339" target="_blank" rel="external">如何在同一台电脑上使用两个github账户</a><br><a href="http://www.cnblogs.com/sheldonxu/archive/2012/09/17/2688281.html" target="_blank" rel="external">执行ssh-add时出现Could not open a connection to your authentication agent</a><br><a href="http://blog.163.com/023_dns/blog/static/1187273662013111301046930/" target="_blank" rel="external">github常见操作和常见错误！错误提示：fatal: remote origin already exists. </a></p>
-</blockquote>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;引言&quot;&gt;&lt;a href=&quot;#引言&quot; class=&quot;headerlink&quot; title=&quot;引言&quot;&gt;&lt;/a&gt;引言&lt;/h2&gt;&lt;p&gt;先贴几个我的参考网站：&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;&lt;a href=&quot;http://www.liaoxuefeng.com/wi
-    
-    </summary>
-    
-      <category term="Git" scheme="https://heliublog.com/categories/Git/"/>
-    
-    
-      <category term="coding" scheme="https://heliublog.com/tags/coding/"/>
-    
-      <category term="Github" scheme="https://heliublog.com/tags/Github/"/>
-    
-      <category term="Git" scheme="https://heliublog.com/tags/Git/"/>
     
   </entry>
   

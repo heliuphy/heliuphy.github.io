@@ -1,9 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title></title>
-    <url>%2F2017%2F05%2F16%2F%E5%B0%86%E5%9B%BE%E7%89%87%E8%87%AA%E5%8A%A8%E4%B8%8A%E4%BC%A0%E5%88%B0%E4%B8%83%E7%89%9B%E5%B9%B6%E6%8F%92%E5%85%A5markdown%2F</url>
-    <content type="text"><![CDATA[title: 将图片自动上传到七牛并插入markdowndate: 2017-05-16 11:27:31tags: markdown 七牛categories: 博客 引言Markdown传统的插入图片的步骤实在是让人心累，所以我就上网搜了搜有没有啥简单的解决办法。倒是找到了不少支持自动上传到七牛云的Markdown编辑器，然而大多是只支持OSX,Win用户哭晕在厕所。。。。不过我还是找到了个好用的工具，Github地址在这里：qiniu-image-tool-win配置完后，使用起来也很简单。 安装 从release页面下载成功后，解压。 安装AutoHotkey。配置编辑qiniu-image-upload.ahk文件，将一下内容做一些修改：ACCESS_KEY = *** SECRET_KEY = *** BUCKET_NAME = *** ;qiniu bucket name BUCKET_DOMAIN = http://7xry05.com1.z0.glb.clouddn.com/ ;qiniu domain for the image WORKING_DIR = E:\TOOLS\qiniu-image-tool-win\ ;directory that you put the qshell.exe 具体的内容请参考原作者博客，点这里 使用安装并配置成功后，只需两步即可插入图片到markdown文档中： Ctrl+c复制图片 Ctrl+Alt+v即可将markdown引用地址粘贴到文档中。 参考：http://jverson.com/2016/08/30/autohotkey-markdown-uploadImage/https://github.com/jiwenxing/qiniu-image-tool-win]]></content>
+    <title><![CDATA[将图片自动上传到七牛并在markdown中引用]]></title>
+    <url>%2F2017%2F05%2F16%2F%E5%B0%86%E5%9B%BE%E7%89%87%E8%87%AA%E5%8A%A8%E4%B8%8A%E4%BC%A0%E5%88%B0%E4%B8%83%E7%89%9B%E5%B9%B6%E5%9C%A8markdown%E4%B8%AD%E5%BC%95%E7%94%A8%2F</url>
+    <content type="text"><![CDATA[引言Markdown传统的插入图片的步骤实在是让人心累，所以我就上网搜了搜有没有啥简单的解决办法。倒是找到了不少支持自动上传到七牛云的Markdown编辑器，然而大多是只支持OSX,Win用户哭晕在厕所。。。。不过我还是找到了个好用的工具，Github地址在这里：qiniu-image-tool-win配置完后，使用起来也很简单。 安装 从release页面下载成功后，解压。 安装AutoHotkey。配置编辑qiniu-image-upload.ahk文件，将一下内容做一些修改：12345ACCESS_KEY = ***SECRET_KEY = ***BUCKET_NAME = *** ;qiniu bucket nameBUCKET_DOMAIN = http://7xry05.com1.z0.glb.clouddn.com/ ;qiniu domain for the imageWORKING_DIR = E:\TOOLS\qiniu-image-tool-win\ ;directory that you put the qshell.exe 具体的内容请参考原作者博客，点这里 使用安装并配置成功后，只需两步即可插入图片到markdown文档中： Ctrl+c复制图片 Ctrl+Alt+v即可将markdown引用地址粘贴到文档中。 参考：http://jverson.com/2016/08/30/autohotkey-markdown-uploadImage/https://github.com/jiwenxing/qiniu-image-tool-win]]></content>
+      <categories>
+        <category>博客</category>
+      </categories>
+      <tags>
+        <tag>Markdown</tag>
+        <tag>七牛云</tag>
+      </tags>
   </entry>
   <entry>
     <title><![CDATA[Bash编程（一）]]></title>
@@ -47,8 +54,8 @@
         <category>博客</category>
       </categories>
       <tags>
-        <tag>Linux</tag>
         <tag>Hexo</tag>
+        <tag>Linux</tag>
         <tag>VPS</tag>
         <tag>cloud9</tag>
         <tag>Docker</tag>
@@ -197,15 +204,16 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[KeePass+KeePassHTTP+chromeIPass储存个人密码]]></title>
-    <url>%2F2016%2F05%2F01%2FKeePass%2F</url>
-    <content type="text"><![CDATA[前言现在密码越来越多，但是为了密码安全还是不愿所有网站用同一个密码。所以就想到了用密码管理软件。尝试过1Password和Lastpass，可惜都收费。所以找到了KeePass，不仅免费，还开源。支持多平台。结合插件，可以实现在chrome上自动填写密码。 本文参考http://devzc.com/post/465写作而成，再次对原作者表示感谢。 安装步骤 首先从以下网址下载所需文件 KeePass主体程序:http://keepass.info/download.html KeePassHTTP扩展下载:https://github.com/pfn/keepasshttp/blob/master/KeePassHttp.plgx?raw=true源码: https://github.com/pfn/keepasshttp/ chromeIPass:Chrome应用商店搜索[chromeIPass],安装即可;chromeIPass源码: https://github.com/pfn/passifox 依次安装以上文件。注意KeePassHTTP的配置： 将KeePassHttp.plgx放在KeePass.exe同目录下,重启KeePass。并单击工具下的“KeePassHttp Options”。 按照如下图配置： 点击Chrome上的chromeIPass图标，会出现Connect按钮,点击进去； Key_Name自己起名 保存后，重新点击chromeIPass，若出现以下信息，则说明成功：]]></content>
+    <title><![CDATA[coding和github同时使用]]></title>
+    <url>%2F2016%2F05%2F01%2Fcoding%E5%92%8Cgithub%E5%90%8C%E6%97%B6%E4%BD%BF%E7%94%A8%2F</url>
+    <content type="text"><![CDATA[引言先贴几个我的参考网站： 非常好的git学习站（入门）Git管理多个远程仓库(以Github和Coding为例)如何在同一台电脑上使用两个github,一个往coding推，一个往github推，亲测有效哦如何在同一台电脑上使用两个github账户执行ssh-add时出现Could not open a connection to your authentication agentgithub常见操作和常见错误！错误提示：fatal: remote origin already exists.]]></content>
       <categories>
-        <category>软件</category>
+        <category>Git</category>
       </categories>
       <tags>
-        <tag>KeePass</tag>
-        <tag>Chrome</tag>
+        <tag>coding</tag>
+        <tag>Github</tag>
+        <tag>Git</tag>
       </tags>
   </entry>
   <entry>
@@ -219,6 +227,30 @@
         <tag>Hexo</tag>
         <tag>VPS</tag>
         <tag>Dropbox</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[KeePass+KeePassHTTP+chromeIPass储存个人密码]]></title>
+    <url>%2F2016%2F05%2F01%2FKeePass%2F</url>
+    <content type="text"><![CDATA[前言现在密码越来越多，但是为了密码安全还是不愿所有网站用同一个密码。所以就想到了用密码管理软件。尝试过1Password和Lastpass，可惜都收费。所以找到了KeePass，不仅免费，还开源。支持多平台。结合插件，可以实现在chrome上自动填写密码。 本文参考http://devzc.com/post/465写作而成，再次对原作者表示感谢。 安装步骤 首先从以下网址下载所需文件 KeePass主体程序:http://keepass.info/download.html KeePassHTTP扩展下载:https://github.com/pfn/keepasshttp/blob/master/KeePassHttp.plgx?raw=true源码: https://github.com/pfn/keepasshttp/ chromeIPass:Chrome应用商店搜索[chromeIPass],安装即可;chromeIPass源码: https://github.com/pfn/passifox 依次安装以上文件。注意KeePassHTTP的配置： 将KeePassHttp.plgx放在KeePass.exe同目录下,重启KeePass。并单击工具下的“KeePassHttp Options”。 按照如下图配置： 点击Chrome上的chromeIPass图标，会出现Connect按钮,点击进去； Key_Name自己起名 保存后，重新点击chromeIPass，若出现以下信息，则说明成功：]]></content>
+      <categories>
+        <category>软件</category>
+      </categories>
+      <tags>
+        <tag>KeePass</tag>
+        <tag>Chrome</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[利用KeePass2.x进行ftp或webdev同步]]></title>
+    <url>%2F2016%2F05%2F01%2F%E5%88%A9%E7%94%A8Keepass2.x%E8%BF%9B%E8%A1%8Cftp%E6%88%96webdev%E5%90%8C%E6%AD%A5%2F</url>
+    <content type="text"><![CDATA[方法参考http://www.cnblogs.com/gumuyueying/p/keepass2-sync-trigger.html 前言上篇博文介绍了利用软件Keepass保存密码。其实借助Dropbox或者其他同步软件将数据库.kpbx文件进行备份也很简单。但是由于某些原因，Dropbox很难上去。所以突然想到能否将文件保存在我的vps服务器上。在网上搜索教程就找到了这个方法。 同步其实同步很简单，只要借助KeePass自带的URL同步功能即可。如下图： 也就是选择“与URL同步”，但是要注意，必须现在指定位置建立一个.kpdb数据库文件，同步地址就填写该文件地址。 自动同步手动同步很麻烦，那么怎么设置自动同步呢？这里可以借助KeePass自带的触发器功能，有点像Windows的“计划任务”，以下方法可以实现本地保存后，立马服务器同步的功能。 “属性”选项卡，命名该触发器，如 SavedSync.（注意，后面动作选择“更改触发器 开/关 状态”时触发器名称只能手动输入，无法选择，所以这里命名还是从简，具体描述可以写到下面的注释栏。）同时勾选“启用”和“启动时打开”复选框。 “事件”选项卡，添加事件，选择“已保存数据库文件”，下面的文件/URL - 比较和过滤器可以无视。不过如果有多个数据库文件需要同步，则可以根据待保存的数据库文件名设定后续同步动作。这里我的设置如下： “条件”选项卡不加入任何条件。你也可以选择同步到 URL 文件时选择条件“远程主机可以连接(ping)”，这样只有当 URL 文件可以访问时才同步。不过我倾向于不加入这个条件，这样即使后面无法完成同步操作，也会有弹窗提示，让我们能更清楚当前的同步状态。 我这里只做了简写，如果遇到某些问题，或者想更加详细地了解“触发器”功能，请访问原博客地址：http://www.cnblogs.com/gumuyueying/p/keepass2-sync-trigger.html 在此，对原作者表示感谢！]]></content>
+      <categories>
+        <category>软件</category>
+      </categories>
+      <tags>
+        <tag>KeePass</tag>
+        <tag>Chrome</tag>
       </tags>
   </entry>
   <entry>
@@ -242,31 +274,6 @@
       <tags>
         <tag>Endnote</tag>
         <tag>style</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[利用KeePass2.x进行ftp或webdev同步]]></title>
-    <url>%2F2016%2F05%2F01%2F%E5%88%A9%E7%94%A8Keepass2.x%E8%BF%9B%E8%A1%8Cftp%E6%88%96webdev%E5%90%8C%E6%AD%A5%2F</url>
-    <content type="text"><![CDATA[方法参考http://www.cnblogs.com/gumuyueying/p/keepass2-sync-trigger.html 前言上篇博文介绍了利用软件Keepass保存密码。其实借助Dropbox或者其他同步软件将数据库.kpbx文件进行备份也很简单。但是由于某些原因，Dropbox很难上去。所以突然想到能否将文件保存在我的vps服务器上。在网上搜索教程就找到了这个方法。 同步其实同步很简单，只要借助KeePass自带的URL同步功能即可。如下图： 也就是选择“与URL同步”，但是要注意，必须现在指定位置建立一个.kpdb数据库文件，同步地址就填写该文件地址。 自动同步手动同步很麻烦，那么怎么设置自动同步呢？这里可以借助KeePass自带的触发器功能，有点像Windows的“计划任务”，以下方法可以实现本地保存后，立马服务器同步的功能。 “属性”选项卡，命名该触发器，如 SavedSync.（注意，后面动作选择“更改触发器 开/关 状态”时触发器名称只能手动输入，无法选择，所以这里命名还是从简，具体描述可以写到下面的注释栏。）同时勾选“启用”和“启动时打开”复选框。 “事件”选项卡，添加事件，选择“已保存数据库文件”，下面的文件/URL - 比较和过滤器可以无视。不过如果有多个数据库文件需要同步，则可以根据待保存的数据库文件名设定后续同步动作。这里我的设置如下： “条件”选项卡不加入任何条件。你也可以选择同步到 URL 文件时选择条件“远程主机可以连接(ping)”，这样只有当 URL 文件可以访问时才同步。不过我倾向于不加入这个条件，这样即使后面无法完成同步操作，也会有弹窗提示，让我们能更清楚当前的同步状态。 我这里只做了简写，如果遇到某些问题，或者想更加详细地了解“触发器”功能，请访问原博客地址：http://www.cnblogs.com/gumuyueying/p/keepass2-sync-trigger.html 在此，对原作者表示感谢！]]></content>
-      <categories>
-        <category>软件</category>
-      </categories>
-      <tags>
-        <tag>KeePass</tag>
-        <tag>Chrome</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[coding和github同时使用]]></title>
-    <url>%2F2016%2F05%2F01%2Fcoding%E5%92%8Cgithub%E5%90%8C%E6%97%B6%E4%BD%BF%E7%94%A8%2F</url>
-    <content type="text"><![CDATA[引言先贴几个我的参考网站： 非常好的git学习站（入门）Git管理多个远程仓库(以Github和Coding为例)如何在同一台电脑上使用两个github,一个往coding推，一个往github推，亲测有效哦如何在同一台电脑上使用两个github账户执行ssh-add时出现Could not open a connection to your authentication agentgithub常见操作和常见错误！错误提示：fatal: remote origin already exists.]]></content>
-      <categories>
-        <category>Git</category>
-      </categories>
-      <tags>
-        <tag>coding</tag>
-        <tag>Github</tag>
-        <tag>Git</tag>
       </tags>
   </entry>
 </search>
