@@ -1,6 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title></title>
+    <url>%2F2017%2F05%2F16%2F%E5%B0%86%E5%9B%BE%E7%89%87%E8%87%AA%E5%8A%A8%E4%B8%8A%E4%BC%A0%E5%88%B0%E4%B8%83%E7%89%9B%E5%B9%B6%E6%8F%92%E5%85%A5markdown%2F</url>
+    <content type="text"><![CDATA[title: 将图片自动上传到七牛并插入markdowndate: 2017-05-16 11:27:31tags: markdown 七牛categories: 博客 引言Markdown传统的插入图片的步骤实在是让人心累，所以我就上网搜了搜有没有啥简单的解决办法。倒是找到了不少支持自动上传到七牛云的Markdown编辑器，然而大多是只支持OSX,Win用户哭晕在厕所。。。。不过我还是找到了个好用的工具，Github地址在这里：qiniu-image-tool-win配置完后，使用起来也很简单。 安装 从release页面下载成功后，解压。 安装AutoHotkey。配置编辑qiniu-image-upload.ahk文件，将一下内容做一些修改：ACCESS_KEY = *** SECRET_KEY = *** BUCKET_NAME = *** ;qiniu bucket name BUCKET_DOMAIN = http://7xry05.com1.z0.glb.clouddn.com/ ;qiniu domain for the image WORKING_DIR = E:\TOOLS\qiniu-image-tool-win\ ;directory that you put the qshell.exe 具体的内容请参考原作者博客，点这里 使用安装并配置成功后，只需两步即可插入图片到markdown文档中： Ctrl+c复制图片 Ctrl+Alt+v即可将markdown引用地址粘贴到文档中。 参考：http://jverson.com/2016/08/30/autohotkey-markdown-uploadImage/https://github.com/jiwenxing/qiniu-image-tool-win]]></content>
+  </entry>
+  <entry>
+    <title><![CDATA[Bash编程（一）]]></title>
+    <url>%2F2017%2F05%2F15%2FBash%E7%BC%96%E7%A8%8B%EF%BC%88%E4%B8%80%EF%BC%89%2F</url>
+    <content type="text"><![CDATA[入门Shellshell是一个命令解释器，是介于操作系统内核与用户之间的一个绝缘层。准确地说，它也是能力很强的计算机语言，被称为解释性语言或脚本语言。它可以通过将系统调用、公共程序、工具和编译过的二进制程序“粘合”在一起来建立应用，这是大多数脚本语言的共同特征，所以有时候脚本语言又叫做“胶水语言” 重定向&gt; 这个符号是重定向,执行以下代码，就会在当前目录下生成一个my.txt。12#!/bin/bash echo "Hello World" &gt; my.txt 小案例如何利用bash将某文件的内容清楚而保留文件？12345678910111213#!/bin/bash# 初始化一个变量LOG_DIR=/var/logcd $LOG_DIRcat /dev/null &gt; messagescat /dev/null &gt; wtmpecho "Logs cleaned up."exit 注：/dev/null 这个东西可以理解为一个黑洞，里面是空的，将这个空文件写入某个文件，里面的内容就被删了。 特殊字符注释行首以#开头(除#!之外)的是注释。#!是用于指定当前脚本的解释器，我们这里为bash，且应该指明完整路径，所以为/bin/bash。123456789#!/bin/bashecho "The # here does not begin a comment."echo 'The # here does not begin a comment.'echo The \# here does not begin a comment. # \#是转义字符echo The # 这里开始一个注释echo $(( 2#101011 )) # 数制转换（使用二进制表示），不是一个注释，双括号表示对于数字的处理# 欢迎来到实验楼参观学习]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+        <tag>Bash</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[VTK提示MetaImage cannot read data from file]]></title>
+    <url>%2F2017%2F05%2F15%2FVTK%E6%8F%90%E7%A4%BAMetaImage%20cannot%20read%20data%20from%20file%2F</url>
+    <content type="text"><![CDATA[在运行《VTK图形图像进阶》第五章5.3_ImageResliceExample.cpp时，会提示MetaImage cannot read data from file或者显示窗口是空白，后来搜索了VTKExample中的例子，发现可以这样解决：将原来程序中的语句1imgActor-&gt;SetInputData(colorMap-&gt;GetOutput()); 更改为：1imgActor-&gt;GetMapper()-&gt;SetInputConnection(colorMap-&gt;GetOutputPort()); 记得在程序开头载入头文件：1#include &lt;vtkImageMapper3D.h&gt; VTKExample:http://www.vtk.org/Wiki/VTK/Examples/Cxx/IO/MetaImageReader]]></content>
+      <categories>
+        <category>VTK</category>
+      </categories>
+      <tags>
+        <tag>VTK</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Linux零打碎敲]]></title>
     <url>%2F2017%2F05%2F11%2FLinux%E9%9B%B6%E6%89%93%E7%A2%8E%E6%95%B2%2F</url>
     <content type="text"><![CDATA[引言整理一些平时用到的Linux小东西，做积累。 定时启动工具crond先看看机子有没有启动crond1service crond status 如果没有安装crond，可以先安装123456#安装Crondyum install vixie-cron crontabs#设置开机启动Crontabchkconfig crond on#启动Crontabservice crond start 添加定时任务1crontab -e 以下引用自来源：Linux社区 作者：RedHat Linux中crond服务与crontab用法crontab file的格式: crontab 文件中的行由 6 个字段组成，不同字段间用空格或 tab 键分隔。前 5 个字段指定命令要运行的时间 分钟 (0-59) 小时 (0-23) 日期 (1-31) 月份 (1-12) 星期几（0-6，其中 0 代表星期日） 第 6 个字段是一个要在适当时间执行的字符串例子: #MIN HOUR DAY MONTH DAYOFWEEK COMMAND #每天早上6点10分 10 6 * * * date #每两个小时 0 */2 * * * date (solaris 5.8似乎不支持此种写法) #晚上11点到早上8点之间每两个小时，早上8点 0 23-7/2，8 * * * date #每个月的4号和每个礼拜的礼拜一到礼拜三的早上11点 0 11 4 * mon-wed date #1月份日早上4点 0 4 1 jan * date 重启crond1service crond restart 查看磁盘空间大小1df -hl 如下图 df -hl命令效果 .sh文件格式开头文件的第一行必须是：1#!/bin/sh 符号#!用来告诉系统它后面的参数是用来执行该文件的程序。在这个例子中我们使用/bin/sh来执行程序。当编写脚本完成时，如果要执行该脚本，还必须使其可执行。1chmod +x filename 用./filename来运行 注释以#开头的句子表示注释，直到这一行的结束。]]></content>
@@ -19,9 +47,9 @@
         <category>博客</category>
       </categories>
       <tags>
+        <tag>Linux</tag>
         <tag>Hexo</tag>
         <tag>VPS</tag>
-        <tag>Linux</tag>
         <tag>cloud9</tag>
         <tag>Docker</tag>
       </tags>
@@ -87,7 +115,7 @@
   <entry>
     <title><![CDATA[如何利用Dropbox备份指定文件夹]]></title>
     <url>%2F2017%2F05%2F07%2F%E5%A6%82%E4%BD%95%E5%88%A9%E7%94%A8Dropbox%E5%A4%87%E4%BB%BD%E6%8C%87%E5%AE%9A%E6%96%87%E4%BB%B6%E5%A4%B9%2F</url>
-    <content type="text"><![CDATA[Dropbox原生只带同步单文件夹的功能，但如果我想同步其他的文件夹怎么办呢？不能把那些文件夹都复制一份到该目录下吧。所以可用mklink的方法来同步。(Win Vista 及以上可用) 命令如下，比如我的Dropbox备份文件夹为C:\Dropbox，而我想备份的文件夹为d:\backup，注意必须用管理员模式运行cmd 1mklink /d &quot;C:\Dropbox&quot; D:\backup]]></content>
+    <content type="text"><![CDATA[Dropbox原生只带同步单文件夹的功能，但如果我想同步其他的文件夹怎么办呢？不能把那些文件夹都复制一份到该目录下吧。所以可用mklink的方法来同步。(Win Vista 及以上可用) 命令如下，比如我的Dropbox备份文件夹为C:\Dropbox，而我想备份的文件夹为d:\backup，注意必须用管理员模式运行cmd 1mklink /d "C:\Dropbox" D:\backup]]></content>
       <categories>
         <category>软件</category>
       </categories>
@@ -98,7 +126,7 @@
   <entry>
     <title><![CDATA[利用Dropbox备份vps中的文件]]></title>
     <url>%2F2017%2F05%2F07%2F%E5%88%A9%E7%94%A8Dropbox%E5%A4%87%E4%BB%BDvps%E4%B8%AD%E7%9A%84%E6%96%87%E4%BB%B6%2F</url>
-    <content type="text"><![CDATA[部分内容参考自http://www.pythoner.com/324.html 1.Linux 中安装Dropbox Uploader123wget https://raw.github.com/andreafabrizi/Dropbox-Uploader/master/dropbox_uploader.shchmod+x dropbox_uploader.sh./dropbox_uploader.sh 2.新建Dropbox App 需要通过浏览器访问 https://www.dropbox.com/developers/apps 页面，并创建一个新的 Dropbox app。（具体根据上一步中脚本的提示），”the type of access”根据自己的要求选择。 创建好后，将会进入一个新的页面，复制里面的app key 和 app secret到终端窗口。完成后，dropboxploader.sh 将产生一个oAUTH网址，进去授权就OK了。 现在就可以上传文件了。我此处是做的leanote备份，命令如下。 123./dropbox_uploader.sh upload /home/wwwroot/blog.heleou.com/web/leanote/public/upload/ /leanote/public/upload/./dropbox_uploader.sh upload /home/wwwroot/blog.heleou.com/web/leanote/files/ /leanote/files/./dropbox_uploader.sh upload /home/wwwroot/blog.heleou.com/web/leanote/conf/app.conf /leanote/conf/app.conf 也可以做个脚本，定时运行 脚本如下： 12345678910#!/bin/bashcd /root/bin#开始上传./dropbox_uploader.sh upload /home/wwwroot/blog.heleou.com/web/leanote/public/upload/ /leanote/public/upload/./dropbox_uploader.sh upload /home/wwwroot/blog.heleou.com/web/leanote/files/ /leanote/files/./dropbox_uploader.sh upload /home/wwwroot/blog.heleou.com/web/leanote/conf/app.conf /leanote/conf/app.confecho -e &quot;Backup Done!&quot; 定时运行方法：（添加crontab） 1234crontab –e添加：30 3 * * * /root/bin/backup.sh这样，就可以每天凌晨3：30自动备份到Dropbox了。]]></content>
+    <content type="text"><![CDATA[部分内容参考自http://www.pythoner.com/324.html 1.Linux 中安装Dropbox Uploader123wget https://raw.github.com/andreafabrizi/Dropbox-Uploader/master/dropbox_uploader.shchmod+x dropbox_uploader.sh./dropbox_uploader.sh 2.新建Dropbox App 需要通过浏览器访问 https://www.dropbox.com/developers/apps 页面，并创建一个新的 Dropbox app。（具体根据上一步中脚本的提示），”the type of access”根据自己的要求选择。 创建好后，将会进入一个新的页面，复制里面的app key 和 app secret到终端窗口。完成后，dropboxploader.sh 将产生一个oAUTH网址，进去授权就OK了。 现在就可以上传文件了。我此处是做的leanote备份，命令如下。 123./dropbox_uploader.sh upload /home/wwwroot/blog.heleou.com/web/leanote/public/upload/ /leanote/public/upload/./dropbox_uploader.sh upload /home/wwwroot/blog.heleou.com/web/leanote/files/ /leanote/files/./dropbox_uploader.sh upload /home/wwwroot/blog.heleou.com/web/leanote/conf/app.conf /leanote/conf/app.conf 也可以做个脚本，定时运行 脚本如下： 12345678910#!/bin/bashcd /root/bin#开始上传./dropbox_uploader.sh upload /home/wwwroot/blog.heleou.com/web/leanote/public/upload/ /leanote/public/upload/./dropbox_uploader.sh upload /home/wwwroot/blog.heleou.com/web/leanote/files/ /leanote/files/./dropbox_uploader.sh upload /home/wwwroot/blog.heleou.com/web/leanote/conf/app.conf /leanote/conf/app.confecho -e "Backup Done!" 定时运行方法：（添加crontab） 1234crontab –e添加：30 3 * * * /root/bin/backup.sh这样，就可以每天凌晨3：30自动备份到Dropbox了。]]></content>
       <categories>
         <category>Linux</category>
       </categories>
@@ -115,20 +143,9 @@
         <category>web</category>
       </categories>
       <tags>
-        <tag>VPS</tag>
         <tag>leanote</tag>
+        <tag>VPS</tag>
         <tag>web</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[VTK提示MetaImage cannot read data from file]]></title>
-    <url>%2F2017%2F05%2F01%2FVTK%E6%8F%90%E7%A4%BAMetaImage%20cannot%20read%20data%20from%20file%2F</url>
-    <content type="text"><![CDATA[在运行《VTK图形图像进阶》第五章5.3_ImageResliceExample.cpp时，会提示MetaImage cannot read data from file或者显示窗口是空白，后来搜索了VTKExample中的例子，发现可以这样解决：将原来程序中的语句1imgActor-&gt;SetInputData(colorMap-&gt;GetOutput()); 更改为：1imgActor-&gt;GetMapper()-&gt;SetInputConnection(colorMap-&gt;GetOutputPort()); 记得在程序开头载入头文件：1#include &lt;vtkImageMapper3D.h&gt; VTKExample:http://www.vtk.org/Wiki/VTK/Examples/Cxx/IO/MetaImageReader]]></content>
-      <categories>
-        <category>VTK</category>
-      </categories>
-      <tags>
-        <tag>VTK</tag>
       </tags>
   </entry>
   <entry>
@@ -152,9 +169,9 @@
         <category>Linux</category>
       </categories>
       <tags>
+        <tag>Linux</tag>
         <tag>Ubuntu</tag>
         <tag>系统安装</tag>
-        <tag>Linux</tag>
       </tags>
   </entry>
   <entry>
@@ -169,16 +186,50 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[coding和github同时使用]]></title>
-    <url>%2F2016%2F05%2F01%2Fcoding%E5%92%8Cgithub%E5%90%8C%E6%97%B6%E4%BD%BF%E7%94%A8%2F</url>
-    <content type="text"><![CDATA[引言先贴几个我的参考网站： 非常好的git学习站（入门）Git管理多个远程仓库(以Github和Coding为例)如何在同一台电脑上使用两个github,一个往coding推，一个往github推，亲测有效哦如何在同一台电脑上使用两个github账户执行ssh-add时出现Could not open a connection to your authentication agentgithub常见操作和常见错误！错误提示：fatal: remote origin already exists.]]></content>
+    <title><![CDATA[VPS服务器搭建ghost blog]]></title>
+    <url>%2F2016%2F05%2F01%2FVPS%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%90%AD%E5%BB%BAghost%20blog%2F</url>
+    <content type="text"><![CDATA[####前传 &#160;&#160;无意中看到markdown语法，立马就喜欢上它，所以就想博客能不能也用这种语法写，因为我的博客原来一直用wordpress来搞，第一个想到的当然是用插件，当然也下到了，不过估计是主题css的问题，代码框老显示不出来，对于想要代码框的我来说实在是不能忍，就上网搜有没有其他的博客工具，哈哈终于找到了它，ghostblog！ &#160;&#160;但是安装下来着实费了不少功夫。总结起来比较简便的方法还是AMH+Node.js注：以下步骤引用自：http://www.tuicool.com/articles/jQnIJf3 安装AMH，网上有详细教程 安装Node.js 也是网上的教程，不过有些gcc版本可能支持不了太新的Node.js 安装ghost 新建数据库 登陆AMH面板，进入数据库，快速建库，很简单。 新建站点 登陆AMH面板，点击虚拟主机，新建虚拟主机，这也很简单。 安装Ghost程序 这里我们使用的是 http://ghostchina.com/ 发布的中文版Ghost。 登陆ssh，运行命令， wget http://dl.ghostchina.com/Ghost-0.5.9-zh-full.zip //下载Ghost到VPS unzip Ghost-0.5.9-zh-full.zip -d ghost //解压Ghost-0.5.9-zh-full.zip并xiu修改文件夹名为ghost 如没有安装unzip，请执行 sudo yum install unzip 来安装， &#160;&#160;到这里需要注意，ghost文件夹里的所有文件全部移动到之前你新建虚拟主机的web根目录下，不然会出错，文件移动号后，进入虚拟主机的web根目录下 cd /虚拟主机web根目录路径 //进入虚拟主机web根目录，此步骤不能少 cp config.example.js config.js //复制config.example.js成config.js vim config.js //用vim编辑config.js文件 将相关位置修改成以下这样： production: { url: &apos;http://your_blog_url&apos;, mail: {}, database: { client: &apos;mysql&apos;, connection: { host : &apos;127.0.0.1&apos;, user : &apos;root&apos;, //暂且直接用root账户 password : &apos;password&apos;, //你的root账户密码 database : &apos;ghost&apos;, //你之前建立的数据库名 charset : &apos;utf8&apos; }, debug: false }, server: { // Host to be passed to node&apos;s `net.Server#listen()` host: &apos;127.0.0.1&apos;,//改为0.0.0.0，否则他人无法访问 // Port to be passed to node&apos;s `net.Server#listen()`, for iisnode set this to `process.env.PORT` port: &apos;2368&apos; } }, 这里说一下vim编辑器的一般用法： i: 进入插入编辑模式 ESC: 退出编辑模式 :x : 退出并保存文件（退出编辑模式下使用） 配置Nginx 由于之前你新建的虚拟主机的Nginx配置是为php服务的，所以，我们要将其进行修改成为node.js服务， vim /usr/local/nginx/conf/***.conf //进入Nginx配置文件目录,并编辑与你新建的虚拟主机相应的Nginx配置文件 清空里面的内容，替换成以下： server { listen 80; server_name xxx.com www.xxxx.com; //替换为你自己的域名！ location / { proxy_set_header X-Real-IP $remote_addr; proxy_set_header Host $http_host; proxy_pass http://127.0.0.1:2368; } } 然后进AMH控制面板重启一下Nginx， npm start --production //启动Ghost，如果不出差错，在浏览器输入你的域名就可以看见Ghost的界面了，--production不能少 别以为到这就结束了，目前Ghost在我们SSH断开后就会结束进程，所以我们继续： 安装forever守护Ghost进程 为了让Ghost程序能够后台运行不中断，我们还得再安装个工具，就是forever，使用-g参数就是在全局模式中安装，这样我们就可以再任何地方都能使用forever命令了。 以下命令都请在网站根目录下运行 npm install forever -g //forever的安装命令 NODE_ENV=production forever start index.js //安装forever后的Ghost启动命令 好了，Ghost就此安装完成 Ghost相关命令： //以下命令都请在网站根目录下运行 NODE_ENV=production forever start index.js //启动Ghost NODE_ENV=production forever stop index.js //停止Ghost NODE_ENV=production forever restart index.js //重启Ghost 现在，你就可以通过AMH控制面板进行数据管理、在线的文件编辑和上传 同样，你也可以按正常步骤新建一个php网站。]]></content>
       <categories>
-        <category>Git</category>
+        <category>web</category>
       </categories>
       <tags>
-        <tag>coding</tag>
-        <tag>Github</tag>
-        <tag>Git</tag>
+        <tag>ghost blog</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[KeePass+KeePassHTTP+chromeIPass储存个人密码]]></title>
+    <url>%2F2016%2F05%2F01%2FKeePass%2F</url>
+    <content type="text"><![CDATA[前言现在密码越来越多，但是为了密码安全还是不愿所有网站用同一个密码。所以就想到了用密码管理软件。尝试过1Password和Lastpass，可惜都收费。所以找到了KeePass，不仅免费，还开源。支持多平台。结合插件，可以实现在chrome上自动填写密码。 本文参考http://devzc.com/post/465写作而成，再次对原作者表示感谢。 安装步骤 首先从以下网址下载所需文件 KeePass主体程序:http://keepass.info/download.html KeePassHTTP扩展下载:https://github.com/pfn/keepasshttp/blob/master/KeePassHttp.plgx?raw=true源码: https://github.com/pfn/keepasshttp/ chromeIPass:Chrome应用商店搜索[chromeIPass],安装即可;chromeIPass源码: https://github.com/pfn/passifox 依次安装以上文件。注意KeePassHTTP的配置： 将KeePassHttp.plgx放在KeePass.exe同目录下,重启KeePass。并单击工具下的“KeePassHttp Options”。 按照如下图配置： 点击Chrome上的chromeIPass图标，会出现Connect按钮,点击进去； Key_Name自己起名 保存后，重新点击chromeIPass，若出现以下信息，则说明成功：]]></content>
+      <categories>
+        <category>软件</category>
+      </categories>
+      <tags>
+        <tag>KeePass</tag>
+        <tag>Chrome</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[VPS+Hexo+Dropbox创建个人博客——hexo系列教程（三）]]></title>
+    <url>%2F2016%2F05%2F01%2FVPS%2BHexo%2BDropbox%E5%88%9B%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%2F</url>
+    <content type="text"><![CDATA[本文参考以下文章完成：1.用Hexo+Vps搭建博客并用Dropbox同步自动发布2.VPS+Dropbox+markeditor打造Hexo完美体验 (长期更新)3.使用 Dropbox 和 VPS 实现实时部署 Hexo 博客 废话少说，直接进入正题： VPS为CentOS 6.8 x64 ,512MB内存 安装需要的所有软件安装 Git1yum install git-core 安装NodeJS123456% 前三步是先安装EPEL# wget http://dl.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm # wget http://rpms.famillecollet.com/enterprise/remi-release-6.rpm# rpm -Uvh remi-release-6*.rpm epel-release-6*.rpm% 安装nodeyum install nodejs npm --enablerepo=epel 安装Dropbox1234567891011cd ~ &amp;&amp; wget -O - "https://www.dropbox.com/download?plat=lnx.x86_64" | tar xzf -%然后，从新建的 .dropbox-dist 文件夹运行 Dropbox 守护程序.~/.dropbox-dist/dropboxd%下载官方提供的 cli 来控制和管理Dropboxwget https://linux.dropbox.com/packages/dropbox.py%更改权限:chmod +x ./dropbox.py%启动Dropbox:./dropbox.py start y关闭局域网广播:./dropbox.py lansync n 安装Hexo12345npm install -g hexo-clicd Dropboxmkdir hexocd hexohexo init 安装Nginx这里推荐不是很熟悉Nginx设置的用以下链接提供的一键安装包安装，可以只安装Nginx，自动设置lnmp、lamp、lnmpa一键安装包这里设置时，可以将主机目录设置为dropbox的同步目录1/root/Dropbox/hexo/public 添加权限：123chmod -R 755 /root/Dropbox/hexo/publicchown www:www /root/Dropbox/hexo/publicchmod +x /root/Dropbox/ /root/Dropbox/hexo/ 安装incron12yum install incronservice incrond start 同步发布incron 监测文件夹配置1incrontab -e 在其中添加：12/root/Dropbox/hexo/source/_posts/ IN_MOVE,IN_MODIFY,IN_CREATE,IN_DELETE /root/runhexo.bash/root/Dropbox/hexo/theme/ IN_MOVE,IN_MODIFY,IN_CREATE,IN_DELETE /root/runhexo.bash runhexo.bash:12345#!/usr/bin/env bashexec 200&lt;$0flock -n 200 || exit 1sleep 10cd /root/Dropbox/hexo &amp;&amp; hexo g 添加权限1chmod +x runhexo.bash]]></content>
+      <categories>
+        <category>web</category>
+      </categories>
+      <tags>
+        <tag>Hexo</tag>
+        <tag>VPS</tag>
+        <tag>Dropbox</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[搭建hexo博客小记——hexo系列文章（一）]]></title>
+    <url>%2F2016%2F05%2F01%2F%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2%E5%B0%8F%E8%AE%B0%2F</url>
+    <content type="text"><![CDATA[引言本文主要介绍在Github下搭建Hexo博客。总体说来，搭建Hexo总共需要两步： 第一部分，部署本地博客，也就是在你的电脑上搭建起来Web环境； 第二部分，生成静态页面，并上传到Github上去。 搭建本地博客系统搭建本地博客系统首先要部署环境，即Node.js和Git。 Node.js的安装可以点此下载nodejs，并按照步骤一步步安装；一切默认即可； Git的安装git bash，点此下载即可。部署好本地环境，便可以开始安装博客系统Hexo了 Hexo的安装Hexo可直接用npm安装，可在电脑任意文件夹下右键Git Bash Here，进去后，在命令行中输入 npm install -g hexo 安装依赖包npm install 发布本地博客到上一步为止，本地博客已搭建完成，下面我们可以发布本地博客看看效果：（即生成静态页面） hexo generate hexo server 当然，也可以用简写： hexo g hexo s 本地服务器开启后，我们就可以进入http://localhost:4000浏览本地博客了。 上传本地文件到Github申请账号并建立仓库。账号自行申请，建立仓库即在页面右上角的+除新建一个repository。但是命名有要求，必须用你的用户名加上github.io来命名仓库名。比如你的用户名为user123，那么就命名为user123.github.io。 获取SSH公钥，并与Github账号绑定。设置邮箱和用户名git config --global user.email &quot;user123@gmail.com&quot; git config –global user.name “user123” 生成密钥ssh-keygen -t rsa -C &quot;user@gmail.com&quot; 命令运行后，会在C:\Users\你的计算机名\.ssh中找到id_rsa.pub这个文件，貌似是pubication的文件，但是我用office打不开，所以不管它了，如果有老兄知道这个究竟是用什么打开比较好，可以在评论区告诉我。不过它也是可以用txt打开的，将其中的内容复制到以下位置： 先登录github，点击右上角你的账户头像，进入settings，进入SSH key选项卡，将id_rsa.pub中的所有内容添加进去即可。 更改博客配置，为上传做准备。打开D:\hexo目录下的配置文件_config.yml（推荐用软件Sublime Text打开，不要用txt打开，因为这要UTF-8编码，而txt不会编码），翻到最下面，并改成以下内容，把user123g替换成你的用户名即可 deploy: type: git repository: https://github.com/user123/user123.github.io.git branch: master 注意：type后面一定要是git，不要填Github。这是最新版hexo的要求。还有就是上面配置文件的语法较为严格type:后面一定要留一个空格，repository，branch也一样。 上传博客内容先生成静态文件hexo g 部署前先输入以下命令，不然会出现error deployer not found:github的报错。npm install hexo-deployer-git --save 上传文档（部署）hexo d 待出现INFO Deploy done: git即成功。成功后，进入网址http://user123..github.io浏览查看。 至此，所有工作都已完成，如果想更改主题什么的，可以看我后续的博客。有问题欢迎大家留言。]]></content>
+      <categories>
+        <category>博客</category>
+      </categories>
+      <tags>
+        <tag>Hexo</tag>
       </tags>
   </entry>
   <entry>
@@ -206,50 +257,16 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[搭建hexo博客小记——hexo系列文章（一）]]></title>
-    <url>%2F2016%2F05%2F01%2F%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2%E5%B0%8F%E8%AE%B0%2F</url>
-    <content type="text"><![CDATA[引言本文主要介绍在Github下搭建Hexo博客。总体说来，搭建Hexo总共需要两步： 第一部分，部署本地博客，也就是在你的电脑上搭建起来Web环境； 第二部分，生成静态页面，并上传到Github上去。 搭建本地博客系统搭建本地博客系统首先要部署环境，即Node.js和Git。 Node.js的安装可以点此下载nodejs，并按照步骤一步步安装；一切默认即可； Git的安装git bash，点此下载即可。部署好本地环境，便可以开始安装博客系统Hexo了 Hexo的安装Hexo可直接用npm安装，可在电脑任意文件夹下右键Git Bash Here，进去后，在命令行中输入 npm install -g hexo 安装依赖包npm install 发布本地博客到上一步为止，本地博客已搭建完成，下面我们可以发布本地博客看看效果：（即生成静态页面） hexo generate hexo server 当然，也可以用简写： hexo g hexo s 本地服务器开启后，我们就可以进入http://localhost:4000浏览本地博客了。 上传本地文件到Github申请账号并建立仓库。账号自行申请，建立仓库即在页面右上角的+除新建一个repository。但是命名有要求，必须用你的用户名加上github.io来命名仓库名。比如你的用户名为user123，那么就命名为user123.github.io。 获取SSH公钥，并与Github账号绑定。设置邮箱和用户名git config --global user.email &quot;user123@gmail.com&quot; git config –global user.name “user123” 生成密钥ssh-keygen -t rsa -C &quot;user@gmail.com&quot; 命令运行后，会在C:\Users\你的计算机名\.ssh中找到id_rsa.pub这个文件，貌似是pubication的文件，但是我用office打不开，所以不管它了，如果有老兄知道这个究竟是用什么打开比较好，可以在评论区告诉我。不过它也是可以用txt打开的，将其中的内容复制到以下位置： 先登录github，点击右上角你的账户头像，进入settings，进入SSH key选项卡，将id_rsa.pub中的所有内容添加进去即可。 更改博客配置，为上传做准备。打开D:\hexo目录下的配置文件_config.yml（推荐用软件Sublime Text打开，不要用txt打开，因为这要UTF-8编码，而txt不会编码），翻到最下面，并改成以下内容，把user123g替换成你的用户名即可 deploy: type: git repository: https://github.com/user123/user123.github.io.git branch: master 注意：type后面一定要是git，不要填Github。这是最新版hexo的要求。还有就是上面配置文件的语法较为严格type:后面一定要留一个空格，repository，branch也一样。 上传博客内容先生成静态文件hexo g 部署前先输入以下命令，不然会出现error deployer not found:github的报错。npm install hexo-deployer-git --save 上传文档（部署）hexo d 待出现INFO Deploy done: git即成功。成功后，进入网址http://user123..github.io浏览查看。 至此，所有工作都已完成，如果想更改主题什么的，可以看我后续的博客。有问题欢迎大家留言。]]></content>
+    <title><![CDATA[coding和github同时使用]]></title>
+    <url>%2F2016%2F05%2F01%2Fcoding%E5%92%8Cgithub%E5%90%8C%E6%97%B6%E4%BD%BF%E7%94%A8%2F</url>
+    <content type="text"><![CDATA[引言先贴几个我的参考网站： 非常好的git学习站（入门）Git管理多个远程仓库(以Github和Coding为例)如何在同一台电脑上使用两个github,一个往coding推，一个往github推，亲测有效哦如何在同一台电脑上使用两个github账户执行ssh-add时出现Could not open a connection to your authentication agentgithub常见操作和常见错误！错误提示：fatal: remote origin already exists.]]></content>
       <categories>
-        <category>博客</category>
+        <category>Git</category>
       </categories>
       <tags>
-        <tag>Hexo</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[VPS服务器搭建ghost blog]]></title>
-    <url>%2F2016%2F05%2F01%2FVPS%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%90%AD%E5%BB%BAghost%20blog%2F</url>
-    <content type="text"><![CDATA[####前传 &#160;&#160;无意中看到markdown语法，立马就喜欢上它，所以就想博客能不能也用这种语法写，因为我的博客原来一直用wordpress来搞，第一个想到的当然是用插件，当然也下到了，不过估计是主题css的问题，代码框老显示不出来，对于想要代码框的我来说实在是不能忍，就上网搜有没有其他的博客工具，哈哈终于找到了它，ghostblog！ &#160;&#160;但是安装下来着实费了不少功夫。总结起来比较简便的方法还是AMH+Node.js注：以下步骤引用自：http://www.tuicool.com/articles/jQnIJf3 安装AMH，网上有详细教程 安装Node.js 也是网上的教程，不过有些gcc版本可能支持不了太新的Node.js 安装ghost 新建数据库 登陆AMH面板，进入数据库，快速建库，很简单。 新建站点 登陆AMH面板，点击虚拟主机，新建虚拟主机，这也很简单。 安装Ghost程序 这里我们使用的是 http://ghostchina.com/ 发布的中文版Ghost。 登陆ssh，运行命令， wget http://dl.ghostchina.com/Ghost-0.5.9-zh-full.zip //下载Ghost到VPS unzip Ghost-0.5.9-zh-full.zip -d ghost //解压Ghost-0.5.9-zh-full.zip并xiu修改文件夹名为ghost 如没有安装unzip，请执行 sudo yum install unzip 来安装， &#160;&#160;到这里需要注意，ghost文件夹里的所有文件全部移动到之前你新建虚拟主机的web根目录下，不然会出错，文件移动号后，进入虚拟主机的web根目录下 cd /虚拟主机web根目录路径 //进入虚拟主机web根目录，此步骤不能少 cp config.example.js config.js //复制config.example.js成config.js vim config.js //用vim编辑config.js文件 将相关位置修改成以下这样： production: { url: &apos;http://your_blog_url&apos;, mail: {}, database: { client: &apos;mysql&apos;, connection: { host : &apos;127.0.0.1&apos;, user : &apos;root&apos;, //暂且直接用root账户 password : &apos;password&apos;, //你的root账户密码 database : &apos;ghost&apos;, //你之前建立的数据库名 charset : &apos;utf8&apos; }, debug: false }, server: { // Host to be passed to node&apos;s `net.Server#listen()` host: &apos;127.0.0.1&apos;,//改为0.0.0.0，否则他人无法访问 // Port to be passed to node&apos;s `net.Server#listen()`, for iisnode set this to `process.env.PORT` port: &apos;2368&apos; } }, 这里说一下vim编辑器的一般用法： i: 进入插入编辑模式 ESC: 退出编辑模式 :x : 退出并保存文件（退出编辑模式下使用） 配置Nginx 由于之前你新建的虚拟主机的Nginx配置是为php服务的，所以，我们要将其进行修改成为node.js服务， vim /usr/local/nginx/conf/***.conf //进入Nginx配置文件目录,并编辑与你新建的虚拟主机相应的Nginx配置文件 清空里面的内容，替换成以下： server { listen 80; server_name xxx.com www.xxxx.com; //替换为你自己的域名！ location / { proxy_set_header X-Real-IP $remote_addr; proxy_set_header Host $http_host; proxy_pass http://127.0.0.1:2368; } } 然后进AMH控制面板重启一下Nginx， npm start --production //启动Ghost，如果不出差错，在浏览器输入你的域名就可以看见Ghost的界面了，--production不能少 别以为到这就结束了，目前Ghost在我们SSH断开后就会结束进程，所以我们继续： 安装forever守护Ghost进程 为了让Ghost程序能够后台运行不中断，我们还得再安装个工具，就是forever，使用-g参数就是在全局模式中安装，这样我们就可以再任何地方都能使用forever命令了。 以下命令都请在网站根目录下运行 npm install forever -g //forever的安装命令 NODE_ENV=production forever start index.js //安装forever后的Ghost启动命令 好了，Ghost就此安装完成 Ghost相关命令： //以下命令都请在网站根目录下运行 NODE_ENV=production forever start index.js //启动Ghost NODE_ENV=production forever stop index.js //停止Ghost NODE_ENV=production forever restart index.js //重启Ghost 现在，你就可以通过AMH控制面板进行数据管理、在线的文件编辑和上传 同样，你也可以按正常步骤新建一个php网站。]]></content>
-      <categories>
-        <category>web</category>
-      </categories>
-      <tags>
-        <tag>ghost blog</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[VPS+Hexo+Dropbox创建个人博客——hexo系列教程（三）]]></title>
-    <url>%2F2016%2F05%2F01%2FVPS%2BHexo%2BDropbox%E5%88%9B%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%2F</url>
-    <content type="text"><![CDATA[本文参考以下文章完成：1.用Hexo+Vps搭建博客并用Dropbox同步自动发布2.VPS+Dropbox+markeditor打造Hexo完美体验 (长期更新)3.使用 Dropbox 和 VPS 实现实时部署 Hexo 博客 废话少说，直接进入正题： VPS为CentOS 6.8 x64 ,512MB内存 安装需要的所有软件安装 Git1yum install git-core 安装NodeJS123456% 前三步是先安装EPEL# wget http://dl.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm # wget http://rpms.famillecollet.com/enterprise/remi-release-6.rpm# rpm -Uvh remi-release-6*.rpm epel-release-6*.rpm% 安装nodeyum install nodejs npm --enablerepo=epel 安装Dropbox1234567891011cd ~ &amp;&amp; wget -O - "https://www.dropbox.com/download?plat=lnx.x86_64" | tar xzf -%然后，从新建的 .dropbox-dist 文件夹运行 Dropbox 守护程序.~/.dropbox-dist/dropboxd%下载官方提供的 cli 来控制和管理Dropboxwget https://linux.dropbox.com/packages/dropbox.py%更改权限:chmod +x ./dropbox.py%启动Dropbox:./dropbox.py start y关闭局域网广播:./dropbox.py lansync n 安装Hexo12345npm install -g hexo-clicd Dropboxmkdir hexocd hexohexo init 安装Nginx这里推荐不是很熟悉Nginx设置的用以下链接提供的一键安装包安装，可以只安装Nginx，自动设置lnmp、lamp、lnmpa一键安装包这里设置时，可以将主机目录设置为dropbox的同步目录1/root/Dropbox/hexo/public 添加权限：123chmod -R 755 /root/Dropbox/hexo/publicchown www:www /root/Dropbox/hexo/publicchmod +x /root/Dropbox/ /root/Dropbox/hexo/ 安装incron12yum install incronservice incrond start 同步发布incron 监测文件夹配置1incrontab -e 在其中添加：12/root/Dropbox/hexo/source/_posts/ IN_MOVE,IN_MODIFY,IN_CREATE,IN_DELETE /root/runhexo.bash/root/Dropbox/hexo/theme/ IN_MOVE,IN_MODIFY,IN_CREATE,IN_DELETE /root/runhexo.bash runhexo.bash:12345#!/usr/bin/env bashexec 200&lt;$0flock -n 200 || exit 1sleep 10cd /root/Dropbox/hexo &amp;&amp; hexo g 添加权限1chmod +x runhexo.bash]]></content>
-      <categories>
-        <category>web</category>
-      </categories>
-      <tags>
-        <tag>Hexo</tag>
-        <tag>VPS</tag>
-        <tag>Dropbox</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[KeePass+KeePassHTTP+chromeIPass储存个人密码]]></title>
-    <url>%2F2016%2F05%2F01%2FKeePass%2F</url>
-    <content type="text"><![CDATA[前言现在密码越来越多，但是为了密码安全还是不愿所有网站用同一个密码。所以就想到了用密码管理软件。尝试过1Password和Lastpass，可惜都收费。所以找到了KeePass，不仅免费，还开源。支持多平台。结合插件，可以实现在chrome上自动填写密码。 本文参考http://devzc.com/post/465写作而成，再次对原作者表示感谢。 安装步骤 首先从以下网址下载所需文件 KeePass主体程序:http://keepass.info/download.html KeePassHTTP扩展下载:https://github.com/pfn/keepasshttp/blob/master/KeePassHttp.plgx?raw=true源码: https://github.com/pfn/keepasshttp/ chromeIPass:Chrome应用商店搜索[chromeIPass],安装即可;chromeIPass源码: https://github.com/pfn/passifox 依次安装以上文件。注意KeePassHTTP的配置： 将KeePassHttp.plgx放在KeePass.exe同目录下,重启KeePass。并单击工具下的“KeePassHttp Options”。 按照如下图配置： 点击Chrome上的chromeIPass图标，会出现Connect按钮,点击进去； Key_Name自己起名 保存后，重新点击chromeIPass，若出现以下信息，则说明成功：]]></content>
-      <categories>
-        <category>软件</category>
-      </categories>
-      <tags>
-        <tag>KeePass</tag>
-        <tag>Chrome</tag>
+        <tag>coding</tag>
+        <tag>Github</tag>
+        <tag>Git</tag>
       </tags>
   </entry>
 </search>

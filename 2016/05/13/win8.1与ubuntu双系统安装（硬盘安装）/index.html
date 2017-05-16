@@ -24,9 +24,9 @@
     <meta name="theme-color" content="#3F51B5">
     
     
-    <meta name="keywords" content="Ubuntu,系统安装,Linux">
+    <meta name="keywords" content="Linux,Ubuntu,系统安装">
     <meta name="description" content="部分内容引用自http://blog.csdn.net/risingwonderland/article/details/37902777作者：RisingWonderland  安装特点此方法可使用Win8.1,Ubuntu双系统，直接硬盘安装，无需制作U盘启动，很方便。 准备 下载Ubuntu镜像文件 下载EasyBCD">
-<meta name="keywords" content="Ubuntu,系统安装,Linux">
+<meta name="keywords" content="Linux,Ubuntu,系统安装">
 <meta property="og:type" content="article">
 <meta property="og:title" content="win8.1与ubuntu双系统安装（硬盘安装）">
 <meta property="og:url" content="https://heliublog.com/2016/05/13/win8.1与ubuntu双系统安装（硬盘安装）/index.html">
@@ -38,7 +38,7 @@
 <meta property="og:image" content="http://o6hbo6ufa.bkt.clouddn.com/4.png">
 <meta property="og:image" content="http://o6hbo6ufa.bkt.clouddn.com/5.png">
 <meta property="og:image" content="http://o6hbo6ufa.bkt.clouddn.com/6.png">
-<meta property="og:updated_time" content="2017-04-26T12:25:30.000Z">
+<meta property="og:updated_time" content="2017-05-10T03:20:02.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="win8.1与ubuntu双系统安装（硬盘安装）">
 <meta name="twitter:description" content="部分内容引用自http://blog.csdn.net/risingwonderland/article/details/37902777作者：RisingWonderland  安装特点此方法可使用Win8.1,Ubuntu双系统，直接硬盘安装，无需制作U盘启动，很方便。 准备 下载Ubuntu镜像文件 下载EasyBCD">
@@ -139,7 +139,7 @@
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
                 <i class="icon icon-lg icon-chevron-left"></i>
             </a>
-            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="搜尋">
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
                 <i class="icon icon-lg icon-search"></i>
             </a>
@@ -225,7 +225,7 @@
                 </div>
                 <div class="image-caption"></div>
             </figure>
-<p>安装后，点击“配置”按钮，会打开一个名为“menu.lst”的记事本文件。清空文件内容，写入下面的文字：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">title Install Ububtu</div><div class="line">root (hd0,0)</div><div class="line">kernel (hd0,0)/vmlinuz.efi boot=casper iso-scan/filename=/ubuntu-14.04-desktop-amd64.iso ro quiet splash locale=zh_CN.UTF-8</div><div class="line">initrd (hd0,0)/initrd.lz</div></pre></td></tr></table></figure></p>
+<p>安装后，点击“配置”按钮，会打开一个名为“menu.lst”的记事本文件。清空文件内容，写入下面的文字：<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">title Install Ububtu</div><div class="line">root (hd0,<span class="number">0</span>)</div><div class="line">kernel (hd0,<span class="number">0</span>)/vmlinuz<span class="selector-class">.efi</span> boot=casper iso-scan/filename=/ubuntu-<span class="number">14.04</span>-desktop-amd64<span class="selector-class">.iso</span> ro quiet splash locale=zh_CN<span class="selector-class">.UTF-8</span></div><div class="line">initrd (hd0,<span class="number">0</span>)/initrd.lz</div></pre></td></tr></table></figure></p>
 <p>如下图所示，注意空格：</p>
 <figure class="image-bubble">
                 <div class="img-lightbox">
@@ -298,7 +298,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2017-04-26T12:25:30.000Z" itemprop="dateUpdated">2017-04-26 20:25:30</time>
+    最後更新時間：<time datetime="2017-05-10T03:20:02.000Z" itemprop="dateUpdated">2017-05-10 11:20:02</time>
 </span><br>
 
 
@@ -454,7 +454,7 @@
             
                 <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
             
-            <span>博客内容遵循<a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+            <span>本部落格係採用<a rel="license" href="https://creativecommons.org/licenses/by/4.0/deed.zh_TW">創用 CC 姓名標示 4.0 國際 授權條款授權</a></span>
         </p>
     </div>
     <div class="bottom">

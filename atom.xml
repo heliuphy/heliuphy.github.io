@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://heliublog.com/"/>
-  <updated>2017-05-12T09:59:36.000Z</updated>
+  <updated>2017-05-16T03:47:12.331Z</updated>
   <id>https://heliublog.com/</id>
   
   <author>
@@ -14,6 +14,112 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title></title>
+    <link href="https://heliublog.com/2017/05/16/%E5%B0%86%E5%9B%BE%E7%89%87%E8%87%AA%E5%8A%A8%E4%B8%8A%E4%BC%A0%E5%88%B0%E4%B8%83%E7%89%9B%E5%B9%B6%E6%8F%92%E5%85%A5markdown/"/>
+    <id>https://heliublog.com/2017/05/16/将图片自动上传到七牛并插入markdown/</id>
+    <published>2017-05-16T03:27:31.947Z</published>
+    <updated>2017-05-16T03:47:12.331Z</updated>
+    
+    <content type="html"><![CDATA[<hr>
+<p>title: 将图片自动上传到七牛并插入markdown<br>date: 2017-05-16 11:27:31<br>tags:</p>
+<ul>
+<li>markdown</li>
+<li>七牛<br>categories: 博客</li>
+</ul>
+<hr>
+<h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><p>Markdown传统的插入图片的步骤实在是让人心累，所以我就上网搜了搜有没有啥简单的解决办法。倒是找到了不少支持自动上传到七牛云的Markdown编辑器，然而大多是只支持OSX,Win用户哭晕在厕所。。。。<br>不过我还是找到了个好用的工具，Github地址在这里：<a href="https://github.com/jiwenxing/qiniu-image-tool-win" target="_blank" rel="external">qiniu-image-tool-win</a><br>配置完后，使用起来也很简单。</p>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><ol>
+<li>从<a href="https://github.com/jiwenxing/qiniu-image-tool-win/releases" target="_blank" rel="external">release</a>页面下载成功后，解压。</li>
+<li>安装AutoHotkey。<h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2>编辑<code>qiniu-image-upload.ahk</code>文件，将一下内容做一些修改：<pre><code>ACCESS_KEY = ***
+SECRET_KEY = ***
+BUCKET_NAME = ***  ;qiniu bucket name
+BUCKET_DOMAIN = http://7xry05.com1.z0.glb.clouddn.com/  ;qiniu domain for the image
+WORKING_DIR = E:\TOOLS\qiniu-image-tool-win\  ;directory that you put the qshell.exe
+</code></pre>具体的内容请参考原作者博客，点<a href="http://jverson.com/2016/08/30/autohotkey-markdown-uploadImage/" target="_blank" rel="external">这里</a></li>
+</ol>
+<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><p>安装并配置成功后，只需两步即可插入图片到<code>markdown</code>文档中：</p>
+<ol>
+<li><code>Ctrl+c</code>复制图片</li>
+<li><code>Ctrl+Alt+v</code>即可将<code>markdown</code>引用地址粘贴到文档中。<blockquote>
+<p>参考：<a href="http://jverson.com/2016/08/30/autohotkey-markdown-uploadImage/" target="_blank" rel="external">http://jverson.com/2016/08/30/autohotkey-markdown-uploadImage/</a><br><a href="https://github.com/jiwenxing/qiniu-image-tool-win" target="_blank" rel="external">https://github.com/jiwenxing/qiniu-image-tool-win</a></p>
+</blockquote>
+</li>
+</ol>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;hr&gt;
+&lt;p&gt;title: 将图片自动上传到七牛并插入markdown&lt;br&gt;date: 2017-05-16 11:27:31&lt;br&gt;tags:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;markdown&lt;/li&gt;
+&lt;li&gt;七牛&lt;br&gt;categories: 博客&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Bash编程（一）</title>
+    <link href="https://heliublog.com/2017/05/15/Bash%E7%BC%96%E7%A8%8B%EF%BC%88%E4%B8%80%EF%BC%89/"/>
+    <id>https://heliublog.com/2017/05/15/Bash编程（一）/</id>
+    <published>2017-05-15T10:00:27.000Z</published>
+    <updated>2017-05-15T10:21:15.258Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="入门"><a href="#入门" class="headerlink" title="入门"></a>入门</h2><h3 id="Shell"><a href="#Shell" class="headerlink" title="Shell"></a>Shell</h3><p>shell是一个命令解释器，是介于操作系统内核与用户之间的一个绝缘层。准确地说，它也是能力很强的计算机语言，被称为解释性语言或脚本语言。它可以通过将<strong>系统调用、公共程序、工具和编译过的二进制程序</strong>“粘合”在一起来建立应用，这是大多数脚本语言的共同特征，所以有时候脚本语言又叫做“胶水语言”</p>
+<h3 id="重定向"><a href="#重定向" class="headerlink" title="重定向"></a>重定向</h3><p><code>&gt;</code> 这个符号是重定向,执行以下代码，就会在当前目录下生成一个my.txt。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#!/bin/bash</span></div><div class="line"> <span class="built_in">echo</span> <span class="string">"Hello World"</span> &gt; my.txt</div></pre></td></tr></table></figure></p>
+<h3 id="小案例"><a href="#小案例" class="headerlink" title="小案例"></a>小案例</h3><p>如何利用bash将某文件的内容清楚而保留文件？<br><figure class="highlight awk"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#!/bin/bash</span></div><div class="line"></div><div class="line"><span class="comment"># 初始化一个变量</span></div><div class="line">LOG_DIR=<span class="regexp">/var/</span>log</div><div class="line"></div><div class="line">cd <span class="variable">$LOG_DIR</span></div><div class="line"></div><div class="line">cat <span class="regexp">/dev/</span>null &gt; messages</div><div class="line">cat <span class="regexp">/dev/</span>null &gt; wtmp</div><div class="line"></div><div class="line">echo <span class="string">"Logs cleaned up."</span></div><div class="line"></div><div class="line"><span class="keyword">exit</span></div></pre></td></tr></table></figure></p>
+<p>注：<br><code>/dev/null</code> 这个东西可以理解为一个黑洞，里面是空的，将这个空文件写入某个文件，里面的内容就被删了。</p>
+<h2 id="特殊字符"><a href="#特殊字符" class="headerlink" title="特殊字符"></a>特殊字符</h2><h3 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h3><p>行首以<code>#</code>开头(除<code>#!</code>之外)的是注释。<code>#!</code>是用于指定当前脚本的解释器，我们这里为<code>bash</code>，且应该指明完整路径，所以为<code>/bin/bash</code>。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#!/bin/bash</span></div><div class="line"></div><div class="line"><span class="built_in">echo</span> <span class="string">"The # here does not begin a comment."</span></div><div class="line"><span class="built_in">echo</span> <span class="string">'The # here does not begin a comment.'</span></div><div class="line"><span class="built_in">echo</span> The \<span class="comment"># here does not begin a comment. # \#是转义字符</span></div><div class="line"><span class="built_in">echo</span> The <span class="comment"># 这里开始一个注释</span></div><div class="line"><span class="built_in">echo</span> $(( 2<span class="comment">#101011 ))     # 数制转换（使用二进制表示），不是一个注释，双括号表示对于数字的处理</span></div><div class="line"></div><div class="line"><span class="comment"># 欢迎来到实验楼参观学习</span></div></pre></td></tr></table></figure></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;入门&quot;&gt;&lt;a href=&quot;#入门&quot; class=&quot;headerlink&quot; title=&quot;入门&quot;&gt;&lt;/a&gt;入门&lt;/h2&gt;&lt;h3 id=&quot;Shell&quot;&gt;&lt;a href=&quot;#Shell&quot; class=&quot;headerlink&quot; title=&quot;Shell&quot;&gt;&lt;/a&gt;Shel
+    
+    </summary>
+    
+      <category term="Linux" scheme="https://heliublog.com/categories/Linux/"/>
+    
+    
+      <category term="Linux" scheme="https://heliublog.com/tags/Linux/"/>
+    
+      <category term="Bash" scheme="https://heliublog.com/tags/Bash/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>VTK提示MetaImage cannot read data from file</title>
+    <link href="https://heliublog.com/2017/05/15/VTK%E6%8F%90%E7%A4%BAMetaImage%20cannot%20read%20data%20from%20file/"/>
+    <id>https://heliublog.com/2017/05/15/VTK提示MetaImage cannot read data from file/</id>
+    <published>2017-05-15T02:04:41.321Z</published>
+    <updated>2017-05-10T03:20:02.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>在运行《VTK图形图像进阶》第五章<code>5.3_ImageResliceExample.cpp</code>时，会提示<code>MetaImage cannot read data from file</code>或者显示窗口是空白，后来搜索了VTKExample中的例子，发现可以这样解决：<br><a id="more"></a><br>将原来程序中的语句<br><figure class="highlight xl"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="title">imgActor</span>-&gt;</span>S<span class="function"><span class="title">etInputData</span>(colorMap-&gt;</span>GetOutput());</div></pre></td></tr></table></figure></p>
+<p>更改为：<br><figure class="highlight xl"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="title">imgActor</span>-&gt;</span>G<span class="function"><span class="title">etMapper</span>()-&gt;</span>S<span class="function"><span class="title">etInputConnection</span>(colorMap-&gt;</span>GetOutputPort());</div></pre></td></tr></table></figure></p>
+<p>记得在程序开头载入头文件：<br><figure class="highlight autoit"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vtkImageMapper3D.h&gt;</span></span></div></pre></td></tr></table></figure></p>
+<blockquote>
+<p>VTKExample:<a href="http://www.vtk.org/Wiki/VTK/Examples/Cxx/IO/MetaImageReader" target="_blank" rel="external">http://www.vtk.org/Wiki/VTK/Examples/Cxx/IO/MetaImageReader</a></p>
+</blockquote>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;在运行《VTK图形图像进阶》第五章&lt;code&gt;5.3_ImageResliceExample.cpp&lt;/code&gt;时，会提示&lt;code&gt;MetaImage cannot read data from file&lt;/code&gt;或者显示窗口是空白，后来搜索了VTKExample中的例子，发现可以这样解决：&lt;br&gt;
+    
+    </summary>
+    
+      <category term="VTK" scheme="https://heliublog.com/categories/VTK/"/>
+    
+    
+      <category term="VTK" scheme="https://heliublog.com/tags/VTK/"/>
+    
+  </entry>
   
   <entry>
     <title>Linux零打碎敲</title>
@@ -179,11 +285,11 @@
       <category term="博客" scheme="https://heliublog.com/categories/%E5%8D%9A%E5%AE%A2/"/>
     
     
+      <category term="Linux" scheme="https://heliublog.com/tags/Linux/"/>
+    
       <category term="Hexo" scheme="https://heliublog.com/tags/Hexo/"/>
     
       <category term="VPS" scheme="https://heliublog.com/tags/VPS/"/>
-    
-      <category term="Linux" scheme="https://heliublog.com/tags/Linux/"/>
     
       <category term="cloud9" scheme="https://heliublog.com/tags/cloud9/"/>
     
@@ -238,13 +344,13 @@
     <link href="https://heliublog.com/2017/05/07/vtk-imageblend%E5%9B%BE%E5%83%8F%E8%9E%8D%E5%90%88%E6%8A%A5%E9%94%99/"/>
     <id>https://heliublog.com/2017/05/07/vtk-imageblend图像融合报错/</id>
     <published>2017-05-07T15:01:49.000Z</published>
-    <updated>2017-05-07T15:05:12.610Z</updated>
+    <updated>2017-05-10T03:20:02.000Z</updated>
     
     <content type="html"><![CDATA[<blockquote>
 <p>参考：<a href="http://blog.csdn.net/u012526003/article/details/52066403" target="_blank" rel="external">http://blog.csdn.net/u012526003/article/details/52066403</a></p>
 </blockquote>
-<p>在运行《VTK图像开发进阶》中<code>5.2_ImageBlendExample.cpp</code>代码时，报错<code>vtkCompositeDataPipeline (004A4880): Input for connection on index 0 input port index 1 for algorithm vtkImageBlend(004A1958) is of type vtkImageData, but a vtkImageStencilData is required.</code>正在无解之际，找到了解决办法，感谢原博主。<br>只需将原程序中<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">imageBlend-&gt;SetInput(0,reader-&gt;GetOutput());</div><div class="line">imageBlend-&gt;SetInput(1,imageSource-&gt;GetOutput());</div></pre></td></tr></table></figure></p>
-<p>改为<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">imageBlend-&gt;AddInputData(reader-&gt;GetOutput());</div><div class="line">imageBlend-&gt;AddInputData(imageSource-&gt;GetOutput());</div></pre></td></tr></table></figure></p>
+<p>在运行《VTK图像开发进阶》中<code>5.2_ImageBlendExample.cpp</code>代码时，报错<code>vtkCompositeDataPipeline (004A4880): Input for connection on index 0 input port index 1 for algorithm vtkImageBlend(004A1958) is of type vtkImageData, but a vtkImageStencilData is required.</code>正在无解之际，找到了解决办法，感谢原博主。<br>只需将原程序中<br><figure class="highlight xl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="title">imageBlend</span>-&gt;</span>S<span class="function"><span class="title">etInput</span>(0,reader-&gt;</span>GetOutput());</div><div class="line"><span class="function"><span class="title">imageBlend</span>-&gt;</span>S<span class="function"><span class="title">etInput</span>(1,imageSource-&gt;</span>GetOutput());</div></pre></td></tr></table></figure></p>
+<p>改为<br><figure class="highlight xl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="title">imageBlend</span>-&gt;</span>A<span class="function"><span class="title">ddInputData</span>(reader-&gt;</span>GetOutput());</div><div class="line"><span class="function"><span class="title">imageBlend</span>-&gt;</span>A<span class="function"><span class="title">ddInputData</span>(imageSource-&gt;</span>GetOutput());</div></pre></td></tr></table></figure></p>
 <p>即可。</p>
 ]]></content>
     
@@ -267,12 +373,12 @@
     <link href="https://heliublog.com/2017/05/07/VTK-5.10.1%20TO%20VTK-7.1.1%E7%9A%84%E5%8F%98%E5%8A%A8/"/>
     <id>https://heliublog.com/2017/05/07/VTK-5.10.1 TO VTK-7.1.1的变动/</id>
     <published>2017-05-07T15:00:15.000Z</published>
-    <updated>2017-05-07T15:01:28.775Z</updated>
+    <updated>2017-05-10T03:20:02.000Z</updated>
     
     <content type="html"><![CDATA[<ol>
 <li>namespace vtkstd ==&gt;&gt; std；</li>
 <li>SetInput()方法拆分为两个，一个SetInputData，一个SetInputConnection()。</li>
-<li>vtk的新版本在vtkImageData类中取消了SetScalarTypeToUnsignedChar()方法；(vtkImageCanvasSource2D类中依然可用)现在仅能用如下方法设置：  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">static void SetScalarType(int, vtkInformation* meta_data);</div></pre></td></tr></table></figure>
+<li>vtk的新版本在vtkImageData类中取消了SetScalarTypeToUnsignedChar()方法；(vtkImageCanvasSource2D类中依然可用)现在仅能用如下方法设置：  <figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">SetScalarType</span><span class="params">(<span class="keyword">int</span>, vtkInformation* meta_data)</span></span>;</div></pre></td></tr></table></figure>
 </li>
 </ol>
 ]]></content>
@@ -298,7 +404,7 @@
     <link href="https://heliublog.com/2017/05/07/VTK%E8%BF%90%E8%A1%8CTcl%E6%96%87%E4%BB%B6/"/>
     <id>https://heliublog.com/2017/05/07/VTK运行Tcl文件/</id>
     <published>2017-05-07T14:59:20.000Z</published>
-    <updated>2017-05-07T14:59:55.512Z</updated>
+    <updated>2017-05-10T03:20:02.000Z</updated>
     
     <content type="html"><![CDATA[<p>环境：</p>
 <ul>
@@ -349,7 +455,7 @@
     <link href="https://heliublog.com/2017/05/07/VTK-VS2008%E7%BC%96%E8%AF%91%E6%95%99%E7%A8%8B/"/>
     <id>https://heliublog.com/2017/05/07/VTK-VS2008编译教程/</id>
     <published>2017-05-07T14:57:45.000Z</published>
-    <updated>2017-05-07T14:58:56.720Z</updated>
+    <updated>2017-05-10T03:20:02.000Z</updated>
     
     <content type="html"><![CDATA[<h2 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h2><h3 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h3><ul>
 <li>Win10 64bit 家庭版</li>
@@ -402,11 +508,11 @@
     <link href="https://heliublog.com/2017/05/07/%E5%A6%82%E4%BD%95%E5%88%A9%E7%94%A8Dropbox%E5%A4%87%E4%BB%BD%E6%8C%87%E5%AE%9A%E6%96%87%E4%BB%B6%E5%A4%B9/"/>
     <id>https://heliublog.com/2017/05/07/如何利用Dropbox备份指定文件夹/</id>
     <published>2017-05-07T14:56:06.000Z</published>
-    <updated>2017-05-07T14:56:49.048Z</updated>
+    <updated>2017-05-10T03:20:02.000Z</updated>
     
     <content type="html"><![CDATA[<p>Dropbox原生只带同步单文件夹的功能，但如果我想同步其他的文件夹怎么办呢？不能把那些文件夹都复制一份到该目录下吧。所以可用<code>mklink</code>的方法来同步。(Win Vista 及以上可用)</p>
 <p>命令如下，比如我的Dropbox备份文件夹为<code>C:\Dropbox</code>，而我想备份的文件夹为<code>d:\backup</code>，注意必须用管理员模式运行cmd</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mklink /d &quot;C:\Dropbox&quot; D:\backup</div></pre></td></tr></table></figure>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mklink /d <span class="string">"C:\Dropbox"</span> <span class="string">D:</span>\backup</div></pre></td></tr></table></figure>
 ]]></content>
     
     <summary type="html">
@@ -428,12 +534,12 @@
     <link href="https://heliublog.com/2017/05/07/%E5%88%A9%E7%94%A8Dropbox%E5%A4%87%E4%BB%BDvps%E4%B8%AD%E7%9A%84%E6%96%87%E4%BB%B6/"/>
     <id>https://heliublog.com/2017/05/07/利用Dropbox备份vps中的文件/</id>
     <published>2017-05-07T14:53:30.000Z</published>
-    <updated>2017-05-07T14:55:34.178Z</updated>
+    <updated>2017-05-10T03:20:02.000Z</updated>
     
     <content type="html"><![CDATA[<blockquote>
 <p>部分内容参考自<a href="http://www.pythoner.com/324.html" target="_blank" rel="external">http://www.pythoner.com/324.html</a></p>
 </blockquote>
-<h2 id="1-Linux-中安装Dropbox-Uploader"><a href="#1-Linux-中安装Dropbox-Uploader" class="headerlink" title="1.Linux 中安装Dropbox Uploader"></a>1.Linux 中安装Dropbox Uploader</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">wget https://raw.github.com/andreafabrizi/Dropbox-Uploader/master/dropbox_uploader.sh</div><div class="line">chmod+x dropbox_uploader.sh</div><div class="line">./dropbox_uploader.sh</div></pre></td></tr></table></figure>
+<h2 id="1-Linux-中安装Dropbox-Uploader"><a href="#1-Linux-中安装Dropbox-Uploader" class="headerlink" title="1.Linux 中安装Dropbox Uploader"></a>1.Linux 中安装Dropbox Uploader</h2><figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">wget http<span class="variable">s:</span>//raw.github.<span class="keyword">com</span>/andreafabrizi/Dropbox-Uploader/master/dropbox_uploader.<span class="keyword">sh</span></div><div class="line">chmod+<span class="keyword">x</span> dropbox_uploader.<span class="keyword">sh</span></div><div class="line">./dropbox_uploader.<span class="keyword">sh</span></div></pre></td></tr></table></figure>
 <h2 id="2-新建Dropbox-App"><a href="#2-新建Dropbox-App" class="headerlink" title="2.新建Dropbox App"></a>2.新建Dropbox App</h2><ol>
 <li><p>需要通过浏览器访问 <a href="https://www.dropbox.com/developers/apps" target="_blank" rel="external">https://www.dropbox.com/developers/apps</a> 页面，并创建一个新的 Dropbox app。（具体根据上一步中脚本的提示），”the type of access”根据自己的要求选择。</p>
 </li>
@@ -444,9 +550,9 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">./dropbox_uploader.sh upload /home/wwwroot/blog.heleou.com/web/leanote/public/upload/ /leanote/public/upload/</div><div class="line">./dropbox_uploader.sh upload /home/wwwroot/blog.heleou.com/web/leanote/files/ /leanote/files/</div><div class="line">./dropbox_uploader.sh upload /home/wwwroot/blog.heleou.com/web/leanote/conf/app.conf /leanote/conf/app.conf</div></pre></td></tr></table></figure>
 <p>也可以做个脚本，定时运行</p>
 <p>脚本如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">#!/bin/bash</div><div class="line"></div><div class="line">cd /root/bin</div><div class="line">#开始上传</div><div class="line"></div><div class="line">./dropbox_uploader.sh upload /home/wwwroot/blog.heleou.com/web/leanote/public/upload/ /leanote/public/upload/</div><div class="line">./dropbox_uploader.sh upload /home/wwwroot/blog.heleou.com/web/leanote/files/ /leanote/files/</div><div class="line">./dropbox_uploader.sh upload /home/wwwroot/blog.heleou.com/web/leanote/conf/app.conf /leanote/conf/app.conf</div><div class="line"></div><div class="line">echo -e &quot;Backup Done!&quot;</div></pre></td></tr></table></figure>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">#!/bin/bash</div><div class="line"></div><div class="line">cd /root/bin</div><div class="line">#开始上传</div><div class="line"></div><div class="line">./dropbox_uploader<span class="selector-class">.sh</span> upload /home/wwwroot/blog<span class="selector-class">.heleou</span><span class="selector-class">.com</span>/web/leanote/public/upload/ /leanote/public/upload/</div><div class="line">./dropbox_uploader<span class="selector-class">.sh</span> upload /home/wwwroot/blog<span class="selector-class">.heleou</span><span class="selector-class">.com</span>/web/leanote/files/ /leanote/files/</div><div class="line">./dropbox_uploader<span class="selector-class">.sh</span> upload /home/wwwroot/blog<span class="selector-class">.heleou</span><span class="selector-class">.com</span>/web/leanote/conf/app<span class="selector-class">.conf</span> /leanote/conf/app<span class="selector-class">.conf</span></div><div class="line"></div><div class="line">echo -e <span class="string">"Backup Done!"</span></div></pre></td></tr></table></figure>
 <p>定时运行方法：（添加crontab）</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">crontab –e</div><div class="line">添加：</div><div class="line">30 3 * * * /root/bin/backup.sh</div><div class="line">这样，就可以每天凌晨3：30自动备份到Dropbox了。</div></pre></td></tr></table></figure>
+<figure class="highlight lsl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">crontab –e</div><div class="line">添加：</div><div class="line"><span class="number">30</span> <span class="number">3</span> * * * /root/bin/backup.sh</div><div class="line">这样，就可以每天凌晨<span class="number">3</span>：<span class="number">30</span>自动备份到Dropbox了。</div></pre></td></tr></table></figure>
 ]]></content>
     
     <summary type="html">
@@ -471,38 +577,38 @@
     <link href="https://heliublog.com/2017/05/07/Leanote%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/"/>
     <id>https://heliublog.com/2017/05/07/Leanote安装教程/</id>
     <published>2017-05-07T14:47:13.000Z</published>
-    <updated>2017-05-07T14:52:19.009Z</updated>
+    <updated>2017-05-10T03:20:02.000Z</updated>
     
     <content type="html"><![CDATA[<blockquote>
 <p>此教程参考官方教程<a href="https://github.com/leanote/leanote/wiki/leanote%E4%BA%8C%E8%BF%9B%E5%88%B6%E7%89%88%E8%AF%A6%E7%BB%86%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B" target="_blank" rel="external">Leanote安装教程</a>而成，只是做了一点修改。</p>
 </blockquote>
-<h2 id="下载Leanote"><a href="#下载Leanote" class="headerlink" title="下载Leanote"></a>下载Leanote</h2><p>此处我下载的是二进制版，假设下载到<code>/home/wwwroot/blog.heleou.com/web/</code>下，那么下载后解压，命令如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">tar -xzvf leanote-*.tar.gz</div></pre></td></tr></table></figure></p>
+<h2 id="下载Leanote"><a href="#下载Leanote" class="headerlink" title="下载Leanote"></a>下载Leanote</h2><p>此处我下载的是二进制版，假设下载到<code>/home/wwwroot/blog.heleou.com/web/</code>下，那么下载后解压，命令如下：<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">tar -xzvf leanote-*<span class="selector-class">.tar</span><span class="selector-class">.gz</span></div></pre></td></tr></table></figure></p>
 <h2 id="安装数据库-mongodb"><a href="#安装数据库-mongodb" class="headerlink" title="安装数据库-mongodb"></a>安装数据库-mongodb</h2><p>到 <a href="http://www.mongodb.org/downloads" target="_blank" rel="external">http://www.mongodb.org/downloads</a> 去下载</p>
 <p>64位linux mongodb2.6.4下载链接: <a href="http://www.mongodb.org/dr//fastdl.mongodb.org/linux/mongodb-linux-x86_64-2.6.4.tgz/download" target="_blank" rel="external">http://www.mongodb.org/dr//fastdl.mongodb.org/linux/mongodb-linux-x86_64-2.6.4.tgz/download</a><br>64位linux mongodb 3.0.1下载链接: <a href="https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-3.0.1.tgz" target="_blank" rel="external">https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-3.0.1.tgz</a></p>
 <p>我下载的是3.0.1版，这两个版本的拷贝数据库操作不太一样，到后面的时候需要稍微注意一下。</p>
-<p>还是直接解压<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">tar -xzvf mongodb-linux-x86_64-3.0.1.tgz/</div></pre></td></tr></table></figure></p>
+<p>还是直接解压<br><figure class="highlight lsl"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">tar -xzvf mongodb-linux-x86_64<span class="number">-3.0</span><span class="number">.1</span>.tgz/</div></pre></td></tr></table></figure></p>
 <p>为了快速使用mongodb的命令, 可以配置环境变量,</p>
-<p>编辑<code>/etc/profile</code> 将mongodb bin路径加入即可.（写到文件最后即可）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">vim /etc/profile</div><div class="line">export PATH=$PATH:/home/wwwroot/blog.heleou.com/web/mongodb/bin</div><div class="line">source /etc/profile</div></pre></td></tr></table></figure></p>
+<p>编辑<code>/etc/profile</code> 将mongodb bin路径加入即可.（写到文件最后即可）<br><figure class="highlight elixir"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">vim /etc/profile</div><div class="line">export PATH=<span class="variable">$PATH</span><span class="symbol">:/home/wwwroot/blog</span>.heleou.com/web/mongodb/bin</div><div class="line">source /etc/profile</div></pre></td></tr></table></figure></p>
 <h2 id="简单使用mongoDB"><a href="#简单使用mongoDB" class="headerlink" title="简单使用mongoDB"></a>简单使用mongoDB</h2><p>先在/home/wwwroot/blog.heleou.com/web下新建一个目录data存放mongodb数据</p>
-<p>开启mongodb<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mongod --dbpath /home/wwwroot/blog.heleou.com/web/data</div></pre></td></tr></table></figure></p>
-<p>附：后台开启命令：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mongod --fork --dbpath /home/wwwroot/blog.heleou.com/web/data --logpath /home/wwwroot/blog.heleou.com/web/logpath1/mongodb.log</div></pre></td></tr></table></figure></p>
+<p>开启mongodb<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mongod --dbpath /home/wwwroot/blog<span class="selector-class">.heleou</span><span class="selector-class">.com</span>/web/data</div></pre></td></tr></table></figure></p>
+<p>附：后台开启命令：<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mongod --fork --dbpath /home/wwwroot/blog<span class="selector-class">.heleou</span><span class="selector-class">.com</span>/web/data --logpath /home/wwwroot/blog<span class="selector-class">.heleou</span><span class="selector-class">.com</span>/web/logpath1/mongodb.log</div></pre></td></tr></table></figure></p>
 <p><code>--logpath</code>是日志路径，自己设置即可。</p>
 <p>这时mongod已经启动了</p>
 <p>重新打开一个终端, 使用下mongodb</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt; mongo</div><div class="line">&gt; show dbs</div></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;</span><span class="bash"> mongo</span></div><div class="line"><span class="meta">&gt;</span><span class="bash"> show dbs</span></div></pre></td></tr></table></figure>
 <p>mongodb安装到此为止, 下面为mongodb导入数据leanote初始数据</p>
-<h2 id="导入初始数据"><a href="#导入初始数据" class="headerlink" title="导入初始数据"></a>导入初始数据</h2><p>v3的导入命令<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mongorestore -h localhost -d leanote --dir /home/wwwroot/blog.heleou.com/web/leanote/mongodb_backup/leanote_install_data/</div></pre></td></tr></table></figure></p>
-<h2 id="配置leanote"><a href="#配置leanote" class="headerlink" title="配置leanote"></a>配置leanote</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">vim conf/app.conf</div></pre></td></tr></table></figure>
+<h2 id="导入初始数据"><a href="#导入初始数据" class="headerlink" title="导入初始数据"></a>导入初始数据</h2><p>v3的导入命令<br><figure class="highlight awk"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mongorestore -h localhost -d leanote --dir <span class="regexp">/home/</span>wwwroot<span class="regexp">/blog.heleou.com/</span>web<span class="regexp">/leanote/m</span>ongodb_backup<span class="regexp">/leanote_install_data/</span></div></pre></td></tr></table></figure></p>
+<h2 id="配置leanote"><a href="#配置leanote" class="headerlink" title="配置leanote"></a>配置leanote</h2><figure class="highlight stata"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">vim <span class="keyword">conf</span>/<span class="keyword">app</span>.<span class="keyword">conf</span></div></pre></td></tr></table></figure>
 <p>这里要做的有两件事，一个是修个URL，一个是修改安全信息。</p>
 <ol>
-<li>修改网址：<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">http.port=80</div><div class="line">site.url=http://blog.heleou.com</div></pre></td></tr></table></figure>
+<li>修改网址：<figure class="highlight groovy"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">http.port=<span class="number">80</span></div><div class="line">site.url=<span class="string">http:</span><span class="comment">//blog.heleou.com</span></div></pre></td></tr></table></figure>
 </li>
 </ol>
 <p>当然你还需要将a.com绑定ip到Leanote服务器.</p>
 <p>如果服务器上已有其它程序运行了80端口, 怎么办呢? 请google或百度下 “使用nginx分发请求到不同端口”.</p>
 <h2 id="运行leanote"><a href="#运行leanote" class="headerlink" title="运行leanote"></a>运行leanote</h2><p>注意 在此之前请确保mongodb已在运行!</p>
 <p>新开一个窗口, 运行:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">cd /home/wwwroot/blog.heleou.com/web/leanote/bin</div><div class="line">bash run.sh (或 sh run.sh)</div><div class="line"># 最后出现以下信息证明运行成功</div><div class="line">...</div><div class="line">TRACE 2013/06/06 15:01:27 watcher.go:72: Watching: /home/life/leanote/bin/src/github.com/leanote/leanote/conf/routes</div><div class="line">Go to /@tests to run the tests.</div><div class="line">Listening on :80...</div></pre></td></tr></table></figure>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">cd</span> /home/wwwroot/blog.heleou.<span class="keyword">com</span>/web/leanote/bin</div><div class="line">bash run.<span class="keyword">sh</span> (或 <span class="keyword">sh</span> run.<span class="keyword">sh</span>)</div><div class="line"># 最后出现以下信息证明运行成功</div><div class="line">...</div><div class="line">TRACE <span class="number">2013</span>/<span class="number">06</span>/<span class="number">06</span> <span class="number">15</span>:<span class="number">01</span>:<span class="number">27</span> watcher.<span class="keyword">go</span>:<span class="number">72</span>: Watchin<span class="variable">g:</span> /home/life/leanote/bin/src/github.<span class="keyword">com</span>/leanote/leanote/<span class="keyword">conf</span>/routes</div><div class="line">Go <span class="keyword">to</span> /@tests <span class="keyword">to</span> run the tests.</div><div class="line">Listening <span class="keyword">on</span> :<span class="number">80</span>...</div></pre></td></tr></table></figure>
 <p>附：后台运行方法</p>
 <p>此时按<code>Crtl + z</code>暂停进程，然后敲入<code>bg</code>命令即可，退出终端还可继续运行。</p>
 ]]></content>
@@ -517,39 +623,11 @@
       <category term="web" scheme="https://heliublog.com/categories/web/"/>
     
     
-      <category term="VPS" scheme="https://heliublog.com/tags/VPS/"/>
-    
       <category term="leanote" scheme="https://heliublog.com/tags/leanote/"/>
     
+      <category term="VPS" scheme="https://heliublog.com/tags/VPS/"/>
+    
       <category term="web" scheme="https://heliublog.com/tags/web/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>VTK提示MetaImage cannot read data from file</title>
-    <link href="https://heliublog.com/2017/05/01/VTK%E6%8F%90%E7%A4%BAMetaImage%20cannot%20read%20data%20from%20file/"/>
-    <id>https://heliublog.com/2017/05/01/VTK提示MetaImage cannot read data from file/</id>
-    <published>2017-05-01T04:43:25.125Z</published>
-    <updated>2017-05-03T10:51:48.755Z</updated>
-    
-    <content type="html"><![CDATA[<p>在运行《VTK图形图像进阶》第五章<code>5.3_ImageResliceExample.cpp</code>时，会提示<code>MetaImage cannot read data from file</code>或者显示窗口是空白，后来搜索了VTKExample中的例子，发现可以这样解决：<br><a id="more"></a><br>将原来程序中的语句<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">imgActor-&gt;SetInputData(colorMap-&gt;GetOutput());</div></pre></td></tr></table></figure></p>
-<p>更改为：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">imgActor-&gt;GetMapper()-&gt;SetInputConnection(colorMap-&gt;GetOutputPort());</div></pre></td></tr></table></figure></p>
-<p>记得在程序开头载入头文件：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">#include &lt;vtkImageMapper3D.h&gt;</div></pre></td></tr></table></figure></p>
-<blockquote>
-<p>VTKExample:<a href="http://www.vtk.org/Wiki/VTK/Examples/Cxx/IO/MetaImageReader" target="_blank" rel="external">http://www.vtk.org/Wiki/VTK/Examples/Cxx/IO/MetaImageReader</a></p>
-</blockquote>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;在运行《VTK图形图像进阶》第五章&lt;code&gt;5.3_ImageResliceExample.cpp&lt;/code&gt;时，会提示&lt;code&gt;MetaImage cannot read data from file&lt;/code&gt;或者显示窗口是空白，后来搜索了VTKExample中的例子，发现可以这样解决：&lt;br&gt;
-    
-    </summary>
-    
-      <category term="VTK" scheme="https://heliublog.com/categories/VTK/"/>
-    
-    
-      <category term="VTK" scheme="https://heliublog.com/tags/VTK/"/>
     
   </entry>
   
@@ -617,7 +695,7 @@
     <link href="https://heliublog.com/2016/05/13/win8.1%E4%B8%8Eubuntu%E5%8F%8C%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85%EF%BC%88%E7%A1%AC%E7%9B%98%E5%AE%89%E8%A3%85%EF%BC%89/"/>
     <id>https://heliublog.com/2016/05/13/win8.1与ubuntu双系统安装（硬盘安装）/</id>
     <published>2016-05-13T12:27:14.000Z</published>
-    <updated>2017-04-26T12:25:30.000Z</updated>
+    <updated>2017-05-10T03:20:02.000Z</updated>
     
     <content type="html"><![CDATA[<blockquote>
 <p>部分内容引用自<a href="http://blog.csdn.net/risingwonderland/article/details/37902777" target="_blank" rel="external">http://blog.csdn.net/risingwonderland/article/details/37902777</a><br>作者：RisingWonderland</p>
@@ -637,7 +715,7 @@
                 </div>
                 <div class="image-caption"></div>
             </figure>
-<p>安装后，点击“配置”按钮，会打开一个名为“menu.lst”的记事本文件。清空文件内容，写入下面的文字：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">title Install Ububtu</div><div class="line">root (hd0,0)</div><div class="line">kernel (hd0,0)/vmlinuz.efi boot=casper iso-scan/filename=/ubuntu-14.04-desktop-amd64.iso ro quiet splash locale=zh_CN.UTF-8</div><div class="line">initrd (hd0,0)/initrd.lz</div></pre></td></tr></table></figure></p>
+<p>安装后，点击“配置”按钮，会打开一个名为“menu.lst”的记事本文件。清空文件内容，写入下面的文字：<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">title Install Ububtu</div><div class="line">root (hd0,<span class="number">0</span>)</div><div class="line">kernel (hd0,<span class="number">0</span>)/vmlinuz<span class="selector-class">.efi</span> boot=casper iso-scan/filename=/ubuntu-<span class="number">14.04</span>-desktop-amd64<span class="selector-class">.iso</span> ro quiet splash locale=zh_CN<span class="selector-class">.UTF-8</span></div><div class="line">initrd (hd0,<span class="number">0</span>)/initrd.lz</div></pre></td></tr></table></figure></p>
 <p>如下图所示，注意空格：</p>
 <figure class="image-bubble">
                 <div class="img-lightbox">
@@ -720,11 +798,11 @@
       <category term="Linux" scheme="https://heliublog.com/categories/Linux/"/>
     
     
+      <category term="Linux" scheme="https://heliublog.com/tags/Linux/"/>
+    
       <category term="Ubuntu" scheme="https://heliublog.com/tags/Ubuntu/"/>
     
       <category term="系统安装" scheme="https://heliublog.com/tags/%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85/"/>
-    
-      <category term="Linux" scheme="https://heliublog.com/tags/Linux/"/>
     
   </entry>
   
@@ -761,195 +839,6 @@
     
     
       <category term="latex" scheme="https://heliublog.com/tags/latex/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>coding和github同时使用</title>
-    <link href="https://heliublog.com/2016/05/01/coding%E5%92%8Cgithub%E5%90%8C%E6%97%B6%E4%BD%BF%E7%94%A8/"/>
-    <id>https://heliublog.com/2016/05/01/coding和github同时使用/</id>
-    <published>2016-05-01T10:06:12.000Z</published>
-    <updated>2017-05-10T10:20:44.000Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><p>先贴几个我的参考网站：</p>
-<blockquote>
-<p><a href="http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000" target="_blank" rel="external">非常好的git学习站（入门）</a><br><a href="http://www.tuicool.com/articles/NZNJVvB" target="_blank" rel="external">Git管理多个远程仓库(以Github和Coding为例)</a><br><a href="http://my.oschina.net/450192529/blog/636106" target="_blank" rel="external">如何在同一台电脑上使用两个github,一个往coding推，一个往github推，亲测有效哦</a><br><a href="http://blog.csdn.net/chaoyue0071/article/details/41824339" target="_blank" rel="external">如何在同一台电脑上使用两个github账户</a><br><a href="http://www.cnblogs.com/sheldonxu/archive/2012/09/17/2688281.html" target="_blank" rel="external">执行ssh-add时出现Could not open a connection to your authentication agent</a><br><a href="http://blog.163.com/023_dns/blog/static/1187273662013111301046930/" target="_blank" rel="external">github常见操作和常见错误！错误提示：fatal: remote origin already exists. </a></p>
-</blockquote>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;引言&quot;&gt;&lt;a href=&quot;#引言&quot; class=&quot;headerlink&quot; title=&quot;引言&quot;&gt;&lt;/a&gt;引言&lt;/h2&gt;&lt;p&gt;先贴几个我的参考网站：&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;&lt;a href=&quot;http://www.liaoxuefeng.com/wi
-    
-    </summary>
-    
-      <category term="Git" scheme="https://heliublog.com/categories/Git/"/>
-    
-    
-      <category term="coding" scheme="https://heliublog.com/tags/coding/"/>
-    
-      <category term="Github" scheme="https://heliublog.com/tags/Github/"/>
-    
-      <category term="Git" scheme="https://heliublog.com/tags/Git/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Endnote的style</title>
-    <link href="https://heliublog.com/2016/05/01/Endnote%E7%9A%84style/"/>
-    <id>https://heliublog.com/2016/05/01/Endnote的style/</id>
-    <published>2016-05-01T10:06:12.000Z</published>
-    <updated>2017-05-10T10:20:54.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>参考文献style:</p>
-<p>Chinese Std GBT7714</p>
-<ul>
-<li><p>附上 <a href="https://my.pcloud.com/publink/show?code=XZlVCQZLKN5QnRFiPX6zm1oYzf9CfrRdCKk" target="_blank" rel="external">下载地址</a></p>
-</li>
-<li><p>安装方法：</p>
-<ul>
-<li>拷到…/style  文件夹下即可。</li>
-</ul>
-</li>
-</ul>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;参考文献style:&lt;/p&gt;
-&lt;p&gt;Chinese Std GBT7714&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;附上 &lt;a href=&quot;https://my.pcloud.com/publink/show?code=XZlVCQZLKN5QnRFiPX6zm1oYzf9CfrR
-    
-    </summary>
-    
-      <category term="软件" scheme="https://heliublog.com/categories/%E8%BD%AF%E4%BB%B6/"/>
-    
-    
-      <category term="Endnote" scheme="https://heliublog.com/tags/Endnote/"/>
-    
-      <category term="style" scheme="https://heliublog.com/tags/style/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>利用KeePass2.x进行ftp或webdev同步</title>
-    <link href="https://heliublog.com/2016/05/01/%E5%88%A9%E7%94%A8Keepass2.x%E8%BF%9B%E8%A1%8Cftp%E6%88%96webdev%E5%90%8C%E6%AD%A5/"/>
-    <id>https://heliublog.com/2016/05/01/利用Keepass2.x进行ftp或webdev同步/</id>
-    <published>2016-05-01T10:06:12.000Z</published>
-    <updated>2017-05-10T10:21:50.000Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote>
-<p>方法参考<a href="http://www.cnblogs.com/gumuyueying/p/keepass2-sync-trigger.html" target="_blank" rel="external">http://www.cnblogs.com/gumuyueying/p/keepass2-sync-trigger.html</a></p>
-</blockquote>
-<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>上篇博文介绍了利用软件Keepass保存密码。其实借助Dropbox或者其他同步软件将数据库.kpbx文件进行备份也很简单。但是由于某些原因，Dropbox很难上去。所以突然想到能否将文件保存在我的vps服务器上。在网上搜索教程就找到了这个方法。</p>
-<a id="more"></a>
-<h2 id="同步"><a href="#同步" class="headerlink" title="同步"></a>同步</h2><p>其实同步很简单，只要借助KeePass自带的URL同步功能即可。如下图：</p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://i.imgur.com/XkgdsxV.png" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-<p>也就是选择“与URL同步”，<strong>但是要注意，必须现在指定位置建立一个.kpdb数据库文件</strong>，同步地址就填写该文件地址。</p>
-<h2 id="自动同步"><a href="#自动同步" class="headerlink" title="自动同步"></a>自动同步</h2><p>手动同步很麻烦，那么怎么设置自动同步呢？这里可以借助KeePass自带的触发器功能，有点像Windows的“计划任务”，以下方法可以实现本地保存后，立马服务器同步的功能。</p>
-<ol>
-<li><p>“属性”选项卡，命名该触发器，如 SavedSync.（注意，后面动作选择“更改触发器 开/关 状态”时触发器名称只能手动输入，无法选择，所以这里命名还是从简，具体描述可以写到下面的注释栏。）同时勾选“启用”和“启动时打开”复选框。 </p>
-</li>
-<li><p>“事件”选项卡，添加事件，选择“已保存数据库文件”，下面的文件/URL - 比较和过滤器可以无视。不过如果有多个数据库文件需要同步，则可以根据待保存的数据库文件名设定后续同步动作。这里我的设置如下： </p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://i.imgur.com/4zcHdI0.png" alt="" title="">
-                </div>
-                <div class="image-caption"></div>
-            </figure>
-</li>
-<li><p>“条件”选项卡不加入任何条件。你也可以选择同步到 URL 文件时选择条件“远程主机可以连接(ping)”，这样只有当 URL 文件可以访问时才同步。不过我倾向于不加入这个条件，这样即使后面无法完成同步操作，也会有弹窗提示，让我们能更清楚当前的同步状态。</p>
-</li>
-</ol>
-<p>我这里只做了简写，如果遇到某些问题，或者想更加详细地了解“触发器”功能，请访问原博客地址：<a href="http://www.cnblogs.com/gumuyueying/p/keepass2-sync-trigger.html" target="_blank" rel="external">http://www.cnblogs.com/gumuyueying/p/keepass2-sync-trigger.html</a></p>
-<p>在此，对原作者表示感谢！</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;方法参考&lt;a href=&quot;http://www.cnblogs.com/gumuyueying/p/keepass2-sync-trigger.html&quot;&gt;http://www.cnblogs.com/gumuyueying/p/keepass2-sync-trigger.html&lt;/a&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;上篇博文介绍了利用软件Keepass保存密码。其实借助Dropbox或者其他同步软件将数据库.kpbx文件进行备份也很简单。但是由于某些原因，Dropbox很难上去。所以突然想到能否将文件保存在我的vps服务器上。在网上搜索教程就找到了这个方法。&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="软件" scheme="https://heliublog.com/categories/%E8%BD%AF%E4%BB%B6/"/>
-    
-    
-      <category term="KeePass" scheme="https://heliublog.com/tags/KeePass/"/>
-    
-      <category term="Chrome" scheme="https://heliublog.com/tags/Chrome/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>搭建hexo博客小记——hexo系列文章（一）</title>
-    <link href="https://heliublog.com/2016/05/01/%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2%E5%B0%8F%E8%AE%B0/"/>
-    <id>https://heliublog.com/2016/05/01/搭建hexo博客小记/</id>
-    <published>2016-05-01T10:06:12.000Z</published>
-    <updated>2017-05-10T14:16:46.000Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><p>本文主要介绍在Github下搭建Hexo博客。总体说来，搭建Hexo总共需要两步：</p>
-<ul>
-<li>第一部分，部署本地博客，也就是在你的电脑上搭建起来Web环境；</li>
-<li>第二部分，生成静态页面，并上传到Github上去。<a id="more"></a></li>
-</ul>
-<h2 id="搭建本地博客系统"><a href="#搭建本地博客系统" class="headerlink" title="搭建本地博客系统"></a>搭建本地博客系统</h2><p>搭建本地博客系统首先要部署环境，即Node.js和Git。</p>
-<h3 id="Node-js的安装"><a href="#Node-js的安装" class="headerlink" title="Node.js的安装"></a>Node.js的安装</h3><p>可以<a href="https://nodejs.org/" target="_blank" rel="external">点此</a>下载nodejs，并按照步骤一步步安装；一切默认即可；</p>
-<h3 id="Git的安装"><a href="#Git的安装" class="headerlink" title="Git的安装"></a>Git的安装</h3><p>git bash，<a href="https://git-scm.com/downloads" target="_blank" rel="external">点此</a>下载即可。<br>部署好本地环境，便可以开始安装博客系统Hexo了</p>
-<h3 id="Hexo的安装"><a href="#Hexo的安装" class="headerlink" title="Hexo的安装"></a>Hexo的安装</h3><p>Hexo可直接用<code>npm</code>安装，可在电脑任意文件夹下右键Git Bash Here，进去后，在命令行中输入</p>
-<pre><code>npm install -g hexo
-</code></pre><h3 id="安装依赖包"><a href="#安装依赖包" class="headerlink" title="安装依赖包"></a>安装依赖包</h3><pre><code>npm install
-</code></pre><h3 id="发布本地博客"><a href="#发布本地博客" class="headerlink" title="发布本地博客"></a>发布本地博客</h3><p>到上一步为止，本地博客已搭建完成，下面我们可以发布本地博客看看效果：（即生成静态页面）</p>
-<pre><code>hexo generate
-hexo server
-</code></pre><p>当然，也可以用简写：</p>
-<pre><code>hexo g
-hexo s
-</code></pre><p>本地服务器开启后，我们就可以进入<a href="http://localhost:4000" target="_blank" rel="external">http://localhost:4000</a>浏览本地博客了。</p>
-<h2 id="上传本地文件到Github"><a href="#上传本地文件到Github" class="headerlink" title="上传本地文件到Github"></a>上传本地文件到Github</h2><h3 id="申请账号并建立仓库。"><a href="#申请账号并建立仓库。" class="headerlink" title="申请账号并建立仓库。"></a>申请账号并建立仓库。</h3><p>账号自行申请，建立仓库即在页面右上角的+除新建一个<code>repository</code>。但是命名有要求，必须用你的用户名加上github.io来命名仓库名。比如你的用户名为user123，那么就命名为user123.github.io。</p>
-<h3 id="获取SSH公钥，并与Github账号绑定。"><a href="#获取SSH公钥，并与Github账号绑定。" class="headerlink" title="获取SSH公钥，并与Github账号绑定。"></a>获取SSH公钥，并与Github账号绑定。</h3><h4 id="设置邮箱和用户名"><a href="#设置邮箱和用户名" class="headerlink" title="设置邮箱和用户名"></a>设置邮箱和用户名</h4><pre><code>git config --global user.email &quot;user123@gmail.com&quot; 
-</code></pre><p>git config –global user.name “user123”</p>
-<h4 id="生成密钥"><a href="#生成密钥" class="headerlink" title="生成密钥"></a>生成密钥</h4><pre><code>ssh-keygen -t rsa -C &quot;user@gmail.com&quot;
-</code></pre><p>命令运行后，会在<code>C:\Users\你的计算机名\.ssh</code>中找到<code>id_rsa.pub</code>这个文件，貌似是pubication的文件，但是我用office打不开，所以不管它了，如果有老兄知道这个究竟是用什么打开比较好，可以在评论区告诉我。不过它也是可以用txt打开的，将其中的内容复制到以下位置：</p>
-<p>先登录github，点击右上角你的账户头像，进入settings，进入SSH key选项卡，将<code>id_rsa.pub</code>中的所有内容添加进去即可。</p>
-<h4 id="更改博客配置，为上传做准备。"><a href="#更改博客配置，为上传做准备。" class="headerlink" title="更改博客配置，为上传做准备。"></a>更改博客配置，为上传做准备。</h4><p>打开<code>D:\hexo</code>目录下的配置文件<code>_config.yml</code>（推荐用软件Sublime Text打开，不要用txt打开，因为这要UTF-8编码，而txt不会编码），翻到最下面，并改成以下内容，把<code>user123g</code>替换成你的用户名即可</p>
-<pre><code>deploy:
-type: git
-repository: https://github.com/user123/user123.github.io.git
-branch: master
-</code></pre><p>注意：<code>type</code>后面一定要是<code>git</code>，不要填<code>Github</code>。这是最新版hexo的要求。还有就是上面配置文件的语法较为严格<code>type:</code>后面一定要留一个空格，<code>repository</code>，<code>branch</code>也一样。</p>
-<h2 id="上传博客内容"><a href="#上传博客内容" class="headerlink" title="上传博客内容"></a>上传博客内容</h2><h3 id="先生成静态文件"><a href="#先生成静态文件" class="headerlink" title="先生成静态文件"></a>先生成静态文件</h3><pre><code>hexo g
-</code></pre><h3 id="部署前先输入以下命令，不然会出现error-deployer-not-found-github的报错。"><a href="#部署前先输入以下命令，不然会出现error-deployer-not-found-github的报错。" class="headerlink" title="部署前先输入以下命令，不然会出现error deployer not found:github的报错。"></a>部署前先输入以下命令，不然会出现<code>error deployer not found:github</code>的报错。</h3><pre><code>npm install hexo-deployer-git --save
-</code></pre><h3 id="上传文档（部署）"><a href="#上传文档（部署）" class="headerlink" title="上传文档（部署）"></a>上传文档（部署）</h3><pre><code>hexo d
-</code></pre><p>待出现<code>INFO Deploy done: git</code>即成功。成功后，进入网址<code>http://user123..github.io</code>浏览查看。</p>
-<p>至此，所有工作都已完成，如果想更改主题什么的，可以看我后续的博客。有问题欢迎大家留言。</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;引言&quot;&gt;&lt;a href=&quot;#引言&quot; class=&quot;headerlink&quot; title=&quot;引言&quot;&gt;&lt;/a&gt;引言&lt;/h2&gt;&lt;p&gt;本文主要介绍在Github下搭建Hexo博客。总体说来，搭建Hexo总共需要两步：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;第一部分，部署本地博客，也就是在你的电脑上搭建起来Web环境；&lt;/li&gt;
-&lt;li&gt;第二部分，生成静态页面，并上传到Github上去。
-    
-    </summary>
-    
-      <category term="博客" scheme="https://heliublog.com/categories/%E5%8D%9A%E5%AE%A2/"/>
-    
-    
-      <category term="Hexo" scheme="https://heliublog.com/tags/Hexo/"/>
     
   </entry>
   
@@ -1067,6 +956,57 @@ NODE_ENV=production forever restart index.js //重启Ghost
   </entry>
   
   <entry>
+    <title>KeePass+KeePassHTTP+chromeIPass储存个人密码</title>
+    <link href="https://heliublog.com/2016/05/01/KeePass/"/>
+    <id>https://heliublog.com/2016/05/01/KeePass/</id>
+    <published>2016-05-01T10:06:12.000Z</published>
+    <updated>2017-05-10T10:21:04.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>现在密码越来越多，但是为了密码安全还是不愿所有网站用同一个密码。所以就想到了用密码管理软件。尝试过1Password和Lastpass，可惜都收费。所以找到了KeePass，不仅免费，还开源。支持多平台。结合插件，可以实现在chrome上自动填写密码。<br><a id="more"></a></p>
+<blockquote>
+<p>本文参考<a href="http://devzc.com/post/465" target="_blank" rel="external">http://devzc.com/post/465</a>写作而成，再次对原作者表示感谢。</p>
+</blockquote>
+<h2 id="安装步骤"><a href="#安装步骤" class="headerlink" title="安装步骤"></a>安装步骤</h2><ol>
+<li><p>首先从以下网址下载所需文件</p>
+<ul>
+<li><p>KeePass主体程序:<br><a href="http://keepass.info/download.html" target="_blank" rel="external">http://keepass.info/download.html</a></p>
+</li>
+<li><p>KeePassHTTP扩展下载:<br><a href="https://github.com/pfn/keepasshttp/blob/master/KeePassHttp.plgx?raw=true" target="_blank" rel="external">https://github.com/pfn/keepasshttp/blob/master/KeePassHttp.plgx?raw=true</a><br>源码: <a href="https://github.com/pfn/keepasshttp/" target="_blank" rel="external">https://github.com/pfn/keepasshttp/</a></p>
+</li>
+<li><p>chromeIPass:<br>Chrome应用商店搜索[chromeIPass],安装即可;<br>chromeIPass源码: <a href="https://github.com/pfn/passifox" target="_blank" rel="external">https://github.com/pfn/passifox</a></p>
+</li>
+</ul>
+</li>
+<li><p>依次安装以上文件。<br>注意KeePassHTTP的配置：</p>
+<ol>
+<li>将KeePassHttp.plgx放在KeePass.exe同目录下,重启KeePass。并单击工具下的“KeePassHttp Options”。</li>
+<li>按照如下图配置：<br><img src="http://i.imgur.com/0R82YzX.png" alt=""></li>
+<li>点击Chrome上的chromeIPass图标，会出现Connect按钮,点击进去；</li>
+<li>Key_Name自己起名</li>
+<li><p>保存后，重新点击chromeIPass，若出现以下信息，则说明成功：</p>
+<p><img src="http://i.imgur.com/PDcuXmf.png" alt=""></p>
+</li>
+</ol>
+</li>
+</ol>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;现在密码越来越多，但是为了密码安全还是不愿所有网站用同一个密码。所以就想到了用密码管理软件。尝试过1Password和Lastpass，可惜都收费。所以找到了KeePass，不仅免费，还开源。支持多平台。结合插件，可以实现在chrome上自动填写密码。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="软件" scheme="https://heliublog.com/categories/%E8%BD%AF%E4%BB%B6/"/>
+    
+    
+      <category term="KeePass" scheme="https://heliublog.com/tags/KeePass/"/>
+    
+      <category term="Chrome" scheme="https://heliublog.com/tags/Chrome/"/>
+    
+  </entry>
+  
+  <entry>
     <title>VPS+Hexo+Dropbox创建个人博客——hexo系列教程（三）</title>
     <link href="https://heliublog.com/2016/05/01/VPS+Hexo+Dropbox%E5%88%9B%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/"/>
     <id>https://heliublog.com/2016/05/01/VPS+Hexo+Dropbox创建个人博客/</id>
@@ -1115,44 +1055,150 @@ NODE_ENV=production forever restart index.js //重启Ghost
   </entry>
   
   <entry>
-    <title>KeePass+KeePassHTTP+chromeIPass储存个人密码</title>
-    <link href="https://heliublog.com/2016/05/01/KeePass/"/>
-    <id>https://heliublog.com/2016/05/01/KeePass/</id>
+    <title>搭建hexo博客小记——hexo系列文章（一）</title>
+    <link href="https://heliublog.com/2016/05/01/%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2%E5%B0%8F%E8%AE%B0/"/>
+    <id>https://heliublog.com/2016/05/01/搭建hexo博客小记/</id>
     <published>2016-05-01T10:06:12.000Z</published>
-    <updated>2017-05-10T10:21:04.000Z</updated>
+    <updated>2017-05-10T14:16:46.000Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>现在密码越来越多，但是为了密码安全还是不愿所有网站用同一个密码。所以就想到了用密码管理软件。尝试过1Password和Lastpass，可惜都收费。所以找到了KeePass，不仅免费，还开源。支持多平台。结合插件，可以实现在chrome上自动填写密码。<br><a id="more"></a></p>
-<blockquote>
-<p>本文参考<a href="http://devzc.com/post/465" target="_blank" rel="external">http://devzc.com/post/465</a>写作而成，再次对原作者表示感谢。</p>
-</blockquote>
-<h2 id="安装步骤"><a href="#安装步骤" class="headerlink" title="安装步骤"></a>安装步骤</h2><ol>
-<li><p>首先从以下网址下载所需文件</p>
+    <content type="html"><![CDATA[<h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><p>本文主要介绍在Github下搭建Hexo博客。总体说来，搭建Hexo总共需要两步：</p>
 <ul>
-<li><p>KeePass主体程序:<br><a href="http://keepass.info/download.html" target="_blank" rel="external">http://keepass.info/download.html</a></p>
-</li>
-<li><p>KeePassHTTP扩展下载:<br><a href="https://github.com/pfn/keepasshttp/blob/master/KeePassHttp.plgx?raw=true" target="_blank" rel="external">https://github.com/pfn/keepasshttp/blob/master/KeePassHttp.plgx?raw=true</a><br>源码: <a href="https://github.com/pfn/keepasshttp/" target="_blank" rel="external">https://github.com/pfn/keepasshttp/</a></p>
-</li>
-<li><p>chromeIPass:<br>Chrome应用商店搜索[chromeIPass],安装即可;<br>chromeIPass源码: <a href="https://github.com/pfn/passifox" target="_blank" rel="external">https://github.com/pfn/passifox</a></p>
-</li>
+<li>第一部分，部署本地博客，也就是在你的电脑上搭建起来Web环境；</li>
+<li>第二部分，生成静态页面，并上传到Github上去。<a id="more"></a></li>
 </ul>
-</li>
-<li><p>依次安装以上文件。<br>注意KeePassHTTP的配置：</p>
-<ol>
-<li>将KeePassHttp.plgx放在KeePass.exe同目录下,重启KeePass。并单击工具下的“KeePassHttp Options”。</li>
-<li>按照如下图配置：<br><img src="http://i.imgur.com/0R82YzX.png" alt=""></li>
-<li>点击Chrome上的chromeIPass图标，会出现Connect按钮,点击进去；</li>
-<li>Key_Name自己起名</li>
-<li><p>保存后，重新点击chromeIPass，若出现以下信息，则说明成功：</p>
-<p><img src="http://i.imgur.com/PDcuXmf.png" alt=""></p>
-</li>
-</ol>
-</li>
-</ol>
+<h2 id="搭建本地博客系统"><a href="#搭建本地博客系统" class="headerlink" title="搭建本地博客系统"></a>搭建本地博客系统</h2><p>搭建本地博客系统首先要部署环境，即Node.js和Git。</p>
+<h3 id="Node-js的安装"><a href="#Node-js的安装" class="headerlink" title="Node.js的安装"></a>Node.js的安装</h3><p>可以<a href="https://nodejs.org/" target="_blank" rel="external">点此</a>下载nodejs，并按照步骤一步步安装；一切默认即可；</p>
+<h3 id="Git的安装"><a href="#Git的安装" class="headerlink" title="Git的安装"></a>Git的安装</h3><p>git bash，<a href="https://git-scm.com/downloads" target="_blank" rel="external">点此</a>下载即可。<br>部署好本地环境，便可以开始安装博客系统Hexo了</p>
+<h3 id="Hexo的安装"><a href="#Hexo的安装" class="headerlink" title="Hexo的安装"></a>Hexo的安装</h3><p>Hexo可直接用<code>npm</code>安装，可在电脑任意文件夹下右键Git Bash Here，进去后，在命令行中输入</p>
+<pre><code>npm install -g hexo
+</code></pre><h3 id="安装依赖包"><a href="#安装依赖包" class="headerlink" title="安装依赖包"></a>安装依赖包</h3><pre><code>npm install
+</code></pre><h3 id="发布本地博客"><a href="#发布本地博客" class="headerlink" title="发布本地博客"></a>发布本地博客</h3><p>到上一步为止，本地博客已搭建完成，下面我们可以发布本地博客看看效果：（即生成静态页面）</p>
+<pre><code>hexo generate
+hexo server
+</code></pre><p>当然，也可以用简写：</p>
+<pre><code>hexo g
+hexo s
+</code></pre><p>本地服务器开启后，我们就可以进入<a href="http://localhost:4000" target="_blank" rel="external">http://localhost:4000</a>浏览本地博客了。</p>
+<h2 id="上传本地文件到Github"><a href="#上传本地文件到Github" class="headerlink" title="上传本地文件到Github"></a>上传本地文件到Github</h2><h3 id="申请账号并建立仓库。"><a href="#申请账号并建立仓库。" class="headerlink" title="申请账号并建立仓库。"></a>申请账号并建立仓库。</h3><p>账号自行申请，建立仓库即在页面右上角的+除新建一个<code>repository</code>。但是命名有要求，必须用你的用户名加上github.io来命名仓库名。比如你的用户名为user123，那么就命名为user123.github.io。</p>
+<h3 id="获取SSH公钥，并与Github账号绑定。"><a href="#获取SSH公钥，并与Github账号绑定。" class="headerlink" title="获取SSH公钥，并与Github账号绑定。"></a>获取SSH公钥，并与Github账号绑定。</h3><h4 id="设置邮箱和用户名"><a href="#设置邮箱和用户名" class="headerlink" title="设置邮箱和用户名"></a>设置邮箱和用户名</h4><pre><code>git config --global user.email &quot;user123@gmail.com&quot; 
+</code></pre><p>git config –global user.name “user123”</p>
+<h4 id="生成密钥"><a href="#生成密钥" class="headerlink" title="生成密钥"></a>生成密钥</h4><pre><code>ssh-keygen -t rsa -C &quot;user@gmail.com&quot;
+</code></pre><p>命令运行后，会在<code>C:\Users\你的计算机名\.ssh</code>中找到<code>id_rsa.pub</code>这个文件，貌似是pubication的文件，但是我用office打不开，所以不管它了，如果有老兄知道这个究竟是用什么打开比较好，可以在评论区告诉我。不过它也是可以用txt打开的，将其中的内容复制到以下位置：</p>
+<p>先登录github，点击右上角你的账户头像，进入settings，进入SSH key选项卡，将<code>id_rsa.pub</code>中的所有内容添加进去即可。</p>
+<h4 id="更改博客配置，为上传做准备。"><a href="#更改博客配置，为上传做准备。" class="headerlink" title="更改博客配置，为上传做准备。"></a>更改博客配置，为上传做准备。</h4><p>打开<code>D:\hexo</code>目录下的配置文件<code>_config.yml</code>（推荐用软件Sublime Text打开，不要用txt打开，因为这要UTF-8编码，而txt不会编码），翻到最下面，并改成以下内容，把<code>user123g</code>替换成你的用户名即可</p>
+<pre><code>deploy:
+type: git
+repository: https://github.com/user123/user123.github.io.git
+branch: master
+</code></pre><p>注意：<code>type</code>后面一定要是<code>git</code>，不要填<code>Github</code>。这是最新版hexo的要求。还有就是上面配置文件的语法较为严格<code>type:</code>后面一定要留一个空格，<code>repository</code>，<code>branch</code>也一样。</p>
+<h2 id="上传博客内容"><a href="#上传博客内容" class="headerlink" title="上传博客内容"></a>上传博客内容</h2><h3 id="先生成静态文件"><a href="#先生成静态文件" class="headerlink" title="先生成静态文件"></a>先生成静态文件</h3><pre><code>hexo g
+</code></pre><h3 id="部署前先输入以下命令，不然会出现error-deployer-not-found-github的报错。"><a href="#部署前先输入以下命令，不然会出现error-deployer-not-found-github的报错。" class="headerlink" title="部署前先输入以下命令，不然会出现error deployer not found:github的报错。"></a>部署前先输入以下命令，不然会出现<code>error deployer not found:github</code>的报错。</h3><pre><code>npm install hexo-deployer-git --save
+</code></pre><h3 id="上传文档（部署）"><a href="#上传文档（部署）" class="headerlink" title="上传文档（部署）"></a>上传文档（部署）</h3><pre><code>hexo d
+</code></pre><p>待出现<code>INFO Deploy done: git</code>即成功。成功后，进入网址<code>http://user123..github.io</code>浏览查看。</p>
+<p>至此，所有工作都已完成，如果想更改主题什么的，可以看我后续的博客。有问题欢迎大家留言。</p>
 ]]></content>
     
     <summary type="html">
     
-      &lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;现在密码越来越多，但是为了密码安全还是不愿所有网站用同一个密码。所以就想到了用密码管理软件。尝试过1Password和Lastpass，可惜都收费。所以找到了KeePass，不仅免费，还开源。支持多平台。结合插件，可以实现在chrome上自动填写密码。&lt;br&gt;
+      &lt;h2 id=&quot;引言&quot;&gt;&lt;a href=&quot;#引言&quot; class=&quot;headerlink&quot; title=&quot;引言&quot;&gt;&lt;/a&gt;引言&lt;/h2&gt;&lt;p&gt;本文主要介绍在Github下搭建Hexo博客。总体说来，搭建Hexo总共需要两步：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;第一部分，部署本地博客，也就是在你的电脑上搭建起来Web环境；&lt;/li&gt;
+&lt;li&gt;第二部分，生成静态页面，并上传到Github上去。
+    
+    </summary>
+    
+      <category term="博客" scheme="https://heliublog.com/categories/%E5%8D%9A%E5%AE%A2/"/>
+    
+    
+      <category term="Hexo" scheme="https://heliublog.com/tags/Hexo/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Endnote的style</title>
+    <link href="https://heliublog.com/2016/05/01/Endnote%E7%9A%84style/"/>
+    <id>https://heliublog.com/2016/05/01/Endnote的style/</id>
+    <published>2016-05-01T10:06:12.000Z</published>
+    <updated>2017-05-10T10:20:54.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>参考文献style:</p>
+<p>Chinese Std GBT7714</p>
+<ul>
+<li><p>附上 <a href="https://my.pcloud.com/publink/show?code=XZlVCQZLKN5QnRFiPX6zm1oYzf9CfrRdCKk" target="_blank" rel="external">下载地址</a></p>
+</li>
+<li><p>安装方法：</p>
+<ul>
+<li>拷到…/style  文件夹下即可。</li>
+</ul>
+</li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;参考文献style:&lt;/p&gt;
+&lt;p&gt;Chinese Std GBT7714&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;附上 &lt;a href=&quot;https://my.pcloud.com/publink/show?code=XZlVCQZLKN5QnRFiPX6zm1oYzf9CfrR
+    
+    </summary>
+    
+      <category term="软件" scheme="https://heliublog.com/categories/%E8%BD%AF%E4%BB%B6/"/>
+    
+    
+      <category term="Endnote" scheme="https://heliublog.com/tags/Endnote/"/>
+    
+      <category term="style" scheme="https://heliublog.com/tags/style/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>利用KeePass2.x进行ftp或webdev同步</title>
+    <link href="https://heliublog.com/2016/05/01/%E5%88%A9%E7%94%A8Keepass2.x%E8%BF%9B%E8%A1%8Cftp%E6%88%96webdev%E5%90%8C%E6%AD%A5/"/>
+    <id>https://heliublog.com/2016/05/01/利用Keepass2.x进行ftp或webdev同步/</id>
+    <published>2016-05-01T10:06:12.000Z</published>
+    <updated>2017-05-10T10:21:50.000Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote>
+<p>方法参考<a href="http://www.cnblogs.com/gumuyueying/p/keepass2-sync-trigger.html" target="_blank" rel="external">http://www.cnblogs.com/gumuyueying/p/keepass2-sync-trigger.html</a></p>
+</blockquote>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>上篇博文介绍了利用软件Keepass保存密码。其实借助Dropbox或者其他同步软件将数据库.kpbx文件进行备份也很简单。但是由于某些原因，Dropbox很难上去。所以突然想到能否将文件保存在我的vps服务器上。在网上搜索教程就找到了这个方法。</p>
+<a id="more"></a>
+<h2 id="同步"><a href="#同步" class="headerlink" title="同步"></a>同步</h2><p>其实同步很简单，只要借助KeePass自带的URL同步功能即可。如下图：</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://i.imgur.com/XkgdsxV.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>也就是选择“与URL同步”，<strong>但是要注意，必须现在指定位置建立一个.kpdb数据库文件</strong>，同步地址就填写该文件地址。</p>
+<h2 id="自动同步"><a href="#自动同步" class="headerlink" title="自动同步"></a>自动同步</h2><p>手动同步很麻烦，那么怎么设置自动同步呢？这里可以借助KeePass自带的触发器功能，有点像Windows的“计划任务”，以下方法可以实现本地保存后，立马服务器同步的功能。</p>
+<ol>
+<li><p>“属性”选项卡，命名该触发器，如 SavedSync.（注意，后面动作选择“更改触发器 开/关 状态”时触发器名称只能手动输入，无法选择，所以这里命名还是从简，具体描述可以写到下面的注释栏。）同时勾选“启用”和“启动时打开”复选框。 </p>
+</li>
+<li><p>“事件”选项卡，添加事件，选择“已保存数据库文件”，下面的文件/URL - 比较和过滤器可以无视。不过如果有多个数据库文件需要同步，则可以根据待保存的数据库文件名设定后续同步动作。这里我的设置如下： </p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://i.imgur.com/4zcHdI0.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+</li>
+<li><p>“条件”选项卡不加入任何条件。你也可以选择同步到 URL 文件时选择条件“远程主机可以连接(ping)”，这样只有当 URL 文件可以访问时才同步。不过我倾向于不加入这个条件，这样即使后面无法完成同步操作，也会有弹窗提示，让我们能更清楚当前的同步状态。</p>
+</li>
+</ol>
+<p>我这里只做了简写，如果遇到某些问题，或者想更加详细地了解“触发器”功能，请访问原博客地址：<a href="http://www.cnblogs.com/gumuyueying/p/keepass2-sync-trigger.html" target="_blank" rel="external">http://www.cnblogs.com/gumuyueying/p/keepass2-sync-trigger.html</a></p>
+<p>在此，对原作者表示感谢！</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;方法参考&lt;a href=&quot;http://www.cnblogs.com/gumuyueying/p/keepass2-sync-trigger.html&quot;&gt;http://www.cnblogs.com/gumuyueying/p/keepass2-sync-trigger.html&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;上篇博文介绍了利用软件Keepass保存密码。其实借助Dropbox或者其他同步软件将数据库.kpbx文件进行备份也很简单。但是由于某些原因，Dropbox很难上去。所以突然想到能否将文件保存在我的vps服务器上。在网上搜索教程就找到了这个方法。&lt;/p&gt;
     
     </summary>
     
@@ -1162,6 +1208,38 @@ NODE_ENV=production forever restart index.js //重启Ghost
       <category term="KeePass" scheme="https://heliublog.com/tags/KeePass/"/>
     
       <category term="Chrome" scheme="https://heliublog.com/tags/Chrome/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>coding和github同时使用</title>
+    <link href="https://heliublog.com/2016/05/01/coding%E5%92%8Cgithub%E5%90%8C%E6%97%B6%E4%BD%BF%E7%94%A8/"/>
+    <id>https://heliublog.com/2016/05/01/coding和github同时使用/</id>
+    <published>2016-05-01T10:06:12.000Z</published>
+    <updated>2017-05-10T10:20:44.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><p>先贴几个我的参考网站：</p>
+<blockquote>
+<p><a href="http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000" target="_blank" rel="external">非常好的git学习站（入门）</a><br><a href="http://www.tuicool.com/articles/NZNJVvB" target="_blank" rel="external">Git管理多个远程仓库(以Github和Coding为例)</a><br><a href="http://my.oschina.net/450192529/blog/636106" target="_blank" rel="external">如何在同一台电脑上使用两个github,一个往coding推，一个往github推，亲测有效哦</a><br><a href="http://blog.csdn.net/chaoyue0071/article/details/41824339" target="_blank" rel="external">如何在同一台电脑上使用两个github账户</a><br><a href="http://www.cnblogs.com/sheldonxu/archive/2012/09/17/2688281.html" target="_blank" rel="external">执行ssh-add时出现Could not open a connection to your authentication agent</a><br><a href="http://blog.163.com/023_dns/blog/static/1187273662013111301046930/" target="_blank" rel="external">github常见操作和常见错误！错误提示：fatal: remote origin already exists. </a></p>
+</blockquote>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;引言&quot;&gt;&lt;a href=&quot;#引言&quot; class=&quot;headerlink&quot; title=&quot;引言&quot;&gt;&lt;/a&gt;引言&lt;/h2&gt;&lt;p&gt;先贴几个我的参考网站：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;a href=&quot;http://www.liaoxuefeng.com/wi
+    
+    </summary>
+    
+      <category term="Git" scheme="https://heliublog.com/categories/Git/"/>
+    
+    
+      <category term="coding" scheme="https://heliublog.com/tags/coding/"/>
+    
+      <category term="Github" scheme="https://heliublog.com/tags/Github/"/>
+    
+      <category term="Git" scheme="https://heliublog.com/tags/Git/"/>
     
   </entry>
   
