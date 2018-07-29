@@ -3,6 +3,33 @@
   
     
     <entry>
+      <title>自己构建Docker镜像在自己的服务器上搭建支持C++和tensorflow的jupyter-notebook</title>
+      <link href="/2018/07/28/%E8%87%AA%E5%B7%B1%E6%9E%84%E5%BB%BADocker%E9%95%9C%E5%83%8F%E5%9C%A8%E8%87%AA%E5%B7%B1%E7%9A%84%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8A%E6%90%AD%E5%BB%BA%E6%94%AF%E6%8C%81C++%E5%92%8Ctensorflow%E7%9A%84jupyter-notebook/"/>
+      <url>/2018/07/28/%E8%87%AA%E5%B7%B1%E6%9E%84%E5%BB%BADocker%E9%95%9C%E5%83%8F%E5%9C%A8%E8%87%AA%E5%B7%B1%E7%9A%84%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8A%E6%90%AD%E5%BB%BA%E6%94%AF%E6%8C%81C++%E5%92%8Ctensorflow%E7%9A%84jupyter-notebook/</url>
+      <content type="html"><![CDATA[<h2 id="安装Docker软件"><a href="#安装Docker软件" class="headerlink" title="安装Docker软件"></a>安装Docker软件</h2><p>不再赘述，可参考本博客中以前的文章。</p><h2 id="Dockerfile"><a href="#Dockerfile" class="headerlink" title="Dockerfile"></a>Dockerfile</h2><p>github地址：</p><p><a href="https://github.com/heliuphy/myDockerRepo/blob/master/jupyter-cling/Dockerfile" target="_blank" rel="noopener">https://github.com/heliuphy/myDockerRepo/blob/master/jupyter-cling/Dockerfile</a></p><h2 id="docker命令"><a href="#docker命令" class="headerlink" title="docker命令"></a>docker命令</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">docker run -d --name jupyter-cling \</span><br><span class="line">-p 9002:8888 \</span><br><span class="line">--user root \</span><br><span class="line">-e GRANT_SUDO=yes \</span><br><span class="line">-e NB_UID=1001 \</span><br><span class="line">-e NB_GID=101 \</span><br><span class="line">-v /home/jupyter-cling:/home/jovyan/work \</span><br><span class="line">heliuphy/jupyter-cling start-notebook.sh \</span><br><span class="line">--NotebookApp.password=<span class="string">'sha1:0da11af405ce:bf7170089663c9721d83fdadac49586e255f5427'</span></span><br><span class="line"><span class="comment"># -------------</span></span><br><span class="line"><span class="comment"># 增加 NB_UID 对目录的权限</span></span><br><span class="line">$ chown 1001 /home/jupyter-cling</span><br></pre></td></tr></table></figure>]]></content>
+      
+      <categories>
+          
+          <category> Docker </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Linux </tag>
+            
+            <tag> VPS </tag>
+            
+            <tag> c++ </tag>
+            
+            <tag> Jupyter </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>四步安装好支持tensorflow和C++的Jupyter-notebook</title>
       <link href="/2018/07/26/%E5%9B%9B%E6%AD%A5%E5%AE%89%E8%A3%85%E5%A5%BD%E6%94%AF%E6%8C%81tensorflow%E5%92%8CC++%E7%9A%84Jupyter-notebook/"/>
       <url>/2018/07/26/%E5%9B%9B%E6%AD%A5%E5%AE%89%E8%A3%85%E5%A5%BD%E6%94%AF%E6%8C%81tensorflow%E5%92%8CC++%E7%9A%84Jupyter-notebook/</url>
@@ -509,29 +536,6 @@
     </entry>
     
     <entry>
-      <title>KeePass+KeePassHTTP+chromeIPass储存个人密码</title>
-      <link href="/2016/05/01/KeePass/"/>
-      <url>/2016/05/01/KeePass/</url>
-      <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>现在密码越来越多，但是为了密码安全还是不愿所有网站用同一个密码。所以就想到了用密码管理软件。尝试过1Password和Lastpass，可惜都收费。所以找到了KeePass，不仅免费，还开源。支持多平台。结合插件，可以实现在chrome上自动填写密码。<br><a id="more"></a></p><blockquote><p>本文参考<a href="http://devzc.com/post/465" target="_blank" rel="noopener">http://devzc.com/post/465</a>写作而成，再次对原作者表示感谢。</p></blockquote><h2 id="安装步骤"><a href="#安装步骤" class="headerlink" title="安装步骤"></a>安装步骤</h2><ol><li><p>首先从以下网址下载所需文件</p><ul><li><p>KeePass主体程序:<br><a href="http://keepass.info/download.html" target="_blank" rel="noopener">http://keepass.info/download.html</a></p></li><li><p>KeePassHTTP扩展下载:<br><a href="https://github.com/pfn/keepasshttp/blob/master/KeePassHttp.plgx?raw=true" target="_blank" rel="noopener">https://github.com/pfn/keepasshttp/blob/master/KeePassHttp.plgx?raw=true</a><br>源码: <a href="https://github.com/pfn/keepasshttp/" target="_blank" rel="noopener">https://github.com/pfn/keepasshttp/</a></p></li><li><p>chromeIPass:<br>Chrome应用商店搜索[chromeIPass],安装即可;<br>chromeIPass源码: <a href="https://github.com/pfn/passifox" target="_blank" rel="noopener">https://github.com/pfn/passifox</a></p></li></ul></li><li><p>依次安装以上文件。<br>注意KeePassHTTP的配置：</p><ol><li>将KeePassHttp.plgx放在KeePass.exe同目录下,重启KeePass。并单击工具下的“KeePassHttp Options”。</li><li>按照如下图配置：<br><img src="http://i.imgur.com/0R82YzX.png" alt=""></li><li>点击Chrome上的chromeIPass图标，会出现Connect按钮,点击进去；</li><li>Key_Name自己起名</li><li><p>保存后，重新点击chromeIPass，若出现以下信息，则说明成功：</p><p><img src="http://i.imgur.com/PDcuXmf.png" alt=""></p></li></ol></li></ol>]]></content>
-      
-      <categories>
-          
-          <category> 软件 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> KeePass </tag>
-            
-            <tag> Chrome </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    <entry>
       <title>VPS+Hexo+Dropbox创建个人博客——hexo系列教程（三）</title>
       <link href="/2016/05/01/VPS+Hexo+Dropbox%E5%88%9B%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/"/>
       <url>/2016/05/01/VPS+Hexo+Dropbox%E5%88%9B%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</url>
@@ -551,6 +555,29 @@
             <tag> VPS </tag>
             
             <tag> Dropbox </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
+      <title>KeePass+KeePassHTTP+chromeIPass储存个人密码</title>
+      <link href="/2016/05/01/KeePass/"/>
+      <url>/2016/05/01/KeePass/</url>
+      <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>现在密码越来越多，但是为了密码安全还是不愿所有网站用同一个密码。所以就想到了用密码管理软件。尝试过1Password和Lastpass，可惜都收费。所以找到了KeePass，不仅免费，还开源。支持多平台。结合插件，可以实现在chrome上自动填写密码。<br><a id="more"></a></p><blockquote><p>本文参考<a href="http://devzc.com/post/465" target="_blank" rel="noopener">http://devzc.com/post/465</a>写作而成，再次对原作者表示感谢。</p></blockquote><h2 id="安装步骤"><a href="#安装步骤" class="headerlink" title="安装步骤"></a>安装步骤</h2><ol><li><p>首先从以下网址下载所需文件</p><ul><li><p>KeePass主体程序:<br><a href="http://keepass.info/download.html" target="_blank" rel="noopener">http://keepass.info/download.html</a></p></li><li><p>KeePassHTTP扩展下载:<br><a href="https://github.com/pfn/keepasshttp/blob/master/KeePassHttp.plgx?raw=true" target="_blank" rel="noopener">https://github.com/pfn/keepasshttp/blob/master/KeePassHttp.plgx?raw=true</a><br>源码: <a href="https://github.com/pfn/keepasshttp/" target="_blank" rel="noopener">https://github.com/pfn/keepasshttp/</a></p></li><li><p>chromeIPass:<br>Chrome应用商店搜索[chromeIPass],安装即可;<br>chromeIPass源码: <a href="https://github.com/pfn/passifox" target="_blank" rel="noopener">https://github.com/pfn/passifox</a></p></li></ul></li><li><p>依次安装以上文件。<br>注意KeePassHTTP的配置：</p><ol><li>将KeePassHttp.plgx放在KeePass.exe同目录下,重启KeePass。并单击工具下的“KeePassHttp Options”。</li><li>按照如下图配置：<br><img src="http://i.imgur.com/0R82YzX.png" alt=""></li><li>点击Chrome上的chromeIPass图标，会出现Connect按钮,点击进去；</li><li>Key_Name自己起名</li><li><p>保存后，重新点击chromeIPass，若出现以下信息，则说明成功：</p><p><img src="http://i.imgur.com/PDcuXmf.png" alt=""></p></li></ol></li></ol>]]></content>
+      
+      <categories>
+          
+          <category> 软件 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> KeePass </tag>
+            
+            <tag> Chrome </tag>
             
         </tags>
       
