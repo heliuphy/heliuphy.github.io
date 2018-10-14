@@ -69,9 +69,9 @@
             
             <tag> VPS </tag>
             
-            <tag> c++ </tag>
-            
             <tag> python </tag>
+            
+            <tag> c++ </tag>
             
             <tag> jupyter-notebook </tag>
             
@@ -408,9 +408,9 @@
       
         <tags>
             
-            <tag> leanote </tag>
-            
             <tag> VPS </tag>
+            
+            <tag> leanote </tag>
             
             <tag> web </tag>
             
@@ -490,21 +490,23 @@
     </entry>
     
     <entry>
-      <title>VPS服务器搭建ghost blog</title>
-      <link href="/2016/05/01/VPS%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%90%AD%E5%BB%BAghost%20blog/"/>
-      <url>/2016/05/01/VPS%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%90%AD%E5%BB%BAghost%20blog/</url>
-      <content type="html"><![CDATA[<p>####前传</p><hr><p>&#160;&#160;无意中看到markdown语法，立马就喜欢上它，所以就想博客能不能也用这种语法写，因为我的博客原来一直用wordpress来搞，第一个想到的当然是用插件，当然也下到了，不过估计是主题css的问题，代码框老显示不出来，对于想要代码框的我来说实在是不能忍，就上网搜有没有其他的博客工具，哈哈终于找到了它，ghostblog！</p><p>&#160;&#160;但是安装下来着实费了不少功夫。总结起来比较简便的方法还是AMH+Node.js<br><a id="more"></a><br>注：以下步骤引用自：<br><a href="http://www.tuicool.com/articles/jQnIJf3" target="_blank" rel="noopener">http://www.tuicool.com/articles/jQnIJf3</a></p><ol><li><p>安装AMH，网上有详细教程</p></li><li><p>安装Node.js</p><p>也是网上的教程，不过有些gcc版本可能支持不了太新的Node.js</p></li><li><p>安装ghost</p><ol><li><p>新建数据库</p><p>登陆AMH面板，进入数据库，快速建库，很简单。</p></li><li><p>新建站点</p><p>登陆AMH面板，点击虚拟主机，新建虚拟主机，这也很简单。</p></li><li><p>安装Ghost程序</p><p>这里我们使用的是 <a href="http://ghostchina.com/" target="_blank" rel="noopener">http://ghostchina.com/</a> 发布的中文版Ghost。</p><p>登陆ssh，运行命令，</p><pre><code>wget http://dl.ghostchina.com/Ghost-0.5.9-zh-full.zip //下载Ghost到VPS  unzip Ghost-0.5.9-zh-full.zip -d ghost //解压Ghost-0.5.9-zh-full.zip并xiu修改文件夹名为ghost  </code></pre><p>如没有安装unzip，请执行 sudo yum install unzip 来安装，</p><p>&#160;&#160;到这里需要注意，ghost文件夹里的所有文件全部移动到之前你新建虚拟主机的web根目录下，不然会出错，文件移动号后，进入虚拟主机的web根目录下</p><pre><code>cd /虚拟主机web根目录路径   //进入虚拟主机web根目录，此步骤不能少  cp config.example.js config.js //复制config.example.js成config.js  vim config.js //用vim编辑config.js文件  </code></pre><p>将相关位置修改成以下这样：</p><pre><code>production: {  url: &apos;http://your_blog_url&apos;,mail: {},database: {client: &apos;mysql&apos;,connection: {host     : &apos;127.0.0.1&apos;, user     : &apos;root&apos;, //暂且直接用root账户password : &apos;password&apos;, //你的root账户密码database : &apos;ghost&apos;, //你之前建立的数据库名charset  : &apos;utf8&apos;},debug: false},server: {// Host to be passed to node&apos;s                 `net.Server#listen()`host: &apos;127.0.0.1&apos;,//改为0.0.0.0，否则他人无法访问// Port to be passed to node&apos;s `net.Server#listen()`, for iisnode set this to `process.env.PORT`port: &apos;2368&apos;}},</code></pre><p>这里说一下vim编辑器的一般用法：</p><p>i: 进入插入编辑模式</p><p>ESC: 退出编辑模式</p><p>:x : 退出并保存文件（退出编辑模式下使用）</p></li><li><p>配置Nginx</p><p>由于之前你新建的虚拟主机的Nginx配置是为php服务的，所以，我们要将其进行修改成为node.js服务，</p><pre><code>vim /usr/local/nginx/conf/***.conf //进入Nginx配置文件目录,并编辑与你新建的虚拟主机相应的Nginx配置文件  </code></pre><p>清空里面的内容，替换成以下：</p><pre><code>server {  listen 80;server_name  xxx.com www.xxxx.com; //替换为你自己的域名！location / {proxy_set_header   X-Real-IP $remote_addr;proxy_set_header   Host      $http_host;proxy_pass         http://127.0.0.1:2368; }}</code></pre><p>然后进AMH控制面板重启一下Nginx，</p><pre><code>npm start --production //启动Ghost，如果不出差错，在浏览器输入你的域名就可以看见Ghost的界面了，--production不能少  </code></pre><p>别以为到这就结束了，目前Ghost在我们SSH断开后就会结束进程，所以我们继续：</p></li><li><p>安装forever守护Ghost进程</p><p>为了让Ghost程序能够后台运行不中断，我们还得再安装个工具，就是forever，使用-g参数就是在全局模式中安装，这样我们就可以再任何地方都能使用forever命令了。</p><p>以下命令都请在网站根目录下运行</p><pre><code>npm install forever -g //forever的安装命令  NODE_ENV=production forever start index.js  //安装forever后的Ghost启动命令  </code></pre><p>   好了，Ghost就此安装完成</p></li></ol></li></ol><p>Ghost相关命令：</p><p>//以下命令都请在网站根目录下运行</p><pre><code>NODE_ENV=production forever start index.js //启动Ghost  NODE_ENV=production forever stop index.js //停止Ghost  NODE_ENV=production forever restart index.js //重启Ghost  </code></pre><p>现在，你就可以通过AMH控制面板进行数据管理、在线的文件编辑和上传 同样，你也可以按正常步骤新建一个php网站。</p>]]></content>
+      <title>利用KeePass2.x进行ftp或webdev同步</title>
+      <link href="/2016/05/01/%E5%88%A9%E7%94%A8Keepass2.x%E8%BF%9B%E8%A1%8Cftp%E6%88%96webdev%E5%90%8C%E6%AD%A5/"/>
+      <url>/2016/05/01/%E5%88%A9%E7%94%A8Keepass2.x%E8%BF%9B%E8%A1%8Cftp%E6%88%96webdev%E5%90%8C%E6%AD%A5/</url>
+      <content type="html"><![CDATA[<blockquote><p>方法参考<a href="http://www.cnblogs.com/gumuyueying/p/keepass2-sync-trigger.html" target="_blank" rel="noopener">http://www.cnblogs.com/gumuyueying/p/keepass2-sync-trigger.html</a></p></blockquote><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>上篇博文介绍了利用软件Keepass保存密码。其实借助Dropbox或者其他同步软件将数据库.kpbx文件进行备份也很简单。但是由于某些原因，Dropbox很难上去。所以突然想到能否将文件保存在我的vps服务器上。在网上搜索教程就找到了这个方法。</p><a id="more"></a><h2 id="同步"><a href="#同步" class="headerlink" title="同步"></a>同步</h2><p>其实同步很简单，只要借助KeePass自带的URL同步功能即可。如下图：</p><p><img src="http://i.imgur.com/XkgdsxV.png" alt=""></p><p>也就是选择“与URL同步”，<strong>但是要注意，必须现在指定位置建立一个.kpdb数据库文件</strong>，同步地址就填写该文件地址。</p><h2 id="自动同步"><a href="#自动同步" class="headerlink" title="自动同步"></a>自动同步</h2><p>手动同步很麻烦，那么怎么设置自动同步呢？这里可以借助KeePass自带的触发器功能，有点像Windows的“计划任务”，以下方法可以实现本地保存后，立马服务器同步的功能。</p><ol><li><p>“属性”选项卡，命名该触发器，如 SavedSync.（注意，后面动作选择“更改触发器 开/关 状态”时触发器名称只能手动输入，无法选择，所以这里命名还是从简，具体描述可以写到下面的注释栏。）同时勾选“启用”和“启动时打开”复选框。 </p></li><li><p>“事件”选项卡，添加事件，选择“已保存数据库文件”，下面的文件/URL - 比较和过滤器可以无视。不过如果有多个数据库文件需要同步，则可以根据待保存的数据库文件名设定后续同步动作。这里我的设置如下：<br><img src="http://i.imgur.com/4zcHdI0.png" alt=""></p></li><li><p>“条件”选项卡不加入任何条件。你也可以选择同步到 URL 文件时选择条件“远程主机可以连接(ping)”，这样只有当 URL 文件可以访问时才同步。不过我倾向于不加入这个条件，这样即使后面无法完成同步操作，也会有弹窗提示，让我们能更清楚当前的同步状态。</p></li></ol><p>我这里只做了简写，如果遇到某些问题，或者想更加详细地了解“触发器”功能，请访问原博客地址：<a href="http://www.cnblogs.com/gumuyueying/p/keepass2-sync-trigger.html" target="_blank" rel="noopener">http://www.cnblogs.com/gumuyueying/p/keepass2-sync-trigger.html</a></p><p>在此，对原作者表示感谢！</p>]]></content>
       
       <categories>
           
-          <category> web </category>
+          <category> 软件 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> ghost blog </tag>
+            <tag> KeePass </tag>
+            
+            <tag> Chrome </tag>
             
         </tags>
       
@@ -534,6 +536,27 @@
     </entry>
     
     <entry>
+      <title>VPS服务器搭建ghost blog</title>
+      <link href="/2016/05/01/VPS%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%90%AD%E5%BB%BAghost%20blog/"/>
+      <url>/2016/05/01/VPS%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%90%AD%E5%BB%BAghost%20blog/</url>
+      <content type="html"><![CDATA[<p>####前传</p><hr><p>&#160;&#160;无意中看到markdown语法，立马就喜欢上它，所以就想博客能不能也用这种语法写，因为我的博客原来一直用wordpress来搞，第一个想到的当然是用插件，当然也下到了，不过估计是主题css的问题，代码框老显示不出来，对于想要代码框的我来说实在是不能忍，就上网搜有没有其他的博客工具，哈哈终于找到了它，ghostblog！</p><p>&#160;&#160;但是安装下来着实费了不少功夫。总结起来比较简便的方法还是AMH+Node.js<br><a id="more"></a><br>注：以下步骤引用自：<br><a href="http://www.tuicool.com/articles/jQnIJf3" target="_blank" rel="noopener">http://www.tuicool.com/articles/jQnIJf3</a></p><ol><li><p>安装AMH，网上有详细教程</p></li><li><p>安装Node.js</p><p>也是网上的教程，不过有些gcc版本可能支持不了太新的Node.js</p></li><li><p>安装ghost</p><ol><li><p>新建数据库</p><p>登陆AMH面板，进入数据库，快速建库，很简单。</p></li><li><p>新建站点</p><p>登陆AMH面板，点击虚拟主机，新建虚拟主机，这也很简单。</p></li><li><p>安装Ghost程序</p><p>这里我们使用的是 <a href="http://ghostchina.com/" target="_blank" rel="noopener">http://ghostchina.com/</a> 发布的中文版Ghost。</p><p>登陆ssh，运行命令，</p><pre><code>wget http://dl.ghostchina.com/Ghost-0.5.9-zh-full.zip //下载Ghost到VPS  unzip Ghost-0.5.9-zh-full.zip -d ghost //解压Ghost-0.5.9-zh-full.zip并xiu修改文件夹名为ghost  </code></pre><p>如没有安装unzip，请执行 sudo yum install unzip 来安装，</p><p>&#160;&#160;到这里需要注意，ghost文件夹里的所有文件全部移动到之前你新建虚拟主机的web根目录下，不然会出错，文件移动号后，进入虚拟主机的web根目录下</p><pre><code>cd /虚拟主机web根目录路径   //进入虚拟主机web根目录，此步骤不能少  cp config.example.js config.js //复制config.example.js成config.js  vim config.js //用vim编辑config.js文件  </code></pre><p>将相关位置修改成以下这样：</p><pre><code>production: {  url: &apos;http://your_blog_url&apos;,mail: {},database: {client: &apos;mysql&apos;,connection: {host     : &apos;127.0.0.1&apos;, user     : &apos;root&apos;, //暂且直接用root账户password : &apos;password&apos;, //你的root账户密码database : &apos;ghost&apos;, //你之前建立的数据库名charset  : &apos;utf8&apos;},debug: false},server: {// Host to be passed to node&apos;s                 `net.Server#listen()`host: &apos;127.0.0.1&apos;,//改为0.0.0.0，否则他人无法访问// Port to be passed to node&apos;s `net.Server#listen()`, for iisnode set this to `process.env.PORT`port: &apos;2368&apos;}},</code></pre><p>这里说一下vim编辑器的一般用法：</p><p>i: 进入插入编辑模式</p><p>ESC: 退出编辑模式</p><p>:x : 退出并保存文件（退出编辑模式下使用）</p></li><li><p>配置Nginx</p><p>由于之前你新建的虚拟主机的Nginx配置是为php服务的，所以，我们要将其进行修改成为node.js服务，</p><pre><code>vim /usr/local/nginx/conf/***.conf //进入Nginx配置文件目录,并编辑与你新建的虚拟主机相应的Nginx配置文件  </code></pre><p>清空里面的内容，替换成以下：</p><pre><code>server {  listen 80;server_name  xxx.com www.xxxx.com; //替换为你自己的域名！location / {proxy_set_header   X-Real-IP $remote_addr;proxy_set_header   Host      $http_host;proxy_pass         http://127.0.0.1:2368; }}</code></pre><p>然后进AMH控制面板重启一下Nginx，</p><pre><code>npm start --production //启动Ghost，如果不出差错，在浏览器输入你的域名就可以看见Ghost的界面了，--production不能少  </code></pre><p>别以为到这就结束了，目前Ghost在我们SSH断开后就会结束进程，所以我们继续：</p></li><li><p>安装forever守护Ghost进程</p><p>为了让Ghost程序能够后台运行不中断，我们还得再安装个工具，就是forever，使用-g参数就是在全局模式中安装，这样我们就可以再任何地方都能使用forever命令了。</p><p>以下命令都请在网站根目录下运行</p><pre><code>npm install forever -g //forever的安装命令  NODE_ENV=production forever start index.js  //安装forever后的Ghost启动命令  </code></pre><p>   好了，Ghost就此安装完成</p></li></ol></li></ol><p>Ghost相关命令：</p><p>//以下命令都请在网站根目录下运行</p><pre><code>NODE_ENV=production forever start index.js //启动Ghost  NODE_ENV=production forever stop index.js //停止Ghost  NODE_ENV=production forever restart index.js //重启Ghost  </code></pre><p>现在，你就可以通过AMH控制面板进行数据管理、在线的文件编辑和上传 同样，你也可以按正常步骤新建一个php网站。</p>]]></content>
+      
+      <categories>
+          
+          <category> web </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> ghost blog </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>搭建hexo博客小记——hexo系列文章（一）</title>
       <link href="/2016/05/01/%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2%E5%B0%8F%E8%AE%B0/"/>
       <url>/2016/05/01/%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2%E5%B0%8F%E8%AE%B0/</url>
@@ -549,52 +572,6 @@
         <tags>
             
             <tag> Hexo </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    <entry>
-      <title>KeePass+KeePassHTTP+chromeIPass储存个人密码</title>
-      <link href="/2016/05/01/KeePass/"/>
-      <url>/2016/05/01/KeePass/</url>
-      <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>现在密码越来越多，但是为了密码安全还是不愿所有网站用同一个密码。所以就想到了用密码管理软件。尝试过1Password和Lastpass，可惜都收费。所以找到了KeePass，不仅免费，还开源。支持多平台。结合插件，可以实现在chrome上自动填写密码。<br><a id="more"></a></p><blockquote><p>本文参考<a href="http://devzc.com/post/465" target="_blank" rel="noopener">http://devzc.com/post/465</a>写作而成，再次对原作者表示感谢。</p></blockquote><h2 id="安装步骤"><a href="#安装步骤" class="headerlink" title="安装步骤"></a>安装步骤</h2><ol><li><p>首先从以下网址下载所需文件</p><ul><li><p>KeePass主体程序:<br><a href="http://keepass.info/download.html" target="_blank" rel="noopener">http://keepass.info/download.html</a></p></li><li><p>KeePassHTTP扩展下载:<br><a href="https://github.com/pfn/keepasshttp/blob/master/KeePassHttp.plgx?raw=true" target="_blank" rel="noopener">https://github.com/pfn/keepasshttp/blob/master/KeePassHttp.plgx?raw=true</a><br>源码: <a href="https://github.com/pfn/keepasshttp/" target="_blank" rel="noopener">https://github.com/pfn/keepasshttp/</a></p></li><li><p>chromeIPass:<br>Chrome应用商店搜索[chromeIPass],安装即可;<br>chromeIPass源码: <a href="https://github.com/pfn/passifox" target="_blank" rel="noopener">https://github.com/pfn/passifox</a></p></li></ul></li><li><p>依次安装以上文件。<br>注意KeePassHTTP的配置：</p><ol><li>将KeePassHttp.plgx放在KeePass.exe同目录下,重启KeePass。并单击工具下的“KeePassHttp Options”。</li><li>按照如下图配置：<br><img src="http://i.imgur.com/0R82YzX.png" alt=""></li><li>点击Chrome上的chromeIPass图标，会出现Connect按钮,点击进去；</li><li>Key_Name自己起名</li><li><p>保存后，重新点击chromeIPass，若出现以下信息，则说明成功：</p><p><img src="http://i.imgur.com/PDcuXmf.png" alt=""></p></li></ol></li></ol>]]></content>
-      
-      <categories>
-          
-          <category> 软件 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> KeePass </tag>
-            
-            <tag> Chrome </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    <entry>
-      <title>利用KeePass2.x进行ftp或webdev同步</title>
-      <link href="/2016/05/01/%E5%88%A9%E7%94%A8Keepass2.x%E8%BF%9B%E8%A1%8Cftp%E6%88%96webdev%E5%90%8C%E6%AD%A5/"/>
-      <url>/2016/05/01/%E5%88%A9%E7%94%A8Keepass2.x%E8%BF%9B%E8%A1%8Cftp%E6%88%96webdev%E5%90%8C%E6%AD%A5/</url>
-      <content type="html"><![CDATA[<blockquote><p>方法参考<a href="http://www.cnblogs.com/gumuyueying/p/keepass2-sync-trigger.html" target="_blank" rel="noopener">http://www.cnblogs.com/gumuyueying/p/keepass2-sync-trigger.html</a></p></blockquote><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>上篇博文介绍了利用软件Keepass保存密码。其实借助Dropbox或者其他同步软件将数据库.kpbx文件进行备份也很简单。但是由于某些原因，Dropbox很难上去。所以突然想到能否将文件保存在我的vps服务器上。在网上搜索教程就找到了这个方法。</p><a id="more"></a><h2 id="同步"><a href="#同步" class="headerlink" title="同步"></a>同步</h2><p>其实同步很简单，只要借助KeePass自带的URL同步功能即可。如下图：</p><p><img src="http://i.imgur.com/XkgdsxV.png" alt=""></p><p>也就是选择“与URL同步”，<strong>但是要注意，必须现在指定位置建立一个.kpdb数据库文件</strong>，同步地址就填写该文件地址。</p><h2 id="自动同步"><a href="#自动同步" class="headerlink" title="自动同步"></a>自动同步</h2><p>手动同步很麻烦，那么怎么设置自动同步呢？这里可以借助KeePass自带的触发器功能，有点像Windows的“计划任务”，以下方法可以实现本地保存后，立马服务器同步的功能。</p><ol><li><p>“属性”选项卡，命名该触发器，如 SavedSync.（注意，后面动作选择“更改触发器 开/关 状态”时触发器名称只能手动输入，无法选择，所以这里命名还是从简，具体描述可以写到下面的注释栏。）同时勾选“启用”和“启动时打开”复选框。 </p></li><li><p>“事件”选项卡，添加事件，选择“已保存数据库文件”，下面的文件/URL - 比较和过滤器可以无视。不过如果有多个数据库文件需要同步，则可以根据待保存的数据库文件名设定后续同步动作。这里我的设置如下：<br><img src="http://i.imgur.com/4zcHdI0.png" alt=""></p></li><li><p>“条件”选项卡不加入任何条件。你也可以选择同步到 URL 文件时选择条件“远程主机可以连接(ping)”，这样只有当 URL 文件可以访问时才同步。不过我倾向于不加入这个条件，这样即使后面无法完成同步操作，也会有弹窗提示，让我们能更清楚当前的同步状态。</p></li></ol><p>我这里只做了简写，如果遇到某些问题，或者想更加详细地了解“触发器”功能，请访问原博客地址：<a href="http://www.cnblogs.com/gumuyueying/p/keepass2-sync-trigger.html" target="_blank" rel="noopener">http://www.cnblogs.com/gumuyueying/p/keepass2-sync-trigger.html</a></p><p>在此，对原作者表示感谢！</p>]]></content>
-      
-      <categories>
-          
-          <category> 软件 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> KeePass </tag>
-            
-            <tag> Chrome </tag>
             
         </tags>
       
@@ -645,6 +622,29 @@
             <tag> VPS </tag>
             
             <tag> Dropbox </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
+      <title>KeePass+KeePassHTTP+chromeIPass储存个人密码</title>
+      <link href="/2016/05/01/KeePass/"/>
+      <url>/2016/05/01/KeePass/</url>
+      <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>现在密码越来越多，但是为了密码安全还是不愿所有网站用同一个密码。所以就想到了用密码管理软件。尝试过1Password和Lastpass，可惜都收费。所以找到了KeePass，不仅免费，还开源。支持多平台。结合插件，可以实现在chrome上自动填写密码。<br><a id="more"></a></p><blockquote><p>本文参考<a href="http://devzc.com/post/465" target="_blank" rel="noopener">http://devzc.com/post/465</a>写作而成，再次对原作者表示感谢。</p></blockquote><h2 id="安装步骤"><a href="#安装步骤" class="headerlink" title="安装步骤"></a>安装步骤</h2><ol><li><p>首先从以下网址下载所需文件</p><ul><li><p>KeePass主体程序:<br><a href="http://keepass.info/download.html" target="_blank" rel="noopener">http://keepass.info/download.html</a></p></li><li><p>KeePassHTTP扩展下载:<br><a href="https://github.com/pfn/keepasshttp/blob/master/KeePassHttp.plgx?raw=true" target="_blank" rel="noopener">https://github.com/pfn/keepasshttp/blob/master/KeePassHttp.plgx?raw=true</a><br>源码: <a href="https://github.com/pfn/keepasshttp/" target="_blank" rel="noopener">https://github.com/pfn/keepasshttp/</a></p></li><li><p>chromeIPass:<br>Chrome应用商店搜索[chromeIPass],安装即可;<br>chromeIPass源码: <a href="https://github.com/pfn/passifox" target="_blank" rel="noopener">https://github.com/pfn/passifox</a></p></li></ul></li><li><p>依次安装以上文件。<br>注意KeePassHTTP的配置：</p><ol><li>将KeePassHttp.plgx放在KeePass.exe同目录下,重启KeePass。并单击工具下的“KeePassHttp Options”。</li><li>按照如下图配置：<br><img src="http://i.imgur.com/0R82YzX.png" alt=""></li><li>点击Chrome上的chromeIPass图标，会出现Connect按钮,点击进去；</li><li>Key_Name自己起名</li><li><p>保存后，重新点击chromeIPass，若出现以下信息，则说明成功：</p><p><img src="http://i.imgur.com/PDcuXmf.png" alt=""></p></li></ol></li></ol>]]></content>
+      
+      <categories>
+          
+          <category> 软件 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> KeePass </tag>
+            
+            <tag> Chrome </tag>
             
         </tags>
       
