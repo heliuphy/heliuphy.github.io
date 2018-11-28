@@ -3,6 +3,29 @@
   
     
     <entry>
+      <title>OS X 10.14 怎么安装非AppStore的Safari扩展</title>
+      <link href="/2018/11/28/OS-X-10.14-%E6%80%8E%E4%B9%88%E5%AE%89%E8%A3%85%E9%9D%9EAppStore%E7%9A%84Safari%E6%89%A9%E5%B1%95/"/>
+      <url>/2018/11/28/OS-X-10.14-%E6%80%8E%E4%B9%88%E5%AE%89%E8%A3%85%E9%9D%9EAppStore%E7%9A%84Safari%E6%89%A9%E5%B1%95/</url>
+      
+        <content type="html"><![CDATA[<h2 id="OS-X-10-14-怎么安装非AppStore的Safari扩展"><a href="#OS-X-10-14-怎么安装非AppStore的Safari扩展" class="headerlink" title="OS X 10.14 怎么安装非AppStore的Safari扩展"></a>OS X 10.14 怎么安装非AppStore的Safari扩展</h2><h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>自从苹果更新系统后，很多人发现无法通过双击<code>.safariextz</code>文件来安装safari扩展了。所有的扩展都要通过AppStore来安装，所以找到一个可以通过safariextz文件来安装的方法就很重要了。</p><h3 id="安装步骤"><a href="#安装步骤" class="headerlink" title="安装步骤"></a>安装步骤</h3><blockquote><p>此处以safari翻译扩展Polyglot为例。</p></blockquote><ol><li>将Polyglot.safariextz的后缀名直接改为<code>.zip</code>，也就是<code>Polyglot.zip</code>，双击解压文件会得到一个文件夹。</li><li>如果在第一步中没有得到文件夹，相反是一个文件的话。尝试将文件后缀改为<code>.xar</code>也就是<code>Polyglot.xar</code>再进行解压一般就可以了。</li><li>打开safari浏览器，在设置中显示“开发”菜单。</li><li>在开发菜单中选择，“打开扩展构建器”。</li><li>进入以后点击+号将刚刚解压的文件夹导入就可以了。</li></ol>]]></content>
+      
+      
+      <categories>
+          
+          <category> 浏览器 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Safari </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>colab读写外部文件的四种方式</title>
       <link href="/2018/10/20/colab%E8%AF%BB%E5%86%99%E5%A4%96%E9%83%A8%E6%96%87%E4%BB%B6%E7%9A%84%E5%9B%9B%E7%A7%8D%E6%96%B9%E5%BC%8F/"/>
       <url>/2018/10/20/colab%E8%AF%BB%E5%86%99%E5%A4%96%E9%83%A8%E6%96%87%E4%BB%B6%E7%9A%84%E5%9B%9B%E7%A7%8D%E6%96%B9%E5%BC%8F/</url>
