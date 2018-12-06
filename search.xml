@@ -3,7 +3,32 @@
   
     
     <entry>
-      <title>OS X 10.14 怎么安装非AppStore的Safari扩展</title>
+      <title>双系统win10访问ubuntu系统文件</title>
+      <link href="/2018/12/06/%E5%8F%8C%E7%B3%BB%E7%BB%9Fwin10%E8%AE%BF%E9%97%AEubuntu%E7%B3%BB%E7%BB%9F%E6%96%87%E4%BB%B6/"/>
+      <url>/2018/12/06/%E5%8F%8C%E7%B3%BB%E7%BB%9Fwin10%E8%AE%BF%E9%97%AEubuntu%E7%B3%BB%E7%BB%9F%E6%96%87%E4%BB%B6/</url>
+      
+        <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>有时候，我们会在电脑上装win10和ubuntu双系统，但是一般情况下在win10下是看不到ubuntu文件的，那么当我们需要查看ubuntu上文件的时候就只能重启系统了吗？不是的，这里可以给大家推荐一款软件。</p><h2 id="正题"><a href="#正题" class="headerlink" title="正题"></a>正题</h2><p>这款软件就是LinuxReader，它可以在windows系统中访问Ext 2/3/4, UFS2, HFS and ReiserFS/4格式的文件系统，很是方便。网址在这里：</p><p><a href="https://www.diskinternals.com/linux-reader/" target="_blank" rel="noopener">https://www.diskinternals.com/linux-reader/</a></p><h2 id="使用介绍"><a href="#使用介绍" class="headerlink" title="使用介绍"></a>使用介绍</h2><p>打开软件后全貌是这个样子：</p><p><img src="https://hexo-1252865648.cos.ap-chengdu.myqcloud.com/LinuxReader.png" alt="LinuxReader" width="100%" align="middle"></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Linux </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Linux </tag>
+            
+            <tag> 双系统 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
+      <title>OS X 10.14å 怎么安装非AppStore的Safari扩展</title>
       <link href="/2018/11/28/OS-X-10.14-%E6%80%8E%E4%B9%88%E5%AE%89%E8%A3%85%E9%9D%9EAppStore%E7%9A%84Safari%E6%89%A9%E5%B1%95/"/>
       <url>/2018/11/28/OS-X-10.14-%E6%80%8E%E4%B9%88%E5%AE%89%E8%A3%85%E9%9D%9EAppStore%E7%9A%84Safari%E6%89%A9%E5%B1%95/</url>
       
@@ -88,9 +113,9 @@
       
         <tags>
             
-            <tag> VPS </tag>
-            
             <tag> Linux </tag>
+            
+            <tag> VPS </tag>
             
             <tag> c++ </tag>
             
@@ -117,13 +142,13 @@
       
         <tags>
             
-            <tag> VPS </tag>
-            
             <tag> Linux </tag>
             
-            <tag> c++ </tag>
+            <tag> VPS </tag>
             
             <tag> python </tag>
+            
+            <tag> c++ </tag>
             
             <tag> jupyter-notebook </tag>
             
@@ -198,11 +223,11 @@
       
         <tags>
             
+            <tag> Linux </tag>
+            
             <tag> Hexo </tag>
             
             <tag> VPS </tag>
-            
-            <tag> Linux </tag>
             
             <tag> cloud9 </tag>
             
@@ -279,9 +304,9 @@
       
         <tags>
             
-            <tag> VPS </tag>
-            
             <tag> leanote </tag>
+            
+            <tag> VPS </tag>
             
             <tag> web </tag>
             
@@ -344,29 +369,6 @@
     </entry>
     
     <entry>
-      <title>搭建hexo博客小记——hexo系列文章（一）</title>
-      <link href="/2016/05/01/%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2%E5%B0%8F%E8%AE%B0/"/>
-      <url>/2016/05/01/%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2%E5%B0%8F%E8%AE%B0/</url>
-      
-        <content type="html"><![CDATA[<h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><p>本文主要介绍在Github下搭建Hexo博客。总体说来，搭建Hexo总共需要两步：</p><ul><li>第一部分，部署本地博客，也就是在你的电脑上搭建起来Web环境；</li><li>第二部分，生成静态页面，并上传到Github上去。<a id="more"></a></li></ul><h2 id="搭建本地博客系统"><a href="#搭建本地博客系统" class="headerlink" title="搭建本地博客系统"></a>搭建本地博客系统</h2><p>搭建本地博客系统首先要部署环境，即Node.js和Git。</p><h3 id="Node-js的安装"><a href="#Node-js的安装" class="headerlink" title="Node.js的安装"></a>Node.js的安装</h3><p>可以<a href="https://nodejs.org/" target="_blank" rel="noopener">点此</a>下载nodejs，并按照步骤一步步安装；一切默认即可；</p><h3 id="Git的安装"><a href="#Git的安装" class="headerlink" title="Git的安装"></a>Git的安装</h3><p>git bash，<a href="https://git-scm.com/downloads" target="_blank" rel="noopener">点此</a>下载即可。<br>部署好本地环境，便可以开始安装博客系统Hexo了</p><h3 id="Hexo的安装"><a href="#Hexo的安装" class="headerlink" title="Hexo的安装"></a>Hexo的安装</h3><p>Hexo可直接用<code>npm</code>安装，可在电脑任意文件夹下右键Git Bash Here，进去后，在命令行中输入</p><pre><code>npm install -g hexo</code></pre><h3 id="安装依赖包"><a href="#安装依赖包" class="headerlink" title="安装依赖包"></a>安装依赖包</h3><pre><code>npm install</code></pre><h3 id="发布本地博客"><a href="#发布本地博客" class="headerlink" title="发布本地博客"></a>发布本地博客</h3><p>到上一步为止，本地博客已搭建完成，下面我们可以发布本地博客看看效果：（即生成静态页面）</p><pre><code>hexo generatehexo server</code></pre><p>当然，也可以用简写：</p><pre><code>hexo ghexo s</code></pre><p>本地服务器开启后，我们就可以进入<a href="http://localhost:4000" target="_blank" rel="noopener">http://localhost:4000</a>浏览本地博客了。</p><h2 id="上传本地文件到Github"><a href="#上传本地文件到Github" class="headerlink" title="上传本地文件到Github"></a>上传本地文件到Github</h2><h3 id="申请账号并建立仓库。"><a href="#申请账号并建立仓库。" class="headerlink" title="申请账号并建立仓库。"></a>申请账号并建立仓库。</h3><p>账号自行申请，建立仓库即在页面右上角的+除新建一个<code>repository</code>。但是命名有要求，必须用你的用户名加上github.io来命名仓库名。比如你的用户名为user123，那么就命名为user123.github.io。</p><h3 id="获取SSH公钥，并与Github账号绑定。"><a href="#获取SSH公钥，并与Github账号绑定。" class="headerlink" title="获取SSH公钥，并与Github账号绑定。"></a>获取SSH公钥，并与Github账号绑定。</h3><h4 id="设置邮箱和用户名"><a href="#设置邮箱和用户名" class="headerlink" title="设置邮箱和用户名"></a>设置邮箱和用户名</h4><pre><code>git config --global user.email &quot;user123@gmail.com&quot; </code></pre><p>git config –global user.name “user123”</p><h4 id="生成密钥"><a href="#生成密钥" class="headerlink" title="生成密钥"></a>生成密钥</h4><pre><code>ssh-keygen -t rsa -C &quot;user@gmail.com&quot;</code></pre><p>命令运行后，会在<code>C:\Users\你的计算机名\.ssh</code>中找到<code>id_rsa.pub</code>这个文件，貌似是pubication的文件，但是我用office打不开，所以不管它了，如果有老兄知道这个究竟是用什么打开比较好，可以在评论区告诉我。不过它也是可以用txt打开的，将其中的内容复制到以下位置：</p><p>先登录github，点击右上角你的账户头像，进入settings，进入SSH key选项卡，将<code>id_rsa.pub</code>中的所有内容添加进去即可。</p><h4 id="更改博客配置，为上传做准备。"><a href="#更改博客配置，为上传做准备。" class="headerlink" title="更改博客配置，为上传做准备。"></a>更改博客配置，为上传做准备。</h4><p>打开<code>D:\hexo</code>目录下的配置文件<code>_config.yml</code>（推荐用软件Sublime Text打开，不要用txt打开，因为这要UTF-8编码，而txt不会编码），翻到最下面，并改成以下内容，把<code>user123g</code>替换成你的用户名即可</p><pre><code>deploy:type: gitrepository: https://github.com/user123/user123.github.io.gitbranch: master</code></pre><p>注意：<code>type</code>后面一定要是<code>git</code>，不要填<code>Github</code>。这是最新版hexo的要求。还有就是上面配置文件的语法较为严格<code>type:</code>后面一定要留一个空格，<code>repository</code>，<code>branch</code>也一样。</p><h2 id="上传博客内容"><a href="#上传博客内容" class="headerlink" title="上传博客内容"></a>上传博客内容</h2><h3 id="先生成静态文件"><a href="#先生成静态文件" class="headerlink" title="先生成静态文件"></a>先生成静态文件</h3><pre><code>hexo g</code></pre><h3 id="部署前先输入以下命令，不然会出现error-deployer-not-found-github的报错。"><a href="#部署前先输入以下命令，不然会出现error-deployer-not-found-github的报错。" class="headerlink" title="部署前先输入以下命令，不然会出现error deployer not found:github的报错。"></a>部署前先输入以下命令，不然会出现<code>error deployer not found:github</code>的报错。</h3><pre><code>npm install hexo-deployer-git --save</code></pre><h3 id="上传文档（部署）"><a href="#上传文档（部署）" class="headerlink" title="上传文档（部署）"></a>上传文档（部署）</h3><pre><code>hexo d</code></pre><p>待出现<code>INFO Deploy done: git</code>即成功。成功后，进入网址<code>http://user123..github.io</code>浏览查看。</p><p>至此，所有工作都已完成，如果想更改主题什么的，可以看我后续的博客。有问题欢迎大家留言。</p>]]></content>
-      
-      
-      <categories>
-          
-          <category> 博客 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> Hexo </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    <entry>
       <title>VPS服务器搭建ghost blog</title>
       <link href="/2016/05/01/VPS%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%90%AD%E5%BB%BAghost%20blog/"/>
       <url>/2016/05/01/VPS%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%90%AD%E5%BB%BAghost%20blog/</url>
@@ -411,6 +413,29 @@
             <tag> VPS </tag>
             
             <tag> Dropbox </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
+      <title>搭建hexo博客小记——hexo系列文章（一）</title>
+      <link href="/2016/05/01/%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2%E5%B0%8F%E8%AE%B0/"/>
+      <url>/2016/05/01/%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2%E5%B0%8F%E8%AE%B0/</url>
+      
+        <content type="html"><![CDATA[<h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><p>本文主要介绍在Github下搭建Hexo博客。总体说来，搭建Hexo总共需要两步：</p><ul><li>第一部分，部署本地博客，也就是在你的电脑上搭建起来Web环境；</li><li>第二部分，生成静态页面，并上传到Github上去。<a id="more"></a></li></ul><h2 id="搭建本地博客系统"><a href="#搭建本地博客系统" class="headerlink" title="搭建本地博客系统"></a>搭建本地博客系统</h2><p>搭建本地博客系统首先要部署环境，即Node.js和Git。</p><h3 id="Node-js的安装"><a href="#Node-js的安装" class="headerlink" title="Node.js的安装"></a>Node.js的安装</h3><p>可以<a href="https://nodejs.org/" target="_blank" rel="noopener">点此</a>下载nodejs，并按照步骤一步步安装；一切默认即可；</p><h3 id="Git的安装"><a href="#Git的安装" class="headerlink" title="Git的安装"></a>Git的安装</h3><p>git bash，<a href="https://git-scm.com/downloads" target="_blank" rel="noopener">点此</a>下载即可。<br>部署好本地环境，便可以开始安装博客系统Hexo了</p><h3 id="Hexo的安装"><a href="#Hexo的安装" class="headerlink" title="Hexo的安装"></a>Hexo的安装</h3><p>Hexo可直接用<code>npm</code>安装，可在电脑任意文件夹下右键Git Bash Here，进去后，在命令行中输入</p><pre><code>npm install -g hexo</code></pre><h3 id="安装依赖包"><a href="#安装依赖包" class="headerlink" title="安装依赖包"></a>安装依赖包</h3><pre><code>npm install</code></pre><h3 id="发布本地博客"><a href="#发布本地博客" class="headerlink" title="发布本地博客"></a>发布本地博客</h3><p>到上一步为止，本地博客已搭建完成，下面我们可以发布本地博客看看效果：（即生成静态页面）</p><pre><code>hexo generatehexo server</code></pre><p>当然，也可以用简写：</p><pre><code>hexo ghexo s</code></pre><p>本地服务器开启后，我们就可以进入<a href="http://localhost:4000" target="_blank" rel="noopener">http://localhost:4000</a>浏览本地博客了。</p><h2 id="上传本地文件到Github"><a href="#上传本地文件到Github" class="headerlink" title="上传本地文件到Github"></a>上传本地文件到Github</h2><h3 id="申请账号并建立仓库。"><a href="#申请账号并建立仓库。" class="headerlink" title="申请账号并建立仓库。"></a>申请账号并建立仓库。</h3><p>账号自行申请，建立仓库即在页面右上角的+除新建一个<code>repository</code>。但是命名有要求，必须用你的用户名加上github.io来命名仓库名。比如你的用户名为user123，那么就命名为user123.github.io。</p><h3 id="获取SSH公钥，并与Github账号绑定。"><a href="#获取SSH公钥，并与Github账号绑定。" class="headerlink" title="获取SSH公钥，并与Github账号绑定。"></a>获取SSH公钥，并与Github账号绑定。</h3><h4 id="设置邮箱和用户名"><a href="#设置邮箱和用户名" class="headerlink" title="设置邮箱和用户名"></a>设置邮箱和用户名</h4><pre><code>git config --global user.email &quot;user123@gmail.com&quot; </code></pre><p>git config –global user.name “user123”</p><h4 id="生成密钥"><a href="#生成密钥" class="headerlink" title="生成密钥"></a>生成密钥</h4><pre><code>ssh-keygen -t rsa -C &quot;user@gmail.com&quot;</code></pre><p>命令运行后，会在<code>C:\Users\你的计算机名\.ssh</code>中找到<code>id_rsa.pub</code>这个文件，貌似是pubication的文件，但是我用office打不开，所以不管它了，如果有老兄知道这个究竟是用什么打开比较好，可以在评论区告诉我。不过它也是可以用txt打开的，将其中的内容复制到以下位置：</p><p>先登录github，点击右上角你的账户头像，进入settings，进入SSH key选项卡，将<code>id_rsa.pub</code>中的所有内容添加进去即可。</p><h4 id="更改博客配置，为上传做准备。"><a href="#更改博客配置，为上传做准备。" class="headerlink" title="更改博客配置，为上传做准备。"></a>更改博客配置，为上传做准备。</h4><p>打开<code>D:\hexo</code>目录下的配置文件<code>_config.yml</code>（推荐用软件Sublime Text打开，不要用txt打开，因为这要UTF-8编码，而txt不会编码），翻到最下面，并改成以下内容，把<code>user123g</code>替换成你的用户名即可</p><pre><code>deploy:type: gitrepository: https://github.com/user123/user123.github.io.gitbranch: master</code></pre><p>注意：<code>type</code>后面一定要是<code>git</code>，不要填<code>Github</code>。这是最新版hexo的要求。还有就是上面配置文件的语法较为严格<code>type:</code>后面一定要留一个空格，<code>repository</code>，<code>branch</code>也一样。</p><h2 id="上传博客内容"><a href="#上传博客内容" class="headerlink" title="上传博客内容"></a>上传博客内容</h2><h3 id="先生成静态文件"><a href="#先生成静态文件" class="headerlink" title="先生成静态文件"></a>先生成静态文件</h3><pre><code>hexo g</code></pre><h3 id="部署前先输入以下命令，不然会出现error-deployer-not-found-github的报错。"><a href="#部署前先输入以下命令，不然会出现error-deployer-not-found-github的报错。" class="headerlink" title="部署前先输入以下命令，不然会出现error deployer not found:github的报错。"></a>部署前先输入以下命令，不然会出现<code>error deployer not found:github</code>的报错。</h3><pre><code>npm install hexo-deployer-git --save</code></pre><h3 id="上传文档（部署）"><a href="#上传文档（部署）" class="headerlink" title="上传文档（部署）"></a>上传文档（部署）</h3><pre><code>hexo d</code></pre><p>待出现<code>INFO Deploy done: git</code>即成功。成功后，进入网址<code>http://user123..github.io</code>浏览查看。</p><p>至此，所有工作都已完成，如果想更改主题什么的，可以看我后续的博客。有问题欢迎大家留言。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 博客 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Hexo </tag>
             
         </tags>
       
