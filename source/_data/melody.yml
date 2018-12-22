@@ -1,0 +1,260 @@
+# html lang
+# ---------------
+language: zh-Hans
+
+# Theme Color
+theme_color:
+  enable: true # or false -> to use the default theme
+  main: "#000"
+  paginator: "#000"
+  button_hover: "#49B1F5"
+  text_selection: "#000"
+  link_color: "#000"
+  hr_color: "#000"
+  meta_color: "#000"
+
+
+# Main menu navigation
+# ---------------
+menu:
+  主页: /
+  归档: /archives
+  标签: /tags
+  分类: /categories
+  相册: /gallery
+  slides: /slides
+  
+
+  #XXX: /xxx
+
+# Favicon
+# ---------------
+favicon: /favicon.ico
+
+# PWA
+# ---------------
+pwa:
+  enable: false
+  manifest: # manifest.json的url, 通常可以设置成 /manifest.json
+  # 从v1.5.6开始你可以修改PWA的主题色和icon了。
+  # 如果不明白这些有什么用，或者不想配置可以忽视下面的配置
+  # See https://realfavicongenerator.net/
+  # theme_color: "#1B9EF3"
+  # apple_touch_icon: /apple-touch-icon.png
+  # favicon_32_32: /favicon-32x32.png
+  # favicon_16_16: /favicon-16x16.png
+  # mask_icon: /safari-pinned-tab.svg
+
+
+# Highlight theme
+# ---------------
+highlight_theme: default
+
+# Nav settings
+# ---------------
+social:
+  #icon_name: url
+  github: https://github.com/heliuphy
+  weibo: http://weibo.com/2553167443
+  # rss: https://Molunerfinn/atom.xml
+
+# Algolia search
+# ---------------
+algolia_search:
+  enable: false
+  hits:
+    per_page: 10
+  labels:
+    input_placeholder: Search for Posts
+    hits_empty: "We didn't find any results for the search: ${query}"
+    hits_stats: "${hits} results found in ${time} ms"
+
+# Local search
+# ---------------
+local_search:
+  enable: true
+  labels:
+    input_placeholder: Search for Posts
+    hits_empty: "We didn't find any results for the search: ${query}"
+
+# MathJax
+# ---------------
+mathjax:
+  enable: false
+  cdn: https://cdn.bootcss.com/mathjax/2.7.2/MathJax.js?config=TeX-AMS-MML_HTMLorMML
+
+
+# Toggle fireworks (IE >= 10)
+# ---------------
+fireworks: false
+
+# Analysis
+# ---------------
+baidu_analytics: 
+
+google_analytics:
+
+# stylesheets loaded in the <head>
+# ---------------
+stylesheets:
+- /css/index.css
+
+# scripts loaded in the end of the body
+# ---------------
+scripts:
+- /js/utils.js
+- /js/fancybox.js
+- /js/sidebar.js
+- /js/copy.js
+- /js/fireworks.js
+- /js/transition.js
+- /js/scroll.js
+- /js/head.js
+
+# cdn for third-party library
+# ---------------
+cdn:
+  css:
+    fontawesome: https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.min.css
+  js:
+    anime: /js/third-party/anime.min.js
+    jquery: /js/third-party/jquery.min.js
+    fancybox: /js/third-party/jquery.fancybox.min.js
+    velocity: /js/third-party/velocity.min.js 
+    velocity-ui: /js/third-party/velocity.ui.min.js 
+
+# Post info settings
+# ---------------
+avatar: /avatar.jpg 
+
+# top_img: true # false or url of img 
+top_img: https://hexo-1252865648.cos.ap-chengdu.myqcloud.com/images/beautiful-cold-fog-547115%202.jpg
+
+post_meta:
+  date_type: created # created or updated 
+  categories: true
+  tags: true
+
+wordcount:
+  enable: true
+
+toc:
+  enable: true
+
+post_copyright:
+  enable: true
+  license: CC BY-NC-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-nc-sa/4.0/
+
+auto_excerpt:
+  enable: true
+  length: 150
+
+# slide
+# For reveal.js config, see https://github.com/hakimel/reveal.js#configuration
+slide:
+  separator: ---
+  separator_vertical: --
+  charset: utf-8
+  theme: black
+  # optional
+  mouseWheel: false
+  transition: slide
+  transitionSpeed: default
+  parallaxBackgroundImage: ''
+  parallaxBackgroundSize: ''
+  parallaxBackgroundHorizontal: null
+  parallaxBackgroundVertical: null
+
+QR_code:
+  - itemlist:
+      img: https://hexo-1252865648.cos.ap-chengdu.myqcloud.com/qrcode/alipay.jpg
+      text: 支付宝打赏
+  - itemlist:
+      img: https://hexo-1252865648.cos.ap-chengdu.myqcloud.com/qrcode/wechat.jpg
+      text: 微信打赏
+
+# adv:
+  # enable: false
+  # info: 
+
+# Share System
+# ---------------
+addThis:
+  enable: false
+  #pubid: 
+
+sharejs:
+  enable: true
+  disabled_sites: facebook
+
+# Comments System
+# ---------------
+disqus:
+  enable: false 
+  #shortname: 
+  #count: 
+
+# laibili:
+  # enable: false
+  # uid:
+
+# gitment:
+  # enable: true
+  # owner: heliuphy
+  # repo: HexoGitment
+  # client_id: ad7cd539b86faeab9c35
+  # client_secret: 4e6c00fca2d4e6e2c7c725936748e69ecb3a277c
+
+gitalk:
+  enable: true
+  client_id: ad7cd539b86faeab9c35
+  client_secret: 4e6c00fca2d4e6e2c7c725936748e69ecb3a277c
+  repo: Gitalk
+  owner: heliuphy
+  admin: heliuphy
+
+# valine comment system. https://valine.js.org
+# valine:
+#   enable: false # if you want use valine,please set this value is ture
+#   appId:  # leancloud application app id
+#   appKey:  # leancloud application app key
+#   notify: false # valine mail notify (true/false) https://github.com/xCss/Valine/wiki
+#   verify: false # valine verify code (true/false)
+#   pageSize: 10 # comment list page size
+#   avatar: mm # gravatar style https://valine.js.org/#/avatar
+#   lang: zh-cn # i18n: zh-cn/en
+#   placeholder: Just go go # valine comment input placeholder(like: Please leave your footprints )
+#   guest_info: nick,mail,link #valine comment header inf
+
+# Footer Settings
+# ---------------
+since: 2016
+
+ICP:
+  enable: false
+  #text: 
+
+# busuanzi count for PV / UV in site
+busuanzi:
+  # count values only if the other configs are false
+  enable: true
+  # custom uv span for the whole site
+  site_uv: true
+  site_uv_header: <i class="fa fa-user"></i>
+  site_uv_footer:
+  # custom pv span for the whole site
+  site_pv: true
+  site_pv_header: <i class="fa fa-eye"></i>
+  site_pv_footer:
+  # custom pv span for one page only
+  page_pv: true
+  page_pv_header: <i class="fa fa-file-o"></i>
+  page_pv_footer:
+
+
+# Sidebar Settings
+# ---------------
+#links_title: Links
+#links:
+  #Name: url
