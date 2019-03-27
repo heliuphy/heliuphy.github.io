@@ -95,5 +95,6 @@ search:
 #   repo: git@git.coding.net:heliu/MyHexoBlog-2018.git
 deploy:
   type: git
-  repo: https://gh_token@github.com/heliuphy/heliuphy.github.io.git
+  # repo: https://gh_token@github.com/heliuphy/heliuphy.github.io.git
+  repo: https://heliu:co_token@git.dev.tencent.com/heliu/hexo.git
   branch: master
