@@ -27,7 +27,7 @@ script:
   - hexo clean
   - hexo generate
 
-设置git提交名，邮箱；替换真实token到_config.yml文件，最后depoy部署
+# 设置git提交名，邮箱；替换真实token到_config.yml文件，最后depoy部署
 
 after_script:
   - git config user.name "heliuphy"
@@ -38,21 +38,3 @@ after_script:
   - hexo deploy
 # End: Build LifeCycle
 
-# after_script:
-#   - cd ./public
-#   - git init
-#   - git config user.name "heliuphy"
-#   - git config user.email "liuhephy@gmail.com"
-#   - git add .
-#   - git commit -m "TravisCI 自动部署"
-#   # Github Pages
-#   - git push --force --quiet "https://${GH_TOKEN}@${GH_REF}" master:master
-#   # Coding Pages
-#   - git push --force --quiet "https://heliu:${CO_TOKEN}@${CO_REF}" master:master
-
-# env:
-#  global:
-#    # Github Pages
-#    - GH_REF: github.com/heliuphy/heliuphy.github.io
-#    # Coding Pages
-#    - CO_REF: git.dev.tencent.com/heliu/hexo.git
